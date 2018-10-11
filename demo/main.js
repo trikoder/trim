@@ -2,7 +2,7 @@ import app from 'cmf/js/app';
 import translations from 'cmf/js/lang/english';
 import routes from './routes';
 import services from './services';
-import auth from './auth';
+// import auth from './auth';
 import 'apiServer';
 
 import './scss/main.scss';
@@ -19,5 +19,5 @@ app
     .registerServices(services)
     .registerRoutes(routes)
     .beforeAdminEnter(() => {})
-    .useAuth(auth)
+    // .useAuth(auth)
     .start();
