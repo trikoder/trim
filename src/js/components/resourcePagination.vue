@@ -86,6 +86,7 @@
 import userPreferences from '../library/userPreferences';
 import translate from '../library/translate';
 import {range} from '../library/toolkit';
+import bootData from '../library/bootData';
 
 const Pagination = {
 
@@ -158,7 +159,10 @@ const Pagination = {
 
     getLimit(resourceName = 'default') {
 
-        return userPreferences.get('pagination.' + resourceName + '.itemsPerPage', 15);
+        return userPreferences.get(
+            'pagination.' + resourceName + '.itemsPerPage',
+            bootData('itemsPerPage', 15)
+        );
 
     },
 
