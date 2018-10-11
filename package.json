@@ -1,6 +1,6 @@
 {
   "name": "@trikoder/trim",
-  "version": "0.50.1",
+  "version": "0.51.0",
   "description": "UI framework for building headless content management systems that connect to json:api powered backend.",
   "files": [
     "/src"
