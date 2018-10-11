@@ -1,0 +1,4 @@
+---
+layout: HomeCustom
+pageClass: homeCustom
+---

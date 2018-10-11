@@ -1,0 +1,56 @@
+@font-face {
+	font-family: 'Archivo Narrow';
+	font-style: normal;
+	font-weight: 400;
+	src: url(asset('font/webFonts/archivo-narrow-400-normal.eot'));
+	src: local('Archivo Narrow Regular'), local('ArchivoNarrow-Regular'), url(asset('font/webFonts/archivo-narrow-400-normal.eot#iefix')) format('embedded-opentype'), url(asset('font/webFonts/archivo-narrow-400-normal.woff')) format('woff'), url(asset('font/webFonts/archivo-narrow-400-normal.ttf')) format('truetype'), url(asset('font/webFonts/archivo-narrow-400-normal.svg#ArchivoNarrow')) format('svg');
+}
+@font-face {
+	font-family: 'Archivo Narrow';
+	font-style: italic;
+	font-weight: 400;
+	src: url(asset('font/webFonts/archivo-narrow-400-italic.eot'));
+	src: local('Archivo Narrow Italic'), local('ArchivoNarrow-Italic'), url(asset('font/webFonts/archivo-narrow-400-italic.eot#iefix')) format('embedded-opentype'), url(asset('font/webFonts/archivo-narrow-400-italic.woff')) format('woff'), url(asset('font/webFonts/archivo-narrow-400-italic.ttf')) format('truetype'), url(asset('font/webFonts/archivo-narrow-400-italic.svg#ArchivoNarrow')) format('svg');
+}
+@font-face {
+	font-family: 'Archivo Narrow';
+	font-style: normal;
+	font-weight: 700;
+	src: url(asset('font/webFonts/archivo-narrow-700-normal.eot'));
+	src: local('Archivo Narrow Bold'), local('ArchivoNarrow-Bold'), url(asset('font/webFonts/archivo-narrow-700-normal.eot#iefix')) format('embedded-opentype'), url(asset('font/webFonts/archivo-narrow-700-normal.woff')) format('woff'), url(asset('font/webFonts/archivo-narrow-700-normal.ttf')) format('truetype'), url(asset('font/webFonts/archivo-narrow-700-normal.svg#ArchivoNarrow')) format('svg');
+}
+@font-face {
+	font-family: 'Archivo Narrow';
+	font-style: italic;
+	font-weight: 700;
+	src: url(asset('font/webFonts/archivo-narrow-700-italic.eot'));
+	src: local('Archivo Narrow Bold Italic'), local('ArchivoNarrow-BoldItalic'), url(asset('font/webFonts/archivo-narrow-700-italic.eot#iefix')) format('embedded-opentype'), url(asset('font/webFonts/archivo-narrow-700-italic.woff')) format('woff'), url(asset('font/webFonts/archivo-narrow-700-italic.ttf')) format('truetype'), url(asset('font/webFonts/archivo-narrow-700-italic.svg#ArchivoNarrow')) format('svg');
+}
+@font-face {
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 400;
+	src: url(asset('font/webFonts/roboto-400-normal.eot'));
+	src: url(asset('font/webFonts/roboto-400-normal.eot#iefix')) format('embedded-opentype'), url(asset('font/webFonts/roboto-400-normal.woff')) format('woff'), url(asset('font/webFonts/roboto-400-normal.ttf')) format('truetype'), url(asset('font/webFonts/roboto-400-normal.svg#Roboto')) format('svg');
+}
+@font-face {
+	font-family: 'Roboto';
+	font-style: italic;
+	font-weight: 400;
+	src: url(asset('font/webFonts/roboto-400-italic.eot'));
+	src: url(asset('font/webFonts/roboto-400-italic.eot#iefix')) format('embedded-opentype'), url(asset('font/webFonts/roboto-400-italic.woff')) format('woff'), url(asset('font/webFonts/roboto-400-italic.ttf')) format('truetype'), url(asset('font/webFonts/roboto-400-italic.svg#Roboto')) format('svg');
+}
+@font-face {
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 700;
+	src: url(asset('font/webFonts/roboto-700-normal.eot'));
+	src: url(asset('font/webFonts/roboto-700-normal.eot#iefix')) format('embedded-opentype'), url(asset('font/webFonts/roboto-700-normal.woff')) format('woff'), url(asset('font/webFonts/roboto-700-normal.ttf')) format('truetype'), url(asset('font/webFonts/roboto-700-normal.svg#Roboto')) format('svg');
+}
+@font-face {
+	font-family: 'Roboto';
+	font-style: italic;
+	font-weight: 700;
+	src: url(asset('font/webFonts/roboto-700-italic.eot'));
+	src: local('Roboto Bold Italic'), local('Roboto-BoldItalic'), url(asset('font/webFonts/roboto-700-italic.eot#iefix')) format('embedded-opentype'), url(asset('font/webFonts/roboto-700-italic.woff')) format('woff'), url(asset('font/webFonts/roboto-700-italic.ttf')) format('truetype'), url(asset('font/webFonts/roboto-700-italic.svg#Roboto')) format('svg');
+}

@@ -1,0 +1,39 @@
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideDown {
+    from { transform: translate3d(0, -1em, 0); }
+    to { transform: translate3d(0, 0, 0); }
+}
+
+@keyframes slideDownFadeIn {
+    from { opacity: 0; transform: translate3d(0, -1em, 0); }
+    to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes slideUp {
+    from { transform: translate3d(0, 1em, 0); }
+    to { transform: translate3d(0, 0, 0); }
+}
+
+@keyframes slideUpFadeIn {
+    from { opacity: 0; transform: translate3d(0, 1em, 0); }
+    to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes slideFromRightFadeIn {
+    from { opacity: 0; transform: translate3d(4em, 0, 0); }
+    to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes slideFromRight {
+    from { transform: translate3d(4em, 0, 0); }
+    to { transform: translate3d(0, 0, 0); }
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}

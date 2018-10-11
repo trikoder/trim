@@ -1,0 +1,366 @@
+.resourceEditType1 {
+
+    animation: slideDownFadeIn 0.2s;
+
+    position: relative; box-sizing: border-box;
+    background-color: #fff;
+
+    @include mediaMinWidth($breakpointMedium) {
+
+        min-height: calc(100vh - 5em);
+
+    }
+
+    > .layoutContainer {
+
+        padding: 3em 4em; max-width: 80em; margin: 0 auto;
+
+       &.withTabs {
+
+            padding: 0; max-width: none;
+
+            .tabPanelType1 {
+
+                padding: 4em; max-width: 80em; margin: 0 auto;
+
+                &.editLayoutRegions {
+
+                    padding: 0; max-width: none;
+
+                }
+
+            }
+
+       }
+
+       &.withRegions {
+
+            padding: 0; max-width: none;
+
+       }
+
+    }
+
+    .editLayoutRegions {
+
+        overflow: hidden; position: relative;
+        background-color: #fff;
+
+        @include mediaMaxWidth($breakpointMedium) {
+
+            > .mainRegion {
+
+                padding: 2em;
+
+            }
+
+            > .sideRegion {
+
+                padding: 2em;
+                background-color: #f9f9f9; border: 1px solid $colorGrayLight1; border-width: 1px 0;
+
+            }
+
+        }
+
+        @include mediaMinWidth($breakpointMedium) {
+
+            min-height: calc(100vh - 5em);
+
+            &:before {
+
+                content: ""; position: absolute; right: 0; top: 0; bottom: 0; width: 32em;
+                background-color: #f9f9f9; border-left: 1px solid $colorGrayLight1;
+
+            }
+
+            > .mainRegion {
+
+                float: left; margin-left: -32em; width: 100%; padding: 3em 4em 3em 36em; position: relative; box-sizing: border-box;
+
+                > .regionInner {
+
+                    max-width: 80em; margin: 0 auto;
+
+                }
+
+            }
+
+            > .sideRegion {
+
+                float: right; width: 32em; padding: 3em 2em 3em; box-sizing: border-box; position: relative;
+
+            }
+
+        }
+
+    }
+
+    .inputBlockType1, .includedAdminBlockType1 {
+
+        animation: slideDownFadeIn 0.2s;
+        margin-bottom: 3em;
+
+    }
+
+    .includedAdminBlockType1 .inputBlockType1 {
+
+        animation: none;
+
+    }
+
+    .messageType1 {
+
+        animation: fadeIn 0.6s;
+
+        border-bottom: 1px solid $colorGrayLight1;
+
+    }
+
+    .popupType1 & {
+
+        position: absolute; left: 0; right: 0; bottom: 0; top: 5em; overflow-y: auto; min-height: 0;
+
+    }
+
+    .fieldRegionWrap {
+
+        margin: -2em -3em; position: relative;
+
+        .fieldRegion {
+
+            &.main {
+
+                padding: 2em 33em 2em 3em; box-sizing: border-box;
+
+            }
+
+            &.fieldRegion.secondary {
+
+                position: absolute; top: 0; right: 0; bottom: 0; overflow: auto;
+                width: 30em; padding: 2em 3em; box-sizing: border-box; background: #ededed;
+
+            }
+
+        }
+
+    }
+
+    .editLayoutGroup.collapsed {
+
+        display: none;
+
+    }
+
+    .layoutGroupType1 {
+
+        padding: 1.5em 0 0 1.5em; margin-bottom: 3em;
+        background-color: #f5f5f5; border: 1px solid $colorGrayLight1; border-radius: 0.3em;
+
+        > .inlineInputBlockType1 {
+
+            margin: 0 1.5em 1.5em 0;
+
+        }
+
+    }
+
+    .layoutGroupType2 {
+
+        border-bottom: 1px solid $colorGrayLight1; padding: 2em 2em 0; margin: 0 -2em;
+
+        &:first-child {
+            padding-top: 0;
+        }
+
+        &:last-child {
+            border-bottom: 0;
+        }
+
+        .sideRegionCheckboxBlock + .sideRegionCheckboxBlock {
+
+            margin-top: -2em;
+
+        }
+
+    }
+
+    .layoutGroupType3 {
+
+        padding: 1.5em 0;
+
+        > .inlineInputBlockType1 {
+
+            margin: 0 1.5em 1.5em 0;
+
+        }
+
+    }
+
+    &.mediaUploadType1 > .layoutContainer {
+
+        padding-top: 7em;
+
+        .fileUploadType1 { margin-bottom: 3em; }
+
+    }
+
+    @include mediaMaxWidth($breakpointMedium) {
+
+        > .layoutContainer {
+
+            padding: 2em;
+
+            &.withTabs .tabPanelType1 {
+
+                padding: 2em; max-width: 80em; margin: 0 auto;
+
+            }
+
+        }
+
+        .layoutGroupType1 {
+
+            margin: 0 -1.5em 3em; border-width: 1px 0; border-radius: 0;
+
+        }
+
+    }
+
+}
+
+.tabNavType1 {
+
+    background: #fff;
+    position: relative;
+
+    > .tabBtn {
+
+        @include fontSans;
+        font-size: 1.4em; position: relative;
+        display: inline-block; padding: 0 em(20,14) em(10,14);
+        color: #666;
+
+        &:after {
+
+            content: ""; position: absolute; bottom: -1px; left: em(20,14); right: em(20,14);
+
+        }
+
+        &:hover {
+
+            color: $colorMain1;
+
+        }
+
+        &.selected:after {
+
+            border-bottom: 2px solid $colorMain1;
+
+        }
+
+    }
+
+    @include mediaMaxWidth($breakpointMedium) {
+
+        overflow: auto; white-space: nowrap; -webkit-overflow-scrolling: touch;
+        background-color: $colorPageBackground;
+
+        > .tabBtn {
+
+            padding: em(15,14) em(20,14) em(15,14);
+            border-bottom: 1px solid $colorGrayLight1;
+
+        }
+
+    }
+
+    @include mediaMinWidth($breakpointMedium) {
+
+        border-bottom: 1px solid $colorGrayLight1;
+
+        > .tabBtn {
+
+            padding: em(5,14) em(20,14) em(15,14);
+
+        }
+
+    }
+
+}
+
+.tabPanelType1 {
+
+    display: none;
+
+    &.selected {
+
+        display: block;
+
+    }
+
+}
+
+.inputType1 {
+
+    appearance: none;
+    font-size: 1.4em; padding: em(8,14);
+    background-color: #fff; border: 1px solid $colorGrayLight2; border-radius: em(4,14);
+
+    &.fullWidth {
+        width: 100%;
+    }
+
+    &.fontBold {
+        @include fontSansCondensedBold;
+    }
+
+}
+
+.inputType2 {
+
+    appearance: none;
+    transition: border-color 0.2s;
+    @include fontSans;
+
+    font-size: 1.6em; padding: em(10,16) 0; line-height: 1.4;
+    background-color: transparent; border: 0; border-bottom: 1px solid $colorGrayLight2;
+
+    &.withError, .formElementWithError & {
+        border-bottom-color: $colorError;
+    }
+
+    &:focus {
+        border-bottom-color: $colorMain1;
+    }
+
+    &.fontBold {
+        letter-spacing: -0.01em;
+        @include fontSansBold;
+    }
+
+    @include mediaMaxWidth($breakpointMedium) {
+
+        &.size1 {
+            font-size: 1.9em;
+        }
+
+        &.size2 {
+            font-size: 2.2em; padding: em(10,22) 0;
+        }
+
+    }
+
+    @include mediaMinWidth($breakpointMedium) {
+
+        &.size1 {
+            font-size: 2.4em;
+        }
+
+        &.size2 {
+            font-size: 3em; padding: em(10,30) 0;
+        }
+
+    }
+
+}

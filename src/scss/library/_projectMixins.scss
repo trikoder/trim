@@ -1,0 +1,24 @@
+//--------------------------------------------------------------
+// Fonts
+//--------------------------------------------------------------
+@mixin fontSans { font-family: 'Roboto', sans-serif; font-weight: 400; font-style: normal; }
+@mixin fontSansBold { font-family: 'Roboto', sans-serif; font-weight: 700; font-style: normal; }
+@mixin fontSansItalic { font-family: 'Roboto', sans-serif; font-weight: 400; font-style: italic; }
+@mixin fontSansBoldItalic { font-family: 'Roboto', sans-serif; font-weight: 700; font-style: italic; }
+
+@mixin fontSansCondensed { font-family: 'Archivo Narrow', sans-serif; font-weight: 400; font-style: normal; }
+@mixin fontSansCondensedBold { font-family: 'Archivo Narrow', sans-serif; font-weight: 700; font-style: normal; }
+@mixin fontSansCondensedItalic { font-family: 'Archivo Narrow', sans-serif; font-weight: 400; font-style: italic; }
+@mixin fontSansCondensedBoldItalic { font-family: 'Archivo Narrow', sans-serif; font-weight: 700; font-style: italic; }
+
+@mixin ellipsis($width: 100%) {
+    max-width: $width; display: inline-block; overflow: hidden;
+    text-overflow: ellipsis; white-space: nowrap; word-wrap: normal;
+}
+
+@mixin clearfix {
+    &::after {
+        clear: both; content: ""; display: table;
+    }
+}
+

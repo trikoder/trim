@@ -1,0 +1,432 @@
+.resourceListType1 {
+
+    &.withNoItems {
+
+        .massActionsType1,
+        .pagination { display: none; }
+
+    }
+
+    &.nested {
+
+        .bottomListControls,
+        .topListControls > .sort,
+        .topListControls > .pagination {
+
+            display: none;
+
+        }
+
+    }
+
+    .noResults {
+
+        font-size: 2.5em; padding: em(60,25) em(10,25);
+        text-align: center; color: $colorGrayDark2;
+
+    }
+
+    & /deep/ .message {
+
+        animation: fadeIn 0.6s;
+
+        border-bottom: 1px solid $colorGrayLight1;
+
+    }
+
+    @include mediaMaxWidth($breakpointMedium) {
+
+        background-color: $colorPageBackground;
+
+        > .topListControls {
+
+            padding: 0 0 0;
+
+            > .massActionsType1 { margin-top: -0.1em; position: relative; z-index: 205;; }
+
+            > .pagination { display: none; }
+
+            > .sort { display: none; }
+
+        }
+
+        > .bottomListControls {
+
+            padding: 1em 0.5em 1em; text-align: center;
+            background-color: #fff;
+
+            .limitOptions {
+
+                display: none;
+
+            }
+
+            > .sort {
+
+                text-align: center; padding: 0 0 1em;
+                opacity: 1;
+
+            }
+
+        }
+
+        > .itemListCont.selectsOne .massActionCheckboxCell {
+
+            display: none;
+
+        }
+
+    }
+
+    @include mediaMinWidth($breakpointMedium) {
+
+        .popupType1 & {
+
+            position: absolute; left: 0; right: 0; bottom: 0; top: 5em;
+            overflow-y: scroll; -webkit-overflow-scrolling: touch;
+            overflow: auto;
+
+        }
+
+        > .itemListCont {
+
+            padding: 1em 2em 2em;
+
+        }
+
+        > .topListControls {
+
+            padding: 0.5em 2em 0;
+
+            > .massActionsType1 {
+
+                float: left; padding-top: 1.5em;
+
+            }
+
+            > .sort {
+
+                float: right; margin-top: 1.3em;
+
+            }
+
+            > .pagination {
+
+                float: right; margin-top: 1.3em; margin-right: -1.2em; margin-left: 1.2em;
+
+            }
+
+        }
+
+        > .bottomListControls {
+
+            padding: 0 2em 2.5em;
+
+            > .sort {
+
+                display: none;
+
+            }
+
+            > .pagination {
+
+                margin-top: 0.5em; margin-right: -1.2em;
+
+                > .totalItems {
+
+                    display: none;
+
+                }
+
+            }
+
+        }
+
+    }
+
+}
+
+.tableType1 {
+
+    animation: slideDownFadeIn 0.2s;
+
+    width: 100%;
+
+    th {
+
+        @include fontSansCondensedBold;
+
+        font-size: em(12,10); text-align: left; text-transform: uppercase;
+        letter-spacing: 0.03em;
+        color: $colorGrayDark3; border-bottom: 1px solid lighten($colorGrayLight2,3%); padding: em(10,12) em(10,12);
+
+        &.contextMenuCellHeading {
+
+            text-align: right;
+
+        }
+
+        .checkboxType1 + label {
+
+            font-size: em(10,12);
+            margin: -0.6em -0.7em -0.7em;
+
+        }
+
+    }
+
+    td {
+
+        border-bottom: 1px solid lighten($colorGrayLight2,3%); padding: em(10,10) em(10,10);
+
+        .contextMenuType1 {
+
+            float: right;
+
+        }
+
+        &.massActionCheckboxCell {
+
+            width: 1em;
+
+        }
+
+        &.smallWidthCell {
+
+            width: 3.5%;
+
+        }
+
+        .checkboxType1 + label {
+
+            margin: -0.6em -0.7em -0.7em;
+
+        }
+
+    }
+
+    tr:hover td {
+
+        background-color: rgba(#fff, 0.4);
+
+    }
+
+    .buttonCell {
+
+        width: 4%;
+
+        > .listElementButton {
+
+            margin: -3px 0;
+
+        }
+
+        > .listElementIconButton {
+
+            margin: -1.1em 0;
+
+        }
+
+    }
+
+    .contextMenuCellHeading { width: 2%; }
+    .externalAdminPicker { margin: -1.5em -0.2em; }
+
+    .cellCaption { display: none; }
+
+    .treeBtn {
+
+        font-size: 1.2em; width: em(20,12); height: em(15,12); position: relative;
+        opacity: 0.5; top: 2px;
+
+        & + p { display: inline-block; }
+
+    }
+
+    .treeSpacer {
+
+        width: em(20,10); display: inline-block;
+
+        & + p { display: inline-block;}
+
+    }
+
+    &.nested tr {
+        animation: slideDownFadeIn 0.2s;
+    }
+
+    .nestControls {
+
+        float: right;
+
+        > .addChildEntity {
+
+            font-size: 1em;
+            width: em(10,10); height: em(10,10);
+            color: $colorGrayDark2; border: 2px solid $colorGrayDark2;
+            border-radius: 50%;
+
+        }
+
+    }
+
+    @include mediaMaxWidth($breakpointMedium) {
+
+        display: block;
+
+        thead { display: none; }
+        tbody { display: block; }
+
+        tr {
+
+            display: block; position: relative; padding: 2em 5em 2em 2em;
+            border-bottom: 1px solid $colorGrayLight2;
+
+        }
+
+        td {
+
+            display: inline-block; border: 0; padding: 0; margin: 0 1em 0.5em 0;
+
+        }
+
+        tr:hover td {
+
+            background-color: transparent;
+
+        }
+
+        .massActionCheckboxCell {
+
+            position: absolute; left: 1.8em; top: 2.1em;
+
+        }
+
+        .contextMenuCell {
+
+            position: absolute; right: 0.6em; top: 2.4em; margin: 0;
+
+        }
+
+        .linkCell {
+
+            display: block; font-size: 1.1em;
+
+        }
+
+        .externalAdminPicker {
+
+            margin: 0;
+
+        }
+
+        .externalAdminPickerCell {
+
+            position: absolute; left: 0.6em; top: 1em; margin: 0; width: auto;
+
+        }
+
+        .withMassActions & tr,
+        .selectsOne & tr {
+
+            padding-left: 4.5em;
+
+        }
+
+        &.nested tr {
+
+            padding-left: 3.5em;
+
+        }
+
+        .withMassActions &.nested tr,
+        .selectsOne &.nested tr {
+
+            padding-left: 6em;
+
+        }
+
+        .treeBtn {
+
+            position: absolute; left: 0.8em; top: 1.7em;
+
+        }
+
+        .withMassActions & .treeBtn,
+        .selectsOne & .treeBtn {
+            left: 2.8em; top: 1.7em;
+        }
+
+        .treeSpacer {
+
+            display: none;
+
+        }
+
+        tr.indented {
+            border-left: 1px solid $colorGrayLight1;
+        }
+
+    }
+
+}
+
+.externalAdminPicker {
+
+    &:before {
+
+        font-size: 1.5em;
+
+    }
+
+    @include hover {
+
+        color: $colorMain1;
+
+    }
+
+}
+
+.checkboxType1 {
+
+    position: absolute; left: -999em;
+
+    + label {
+
+        position: relative; width: 3em; height: 3em; display: inline-block;
+
+        &:after {
+
+            content: "";
+            position: absolute; left: 50%; top: 50%; box-sizing: border-box;
+            width: 1.5em; height: 1.5em; margin: -0.75em 0 0 -0.75em;
+            background-color: #fff; border: 1px solid rgba(#000, 0.2); border-radius: 0.2em;
+
+        }
+
+        &:before {
+
+            display: none; z-index: 10; color: $colorMain1; font-size: 1.1em; left: em(1,11);
+
+        }
+
+    }
+
+    &:checked {
+
+        + label:after {
+
+            box-shadow: 0 0.1em 0.3em rgba(#000, 0.06);
+
+        }
+
+        + label:before {
+
+            animation: slideDownFadeIn 0.2s;
+            display: block;
+
+        }
+
+    }
+
+}

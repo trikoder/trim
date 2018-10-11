@@ -1,0 +1,223 @@
+<template>
+    <div
+        v-bind:class="[classAttribute, {active: opened}]"
+        v-bind:style="styleAttribute"
+        v-bind="attributes"
+        v-on-dismiss="{callback: close, watch: opened}"
+    >
+        <button type="button" v-on:click="toggle" class="toggleContextMenu nBtn icr iconMenu">
+            {{ toggleButtonCaption }}
+        </button>
+        <ul>
+            <li
+                v-for="(item, index) in dropdownItems"
+                v-bind:key="index"
+            >
+                <a
+                    v-if="item.url"
+                    class="contextItem"
+                    v-on:click="runItemAction(item, $event)"
+                    v-bind:target="item.isExternalLink ? '_blank' : undefined"
+                    v-bind:class="item.class"
+                    v-bind:href="item.url"
+                >{{ item.caption }}</a>
+                <button
+                    v-else
+                    type="button"
+                    class="contextItem"
+                    v-on:click="runItemAction(item, $event)"
+                    v-bind:class="item.class"
+                >{{ item.caption }}</button>
+
+            </li>
+        </ul>
+    </div>
+</template>
+
+<script>
+
+import dismissListener from '../mixins/dismissListener';
+import translate from '../library/translate';
+import {assign, result} from '../library/toolkit';
+import {confirm} from '../components/dialogModal';
+
+export default {
+
+    mixins: [dismissListener],
+
+    props: {
+        resourceModel: {type: Object, required: true},
+        caption: {type: String, required: true},
+        items: {type: [Array, Function], required: true},
+        attributes: {type: Object, default: () => ({})}
+    },
+
+    data: () => ({
+        defaultClass: 'contextMenuType1',
+        toggleButtonCaption: translate('listElements.contextMenu.toggleCaption'),
+        opened: false
+    }),
+
+    computed: {
+
+        styleAttribute() {
+
+            return this.attributes.style;
+
+        },
+
+        classAttribute() {
+
+            return this.attributes.class || this.defaultClass;
+
+        },
+
+        dropdownItems() {
+
+            const resultOptions = [this.resourceModel];
+
+            return result(this.items, resultOptions).filter(item => {
+
+                return typeof item.showIf !== 'undefined'
+                    ? result(item.showIf, resultOptions)
+                    : true
+                ;
+
+            }).map(item => {
+
+                let dropdownItem = assign({}, item);
+
+                dropdownItem.caption = result(dropdownItem.caption, resultOptions);
+
+                if (dropdownItem.url) {
+                    dropdownItem.url = result(dropdownItem.url, resultOptions);
+                }
+
+                return dropdownItem;
+
+            });
+
+        }
+
+    },
+
+    methods: {
+
+        open() {
+
+            this.opened = true;
+
+        },
+
+        close() {
+
+            this.opened = false;
+
+        },
+
+        toggle() {
+
+            this.opened = !this.opened;
+
+        },
+
+        runItemAction(item, event) {
+
+            const executeAction = () => item.action && item.action(this.resourceModel, this);
+
+            item.action && event.preventDefault();
+
+            item.confirm ? confirm({
+                message: typeof item.confirm === 'string' ? item.confirm : undefined,
+                onAccept: executeAction,
+                parent: this
+            }) : executeAction();
+
+        }
+
+    },
+
+    getType: () => 'contextMenu'
+
+};
+
+</script>
+
+<style lang="scss" scoped>
+
+    .contextMenuType1 {
+
+        position: relative; width: 4em;
+
+        &.active {
+
+            > ul {
+
+                animation: slideDownFadeIn 0.2s;
+                display: block;
+
+            }
+
+            > .toggleContextMenu:before {
+
+                color: $colorMain1;
+
+            }
+
+        }
+
+    }
+
+    .toggleContextMenu {
+
+        width: 4em; height: 4em; margin: -1.5em 0;
+
+        color: $colorMain1;
+
+        &:before {
+
+            color: $colorGrayDark1; font-size: 1.4em;
+
+        }
+
+        &:hover:before {
+
+            color: $colorMain1;
+
+        }
+
+    }
+
+    .contextItem {
+
+        @include normalizeButton;
+        @include fontSansCondensed;
+        font-size: 1.4em; display: block; width: 100%; padding: em(8,14) em(15,14); box-sizing: border-box;
+        text-align: left; color: $colorGrayDark1;
+
+        &:hover {
+
+            color: $colorMain1;
+
+        }
+
+    }
+
+    ul {
+
+        display: none; position: absolute; right: 0em; top: 100%; margin-top: 0.7em;
+        z-index: 10; padding: 0.5em 0; min-width: 15em;
+        background: #fff; border: 1px solid $colorGrayLight2;
+        box-shadow: 0 0.1em 0.3em rgba(#000, 0.06);
+
+        &:after {
+
+            content: ''; width: 0.7em; height: 0.7em; position: absolute; right: 1.5em; top: -0.5em;
+            background-color: #fff; border: 1px solid $colorGrayLight2; border-width: 1px 1px 0 0;
+            transform: rotate(-45deg);
+
+        }
+
+    }
+
+</style>
