@@ -2,6 +2,7 @@
   "name": "@trikoder/trim",
   "version": "0.50.0",
   "description": "UI framework for building headless content management systems that connect to json:api powered backend.",
+  "files": ["/src"],
   "scripts": {
     "dev": "npm run api:server & npm run dev:server",
     "dev:server": "NODE_ENV=development BASE_URL=/ BASE_API_URL=http://localhost:8083/ webpack-dev-server --open --hot",
