@@ -10,7 +10,8 @@
                 </p>
             </div>
             <div class="iframeCont">
-                <iframe frameborder="0" src="https://trikoder.github.io/trim/demo/index.html"></iframe>
+                <iframe frameborder="0" src="http://localhost:8082"></iframe>
+                <div v-if="iframeOverlayEnabled" v-on:click="disableIframeOverlay" class="overlay"></div>
             </div>
         </div>
         <div class="featuresAccented">
@@ -117,6 +118,24 @@
     </div>
 </template>
 
+<script>
+export default {
+
+    data: () => ({
+        iframeOverlayEnabled: true
+    }),
+
+    methods: {
+
+        disableIframeOverlay() {
+            this.iframeOverlayEnabled = false;
+        }
+
+    }
+
+};
+</script>
+
 <style lang="scss" scoped>
 
     .topBlock {
@@ -140,7 +159,7 @@
 
         > .title {
 
-            font-size: 35px; margin: 0; position: relative;
+            font-size: 32px; margin: 0; position: relative;
             padding: 0 0 20px 0; margin-bottom: 22px;
             letter-spacing: -0.02em; font-weight: bold;
             border: 0;
@@ -181,9 +200,10 @@
 
     .iframeCont {
 
-        position: relative; max-width: 1200px; margin: 0 auto; z-index: 10;
-        height: 690px; overflow: hidden; display: none;
+        position: relative; max-width: 1200px; margin: 0 -10px; z-index: 5;
+        height: 500px; overflow: hidden;
         box-shadow: 0 0 2em rgba(#000, 0.1); background: #fff;
+        border-radius: 5px;
 
         > iframe {
 
@@ -191,15 +211,24 @@
 
         }
 
+        > .overlay {
+            position: absolute; left: 0; top: 0; right: 0; bottom: 0;
+        }
+
         @media screen and (min-width: 720px) {
-            display: block;
+
+            display: block; margin: 0 auto; height: 700px;
+            border-radius: 0;
+
+            > .overlay { display: none; }
+
         }
 
     }
 
     .featuresAccented {
 
-        position: relative; padding: 25px 25px 25px;
+        position: relative; margin-top: -400px; padding: 430px 25px 25px;
         background-color: #303844; color: #fff;
 
         > ul {
