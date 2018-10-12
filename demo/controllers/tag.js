@@ -40,6 +40,12 @@ export default {
 
         this.addToIndexControl().addSaveControl();
 
+        edit.addField('TextFormElement', {
+            label: 'Title',
+            name: 'title',
+            attributes: {input: {class: 'inputType2 size2'}}
+        });
+
     }
 
 };

@@ -74,7 +74,7 @@ export default {
 
     ],
 
-    getProjectCaption: () => 'Trikoder CMS',
+    getProjectCaption: () => 'Trikoder Trim CMS',
 
     getUserCaption: () => 'Demo user'
 
