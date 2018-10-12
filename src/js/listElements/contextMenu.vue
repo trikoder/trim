@@ -176,13 +176,23 @@ export default {
 
         &:before {
 
-            color: $colorGrayDark1; font-size: 1.4em;
+            color: $colorGrayDark1; font-size: 1.7em;
 
         }
 
         &:hover:before {
 
             color: $colorMain1;
+
+        }
+
+        @include mediaMinWidth($breakpointMedium) {
+
+            &:before {
+
+                font-size: 1.4em;
+
+            }
 
         }
 

@@ -83,8 +83,6 @@ export default {
         padding: 0 em(60,20); text-align: center;
         // text-align: center;
 
-        > span { @include fontSansCondensed; }
-
     }
 
     > .title {
