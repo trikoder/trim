@@ -2,6 +2,7 @@
   "name": "@trikoder/trim",
   "version": "0.51.3",
   "description": "UI framework for building headless content management systems that connect to json:api powered backend.",
+  "license": "MIT",
   "files": [
     "/src"
   ],

@@ -1,4 +1,6 @@
 # Trikoder Trim
+[![NPM Status](https://img.shields.io/npm/v/@trikoder/trim.svg)](https://www.npmjs.com/package/@trikoder/trim)
+
 Responsive user interface framework for building content management systems with simple authoring api.
 Designed to run as a browser application connected to json:api powered backend.
 
