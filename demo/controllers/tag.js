@@ -9,10 +9,10 @@ export default {
         // --------------------------------------------------------------
         // Filters
         // --------------------------------------------------------------
-        list.addFilter('TextFormElement', {
-            name: 'title',
-            label: 'Title'
-        });
+        // list.addFilter('TextFormElement', {
+        //     name: 'title',
+        //     label: 'Title'
+        // });
 
         // --------------------------------------------------------------
         // List items
