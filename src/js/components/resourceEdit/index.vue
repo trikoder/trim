@@ -220,7 +220,7 @@ const Component = Vue.extend({
             this.definitions.listeners.forEach(item => {
                 this.$off(item.eventName, item.callback);
             });
-
+            this.definitionsResolved = false;
             this.definitions = this.getInitialDefinitions();
 
             return this;
@@ -502,8 +502,6 @@ const Component = Vue.extend({
         },
 
         setupUI() {
-
-            this.definitionsResolved = false;
 
             return this.resolveDefinitions().then(definitions => {
 
