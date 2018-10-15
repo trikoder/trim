@@ -202,7 +202,7 @@ export default {
 
         showFilters() {
 
-            return Boolean(this.resolvedDefinitions);
+            return this.resolvedDefinitions && this.resolvedDefinitions.filters.length;
 
         },
 
