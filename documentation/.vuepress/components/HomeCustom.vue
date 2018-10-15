@@ -201,7 +201,7 @@ export default {
     .iframeCont {
 
         position: relative; max-width: 1200px; margin: 0 -10px; z-index: 5;
-        height: 500px; overflow: hidden;
+        height: 470px; overflow: hidden;
         box-shadow: 0 0 2em rgba(#000, 0.1); background: #fff;
         border-radius: 5px;
 
@@ -213,6 +213,10 @@ export default {
 
         > .overlay {
             position: absolute; left: 0; top: 0; right: 0; bottom: 0;
+        }
+
+        @media screen and (max-width: 360px) {
+            margin: 0 -25px;
         }
 
         @media screen and (min-width: 720px) {

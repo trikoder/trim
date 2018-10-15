@@ -48,6 +48,17 @@ export default {
         ]);
 
         // --------------------------------------------------------------
+        // Mass actions
+        // --------------------------------------------------------------
+        list.addMassAction([{
+            caption: 'Publish',
+            updateAttributes: {published: true}
+        }, {
+            caption: 'Unpublish',
+            updateAttributes: {published: false}
+        }]);
+
+        // --------------------------------------------------------------
         // List elements
         // --------------------------------------------------------------
         list.addItem([
@@ -61,6 +72,13 @@ export default {
                 mapTo: 'title',
                 action: 'editItem',
                 limitWords: 7
+            }],
+            ['TextListItem', {
+                caption: 'Intro text',
+                mapTo: 'intro',
+                limitWords: 20,
+                attributes: {style: {marginBottom: '5px'}},
+                addIf: this.screenIsSmall
             }],
             ['DateListItem', {
                 caption: 'Date',

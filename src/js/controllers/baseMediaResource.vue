@@ -21,6 +21,7 @@
             v-on:queryChange="openIndex"
             v-on:beforeConfigure="processIndexEvent('beforeConfigure', $event)"
             v-on:afterConfigure="processIndexEvent('afterConfigure', $event)"
+            ref="listHandler"
         ></component>
         <component class="resourceEdit resourceEditType1"
             v-else-if="isStandardEditContext"

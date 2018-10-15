@@ -5,17 +5,17 @@ export default {
     getNavigationItems: router => [
 
         {
-            caption: 'Pages',
-            key: 'page',
-            url: router.url('resource.page.index'),
-            icon: 'sidebar'
-        },
-
-        {
             caption: 'Articles',
             key: 'article',
             url: router.url('resource.article.index'),
             icon: 'file'
+        },
+
+        {
+            caption: 'Pages',
+            key: 'page',
+            url: router.url('resource.page.index'),
+            icon: 'sidebar'
         },
 
         {

@@ -53,7 +53,7 @@ export default {
         ]);
 
         // --------------------------------------------------------------
-        // Mass action
+        // Mass actions
         // --------------------------------------------------------------
         list.addMassAction([{
             caption: 'Publish',
@@ -137,7 +137,7 @@ export default {
         list.addItem('ButtonListItem', {
             caption: 'View',
             useIcon: 'externalLink',
-            action: model => PagePreview('http://trikoder.net/'),
+            action: model => PagePreview('https://trikoder.github.io/trim/'),
             addIf: this.screenIsLarge
         });
 

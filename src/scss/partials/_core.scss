@@ -31,6 +31,10 @@ body {
 
     position: relative; min-height: 100vh; box-sizing: border-box;
 
+    @include mediaMaxWidth($breakpointMedium) {
+        overflow-x: hidden;
+    }
+
     @include mediaMinWidth($breakpointMedium) {
 
         padding: 5em 0 0 5em;

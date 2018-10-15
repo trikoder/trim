@@ -1,9 +1,9 @@
 export default router => {
 
-    router.controller('/', 'dashboard', 'Page@index');
+    router.controller('/', 'dashboard', 'Article@index');
 
-    router.resource('page');
     router.resource('article');
+    router.resource('page');
     router.resource('user');
     router.resource('tag');
     router.resource('category');
