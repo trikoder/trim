@@ -120,6 +120,9 @@ module.exports = {
             inactive: 'Neaktivan'
         },
         contextMenu: {
+            listHeadingCaption: 'Actions',
+            editActionCaption: 'Uredi',
+            deleteActionCaption: 'Obriši',
             toggleCaption: 'Otvori'
         }
     },

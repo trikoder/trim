@@ -120,6 +120,9 @@ module.exports = {
             inactive: 'Inactive'
         },
         contextMenu: {
+            listHeadingCaption: 'Actions',
+            editActionCaption: 'Edit',
+            deleteActionCaption: 'Delete',
             toggleCaption: 'Toggle'
         }
     },
