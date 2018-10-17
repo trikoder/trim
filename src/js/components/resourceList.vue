@@ -404,7 +404,7 @@ export default {
 
         decorateListItemDefinition(definition) {
 
-            const type = definition.Type.getType();
+            const type = definition.Type.elementType;
 
             if (type === 'link') {
                 this.decorateLinkDefinition(definition);

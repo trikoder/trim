@@ -43,6 +43,8 @@ import {confirm} from '../components/dialogModal';
 
 export default {
 
+    elementType: 'contextMenu',
+
     mixins: [dismissListener],
 
     props: {
@@ -135,9 +137,7 @@ export default {
 
         }
 
-    },
-
-    getType: () => 'contextMenu'
+    }
 
 };
 

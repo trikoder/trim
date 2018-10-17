@@ -15,6 +15,8 @@ import {pascal as pascalCase} from 'to-case';
 
 export default {
 
+    elementType: 'button',
+
     mixins: [base],
 
     props: {
@@ -64,9 +66,7 @@ export default {
 
         }
 
-    },
-
-    getType: () => 'button'
+    }
 
 };
 

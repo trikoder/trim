@@ -17,7 +17,7 @@
             <th
                 v-for="(definition, index) in definitions.listItems"
                 v-bind:key="index"
-                v-bind:class="definition.Type.getType() + 'CellHeading'"
+                v-bind:class="definition.Type.elementType + 'CellHeading'"
             >
                 {{ definition.options.caption }}
             </th>
@@ -79,7 +79,7 @@ export default {
             ;
 
             return [
-                definition.Type.getType() + 'Cell',
+                definition.Type.elementType + 'Cell',
                 definition.options.cellClass || captionClass
             ];
 

@@ -17,7 +17,7 @@
             <th
                 v-for="(definition, index) in definitions.listItems"
                 v-bind:key="index"
-                v-bind:class="definition.Type.getType() + 'CellHeading'"
+                v-bind:class="definition.Type.elementType + 'CellHeading'"
             >
                 {{ definition.options.caption }}
             </th>
@@ -45,7 +45,7 @@
                 <td
                     v-for="(definition, index) in definitions.listItems"
                     v-bind:key="index"
-                    v-bind:class="definition.Type.getType() + 'Cell'"
+                    v-bind:class="definition.Type.elementType + 'Cell'"
                 >
                     <template v-if="index === 0">
                         <span

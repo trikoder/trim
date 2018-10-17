@@ -14,6 +14,8 @@ import {find} from '../library/toolkit';
 
 export default {
 
+    elementType: 'blip',
+
     mixins: [base],
 
     props: {
@@ -48,9 +50,7 @@ export default {
 
         }
 
-    },
-
-    getType: () => 'blip'
+    }
 
 };
 

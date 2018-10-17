@@ -13,6 +13,8 @@ import base from './base';
 
 export default {
 
+    elementType: 'text',
+
     mixins: [base],
 
     props: {
@@ -34,9 +36,7 @@ export default {
             return this.formatModelValue();
         }
 
-    },
-
-    getType: () => 'text'
+    }
 
 };
 

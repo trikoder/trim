@@ -14,6 +14,8 @@ import dateTime from './dateTime';
 
 export default {
 
+    elementType: 'date',
+
     mixins: [base, dateTime],
 
     props: {
@@ -22,9 +24,7 @@ export default {
 
     data: () => ({
         defaultClass: 'dateListItemType1'
-    }),
-
-    getType: () => 'date'
+    })
 
 };
 

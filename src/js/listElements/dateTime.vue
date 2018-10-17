@@ -14,6 +14,8 @@ import base from './base';
 
 export default {
 
+    elementType: 'dateTime',
+
     mixins: [base],
 
     props: {
@@ -43,9 +45,7 @@ export default {
 
         }
 
-    },
-
-    getType: () => 'dateTime'
+    }
 
 };
 

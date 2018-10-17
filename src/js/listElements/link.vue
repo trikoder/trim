@@ -16,6 +16,8 @@ import {result} from '../library/toolkit';
 
 export default {
 
+    elementType: 'link',
+
     mixins: [base],
 
     props: {
@@ -60,9 +62,7 @@ export default {
 
         }
 
-    },
-
-    getType: () => 'link'
+    }
 
 };
 

@@ -22,6 +22,8 @@ import 'simple-lightbox/dist/simpleLightbox.min.css';
 
 export default {
 
+    elementType: 'media',
+
     mixins: [base],
 
     props: {
@@ -94,9 +96,7 @@ export default {
 
         }
 
-    },
-
-    getType: () => 'media'
+    }
 
 };
 
