@@ -866,7 +866,7 @@ const Component = Vue.extend({
 
             return this.whenDefinitionsResolved()
                 .then(this.$nextTick())
-                .then(() => this.definitions.fields.reduce((registry, field) => {
+                .then(() => this.resolvedDefinitions.fields.reduce((registry, field) => {
 
                     const layoutReference = field.options.layoutReference;
                     const fieldName = field.options.name;
