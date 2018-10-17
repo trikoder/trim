@@ -269,7 +269,8 @@
         > .tabBtn {
 
             padding: em(15,14) em(20,14) em(15,14);
-            border-bottom: 1px solid $colorGrayLight1;
+
+            &:after { bottom: 0; }
 
         }
 
