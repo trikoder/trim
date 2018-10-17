@@ -4,12 +4,11 @@
 Responsive user interface framework for building content management systems with simple authoring api.
 Designed to run as a browser application connected to json:api powered backend.
 
-## Demo
-Visit [demo application](https://trikoder.github.io/trim/demo/index.html) to see it in action.
-Browse [demo codebase](./demo) to find out how it all works in practice.
+## Documentation and demo
+[Browse documentation and demo pages](https://trikoder.github.io/trim).
 
-## Documentation
-[Browse documentation pages](https://trikoder.github.io/trim).
+## Changelog
+Available [here](https://trikoder.github.io/trim/changelog.html).
 
 ## Credits
 Copyright (C) 2018 Trikoder
