@@ -99,7 +99,7 @@ const BaseResourceEditController = Vue.extend({
 
         setNavSelected() {
 
-            if (!this.isExternal && this.navigationKey) {
+            if (!this.isExternal) {
                 this.$store.commit('setNavSelected', this.navigationKey);
             }
 
