@@ -22,7 +22,8 @@ module.exports = {
             ['/adding-resource', 'Adding resource'],
             ['/form-elements', 'Form elements'],
             ['/list-elements', 'List elements'],
-            ['/base-controllers', 'Base controllers']
+            ['/base-controllers', 'Base controllers'],
+            ['/changelog', 'Changelog']
         ]
     }
 };
