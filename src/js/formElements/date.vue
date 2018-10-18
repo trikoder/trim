@@ -25,13 +25,13 @@
 <script>
 
 import base from './base';
-import Vue from 'vue';
 import translate from '../library/translate';
-import {assign} from '../library/toolkit';
 import ElementWrapper from './elementWrapper';
 import Calendar from '../components/calendar';
 
-const Component = Vue.extend({
+export default {
+
+    elementType: 'date',
 
     components: {ElementWrapper, Calendar},
 
@@ -93,18 +93,7 @@ const Component = Vue.extend({
 
     }
 
-});
-
-assign(Component, {
-
-    getElementType: () => 'date',
-
-    getDefaultValue: (options = {}) => options.value || ''
-
-});
-
-export default Component;
-
+};
 </script>
 
 <style lang="scss" scoped>

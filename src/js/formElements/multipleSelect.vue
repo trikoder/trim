@@ -24,16 +24,16 @@
 </template>
 
 <script>
-
 import base from './base';
-import Vue from 'vue';
 import {assign} from '../library/toolkit';
 import translate from '../library/translate';
 import {Collection} from '../library/resource';
 import ElementWrapper from './elementWrapper';
 import Multiselect from 'vue-multiselect';
 
-const Component = Vue.extend({
+export default {
+
+    elementType: 'multipleSelect',
 
     components: {ElementWrapper, Multiselect},
 
@@ -56,6 +56,15 @@ const Component = Vue.extend({
             loading: translate('formElements.multipleSelect.loadingCaption')
         }
     }),
+
+    getInitialValue(options = {}) {
+
+        const OptionsValueType = options.valueType;
+        const getDefaultValue = () => OptionsValueType && new OptionsValueType() || '';
+
+        return options.value || getDefaultValue();
+
+    },
 
     computed: {
 
@@ -136,25 +145,7 @@ const Component = Vue.extend({
 
     }
 
-});
-
-assign(Component, {
-
-    getElementType: () => 'multipleSelect',
-
-    getDefaultValue: (options = {}) => {
-
-        const OptionsValueType = options.valueType;
-        const getDefaultValue = () => OptionsValueType && new OptionsValueType() || '';
-
-        return options.value || getDefaultValue();
-
-    }
-
-});
-
-export default Component;
-
+};
 </script>
 
 <style>

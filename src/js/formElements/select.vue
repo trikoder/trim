@@ -21,15 +21,15 @@
 </template>
 
 <script>
-
 import base from './base';
-import Vue from 'vue';
 import {assign, find, ensureArray} from '../library/toolkit';
 import translate from '../library/translate';
 import {Collection} from '../library/resource';
 import ElementWrapper from './elementWrapper';
 
-const Component = Vue.extend({
+export default {
+
+    elementType: 'select',
 
     components: {ElementWrapper},
 
@@ -45,6 +45,22 @@ const Component = Vue.extend({
         return {
             optionElements: undefined
         };
+    },
+
+    getInitialValue(options = {selectOptions: {}}) {
+
+        console.log(options);
+
+        if (typeof options.value !== 'undefined') {
+            return options.value;
+        } else if (Array.isArray(options.selectOptions)) {
+            return options.selectOptions[0].value;
+        } else if (options.selectOptions.prepend) {
+            return ensureArray(options.selectOptions.prepend)[0].value;
+        } else {
+            return '';
+        }
+
     },
 
     computed: {
@@ -145,30 +161,7 @@ const Component = Vue.extend({
 
     }
 
-});
-
-assign(Component, {
-
-    getElementType: () => 'select',
-
-    getDefaultValue(options = {selectOptions: {}}) {
-
-        if (options.value) {
-            return options.value;
-        } else if (Array.isArray(options.selectOptions)) {
-            return options.selectOptions[0].value;
-        } else if (options.selectOptions.prepend) {
-            return ensureArray(options.selectOptions.prepend)[0].value;
-        } else {
-            return '';
-        }
-
-    }
-
-});
-
-export default Component;
-
+};
 </script>
 
 <style lang="scss">

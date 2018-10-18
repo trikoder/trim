@@ -5,15 +5,15 @@
 </template>
 
 <script>
-
 import base from './base';
-import Vue from 'vue';
 import ElementWrapper from './elementWrapper';
 import {assign, elementFromString} from '../library/toolkit';
 import {loadApi} from '../library/googleMaps';
 import translate from '../library/translate';
 
-const Component = Vue.extend({
+export default{
+
+    elementType: 'map',
 
     components: {ElementWrapper},
 
@@ -190,18 +190,7 @@ const Component = Vue.extend({
 
     }
 
-});
-
-assign(Component, {
-
-    getElementType: () => 'map',
-
-    getDefaultValue: (options = {}) => options.value || ''
-
-});
-
-export default Component;
-
+};
 </script>
 
 <style lang="scss">

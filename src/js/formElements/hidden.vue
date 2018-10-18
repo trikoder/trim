@@ -10,12 +10,11 @@
 </template>
 
 <script>
-
 import base from './base';
-import Vue from 'vue';
-import {assign} from '../library/toolkit';
 
-const Component = Vue.extend({
+export default {
+
+    elementType: 'hidden',
 
     mixins: [base],
 
@@ -23,16 +22,5 @@ const Component = Vue.extend({
         value: {default: ''}
     }
 
-});
-
-assign(Component, {
-
-    getElementType: () => 'hidden',
-
-    getDefaultValue: (options = {}) => options.value || ''
-
-});
-
-export default Component;
-
+};
 </script>

@@ -85,11 +85,19 @@ import MassActions from './massActions';
 import Message from './message';
 import translate from '../library/translate';
 import Loader from '../library/loader';
-import {assign, assignDeep, each, result, ensureArray, checkUniqueFieldNames} from '../library/toolkit';
 import loadDefinitionType from '../library/loadDefinitionType';
 import formElementDefaults from '../formElements/elementDefaults';
 import {confirm} from '../components/dialogModal';
 import screenSize from '../mixins/screenSize';
+import {
+    assign,
+    assignDeep,
+    each,
+    result,
+    ensureArray,
+    checkUniqueFieldNames,
+    getComponentOption
+} from '../library/toolkit';
 
 export default {
 
@@ -418,7 +426,7 @@ export default {
 
         decorateFilterDefinition(definition) {
 
-            const elementType = definition.Type.getElementType();
+            const elementType = getComponentOption(definition.Type, 'elementType');
             const defaultOptions = formElementDefaults.resourceFilters[elementType];
 
             definition.options = assignDeep({}, defaultOptions, definition.options);

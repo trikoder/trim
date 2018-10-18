@@ -44,7 +44,6 @@
 </template>
 
 <script>
-
 import base from './base';
 import Vue from 'vue';
 import {assign, ensureArray} from '../library/toolkit';
@@ -57,6 +56,8 @@ import {Popup} from '../components/popup';
 import app from '../app';
 
 const Component = Vue.extend({
+
+    elementType: 'externalAdmin',
 
     components: {ElementWrapper},
 
@@ -326,10 +327,6 @@ const Component = Vue.extend({
 });
 
 assign(Component, {
-
-    getElementType: () => 'externalAdmin',
-
-    getDefaultValue: (options = {}) => options.value || '',
 
     select: function(controller, callback, params = {}) {
 

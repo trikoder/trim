@@ -67,7 +67,6 @@
 <script>
 
 import Vue from 'vue';
-import {ensureArray, assign, assignDeep, deepSet, each, reduce, find, isEmptyObject, checkUniqueFieldNames} from '../../library/toolkit';
 import loadDefinitionType from '../../library/loadDefinitionType';
 import formElementDefaults from '../../formElements/elementDefaults';
 import screenSize from '../../mixins/screenSize';
@@ -78,6 +77,19 @@ import Message from '../message';
 import Tab from './tab';
 import Region from './region';
 import Group from './group';
+import {
+    ensureArray,
+    assign,
+    assignDeep,
+    deepSet,
+    each,
+    reduce,
+    find,
+    isEmptyObject,
+    checkUniqueFieldNames,
+    getComponentOption,
+    getComponentInitialValue
+} from '../../library/toolkit';
 
 const Component = Vue.extend({
 
@@ -381,7 +393,7 @@ const Component = Vue.extend({
 
         decorateFieldDefinition(definition) {
 
-            const elementType = definition.Type.getElementType();
+            const elementType = getComponentOption(definition.Type, 'elementType');
             const layoutReference = definition.options.layoutReference;
             const regionPointer = layoutReference && layoutReference.indexOf('sideRegion') >= 0
                 ? 'sideRegion'
@@ -462,7 +474,10 @@ const Component = Vue.extend({
 
             return definitions.reduce((values, definition) => {
 
-                values[definition.options.name] = definition.Type.getDefaultValue(definition.options);
+                values[definition.options.name] = getComponentInitialValue(
+                    definition.Type,
+                    definition.options
+                );
                 return values;
 
             }, {});

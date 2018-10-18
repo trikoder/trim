@@ -1,10 +1,12 @@
 <script>
-
-import {assign} from '../library/toolkit';
 import formatDate from '../library/formatDate';
 import DateFormElement from './date';
 
-const Component = DateFormElement.extend({
+export default {
+
+    elementType: 'dateTime',
+
+    extends: DateFormElement,
 
     props: {
         format: {type: String, default: 'ISOString'},
@@ -23,20 +25,5 @@ const Component = DateFormElement.extend({
         }
     }
 
-});
-
-assign(Component, {
-
-    getElementType() {
-
-        return 'dateTime';
-
-    },
-
-    getDefaultValue: (options = {}) => options.value || ''
-
-});
-
-export default Component;
-
+};
 </script>

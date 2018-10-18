@@ -35,15 +35,15 @@
 </template>
 
 <script>
-
 import base from './base';
-import Vue from 'vue';
 import ElementWrapper from './elementWrapper';
-import {assign, find, elementMatches, elementIndex} from '../library/toolkit';
+import {find, elementMatches, elementIndex} from '../library/toolkit';
 import {Model} from '../library/resource';
 import ResourceEdit from '../components/resourceEdit';
 
-const Component = Vue.extend({
+export default {
+
+    elementType: 'includedAdmin',
 
     components: {ElementWrapper, ResourceEdit},
 
@@ -416,18 +416,7 @@ const Component = Vue.extend({
 
     }
 
-});
-
-assign(Component, {
-
-    getElementType: () => 'includedAdmin',
-
-    getDefaultValue: (options = {}) => options.value || ''
-
-});
-
-export default Component;
-
+};
 </script>
 
 <style lang="scss">

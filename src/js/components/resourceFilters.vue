@@ -39,7 +39,7 @@
 
 <script>
 import translate from '../library/translate';
-import {assign, each} from '../library/toolkit';
+import {assign, each, getComponentInitialValue} from '../library/toolkit';
 
 export default {
 
@@ -94,7 +94,10 @@ export default {
 
             return this.definitions.reduce((values, definition) => {
 
-                values[definition.options.name] = definition.Type.getDefaultValue(definition.options);
+                values[definition.options.name] = getComponentInitialValue(
+                    definition.Type,
+                    definition.options
+                );
                 return values;
 
             }, {});

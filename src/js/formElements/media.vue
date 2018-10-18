@@ -26,9 +26,7 @@
 </template>
 
 <script>
-
 import base from './base';
-import Vue from 'vue';
 import ElementWrapper from './elementWrapper';
 import {assign, pickTo} from '../library/toolkit';
 import {Model} from '../library/resource';
@@ -41,7 +39,9 @@ import {confirm} from '../components/dialogModal';
 import SimpleLightbox from 'simple-lightbox';
 import 'simple-lightbox/dist/simpleLightbox.min.css';
 
-const Component = Vue.extend({
+export default {
+
+    elementType: 'media',
 
     components: {ElementWrapper},
 
@@ -281,18 +281,7 @@ const Component = Vue.extend({
 
     }
 
-});
-
-assign(Component, {
-
-    getElementType: () => 'media',
-
-    getDefaultValue: (options = {}) => (options.value || '').toString()
-
-});
-
-export default Component;
-
+};
 </script>
 
 <style lang="scss">

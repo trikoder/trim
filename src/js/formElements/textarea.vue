@@ -13,13 +13,13 @@
 </template>
 
 <script>
-
 import base from './base';
-import Vue from 'vue';
 import ElementWrapper from './elementWrapper';
-import {assign, omit} from '../library/toolkit';
+import {omit} from '../library/toolkit';
 
-const Component = Vue.extend({
+export default {
+
+    elementType: 'textarea',
 
     components: {ElementWrapper},
 
@@ -56,18 +56,7 @@ const Component = Vue.extend({
 
     }
 
-});
-
-assign(Component, {
-
-    getElementType: () => 'textarea',
-
-    getDefaultValue: (options = {}) => (options.value || '').toString()
-
-});
-
-export default Component;
-
+};
 </script>
 
 <style lang="scss">

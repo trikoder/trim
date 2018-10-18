@@ -12,13 +12,12 @@
 </template>
 
 <script>
-
 import base from './base';
-import Vue from 'vue';
 import ElementWrapper from './elementWrapper';
-import {assign} from '../library/toolkit';
 
-const Component = Vue.extend({
+export default {
+
+    elementType: 'number',
 
     components: {ElementWrapper},
 
@@ -26,6 +25,14 @@ const Component = Vue.extend({
 
     props: {
         value: {type: [Number, Object], default: null}
+    },
+
+    getInitialValue(options = {}) {
+
+        const value = parseFloat(options.value);
+
+        return value || (value === 0 ? value : null);
+
     },
 
     computed: {
@@ -48,22 +55,5 @@ const Component = Vue.extend({
 
     }
 
-});
-
-assign(Component, {
-
-    getElementType: () => 'number',
-
-    getDefaultValue: (options = {}) => {
-
-        const value = parseFloat(options.value);
-
-        return value || value === 0 ? value : null;
-
-    }
-
-});
-
-export default Component;
-
+};
 </script>

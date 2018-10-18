@@ -24,15 +24,15 @@
 </template>
 
 <script>
-
 import base from './base';
-import Vue from 'vue';
-import {assign, find} from '../library/toolkit';
+import {find} from '../library/toolkit';
 import translate from '../library/translate';
 import ElementWrapper from './elementWrapper';
 import {Model} from '../library/resource';
 
-const Component = Vue.extend({
+export default {
+
+    elementType: 'stateSelect',
 
     components: {ElementWrapper},
 
@@ -50,6 +50,15 @@ const Component = Vue.extend({
         return {
             currentState: this.getStateFromValue(this.value)
         };
+    },
+
+    getInitialValue(options = {}) {
+
+        return typeof options.value !== 'undefined'
+            ? options.value
+            : options.states[0].value
+        ;
+
     },
 
     created() {
@@ -206,25 +215,7 @@ const Component = Vue.extend({
 
     }
 
-});
-
-assign(Component, {
-
-    getElementType: () => 'stateSelect',
-
-    getDefaultValue(options = {}) {
-
-        return typeof options.value !== 'undefined'
-            ? options.value
-            : options.states[0].value
-        ;
-
-    }
-
-});
-
-export default Component;
-
+};
 </script>
 
 <style lang="scss" scoped>

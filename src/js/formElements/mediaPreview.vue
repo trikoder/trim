@@ -12,15 +12,14 @@
 </template>
 
 <script>
-
 import base from './base';
-import Vue from 'vue';
 import ElementWrapper from './elementWrapper';
-import {assign} from '../library/toolkit';
 import SimpleLightbox from 'simple-lightbox';
 import 'simple-lightbox/dist/simpleLightbox.min.css';
 
-const Component = Vue.extend({
+export default {
+
+    elementType: 'mediaPreview',
 
     components: {ElementWrapper},
 
@@ -84,18 +83,7 @@ const Component = Vue.extend({
 
     }
 
-});
-
-assign(Component, {
-
-    getElementType: () => 'mediaPreview',
-
-    getDefaultValue: (options = {}) => (options.value || '').toString()
-
-});
-
-export default Component;
-
+};
 </script>
 
 <style lang="scss">

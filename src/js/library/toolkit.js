@@ -291,3 +291,31 @@ export function elementFromString(html) {
     return div.firstChild;
 
 }
+
+export function getComponentOption(Component, optionName) {
+
+    const bluePrint = typeof Component === 'function'
+        ? Component.options
+        : Component
+    ;
+
+    return bluePrint[optionName];
+
+}
+
+export function getComponentInitialValue(Component, options = {}) {
+
+    if (typeof options.value !== 'undefined') {
+        return options.value;
+    } else {
+
+        const props = getComponentOption(Component, 'props');
+        const valueProvider = getComponentOption(Component, 'getInitialValue');
+
+        return valueProvider
+            ? valueProvider(options)
+            : result(props && props.value && props.value.default)
+        ;
+    }
+
+}

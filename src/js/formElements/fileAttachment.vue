@@ -41,15 +41,14 @@
 </template>
 
 <script>
-
 import base from './base';
-import Vue from 'vue';
-import {assign} from '../library/toolkit';
 import translate from '../library/translate';
 import ElementWrapper from './elementWrapper';
 import loadImage from 'blueimp-load-image';
 
-const Component = Vue.extend({
+export default {
+
+    elementType: 'fileAttachment',
 
     components: {ElementWrapper},
 
@@ -176,18 +175,7 @@ const Component = Vue.extend({
 
     }
 
-});
-
-assign(Component, {
-
-    getElementType: () => 'fileAttachment',
-
-    getDefaultValue: (options = {}) => (options.value || '').toString()
-
-});
-
-export default Component;
-
+};
 </script>
 
 <style lang="scss" scoped>

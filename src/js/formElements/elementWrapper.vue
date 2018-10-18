@@ -17,10 +17,7 @@
 </template>
 
 <script>
-
-import Vue from 'vue';
-
-export default Vue.extend({
+export default {
 
     props: {
         wrapperAttributes: Object,
@@ -34,8 +31,7 @@ export default Vue.extend({
         visible: Boolean
     }
 
-});
-
+};
 </script>
 
 <style lang="scss">

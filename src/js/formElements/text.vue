@@ -12,13 +12,12 @@
 </template>
 
 <script>
-
 import base from './base';
-import Vue from 'vue';
 import ElementWrapper from './elementWrapper';
-import {assign} from '../library/toolkit';
 
-const Component = Vue.extend({
+export default {
+
+    elementType: 'text',
 
     components: {ElementWrapper},
 
@@ -38,16 +37,5 @@ const Component = Vue.extend({
 
     }
 
-});
-
-assign(Component, {
-
-    getElementType: () => 'text',
-
-    getDefaultValue: (options = {}) => (options.value || '').toString()
-
-});
-
-export default Component;
-
+};
 </script>

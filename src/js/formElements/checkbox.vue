@@ -14,13 +14,12 @@
 </template>
 
 <script>
-
 import base from './base';
-import Vue from 'vue';
 import ElementWrapper from './elementWrapper';
-import {assign} from '../library/toolkit';
 
-const Component = Vue.extend({
+export default {
+
+    elementType: 'checkbox',
 
     components: {ElementWrapper},
 
@@ -31,6 +30,18 @@ const Component = Vue.extend({
         valueMap: {type: Object, default: () => ({checked: true, unchecked: false})}
     },
 
+    getInitialValue(options = {}) {
+
+        if (typeof options.value !== 'undefined') {
+            return options.value;
+        } else if (options.valueMap) {
+            return options.valueMap.unchecked;
+        } else {
+            return false;
+        }
+
+    },
+
     methods: {
 
         processInputEvent(e) {
@@ -39,28 +50,7 @@ const Component = Vue.extend({
 
     }
 
-});
-
-assign(Component, {
-
-    getElementType: () => 'checkbox',
-
-    getDefaultValue(options = {}) {
-
-        if (options.value) {
-            return options.value;
-        } else if (options.valueMap) {
-            return options.valueMap.unchecked;
-        } else {
-            return false;
-        }
-
-    }
-
-});
-
-export default Component;
-
+};
 </script>
 
 <style lang="scss">

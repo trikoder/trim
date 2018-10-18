@@ -13,12 +13,13 @@
 <script>
 
 import base from './base';
-import Vue from 'vue';
 import ElementWrapper from './elementWrapper';
 import {load as loadCkEditor} from '../library/ckeditor';
-import {assign, assignDeep} from '../library/toolkit';
+import {assignDeep} from '../library/toolkit';
 
-const Component = Vue.extend({
+export default {
+
+    elementType: 'html',
 
     components: {ElementWrapper},
 
@@ -100,18 +101,7 @@ const Component = Vue.extend({
 
     }
 
-});
-
-assign(Component, {
-
-    getElementType: () => 'html',
-
-    getDefaultValue: (options = {}) => (options.value || '').toString()
-
-});
-
-export default Component;
-
+};
 </script>
 
 <style lang="scss">

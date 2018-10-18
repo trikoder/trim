@@ -54,17 +54,16 @@
 </template>
 
 <script>
-
 import base from '../base';
-import Vue from 'vue';
 import translate from '../../library/translate';
 import ElementWrapper from '../elementWrapper';
 import TreeNode from './treeNode';
 import {Model, Collection} from '../../library/resource';
-import {assign} from '../../library/toolkit';
 import dismissListener from '../../mixins/dismissListener';
 
-const Component = Vue.extend({
+export default {
+
+    elementType: 'nestedSelect',
 
     components: {ElementWrapper, TreeNode},
 
@@ -508,18 +507,7 @@ const Component = Vue.extend({
 
     }
 
-});
-
-assign(Component, {
-
-    getElementType: () => 'nestedSelect',
-
-    getDefaultValue: (options = {}) => (options.value || '').toString()
-
-});
-
-export default Component;
-
+};
 </script>
 
 <style lang="scss">
