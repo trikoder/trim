@@ -59,6 +59,7 @@ export default {
     FileAttachmentFormElement: () => import('./formElements/fileAttachment'),
     MediaPreviewFormElement: () => import('./formElements/mediaPreview'),
     MediaFormElement: () => import('./formElements/media'),
-    NestedSelectFormElement: () => import('./formElements/nestedSelect')
+    NestedSelectFormElement: () => import('./formElements/nestedSelect'),
+    CodeFormElement: () => import('./formElements/code')
 
 };

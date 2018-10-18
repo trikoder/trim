@@ -181,6 +181,13 @@ export default {
                     label: {class: 'labelType2'},
                     wrapper: {class: 'inputBlockType1'}
                 }
+            },
+            code: {
+                attributes: {
+                    label: {class: 'labelType2'},
+                    wrapper: {class: 'inputBlockType1'},
+                    inputWrapper: {class: 'codeInputType1'}
+                }
             }
         },
         sideRegion: {
