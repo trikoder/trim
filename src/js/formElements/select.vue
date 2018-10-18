@@ -49,8 +49,6 @@ export default {
 
     getInitialValue(options = {selectOptions: {}}) {
 
-        console.log(options);
-
         if (typeof options.value !== 'undefined') {
             return options.value;
         } else if (Array.isArray(options.selectOptions)) {

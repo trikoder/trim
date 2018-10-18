@@ -125,6 +125,17 @@ edit.addField('HtmlFormElement', {
 });
 ```
 
+## Code
+Use code form element to render and edit mixed html content with syntax highlighting.
+[Code reference](https://github.com/trikoder/trim/tree/master/src/js/formElements/code.vue).
+
+```js
+edit.addField('CodeFormElement', {
+    label: 'Code',
+    name: 'content'
+});
+```
+
 ## Map
 Map element is used for handling geolocation data presented as google map.
 [Code reference](https://github.com/trikoder/trim/tree/master/src/js/formElements/map.vue).
