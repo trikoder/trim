@@ -4,7 +4,8 @@ function range(start, stop) {
 
 module.exports = {
     baseApiUrl: process.env.BASE_API_URL,
-    storageKey: 'fakeServerDataset',
+    storageVersion: process.env.PACKAGE_VERSION,
+    storageKey: 'trimDataset',
     resources: {
         article: {
             filters: {

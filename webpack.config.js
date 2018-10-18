@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const isProduction = process.env.NODE_ENV === 'production';
+const currentVersion = require('./package.json').version;
 
 module.exports = function() {
 
@@ -94,8 +95,8 @@ module.exports = function() {
                 'vue$': 'vue/dist/vue.esm.js',
                 'cmf': path.join(__dirname, 'src'),
                 'apiServer': path.join(__dirname,  process.env.CLIENT_API_ENABLED
-                    ? './server/client.js'
-                    : './server/nodePlaceholder.js'
+                    ? 'server/client.js'
+                    : 'server/nodePlaceholder.js'
                 )
             },
 
@@ -122,7 +123,8 @@ module.exports = function() {
                     BASE_URL: JSON.stringify(process.env.BASE_URL),
                     BASE_API_URL: JSON.stringify(process.env.BASE_API_URL),
                     ASSET_PATH: JSON.stringify(isProduction ? '/trim/demo/' : '/'),
-                    NODE_ENV: JSON.stringify(isProduction ? 'production' : 'development')
+                    NODE_ENV: JSON.stringify(isProduction ? 'production' : 'development'),
+                    PACKAGE_VERSION: JSON.stringify(currentVersion)
                 }
             }),
 
