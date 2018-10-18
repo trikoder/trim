@@ -1,3 +1,4 @@
+
 <template>
     <element-wrapper v-bind="elementWrapperProps">
         <div
@@ -50,23 +51,42 @@ export default {
 
     mounted() {
 
-        const options = assign({
-            lineNumbers: true
-        }, this.editorConfig, {
-            readOnly: this.readOnly,
-            value: this.value
-        });
+        const unWatch = this.$watch('visible', isVisible => {
 
-        const editor = this.editor = CodeMirror(this.$refs.content, options);
+            if (isVisible) {
+                this.$nextTick(() => {
+                    unWatch();
+                    this.setupEditor();
+                });
+            }
 
-        editor.on('change', () => {
+        }, {immediate: true});
 
-            const newValue = editor.getValue();
+    },
 
-            this.editorValue = newValue;
-            this.$emit('input', newValue);
+    methods: {
 
-        });
+        setupEditor() {
+
+            const options = assign({
+                lineNumbers: true
+            }, this.editorConfig, {
+                readOnly: this.readOnly,
+                value: this.value
+            });
+
+            const editor = this.editor = CodeMirror(this.$refs.content, options);
+
+            editor.on('change', () => {
+
+                const newValue = editor.getValue();
+
+                this.editorValue = newValue;
+                this.$emit('input', newValue);
+
+            });
+
+        }
 
     }
 

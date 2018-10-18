@@ -11,7 +11,9 @@ server.pretender.post(process.env.BASE_API_URL + '/media/upload', () => {
     }, ''];
 });
 
-// eslint-disable-next-line no-console
-server.on('request', request => console.log(decodeURIComponent(request.url), request.requestBody));
-// eslint-disable-next-line no-console
-server.on('response', response => console.log(response));
+if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line no-console
+    server.on('request', request => console.log(decodeURIComponent(request.url), request.requestBody));
+    // eslint-disable-next-line no-console
+    server.on('response', response => console.log(response));
+}

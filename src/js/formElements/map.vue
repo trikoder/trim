@@ -56,8 +56,10 @@ export default{
 
             if (isVisible) {
                 this.shouldDisplayMap = true;
-                this.$nextTick(() => this.bootstrapMap());
-                unWatch();
+                this.$nextTick(() => {
+                    unWatch();
+                    this.bootstrapMap();
+                });
             }
 
         }, {immediate: true});
