@@ -8,5 +8,6 @@ export default {
     UserController: () => import('./controllers/user'),
     CategoryController: () => import('./controllers/category'),
     MediaController: () => import('./controllers/media'),
+    SnippetController: () => import('./controllers/snippet'),
     MySettingsController: () => import('./controllers/mySettings')
 };

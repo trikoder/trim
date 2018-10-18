@@ -7,6 +7,7 @@ export default router => {
     router.resource('user');
     router.resource('tag');
     router.resource('category');
+    router.resource('snippet');
     router.resource({name: 'media', hasCreateRoute: ['image', 'videoEmbed', 'file']});
 
     router.controller('my-settings', 'mySettings', 'MySettings');

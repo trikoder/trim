@@ -44,6 +44,12 @@ export default {
                 },
 
                 {
+                    caption: 'Html snippets',
+                    key: 'snippet',
+                    url: router.url('resource.snippet.index')
+                },
+
+                {
                     caption: 'Tags',
                     key: 'tag',
                     url: router.url('resource.tag.index')

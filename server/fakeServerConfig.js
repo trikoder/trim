@@ -291,6 +291,42 @@ module.exports = {
 
             }
         },
+        snippet: {
+            filters: {
+                title: function(title, query) {
+                    return title.toLowerCase().indexOf(query.toLowerCase()) >= 0;
+                }
+            },
+            validationRules: {
+                title: {
+                    rule: function(title) {
+                        return title.length > 0;
+                    },
+                    message: 'Please enter title.'
+                },
+                code: {
+                    rule: function(code) {
+                        return code.length > 0;
+                    },
+                    message: 'Please enter code.'
+                }
+            },
+            data: function(random) {
+
+                return range(1, 50).map(function(index) {
+                    return {
+                        type: 'snippet',
+                        id: String(index),
+                        attributes: {
+                            title: 'Snippet ' + index,
+                            code: 'snippet.code.' + index,
+                            content: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>'
+                        }
+                    };
+                });
+
+            }
+        },
         category: {
             filters: {
                 title: function(title, query) {
