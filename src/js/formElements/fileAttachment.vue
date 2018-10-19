@@ -1,34 +1,27 @@
 <template>
     <element-wrapper v-bind:renderInputWrapper="false" v-bind="elementWrapperProps">
-        <div v-bind="inputWrapperAttributes">
+        <div v-bind="inputWrapperAttributes" ref="inputWrapper">
             <div class="mediaContainer">
                 <template v-if="thumbnailUrl">
                     <img v-bind:src="thumbnailUrl"/>
-                    <a v-bind:href="fileUrl" class="nBtn icr iconMaximize"></a>
+                    <button type="button" v-on:click="zoomImage" class="nBtn icr zoomInBtn iconMaximize"></button>
                 </template>
-                <button
-                    v-else
-                    type="button"
-                    class="nBtn fileUploadClickable placeholderImage icr"
-                    v-bind:class="{
+                <button v-else type="button" v-on:click="openFileDialog" v-bind:class="[{
                         'iconFile large': selectedFile || fileUrl,
                         'iconPlus': !selectedFile && !fileUrl
-                    }"
-                />
+                }, 'nBtn fileUploadClickable placeholderImage icr']"/>
             </div>
             <div class="textControls">
-                <span class="fileUploadHandle">
-                    {{textControlCaption}}
-                    <span class="fileName" v-if="selectedFileName">{{selectedFileName}}</span>
-                    <input v-on:input="processFile" type="file" v-bind:accept="acceptedFiles" />
+                <span class="fileUploadHandle" v-on:click="openFileDialog">
+                    {{ textControlCaption }}
+                    <span class="fileName" v-if="selectedFileName">{{ selectedFileName }}</span>
                 </span>
             </div>
             <a
-                v-if="fileUrl && !thumbnailUrl && !selectedFile"
+                v-if="fileUrl && !selectedFile"
                 v-bind:href="fileUrl"
                 target="_blank"
                 class="downloadBtn nBtn icr iconDownload"
-                v-bind:class="{fullSize: !selectedFile}"
             ></a>
             <button
                 v-if="selectedFile"
@@ -44,7 +37,10 @@
 import base from './base';
 import translate from '../library/translate';
 import ElementWrapper from './elementWrapper';
-import loadImage from 'blueimp-load-image';
+import Dropzone from 'dropzone';
+import {confirm} from '../components/dialogModal';
+import SimpleLightbox from 'simple-lightbox';
+import 'simple-lightbox/dist/simpleLightbox.min.css';
 
 export default {
 
@@ -55,45 +51,44 @@ export default {
     mixins: [base],
 
     props: {
-        value: {type: String, default: ''},
-        acceptedFiles: {type: String, default: ''},
-        mapThumbnailTo: {type: String, required: true},
-        mapCurrentFileUrlTo: {type: String, required: true},
+        value: {},
+        acceptedFiles: {type: String},
+        maxFileSize: {type: Number},
+        mapThumbnailTo: {type: String},
+        mapCurrentFileUrlTo: {type: String},
         addFileCaption: {type: String, default: () => translate('formElements.fileAttachment.addFileCaption')},
         changeFileCaption: {type: String, default: () => translate('formElements.fileAttachment.changeFileCaption')}
     },
 
-    data() {
-        return {
-            savesFile: true,
-            clientThumbnail: undefined,
-            selectedFile: undefined
-        };
-    },
+    data: () => ({
+        savesFile: true,
+        clientThumbnail: undefined,
+        selectedFile: undefined
+    }),
 
     computed: {
 
         thumbnailUrl() {
 
             if (this.clientThumbnail) {
-
                 return this.clientThumbnail;
-
-            } else if (!this.selectedFile) {
-
+            } else if (!this.selectedFile && this.mapThumbnailTo) {
                 return this.resourceModel.get(this.mapThumbnailTo);
-
             } else {
-
                 return undefined;
-
             }
 
         },
 
         fileUrl() {
 
-            return this.resourceModel.get(this.mapCurrentFileUrlTo);
+            if (this.selectedFile) {
+                return undefined;
+            } else if (this.mapCurrentFileUrlTo) {
+                return this.resourceModel.get(this.mapCurrentFileUrlTo);
+            } else {
+                return undefined;
+            }
 
         },
 
@@ -105,13 +100,73 @@ export default {
 
         textControlCaption() {
 
-            return this.selectedFile || this.fileUrl ? this.changeFileCaption : this.addFileCaption;
+            return this.selectedFile || this.fileUrl
+                ? this.changeFileCaption
+                : this.addFileCaption
+            ;
 
         }
 
     },
 
+    mounted() {
+
+        this.setupFileInput();
+
+    },
+
+    beforeDestroy() {
+
+        if (this.lightbox) {
+            this.lightbox.destroy();
+        }
+
+        if (this.dropzone) {
+            this.dropzone.removeAllFiles();
+            this.dropzone.disable();
+            this.dropzone.destroy();
+        }
+
+    },
+
     methods: {
+
+        setupFileInput() {
+
+            var dropzone = this.dropzone = new Dropzone(this.$refs.inputWrapper, {
+                url: '/dummy-upload-url',
+                acceptedFiles: this.acceptedFiles,
+                maxFilesize: this.maxFileSize,
+                clickable: true,
+                maxFiles: 1,
+                uploadMultiple: false,
+                createImageThumbnails: true,
+                autoProcessQueue: false,
+                autoDiscover: false,
+                thumbnailWidth: 800,
+                thumbnailHeight: 800,
+                thumbnailMethod: 'contain',
+                previewsContainer: document.createElement('div')
+            });
+
+            dropzone.on('addedfile', file => {
+                this.clientThumbnail = undefined;
+                this.selectedFile = file;
+            }).on('thumbnail', (file, dataUrl) => {
+                if (file === this.selectedFile) {
+                    this.clientThumbnail = dataUrl;
+                }
+            }).on('error', (file, errorMessage) => {
+                confirm({
+                    message: errorMessage,
+                    acceptText: translate('prompt.continueText'),
+                    acceptOnly: true,
+                    parent: this
+                });
+                this.removeSelectedFile();
+            });
+
+        },
 
         getFile() {
 
@@ -119,57 +174,29 @@ export default {
 
         },
 
-        processFile({target}) {
+        openFileDialog() {
 
-            const file = Array.from(target.files)[0];
+            this.dropzone.hiddenFileInput.click();
 
-            if (file.type.search('image') >= 0) {
+        },
 
-                this.processImage(file);
+        zoomImage() {
 
-            } else {
-
-                this.clientThumbnail = undefined;
-                this.setFile(file);
-
+            if (this.lightbox) {
+                this.lightbox.destroy();
             }
 
-        },
-
-        processImage(file) {
-
-            loadImage.parseMetaData(file, data => {
-                loadImage(file, canvas => {
-                    canvas.toBlob(blob => {
-                        this.clientThumbnail = URL.createObjectURL(blob);
-                    }, 'image/jpeg');
-                }, {
-                    canvas: true,
-                    orientation: data.exif.get('Orientation'),
-                    maxWidth: 240
-                });
-                loadImage(file, canvas => {
-                    canvas.toBlob(blob => {
-                        this.setFile(blob);
-                    }, 'image/jpeg');
-                }, {
-                    canvas: true,
-                    orientation: data.exif.get('Orientation')
-                });
+            this.lightbox = SimpleLightbox.open({
+                items: [this.clientThumbnail || this.fileUrl],
+                beforeDestroy: () => { delete this.lightbox; }
             });
-
-        },
-
-        setFile(file) {
-
-            this.selectedFile = file;
 
         },
 
         removeSelectedFile() {
 
-            this.clientThumbnail = undefined;
-            this.selectedFile = undefined;
+            this.selectedFile = this.clientThumbnail = undefined;
+            this.dropzone.removeAllFiles();
 
         }
 
@@ -185,165 +212,122 @@ export default {
         display: block; position: relative; padding: 0.5em; padding-right: 4em; overflow: hidden;
         background-color: #fff; border: 1px solid $colorGrayLight2; border-radius: 0.3em;
 
-        .mediaContainer {
+    }
 
-            $size: 70;
+    .mediaContainer {
+
+        $size: 70;
+        $ratio: 3/4;
+
+        width: em($size, 10); height: em($size * $ratio, 10); line-height: em($size * $ratio, 10);
+        display: inline-block; vertical-align: middle; margin-right: 1.5em; position: relative;
+        background-color: #f5f5f5; border-radius: 0.3em; text-align: center;
+
+        > img {
+
+            max-width: em($size, 10); max-height: em($size * $ratio, 10);
+            display: inline-block; vertical-align: middle;
+            border-radius: 0.3em;
+
+        }
+
+        @include mediaMinWidth($breakpointMedium) {
+
+            $size: 120;
             $ratio: 3/4;
 
             width: em($size, 10); height: em($size * $ratio, 10); line-height: em($size * $ratio, 10);
-            display: inline-block; vertical-align: middle; margin-right: 1.5em; position: relative;
-            background-color: #f5f5f5; border-radius: 0.3em; text-align: center;
 
             > img {
-
                 max-width: em($size, 10); max-height: em($size * $ratio, 10);
-                display: inline-block; vertical-align: middle;
-                border-radius: 0.3em;
-
-            }
-
-            @include mediaMinWidth($breakpointMedium) {
-
-                $size: 120;
-                $ratio: 3/4;
-
-                width: em($size, 10); height: em($size * $ratio, 10); line-height: em($size * $ratio, 10);
-
-                > img {
-                    max-width: em($size, 10); max-height: em($size * $ratio, 10);
-                }
-
             }
 
         }
 
-        .zoomInBtn {
+    }
 
-            transition: opacity 0.3s;
+    .zoomInBtn {
 
-            position: absolute; left: 50%; top: 50%; margin: -2em 0 0 -2em; width: 4em; height: 4em;
-            background-color: rgba(#000, 0.8); border-radius: 50%; opacity: 0; color: #fff;
+        transition: opacity 0.3s;
 
-            &:before { font-size: 1.3em; }
+        position: absolute; left: 50%; top: 50%; margin: -2em 0 0 -2em; width: 4em; height: 4em;
+        background-color: rgba(#000, 0.8); border-radius: 50%; opacity: 0; color: #fff;
 
-        }
+        &:before { font-size: 1.3em; }
 
-        .mediaContainer:hover > .zoomInBtn {
+    }
 
-            opacity: 1;
+    .mediaContainer:hover > .zoomInBtn {
 
-        }
+        opacity: 1;
 
-        .placeholderImage {
+    }
 
-            position: absolute; left: 0; top: 0; width: 100%; height: 100%;
-            color: $colorGrayDark2;
+    .placeholderImage {
 
-            &:before {
+        position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+        color: $colorGrayDark2;
 
-                font-size: 1.8em;
+        &:before {
 
-            }
-
-            &.large:before {
-
-                font-size: 3em;
-
-            }
-
-            &.interactive {
-
-                cursor: pointer;
-
-            }
+            font-size: 1.8em;
 
         }
 
-        .textControls {
+        &.large:before {
 
-            font-size: 1.7em; display: inline-block; vertical-align: middle;
-            box-sizing: border-box; max-width: 50%;
-            color: $colorGrayDark2; cursor: pointer;
-
-            @include mediaMinWidth($breakpointLarge) {
-
-                max-width: 70%;
-
-            }
+            font-size: 3em;
 
         }
 
-        .dz-preview {
+        &.interactive {
 
-            > div { display: none; }
-
-            > .dz-progress {
-
-                display: block; position: absolute; left: 0; bottom: 0; right: 0; height: 1px;
-                background-color: $colorGrayLight1;
-
-                > .dz-upload {
-
-                    display: block; height: 100%; background-color: $colorMain1;
-
-                }
-
-            }
+            cursor: pointer;
 
         }
 
-        .openBtn, .fileUploadHandle {
+    }
 
-            &:hover { color: $colorGrayDark1; }
+    .textControls {
 
-        }
+        font-size: 1.7em; display: inline-block; vertical-align: middle;
+        box-sizing: border-box; max-width: 50%;
+        color: $colorGrayDark2; cursor: pointer;
 
-        .fileUploadHandle {
+        @include mediaMinWidth($breakpointLarge) {
 
-            position: relative; overflow: hidden; cursor: pointer;
-
-            > input {
-                position: absolute; z-index: 2; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer; opacity: 0;
-            }
+            max-width: 70%;
 
         }
 
-        .removeBtn, .editBtn, .downloadBtn {
+    }
 
-            position: absolute; right: 0; top: 0; bottom: 50%; width: 3.5em; height: auto; box-sizing: border-box;
-            border-left: 1px solid $colorGrayLight1; color: darken($colorGrayLight2, 15%);
+    .openBtn, .fileUploadHandle {
 
-            &:hover { color: darken($colorGrayLight2, 30%); }
+        &:hover { color: $colorGrayDark1; }
 
-            &:before { font-size: 1.8em; }
+    }
 
-        }
+    .fileUploadHandle {
 
-        .removeBtn {
+        position: relative; overflow: hidden; cursor: pointer;
 
-            top: 0; bottom: 0;
+    }
 
-            &:before { font-size: 1.8em; }
+    .fileName {
 
-        }
+        display: block; font-size: em(14,17); margin-top: em(5,14); opacity: 0.5;
 
-        .fileName {
+    }
 
-            display: block; font-size: em(14,17); margin-top: em(5,14); opacity: 0.5;
+    .removeBtn,  .downloadBtn {
 
-        }
+        position: absolute; right: 0; top: 0; bottom: 0; width: 3.5em; height: auto; box-sizing: border-box;
+        border-left: 1px solid $colorGrayLight1; color: darken($colorGrayLight2, 15%);
 
-        .downloadBtn.fullSize {
+        &:hover { color: darken($colorGrayLight2, 30%); }
 
-            bottom: 0;
-
-        }
-
-        .downloadBtn + .removeBtn {
-
-            top: 50%;
-
-        }
+        &:before { font-size: 1.8em; }
 
     }
 

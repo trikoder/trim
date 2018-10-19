@@ -23,7 +23,6 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "blueimp-load-image": "^2.19.0",
     "ckeditor": "^4.10.0",
     "codemirror": "^5.40.2",
     "dragula": "^3.7.2",
