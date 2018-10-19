@@ -1,15 +1,25 @@
 <template>
     <div
-        v-if="isImage && mediaModel.get(mapImageTo)"
-        v-bind:style="{backgroundImage: 'url(' + mediaModel.get(mapImageTo) + ')'}"
-        class="mediaListItemType1 image"
+        v-if="imageUrl"
+        v-bind:class="[classAttribute, 'mediaListItemType1 image']"
+        v-bind:style="styleAttribute"
+        v-bind="attributes"
     >
-        <button type="button" v-on:click="zoomImage" class="zoomImage previewBtn nBtn icr iconMaximize"></button>
+        <button v-if="largeImageUrl" type="button" v-on:click="zoomImage" class="zoomImage previewBtn nBtn icr iconMaximize"></button>
     </div>
-    <div v-else-if="isFile" class="mediaListItemType1 file">
+    <div
+        v-else-if="isFile"
+        v-bind:class="[classAttribute, 'mediaListItemType1 file']"
+        v-bind:style="styleAttribute"
+        v-bind="attributes"
+    >
         <button type="button" v-on:click="openFile" class="openFile previewBtn nBtn icr iconMaximize"></button>
     </div>
-    <div v-else class="mediaListItemType1">
+    <div
+        v-else
+        v-bind:class="[classAttribute, 'mediaListItemType1']"
+        v-bind:style="styleAttribute"
+    >
         <span class="placeholder iconImage icr"></span>
     </div>
 </template>
@@ -17,6 +27,7 @@
 <script>
 
 import base from './base';
+import {assign} from '../library/toolkit';
 import SimpleLightbox from 'simple-lightbox';
 import 'simple-lightbox/dist/simpleLightbox.min.css';
 
@@ -27,41 +38,64 @@ export default {
     mixins: [base],
 
     props: {
-        mapMediaTypeTo: {type: String, default: 'mediaType'},
-        mapMediaRelationTo: String,
-        mapImageTo: {type: String, default: 'thumbnailUrl'},
-        mapLargeImageTo: {type: String, default: 'originalUrl'},
-        mapFileUrlTo: {type: String, default: 'fileUrl'},
+        mediaType: {type: [String, Function], default: 'image'},
+        mapImageTo: String,
+        mapLargeImageTo: String,
+        mapFileUrlTo: String,
         imageMediaTypes: {type: Array, default: () => ['image']},
         fileMediaTypes: {type: Array, default: () => ['file']}
     },
 
     computed: {
 
-        mediaModel() {
+        modelMediaType() {
 
-            return this.mapMediaRelationTo
-                ? this.resourceModel.get(this.mapMediaRelationTo)
-                : this.resourceModel
+            return typeof this.mediaType === 'function'
+                ? this.mediaType(this.resourceModel)
+                : this.mediaType
             ;
-
-        },
-
-        mediaType() {
-
-            return this.mediaModel.get(this.mapMediaTypeTo);
 
         },
 
         isImage() {
 
-            return this.imageMediaTypes.indexOf(this.mediaType) >= 0;
+            return this.imageMediaTypes.indexOf(this.modelMediaType) >= 0;
 
         },
 
         isFile() {
 
-            return this.fileMediaTypes.indexOf(this.mediaType) >= 0;
+            return this.fileMediaTypes.indexOf(this.modelMediaType) >= 0;
+
+        },
+
+        imageUrl() {
+
+            return this.isImage
+                ? this.getModelMapping(this.mapImageTo || this.mapTo)
+                : undefined
+            ;
+
+        },
+
+        largeImageUrl() {
+
+            return this.isImage && this.mapLargeImageTo
+                ? this.getModelMapping(this.mapLargeImageTo)
+                : undefined
+            ;
+
+        },
+
+        styleAttribute() {
+
+            if (this.isImage && this.imageUrl) {
+                return assign({}, this.attributes.style, {
+                    backgroundImage: 'url(' + this.imageUrl + ')'
+                });
+            } else {
+                return this.attributes.style;
+            }
 
         }
 
@@ -77,9 +111,18 @@ export default {
 
     methods: {
 
+        getModelMapping(mapper) {
+
+            return typeof mapper === 'function'
+                ? mapper(this.resourceModel)
+                : this.resourceModel.get(mapper)
+            ;
+
+        },
+
         openFile() {
 
-            window.open(this.mediaModel.get(this.mapFileUrlTo), '_blank');
+            window.open(this.getModelMapping(this.mapFileUrlTo), '_blank');
 
         },
 
@@ -90,7 +133,7 @@ export default {
             }
 
             this.lightbox = SimpleLightbox.open({
-                items: [this.mediaModel.get(this.mapLargeImageTo)],
+                items: [this.largeImageUrl],
                 beforeDestroy: () => { delete this.lightbox; }
             });
 

@@ -38,7 +38,8 @@ export default {
 
         list.addItem('MediaListItem', {
             caption: 'Main media',
-            mapTo: 'source'
+            mapTo: 'thumbnailUrl',
+            mapLargeImageTo: 'originalUrl'
         });
 
         list.addItem('LinkListItem', {
