@@ -48,7 +48,9 @@ export default {
     mixins: [base],
 
     props: {
-        value: {type: String, default: ''},
+        value: {},
+        acceptedFiles: {type: String},
+        maxFileSize: {type: Number},
         mapImageTo: {type: String, default: 'thumbnailUrl'},
         mapLargeImageTo: {type: String, default: 'originalUrl'},
         enableUpload: {type: Boolean, default: true},
@@ -120,6 +122,7 @@ export default {
         }
 
         if (this.dropzone) {
+            this.dropzone.disable();
             this.dropzone.destroy();
         }
 
@@ -173,6 +176,8 @@ export default {
 
             const dropzone = this.dropzone = new Dropzone(element, {
                 url: uploadUrl,
+                acceptedFiles: this.acceptedFiles,
+                maxFilesize: this.maxFileSize,
                 params: this.mediaType && {mediaType: this.mediaType},
                 clickable: '.fileUploadHandle',
                 maxFiles: 1,
