@@ -69,15 +69,18 @@ export default {
 
         },
 
+        selectedOption() {
+
+            return this.getSelectedOption();
+
+        },
+
         buttonCaption() {
 
-            if (!this.optionElements) {
-                return translate('formElements.select.loadingCaption');
-            } else {
-                return this.buttonTextPrefix + find(this.optionElements, option => {
-                    return option.value === this.value;
-                }).caption;
-            }
+            return this.selectedOption
+                ? this.buttonTextPrefix + this.selectedOption.caption
+                : translate('formElements.select.loadingCaption')
+            ;
 
         }
 
@@ -86,7 +89,13 @@ export default {
     created() {
 
         this.getOptionElements(this.selectOptions).then(optionElements => {
+
             this.optionElements = optionElements;
+
+            if (!this.getSelectedOption()) {
+                this.$emit('input', this.optionElements[0].value);
+            }
+
         });
 
     },
@@ -94,6 +103,8 @@ export default {
     methods: {
 
         processInputEvent(e) {
+
+            console.log(123, e.target.value);
 
             const stringValue = e.target.value;
             const optionValue = find(this.optionElements, option => option.stringValue === stringValue).value;
@@ -107,6 +118,17 @@ export default {
             return typeof mapper === 'function'
                 ? mapper(model)
                 : model.get(mapper)
+            ;
+
+        },
+
+        getSelectedOption() {
+
+            const currentValue = this.value;
+
+            return this.optionElements
+                ? find(this.optionElements, o => o.value === currentValue)
+                : undefined
             ;
 
         },
