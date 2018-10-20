@@ -67,14 +67,14 @@ export default {
             text: {
                 attributes: {
                     input: {class: 'inputType2'},
-                    label: {class: 'labelType2'},
+                    label: {class: 'labelType2 mod1'},
                     wrapper: {class: 'inputBlockType1'}
                 }
             },
             number: {
                 attributes: {
                     input: {class: 'inputType2'},
-                    label: {class: 'labelType2'},
+                    label: {class: 'labelType2 mod1'},
                     wrapper: {class: 'inputBlockType1'}
                 }
             },
@@ -88,28 +88,28 @@ export default {
                         autocapitalize: 'off',
                         spellcheck: 'false'
                     },
-                    label: {class: 'labelType2'},
+                    label: {class: 'labelType2 mod1'},
                     wrapper: {class: 'inputBlockType1'}
                 }
             },
             html: {
                 attributes: {
                     input: {class: 'htmlInputType1'},
-                    label: {class: 'labelType2'},
+                    label: {class: 'labelType2 mod1'},
                     wrapper: {class: 'inputBlockType1'}
                 }
             },
             date: {
                 attributes: {
                     input: {class: 'inputType2'},
-                    label: {class: 'labelType2'},
+                    label: {class: 'labelType2 mod1'},
                     wrapper: {class: 'inputBlockType1'}
                 }
             },
             dateTime: {
                 attributes: {
                     input: {class: 'inputType2'},
-                    label: {class: 'labelType2'},
+                    label: {class: 'labelType2 mod1'},
                     wrapper: {class: 'inputBlockType1'}
                 }
             },
@@ -129,7 +129,7 @@ export default {
             },
             multipleSelect: {
                 attributes: {
-                    label: {class: 'labelType2'},
+                    label: {class: 'labelType2 mod1'},
                     inputWrapper: {},
                     wrapper: {class: 'inputBlockType1'}
                 }

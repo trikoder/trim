@@ -191,7 +191,7 @@ export default {
         .multiselect__tag {
 
             margin-right: em(5,10);
-            background-color: #a7a7a7;
+            background-color: #a7a7a7; border-radius: 3px;
 
         }
 

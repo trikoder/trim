@@ -45,8 +45,9 @@ export default {
 
     .labelType2 {
 
-        font-size: 1.2em; padding: em(5,12) 0;
-        text-transform: uppercase; color: $colorGrayDark2; letter-spacing: 0.08em;
+        @include fontSans;
+        font-size: 1.3em; padding: em(5,13) 0;
+        color: $colorGrayDark2;
 
     }
 
@@ -69,7 +70,13 @@ export default {
 
         .labelType2 {
 
-            display: block; margin-bottom: 0.5em;
+            display: block; margin-bottom: em(5,13);
+
+            &.mod1 {
+
+                margin-bottom: 0; padding-bottom: 0;
+
+            }
 
         }
 

@@ -103,7 +103,7 @@ export default {
         .inputType1 {
 
             appearance: none;
-            font-size: 1.4em; padding: em(8,14);
+            font-size: 1.6em; padding: em(8,16);
             background-color: #fff; border: 1px solid $colorGrayLight2; border-radius: em(4,14);
 
             &.fullWidth {
@@ -112,6 +112,10 @@ export default {
 
             &.fontBold {
                 @include fontSansCondensedBold;
+            }
+
+            @include mediaMinWidth($breakpointMedium) {
+                font-size: 1.4em; padding: em(8,14);
             }
 
         }

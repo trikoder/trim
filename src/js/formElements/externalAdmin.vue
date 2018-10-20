@@ -382,13 +382,17 @@ export default Component;
 
                 @include normalizeButton;
 
-                font-size: 1.4em; display: inline-block; padding: em(8,14) em(30,14) em(8,14) em(10,14);
+                font-size: 1.6em; display: inline-block; padding: em(8,16) em(30,16) em(8,16) em(10,16);
                 color: $colorGrayDark1;
 
                 &:before {
 
                     left: auto; right: 0; font-size: 1em; width: em(22,10); color: $colorMain1;
 
+                }
+
+                @include mediaMinWidth($breakpointMedium) {
+                    font-size: 1.4em; padding: em(8,14) em(30,14) em(8,14) em(10,14);
                 }
 
             }

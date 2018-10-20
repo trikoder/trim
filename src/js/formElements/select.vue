@@ -205,8 +205,12 @@ export default {
 
             @include normalizeButton;
 
-            font-size: 1.4em; padding: em(8,14) em(30,14) em(8,14) em(10,14);
+            font-size: 1.6em; padding: em(8,16) em(30,16) em(8,16) em(10,16);
             color: $colorGrayDark1;
+
+            @include mediaMinWidth($breakpointMedium) {
+                font-size: 1.4em; padding: em(8,14) em(30,14) em(8,14) em(10,14);
+            }
 
         }
 

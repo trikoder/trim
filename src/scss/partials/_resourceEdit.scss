@@ -104,6 +104,10 @@
     }
 
     .includedAdminBlockType1 .inputBlockType1 {
+        margin-bottom: 2.5em;
+    }
+
+    .includedAdminBlockType1 .inputBlockType1 {
 
         animation: none;
 
@@ -305,8 +309,8 @@
 .inputType1 {
 
     appearance: none;
-    font-size: 1.4em; padding: em(8,14);
-    background-color: #fff; border: 1px solid $colorGrayLight2; border-radius: em(4,14);
+    font-size: 1.6em; padding: em(8,16) em(10,16);
+    background-color: #fff; border: 1px solid $colorGrayLight2; border-radius: em(4,16);
 
     &.fullWidth {
         width: 100%;
@@ -314,6 +318,10 @@
 
     &.fontBold {
         @include fontSansCondensedBold;
+    }
+
+    @include mediaMinWidth($breakpointMedium) {
+        font-size: 1.4em; padding: em(8,14) em(10,14);
     }
 
 }

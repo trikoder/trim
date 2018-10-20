@@ -528,7 +528,7 @@ export default {
 
                 > .item {
 
-                    font-size: 1.4em; line-height: (16/14); display: inline-block;
+                    font-size: 1.6em; line-height: (16/14); display: inline-block;
                     color: $colorGrayDark1;
 
                     > .removeBtn {
@@ -549,6 +549,10 @@ export default {
                             box-shadow: 0 0.2em 0.5em rgba(#000, 0.15);
                         }
 
+                    }
+
+                    @include mediaMinWidth($breakpointMedium) {
+                        font-size: 1.4em;
                     }
 
                 }
@@ -585,13 +589,17 @@ export default {
 
         .openBtn {
 
-            font-size: 1.4em; line-height: (32/14); text-align: left;
-            padding: 0 em(30,14) 0 em(10,14); display: block; width: 100%;
+            font-size: 1.6em; line-height: (32/14); text-align: left;
+            padding: 0 em(30,16) 0 em(10,16); display: block; width: 100%;
 
             &:before {
 
                 font-size: em(14,14); color: $colorMain1; left: auto; right: 0; width: em(22,10);
 
+            }
+
+            @include mediaMinWidth($breakpointMedium) {
+                font-size: 1.4em; padding: 0 em(30,14) 0 em(10,14);
             }
 
         }
