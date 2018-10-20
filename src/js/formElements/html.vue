@@ -110,12 +110,13 @@ export default {
 
         @include fontSans;
 
-        outline: none; margin-bottom: 3em; min-height: 1em; padding: em(10,10) 0;
+        font-size: 1.6em; outline: none; margin-bottom: em(30,16);
+        min-height: em(10,16); padding: em(10,16) 0;
         border-bottom: 1px solid $colorGrayLight2;
 
         > p, > ul, > ol {
 
-            font-size: 1.6em; margin-bottom: em(25,16); line-height: 1.4;
+            margin-bottom: em(25,16); line-height: 1.4;
             color: $colorGrayDark1;
 
             &:last-child {
@@ -141,13 +142,13 @@ export default {
         > h1, > h2, > h3 {
 
             @include fontSansCondensedBold;
-            font-size: em(25,10); margin-bottom: em(25,25); line-height: 1.3;
+            font-size: em(25,16); margin-bottom: em(25,25); line-height: 1.3;
 
         }
 
-        > h1 { font-size: em(30,10); }
-        > h2 { font-size: em(22,10); }
-        > h3 { font-size: em(18,10); }
+        > h1 { font-size: em(30,16); }
+        > h2 { font-size: em(22,16); }
+        > h3 { font-size: em(18,16); }
 
         > ul, > ol {
 
