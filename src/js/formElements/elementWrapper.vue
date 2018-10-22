@@ -47,7 +47,7 @@ export default {
 
         @include fontSans;
         font-size: 1.3em; padding: em(5,13) 0;
-        color: $colorGrayDark2; letter-spacing: 0.02em;
+        color: $colorGrayDark2;
 
     }
 
