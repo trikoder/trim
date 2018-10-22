@@ -5,9 +5,11 @@
             v-bind:id="elementId"
             v-bind:name="name"
             v-bind:disabled="readOnly"
+            v-bind:type="inputAttributes.type || 'text'"
             v-bind:value="value"
             v-on:input="processInputEvent"
         >
+        <slot name="inputWrapperEnd"></slot>
     </element-wrapper>
 </template>
 
@@ -25,16 +27,6 @@ export default {
 
     props: {
         value: {type: String, default: ''}
-    },
-
-    computed: {
-
-        inputAttributes() {
-
-            return this.normalizeAttributes({type: 'text'}, this.attributes.input);
-
-        }
-
     }
 
 };
