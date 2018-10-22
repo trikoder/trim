@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.54.0
+* Addition: color form element for visual previews of color entered via text input
+* Addition: add validation checks to media and file attachment form elements (accepted files and file size)
+* Change: allow form elements to peek outside filter component in contracted state
+* Change: allow closing date-time picker on small screens via overlay click
+* Change: refactored file attachment form element to libraries already used in project
+* Change: simplified media list item api
+* Change: updated html form element to disable zooming on mobile safari
+* Change: adjusted select form element to set proper value after options are populated
+* Change: updated language files
+* Change: minor style changes throughout application
+
 ## 0.53.1
 * Change: code and map form elements render correctly in off-screen scenarios
 

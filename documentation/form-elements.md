@@ -136,6 +136,17 @@ edit.addField('CodeFormElement', {
 });
 ```
 
+## Color
+Color form element is text form element enhanced with visual color preview.
+[Code reference](https://github.com/trikoder/trim/tree/master/src/js/formElements/color.vue).
+
+```js
+edit.addField('ColorFormElement', {
+    label: 'Color',
+    name: 'color'
+});
+```
+
 ## Map
 Map element is used for handling geolocation data presented as google map.
 [Code reference](https://github.com/trikoder/trim/tree/master/src/js/formElements/map.vue).
