@@ -276,6 +276,7 @@ module.exports = {
                             title: 'Page ' + index,
                             published: random.boolean(),
                             publishDate: index % 10 === 0 ? null : new Date().toISOString(),
+                            pageColor: '#e03431',
                             bodyText: ''
                         },
                         relationships: {

@@ -60,6 +60,14 @@ export default {
                 label: {class: 'labelType1'},
                 wrapper: {class: 'inlineInputBlockType1'}
             }
+        },
+        color: {
+            attributes: {
+                label: {class: 'labelType1'},
+                input: {class: 'inputType1'},
+                wrapper: {class: 'inlineInputBlockType1'},
+                inputWrapper: {class: 'colorInputType1'}
+            }
         }
     },
     resourceEdit: {
@@ -188,6 +196,14 @@ export default {
                     wrapper: {class: 'inputBlockType1'},
                     inputWrapper: {class: 'codeInputType1'}
                 }
+            },
+            color: {
+                attributes: {
+                    input: {class: 'inputType2'},
+                    label: {class: 'labelType2 mod1'},
+                    wrapper: {class: 'inputBlockType1'},
+                    inputWrapper: {class: 'colorInputType1'}
+                }
             }
         },
         sideRegion: {
@@ -285,6 +301,14 @@ export default {
                 attributes: {
                     label: {class: 'labelType2'},
                     wrapper: {class: 'inputBlockType1'}
+                }
+            },
+            color: {
+                attributes: {
+                    input: {class: 'inputType1 fullWidth'},
+                    label: {class: 'labelType2'},
+                    wrapper: {class: 'inputBlockType1'},
+                    inputWrapper: {class: 'colorInputType1'}
                 }
             }
         }

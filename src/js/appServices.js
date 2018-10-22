@@ -60,6 +60,7 @@ export default {
     MediaPreviewFormElement: () => import('./formElements/mediaPreview'),
     MediaFormElement: () => import('./formElements/media'),
     NestedSelectFormElement: () => import('./formElements/nestedSelect'),
-    CodeFormElement: () => import('./formElements/code')
+    CodeFormElement: () => import('./formElements/code'),
+    ColorFormElement: () => import('./formElements/color')
 
 };

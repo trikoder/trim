@@ -162,7 +162,7 @@ export default {
         edit.addField('TextFormElement', {
             label: 'Title',
             name: 'title',
-            attributes: {input: {class: 'inputType2 size2'}},
+            attributes: {input: {class: 'inputType2 size2 fontBold'}},
             layoutReference: 'mainRegion'
         });
 
@@ -191,6 +191,12 @@ export default {
         edit.addField('DateTimeFormElement', {
             name: 'publishDate',
             label: 'Date',
+            layoutReference: 'sideRegion'
+        });
+
+        edit.addField('ColorFormElement', {
+            name: 'pageColor',
+            label: 'Page color',
             layoutReference: 'sideRegion'
         });
 
