@@ -15,7 +15,7 @@
             v-on:click="clear"
         ></button>
         <transition name="toggle-calendar">
-            <div v-if="opened" class="scOuterWrap" v-bind:class="[positionClass, {scFloating: inputBound}]">
+            <div v-if="opened" class="scOuterWrap" ref="outerWrap" v-on:click="closeViaOverlay" v-bind:class="[positionClass, {scFloating: inputBound}]">
                 <div class="scInnerWrap">
                     <header class="scHeader">
                         <button
@@ -368,6 +368,14 @@ export default {
                 this.direction = undefined;
                 this.removeCloseEvents();
                 this.teardownPosition();
+            }
+
+        },
+
+        closeViaOverlay(e) {
+
+            if (e.target === this.$refs.outerWrap) {
+                this.close();
             }
 
         },
