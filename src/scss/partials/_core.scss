@@ -24,6 +24,7 @@ body {
     @include fontSansCondensed;
     min-width: 32em; position: relative;
     color: $colorGrayDark1;
+    overflow-x: hidden;
 
 }
 

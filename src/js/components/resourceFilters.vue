@@ -120,7 +120,7 @@ export default {
 
             this.$nextTick(() => {
 
-                this.canContract = this.$el.offsetHeight > contractedSize;
+                this.canContract = this.$el.offsetHeight > contractedSize + 10;
                 this.sizeExpanded = oldSizeExpanded;
 
             });
@@ -208,12 +208,13 @@ export default {
 
         > .toggleSizeBtn {
 
-            position: absolute; left: 50%; top: 100%; margin-top: -1em; margin: -1em 0 0 -2.5em;
-            width: 5em; height: 2em;
-            border: 1px solid $colorGrayLight2; border-radius: 0.3em; background-color: #f5f5f5;
+            position: absolute; left: 50%; top: 100%;
+            margin-top: -1em; margin: -1em 0 0 -2.5em; width: 5em; height: 2em;
+            border: 1px solid $colorGrayLight2; border-radius: 0.3em; background-color: #fff;
+            color: darken($colorGrayLight2, 20%);
 
-            &:before { font-size: 1.4em; color: darken($colorGrayLight2, 20%); }
-            &:hover { background-color: #fff; }
+            &:before { font-size: 1.4em; }
+            &:hover { color: $colorMain1; }
 
             display: none;
 
@@ -236,7 +237,7 @@ export default {
 
             }
 
-            > .inner > .submitBtn {
+            .submitBtn {
 
                 @include normalizeButton;
                 @include fontSans;
@@ -264,16 +265,18 @@ export default {
 
             > .inner {
 
-                display: block; padding: 1em 9em 1em 2em; min-height: 6.7em;
+                display: block; padding: 1em 11em 1em 2em; min-height: 6.7em;
 
             }
 
-            > .inner > .submitBtn {
+            .submitBtn {
 
                 @include normalizeButton;
                 @include fontSansCondensed;
-                font-size: 2.5em; padding: em(15,25) em(15,25); position: absolute; left: 0; right: 0; top: 0; width: inherit;
-                color: #adadad; letter-spacing: 0.03em;
+                font-size: 2em; padding: 0 em(20,20) 0 em(60,20);
+                position: absolute; right: 0; top: 0; height: em(60,20); width: inherit;
+                color: #adadad; letter-spacing: 0.03em; background-color: #fff;
+                background: linear-gradient(left, transparent, #fff 30%, #fff 100%);
 
                 @include hover {
                     color: $colorGrayDark1;
@@ -287,44 +290,17 @@ export default {
 
             }
 
-            > .inner > .submitBtn {
-
-                font-size: 2em;
-                left: auto; right: 0; top: em(3,20); padding: em(18,20) em(20,20);
-
-            }
-
             &.canContract {
 
-                > .inner {
-
-                    height: 7.8em; overflow: hidden; border-color: $colorGrayLight2;
-
-                }
+                white-space: nowrap;
 
                 > .toggleSizeBtn { display: block; }
-
-                & /deep/ {
-
-                    .inlineInputBlockType1 { margin: 0 1.5em 5em 0; }
-
-                }
 
             }
 
             &.sizeExpanded {
 
-                > .inner {
-
-                    height: auto; overflow: visible;
-
-                }
-
-                & /deep/ {
-
-                    .inlineInputBlockType1 { margin: 0 1.5em 1em 0; }
-
-                }
+                white-space: normal;
 
             }
 
