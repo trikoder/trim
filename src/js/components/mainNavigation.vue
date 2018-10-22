@@ -68,7 +68,6 @@
                             v-if="item.url"
                             class="item"
                             v-bind:href="item.url"
-                            v-bind:_target="item.appLink ? false : 'blank'"
                             v-html="item.caption"
                             v-on:click.prevent="openUserItem(item)"
                         ></a>
@@ -269,8 +268,10 @@ export default Vue.extend({
 
             if (item.action) {
                 item.action(this);
-            } else if (item.appLink && item.url) {
+            } else if (item.appLink) {
                 this.$router.push(item.url);
+            } else {
+                window.open(item.url, '_blank');
             }
 
             this.close();

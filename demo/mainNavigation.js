@@ -63,9 +63,14 @@ export default {
     getUserNavigationItems: router => [
 
         {
+            caption: 'Documentation',
+            url: 'https://trikoder.github.io/trim/',
+            appLink: false
+        },
+
+        {
             caption: 'My settings',
             url: router.url('mySettings'),
-            appLink: true
         },
 
         {

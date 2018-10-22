@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.54.1
+* Change: updated user navigation items logic in navigation component
+
 ## 0.54.0
 * Addition: color form element for visual previews of color entered via text input
 * Addition: add validation checks to media and file attachment form elements (accepted files and file size)
