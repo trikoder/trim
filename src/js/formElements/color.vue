@@ -1,26 +1,20 @@
 <template>
-    <element-wrapper v-bind="elementWrapperProps">
-        <input
-            v-bind="inputAttributes"
-            v-bind:id="elementId"
-            v-bind:name="name"
-            v-bind:disabled="readOnly"
-            v-bind:value="value"
-            v-on:input="processInputEvent"
-        >
-        <div class="colorPreview" v-bind:style="{backgroundColor: value}"></div>
-    </element-wrapper>
+    <text-form-element v-bind="$props" v-on:input="$emit('input', $event)">
+        <template slot="inputWrapperEnd">
+            <div class="colorPreview" v-if="isValidColor" v-bind:style="{backgroundColor: value}"></div>
+          </template>
+    </text-form-element>
 </template>
 
 <script>
 import base from './base';
-import ElementWrapper from './elementWrapper';
+import TextFormElement from './text';
 
 export default {
 
     elementType: 'color',
 
-    components: {ElementWrapper},
+    components: {TextFormElement},
 
     mixins: [base],
 
@@ -30,9 +24,11 @@ export default {
 
     computed: {
 
-        inputAttributes() {
+        isValidColor() {
 
-            return this.normalizeAttributes({type: 'text'}, this.attributes.input);
+            const testEl = document.createElement('div');
+            testEl.style.color = this.value;
+            return Boolean(testEl.style.color);
 
         }
 
