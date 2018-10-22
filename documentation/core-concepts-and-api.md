@@ -465,8 +465,7 @@ app
     .setBootData({
         usesPushState: true,
         baseUrl: process.env.BASE_URL,
-        baseApiUrl: process.env.BASE_API_URL,
-        assetsBuildPath: process.env.ASSET_PATH
+        baseApiUrl: process.env.BASE_API_URL
     })
     .loadTranslations(translations, 'en')
     .registerServices(services)
@@ -476,7 +475,7 @@ app
 ```
 
 ### setBootData
-Used to inject boot or config data. Mandatory keys are "baseUrl" and "assetsBuildPath".
+Used to inject boot or config data. "baseUrl" and "baseApiUrl" are mandatory.
 ```js
 // sometimes your data will be generated from backend to global window variable
 app.setBootData(window.bootData)

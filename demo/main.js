@@ -14,8 +14,7 @@ app
         // usePatchForUpdate: true,
         googleMapsApiKey: 'AIzaSyBVqg9EqOqARXVIaKRSC7pJpVeHKDRoU2I',
         baseUrl: process.env.BASE_URL,
-        baseApiUrl: process.env.BASE_API_URL,
-        assetsBuildPath: process.env.ASSET_PATH
+        baseApiUrl: process.env.BASE_API_URL
     })
     .loadTranslations(translations, 'en')
     .registerServices(services)

@@ -122,7 +122,6 @@ module.exports = function() {
                 'process.env': {
                     BASE_URL: JSON.stringify(process.env.BASE_URL),
                     BASE_API_URL: JSON.stringify(process.env.BASE_API_URL),
-                    ASSET_PATH: JSON.stringify(isProduction ? '/trim/demo/' : '/'),
                     NODE_ENV: JSON.stringify(isProduction ? 'production' : 'development'),
                     PACKAGE_VERSION: JSON.stringify(currentVersion)
                 }
