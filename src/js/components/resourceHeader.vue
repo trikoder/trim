@@ -142,7 +142,7 @@ export default {
 
         > .title {
 
-            font-size: 1.4em; line-height: em(50,14); padding: 0 em(20,14); display: inline-block;
+            font-size: 1.45em; line-height: em(50,14.5); padding: 0 em(20,14.5); display: inline-block;
 
         }
 
@@ -160,7 +160,7 @@ export default {
 
         .popupType1 & > .title {
 
-            margin-left: em(30,14);
+            margin-left: em(30,14.5);
 
         }
 
