@@ -104,8 +104,6 @@ export default {
 
         processInputEvent(e) {
 
-            console.log(123, e.target.value);
-
             const stringValue = e.target.value;
             const optionValue = find(this.optionElements, option => option.stringValue === stringValue).value;
 
