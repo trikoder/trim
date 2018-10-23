@@ -22,7 +22,10 @@
                     </div>
                 </template>
             </resource-edit>
-            <div class="includedAdminControls" v-if="controls.length">
+            <div
+                v-if="controls.length"
+                v-bind:class="['includedAdminControls', {noRows: rows.length === 0}]"
+            >
                 <button type="button" class="includedAdminBtn nBtn icr"
                     v-for="(control, index) in controls"
                     v-bind:key="index"
@@ -238,7 +241,7 @@ export default {
 
         getModelEditHandler(model) {
 
-            return find(this.$refs.rows, editComponent => editComponent.resourceModel === model);
+            return find(this.getRowInstances(), editComponent => editComponent.resourceModel === model);
 
         },
 
@@ -289,23 +292,25 @@ export default {
 
         },
 
+        getRowInstances() {
+
+            return this.$refs.rows ? this.$refs.rows : [];
+
+        },
+
         updatePositionFields() {
 
             const positionField = this.getPositionFieldName();
 
-            if (this.$refs.rows) {
+            this.getRowInstances().forEach((editHandler, index) => {
 
-                this.$refs.rows.forEach((editHandler, index) => {
+                const position = elementIndex(editHandler.$el) + 1;
+                const row = find(this.rows, row => row.model === editHandler.resourceModel);
 
-                    const position = elementIndex(editHandler.$el) + 1;
-                    const row = find(this.rows, row => row.model === editHandler.resourceModel);
+                editHandler.formData[positionField] = position;
+                row.position = position;
 
-                    editHandler.formData[positionField] = position;
-                    row.position = position;
-
-                });
-
-            }
+            });
 
             return this;
 
@@ -340,7 +345,7 @@ export default {
 
             const fieldName = this.resourceModel.getType();
 
-            this.$refs.rows.forEach(row => {
+            this.getRowInstances().forEach(row => {
 
                 if (typeof row.formData[fieldName] !== 'undefined') {
                     row.formData[fieldName] = id;
@@ -353,7 +358,7 @@ export default {
         saveRelatedResources() {
 
             return Promise.all(
-                this.$refs.rows.map(row => row.save())
+                this.getRowInstances().map(row => row.save())
             ).then(() => this.modelsToValue());
 
         },
@@ -500,6 +505,8 @@ export default {
             margin-top: -0.1em; margin: -0.1em;
             border: 1px solid $colorGrayLight1; border-radius: 0 0 0.3em 0.3em;
             background-color: #f5f5f5;
+
+            &.noRows { border-radius: 0.3em; }
 
         }
 
