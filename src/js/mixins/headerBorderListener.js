@@ -31,8 +31,8 @@ export default {
             this.removeHeaderScrollListener();
 
             const useFixedBorder = this.currentContext === 'index'
-                ? !this.$refs.listHandler.showFilters
-                : this.$refs.editHandler.tabItems.length === 0
+                ? (this.$refs.listHandler ? !this.$refs.listHandler.showFilters : true)
+                : (this.$refs.editHandler ? this.$refs.editHandler.tabItems.length === 0 : true)
             ;
 
             if (useFixedBorder) {

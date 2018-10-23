@@ -4,10 +4,10 @@ import fakeServerConfig from './fakeServerConfig';
 var server = new FakeServer(fakeServerConfig);
 
 // mock media api endpoint
-server.pretender.post(process.env.BASE_API_URL + '/media/upload', () => {
+server.pretender.post(process.env.BASE_API_URL + 'media/upload', () => {
     return [200, {
         'content-type': 'application/javascript',
-        Location: process.env.BASE_API_URL + '/media/1'
+        Location: process.env.BASE_API_URL + 'media/1'
     }, ''];
 });
 
