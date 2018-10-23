@@ -1,6 +1,6 @@
 {
   "name": "@trikoder/trim",
-  "version": "0.54.3",
+  "version": "0.54.4",
   "description": "UI framework for building headless content management systems that connect to json:api powered backend.",
   "homepage": "https://trikoder.github.io/trim/",
   "repository": {
