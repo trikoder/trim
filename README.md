@@ -1,4 +1,5 @@
 # Trikoder Trim
+[![Build Status](https://travis-ci.org/trikoder/trim.svg?branch=master)](https://travis-ci.org/trikoder/trim)
 [![NPM Status](https://img.shields.io/npm/v/@trikoder/trim.svg)](https://www.npmjs.com/package/@trikoder/trim)
 
 Responsive user interface framework for building content management systems with simple authoring api.
