@@ -58,10 +58,11 @@
 import translate from '../library/translate';
 import {assign} from '../library/toolkit';
 import dismissListener from '../mixins/dismissListener';
+import screenSize from '../mixins/screenSize';
 
 export default {
 
-    mixins: [dismissListener],
+    mixins: [dismissListener, screenSize],
 
     props: {
         controls: {type: Array, default: () => []}
@@ -96,6 +97,18 @@ export default {
                     active: false,
                     accentedAdjecent: this.controls[index - 1].className.indexOf('accented') >= 0
                 }) : assign({}, control);
+
+            }).filter(control => {
+
+                const isRegularControl = !control.isDropdown;
+                const withNoIcon = Boolean(!control.className || control.className.indexOf('icon') === -1);
+                const isSmallScreen = this.screenIsSmall;
+
+                if (isSmallScreen && isRegularControl && withNoIcon) {
+                    return false;
+                } else {
+                    return true;
+                }
 
             });
 

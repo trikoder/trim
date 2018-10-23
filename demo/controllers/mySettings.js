@@ -8,12 +8,10 @@ export default {
 
         this.setPageTitle('My settings');
 
-        if (this.screenIsLarge) {
-            this.addControl({
-                caption: 'Documentation',
-                action: () => window.open('https://trikoder.github.io/trim/', '_blank')
-            });
-        }
+        this.addControl({
+            caption: 'Documentation',
+            action: () => window.open('https://trikoder.github.io/trim/', '_blank')
+        });
 
         this.addSaveControl();
 
