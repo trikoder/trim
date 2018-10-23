@@ -115,7 +115,9 @@ export default {
         edit.observe('formData.title', value => {
             edit.toggleField('leadTitle', value !== 'hideLeadTitle');
         }).listen('definitionsResolved', () => {
-            console.log('definitionsResolved');
+            if (process.env.NODE_ENV !== 'production') {
+                console.log('definitionsResolved');
+            }
         }).configureLayout({
             'mainTab.caption': 'Content and settings',
             'seoTab.caption': 'SEO and meta data'
