@@ -3,10 +3,20 @@
         <div class="mediaContainer">
             <template v-if="mediaModel">
                 <img v-bind:src="thumbImageUrl"/>
-                <button type="button" v-on:click="zoomImage" class="zoomInBtn nBtn icr iconMaximize"></button>
+                <button
+                    v-bind:key="'zoomInBtn'"
+                    type="button"
+                    v-on:click="zoomImage"
+                    class="zoomInBtn nBtn icr iconMaximize"
+                ></button>
             </template>
             <template v-else>
-                <button type="button" v-bind:class="{interactive: enableUpload}" class="nBtn placeholderImage icr iconPlus"></button>
+                <button
+                    v-bind:key="'uploadBtn'"
+                    type="button"
+                    class="fileUploadHandle nBtn placeholderImage icr iconPlus"
+                    v-bind:class="{interactive: enableUpload}"
+                ></button>
             </template>
         </div>
         <div class="textControls">
