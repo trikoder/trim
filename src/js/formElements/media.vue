@@ -4,7 +4,6 @@
             <template v-if="mediaModel">
                 <img v-bind:src="thumbImageUrl"/>
                 <button
-                    v-bind:key="'zoomInBtn'"
                     type="button"
                     v-on:click="zoomImage"
                     class="zoomInBtn nBtn icr iconMaximize"
@@ -12,9 +11,9 @@
             </template>
             <template v-else>
                 <button
-                    v-bind:key="'uploadBtn'"
                     type="button"
-                    class="fileUploadHandle nBtn placeholderImage icr iconPlus"
+                    class="nBtn placeholderImage icr iconPlus"
+                    v-on:click="openFileDialog"
                     v-bind:class="{interactive: enableUpload}"
                 ></button>
             </template>
@@ -25,7 +24,7 @@
             </span>
             <template v-if="enableUpload">
                 <span class="separator"> {{ separatorCaption }} </span>
-                <span class="fileUploadHandle"> {{ uploadImageCaption }} </span>
+                <span v-on:click="openFileDialog" class="fileUploadHandle"> {{ uploadImageCaption }} </span>
             </template>
         </div>
         <template v-if="mediaModel">
@@ -189,7 +188,6 @@ export default {
                 acceptedFiles: this.acceptedFiles,
                 maxFilesize: this.maxFileSize,
                 params: this.mediaType && {mediaType: this.mediaType},
-                clickable: '.fileUploadHandle',
                 maxFiles: 1,
                 paramName: this.uploadParameter,
                 headers: assign(
@@ -213,6 +211,14 @@ export default {
                 });
 
             });
+
+        },
+
+        openFileDialog() {
+
+            if (this.enableUpload && this.dropzone) {
+                this.dropzone.hiddenFileInput.click();
+            }
 
         },
 
