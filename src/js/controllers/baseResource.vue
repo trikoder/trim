@@ -421,7 +421,9 @@ const BaseResourceController = Vue.extend({
 
         openEdit(routeParams, queryParams) {
 
-            this.resetResourceControls();
+            if (this.currentContext !== 'edit') {
+                this.resetResourceControls();
+            }
 
             if (!this.isExternal) {
 
