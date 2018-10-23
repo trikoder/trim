@@ -73,13 +73,17 @@ export default {
     .linkListItemType1 {
 
         @include fontSansBold;
-        font-size: 1.3em; line-height: 1.4;
+        font-size: 1.4em; line-height: 1.4;
         color: $colorGrayDark1;
 
         @include hover {
 
             color: lighten($colorGrayDark1,15%);
 
+        }
+
+        @include mediaMinWidth($breakpointMedium) {
+            font-size: 1.3em;
         }
 
     }

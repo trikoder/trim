@@ -57,8 +57,12 @@ export default {
 
         @include fontSans;
 
-        font-size: 1.3em; white-space: nowrap;
+        font-size: 1.4em; white-space: nowrap;
         color: $colorGrayDark1;
+
+         @include mediaMinWidth($breakpointMedium) {
+            font-size: 1.3em;
+        }
 
     }
 

@@ -48,7 +48,7 @@ export default {
 
         @include fontSans;
 
-        font-size: 1.3em; line-height: 1.4;
+        font-size: 1.4em; line-height: 1.4;
         color: $colorGrayDark1;
 
         &.mod1 {
@@ -57,6 +57,10 @@ export default {
             letter-spacing: 0.02em; line-height: 1.4; color: $colorGrayDark2;
             text-transform: uppercase;
 
+        }
+
+        @include mediaMinWidth($breakpointMedium) {
+            font-size: 1.3em;
         }
 
     }

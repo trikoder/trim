@@ -461,8 +461,12 @@ export default Vue.extend({
             transition: transform 0.3s;
             transform: translate3d(0, 0, 0);
 
-            position: absolute; top: 0; bottom: 0; left: -22em; width: 22em;
+            position: fixed; top: 0; bottom: 0; left: -22em; width: 22em;
             background-color: $colorNavigation;
+
+            @include mediaMinWidth($breakpointMedium) {
+                position: absolute;
+            }
 
         }
 

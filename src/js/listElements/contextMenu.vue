@@ -202,7 +202,7 @@ export default {
 
         @include normalizeButton;
         @include fontSansCondensed;
-        font-size: 1.4em; display: block; width: 100%; padding: em(8,14) em(15,14); box-sizing: border-box;
+        font-size: 1.6em; padding: em(10,16) em(15,16); display: block; width: 100%; box-sizing: border-box;
         text-align: left; color: $colorGrayDark1;
 
         &:hover {
@@ -211,12 +211,16 @@ export default {
 
         }
 
+        @include mediaMinWidth($breakpointMedium) {
+            font-size: 1.4em; padding: em(8,14) em(15,14);
+        }
+
     }
 
     ul {
 
         display: none; position: absolute; right: 0em; top: 100%; margin-top: 0.7em;
-        z-index: 10; padding: 0.5em 0; min-width: 15em;
+        z-index: 10; padding: 0.5em 0; min-width: 16em;
         background: #fff; border: 1px solid $colorGrayLight2;
         box-shadow: 0 0.1em 0.3em rgba(#000, 0.06);
 
