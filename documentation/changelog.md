@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.54.6
+* Change: adjusted file upload UI logic on media form element
+
 ## 0.54.5
 * Change: media form element will open file upload dialog when thumbnail placeholder is clicked
 
