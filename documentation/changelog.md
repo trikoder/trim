@@ -1,12 +1,15 @@
 # Changelog
 
+## 0.54.5
+* Change: media form element will open file upload dialog when thumbnail placeholder is clicked
+
 ## 0.54.4
 * Change: adjust media form element value handling
 * Change: update demo media file upload codebase
 
 ## 0.54.3
 * Change: adjust color form element UI
-* Change: harden included admin row intance retrieval logic
+* Change: harden included admin row instance retrieval logic
 
 ## 0.54.2
 * Change: style adjustments for small screens
