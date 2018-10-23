@@ -11,6 +11,18 @@ describe('Text form element', () => {
 
     });
 
+    it('label "for" attribute points to input id', () => {
+
+        const wrapper = mount(Text, {propsData: {label: 'test'}});
+        const label = wrapper.find('label');
+        const input = wrapper.find('input');
+
+        assert.isDefined(label.attributes('for'));
+        assert.isDefined(input.attributes('id'));
+        assert.equal(label.attributes('for'), input.attributes('id'));
+
+    });
+
     it('emmits input event for v-model directives', () => {
 
         const wrapper = mount(Text);
@@ -23,11 +35,11 @@ describe('Text form element', () => {
 
     });
 
-    it('has "inputWrapperEnd" slot', () => {
+    it('renders "inputWrapperEnd" slot', () => {
 
         const wrapper = mount(Text, {
             slots: {
-                inputWrapperEnd: '<p class="testTarget">Test</p>'
+                inputWrapperEnd: '<p class="testTarget"></p>'
             }
         });
 
