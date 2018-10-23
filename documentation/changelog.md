@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.54.2
+* Change: style adjustments for small screens
+* Change: adjust resource controls rendering logic on resource controllers
+* Change: adjust file upload component / media controller styling
+* Change: refactor color form element and add simple color validation
+
 ## 0.54.1
 * Change: updated user navigation items logic in navigation component
 
