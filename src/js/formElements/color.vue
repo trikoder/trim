@@ -1,7 +1,10 @@
 <template>
     <text-form-element v-bind="$props" v-on:input="$emit('input', $event)">
         <template slot="inputWrapperEnd">
-            <div class="colorPreview" v-if="isValidColor" v-bind:style="{backgroundColor: value}"></div>
+            <div class="colorPreview" v-bind:style="{
+                backgroundColor: value,
+                opacity: isValidColor ? 1 : 0
+            }"></div>
           </template>
     </text-form-element>
 </template>
@@ -48,7 +51,7 @@ export default {
             width: 1em; height: 1em; margin-top: -0.5em;
             position: absolute; right: 1em; top: 50%;
             border-radius: 50%; box-shadow: 0 0.1em 0.3em rgba(#000, 0.15);
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, opacity 0.3s;
 
         }
 
