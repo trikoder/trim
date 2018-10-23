@@ -48,7 +48,7 @@ export default {
     mixins: [base],
 
     props: {
-        value: {},
+        value: {type: String, default: ''},
         acceptedFiles: {type: String},
         maxFileSize: {type: Number},
         mapImageTo: {type: String, default: 'thumbnailUrl'},
@@ -132,7 +132,7 @@ export default {
 
         syncMediaModel() {
 
-            if (this.value.length === 0) {
+            if (!this.value) {
                 this.mediaModel = undefined;
                 return Promise.resolve();
             }
