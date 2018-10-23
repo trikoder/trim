@@ -7,7 +7,7 @@ var server = new FakeServer(fakeServerConfig);
 server.pretender.post(process.env.BASE_API_URL + 'media/upload', () => {
     return [200, {
         'content-type': 'application/javascript',
-        Location: process.env.BASE_API_URL + 'media/1'
+        Location: 'media/1'
     }, ''];
 });
 

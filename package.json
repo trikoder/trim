@@ -16,7 +16,7 @@
     "dev:server": "NODE_ENV=development BASE_URL=/ BASE_API_URL=http://localhost:8083/ webpack-dev-server --open --hot",
     "dev:docs": "NODE_ENV=development vuepress dev documentation",
     "build": "npm run build:docs && npm run build:demo",
-    "build:demo": "NODE_ENV=production CLIENT_API_ENABLED=true BASE_URL=/trim/ BASE_API_URL=/trim/api/ webpack --progress",
+    "build:demo": "NODE_ENV=production CLIENT_API_ENABLED=true BASE_URL=/trim/demo/ BASE_API_URL=/trim/demo/api/ webpack --progress",
     "build:docs": "vuepress build documentation",
     "api:server": "API_PORT=8083 BASE_API_URL=http://localhost:8083/ node ./server/node.js",
     "preview:pages": "node ./server/previewPages.js"
