@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.54.3
+* Change: adjust color form element UI
+* Change: harden included admin row intance retrieval logic
+
 ## 0.54.2
 * Change: style adjustments for small screens
 * Change: adjust resource controls rendering logic on resource controllers
