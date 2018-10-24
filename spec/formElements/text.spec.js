@@ -1,19 +1,19 @@
 import {assert} from 'chai';
 import {mount} from '@vue/test-utils';
-import Text from 'cmf/js/formElements/text';
+import FormElement from 'cmf/js/formElements/text';
 
 describe('Text form element', () => {
 
     it('renders input tag', () => {
 
-        const wrapper = mount(Text);
+        const wrapper = mount(FormElement);
         assert.isTrue(wrapper.contains('input'));
 
     });
 
     it('label "for" attribute points to input id', () => {
 
-        const wrapper = mount(Text, {propsData: {label: 'test'}});
+        const wrapper = mount(FormElement, {propsData: {label: 'test'}});
         const label = wrapper.find('label');
         const input = wrapper.find('input');
 
@@ -23,21 +23,29 @@ describe('Text form element', () => {
 
     });
 
-    it('emmits input event for v-model directives', () => {
+    it('emits input event for v-model directives', () => {
 
-        const wrapper = mount(Text);
+        const wrapper = mount(FormElement);
         const input = wrapper.find('input');
 
         input.setValue('value1');
-        input.setValue('value2');
+        assert.deepEqual(wrapper.emitted().input, [['value1']]);
 
-        assert.deepEqual(wrapper.emitted().input, [['value1'], ['value2']]);
+    });
+
+    it('binds value prop to input element', () => {
+
+        const wrapper = mount(FormElement);
+        const input = wrapper.find('input');
+
+        wrapper.setProps({value: 'test'});
+        assert.equal(input.element.value, 'test');
 
     });
 
     it('renders "inputWrapperEnd" slot', () => {
 
-        const wrapper = mount(Text, {
+        const wrapper = mount(FormElement, {
             slots: {
                 inputWrapperEnd: '<p class="testTarget"></p>'
             }
