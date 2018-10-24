@@ -18,10 +18,6 @@ export default {
 
     computed: {
 
-        elementId() {
-            return this.id || ('formElement-' + clientId());
-        },
-
         wrapperAttributes() {
 
             const attributes = this.normalizeAttributes(this.attributes.wrapper);
@@ -61,6 +57,10 @@ export default {
                 return obj;
             }, {});
 
+        },
+
+        elementId() {
+            return this.id || this.inputAttributes.id || ('formElement-' + clientId());
         }
 
     },
