@@ -277,7 +277,8 @@ module.exports = {
                             published: random.boolean(),
                             publishDate: index % 10 === 0 ? null : new Date().toISOString(),
                             pageColor: '#e03431',
-                            bodyText: ''
+                            bodyText: '',
+                            rank: random.int(1,10)
                         },
                         relationships: {
                             author: {data: {id: random.id(1, 5), type: 'user'}},
