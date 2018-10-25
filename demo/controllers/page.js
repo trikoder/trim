@@ -200,6 +200,12 @@ export default {
             layoutReference: 'sideRegion'
         });
 
+        edit.addField('NumberFormElement', {
+            name: 'rank',
+            label: 'Page rank',
+            layoutReference: 'sideRegion'
+        });
+
     }
 
 };
