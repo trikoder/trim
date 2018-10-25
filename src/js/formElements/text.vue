@@ -2,9 +2,6 @@
     <element-wrapper v-bind="elementWrapperProps">
         <input
             v-bind="inputAttributes"
-            v-bind:id="elementId"
-            v-bind:name="name"
-            v-bind:disabled="readOnly"
             v-bind:type="inputAttributes.type || 'text'"
             v-bind:value="value"
             v-on:input="processInputEvent"

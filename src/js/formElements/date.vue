@@ -4,7 +4,7 @@
             v-bind="inputWrapperAttributes"
             v-bind:format="format"
             v-bind:displayFormat="displayFormat"
-            v-bind:inputAttributes="inputAttributes"
+            v-bind:inputAttributes="dateInputAttributes"
             v-bind:isDateDisabled="isDateDisabled"
             v-bind:weekdays="weekdays"
             v-bind:months="months"
@@ -54,10 +54,10 @@ export default {
 
     computed: {
 
-        inputAttributes() {
+        dateInputAttributes() {
 
             return this.normalizeAttributes(
-                this.attributes.input, {id: this.elementId, readonly: true}
+                this.inputAttributes, {readonly: true}
             );
 
         },

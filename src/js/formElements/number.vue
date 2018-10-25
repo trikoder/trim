@@ -2,9 +2,7 @@
     <element-wrapper v-bind="elementWrapperProps">
         <input
             v-bind="inputAttributes"
-            v-bind:id="elementId"
-            v-bind:name="name"
-            v-bind:disabled="readOnly"
+            v-bind:type="inputAttributes.type || 'number'"
             v-bind:value="value"
             v-on:input="processInputEvent"
         >
@@ -24,32 +22,22 @@ export default {
     mixins: [base],
 
     props: {
-        value: {type: [Number, Object], default: null}
-    },
-
-    getInitialValue(options = {}) {
-
-        const value = parseFloat(options.value);
-
-        return value || (value === 0 ? value : null);
-
-    },
-
-    computed: {
-
-        inputAttributes() {
-
-            return this.normalizeAttributes({type: 'number'}, this.attributes.input);
-
+        value: {
+            validator: value => typeof value === 'number' || value === null,
+            default: null
         }
-
     },
 
     methods: {
 
         processInputEvent(e) {
 
-            this.$emit('input', parseFloat(e.target.value));
+            const inputValue = parseFloat(e.target.value);
+
+            this.$emit('input', typeof inputValue === 'number' && !isNaN(inputValue)
+                ? inputValue
+                : null
+            );
 
         }
 

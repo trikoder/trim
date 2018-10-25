@@ -39,7 +39,22 @@ export default {
         },
 
         inputAttributes() {
-            return this.normalizeAttributes(this.attributes.input);
+
+            const attributes = this.normalizeAttributes(this.attributes.input);
+
+            if (this.id || !attributes.id) {
+                attributes.id = this.id || ('formElement-' + clientId());
+            }
+
+            if (this.name) {
+                attributes.name = this.name;
+            }
+
+            if (this.readOnly) {
+                attributes.readonly = 'readonly';
+            }
+
+            return attributes;
         },
 
         elementWrapperProps() {
@@ -49,18 +64,15 @@ export default {
                 'labelAttributes',
                 'inputWrapperAttributes',
                 'label',
-                'elementId',
                 'errorMessage',
                 'visible'
             ].reduce((obj, key) => {
                 obj[key] = this[key];
                 return obj;
-            }, {});
+            }, {
+                elementId: this.inputAttributes.id
+            });
 
-        },
-
-        elementId() {
-            return this.id || this.inputAttributes.id || ('formElement-' + clientId());
         }
 
     },

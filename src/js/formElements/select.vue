@@ -4,11 +4,8 @@
         <select
             v-if="optionElements"
             v-bind="inputAttributes"
-            v-bind:id="elementId"
-            v-bind:disabled="readOnly"
-            v-bind:name="name"
-            v-bind:value="selectValue"
-            v-on:input="processInputEvent"
+            v-bind:value="stringValue"
+            v-on:change="processInputEvent"
         >
             <option
                 v-for="(option, index) in optionElements"
@@ -36,16 +33,14 @@ export default {
     mixins: [base],
 
     props: {
-        value: [String, Boolean, Number],
+        value: {type: [String, Boolean, Number], default: ''},
         selectOptions: {type: [Array, Object], required: true},
         buttonTextPrefix: {type: String, default: ''}
     },
 
-    data() {
-        return {
-            optionElements: undefined
-        };
-    },
+    data: () => ({
+        optionElements: undefined
+    }),
 
     getInitialValue(options = {selectOptions: {}}) {
 
@@ -53,7 +48,7 @@ export default {
             return options.value;
         } else if (Array.isArray(options.selectOptions)) {
             return options.selectOptions[0].value;
-        } else if (options.selectOptions.prepend) {
+        } else if (options.selectOptions && options.selectOptions.prepend) {
             return ensureArray(options.selectOptions.prepend)[0].value;
         } else {
             return '';
@@ -63,7 +58,7 @@ export default {
 
     computed: {
 
-        selectValue() {
+        stringValue() {
 
             return this.value.toString();
 

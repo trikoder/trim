@@ -1,11 +1,7 @@
 
 <template>
     <element-wrapper v-bind="elementWrapperProps">
-        <div
-             ref="content"
-             v-once
-             v-bind="inputAttributes"
-         ></div>
+        <div ref="content" v-once v-bind="inputAttributes"></div>
     </element-wrapper>
 </template>
 

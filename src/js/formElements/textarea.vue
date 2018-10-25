@@ -3,9 +3,6 @@
         <pre v-bind="mirrorAttributes"><span ref="mirror">{{ value }}</span><br></pre>
         <textarea
             v-bind="inputAttributes"
-            v-bind:id="elementId"
-            v-bind:name="name"
-            v-bind:disabled="readOnly"
             v-bind:value="value"
             v-on:input="processInputEvent"
         ></textarea>
