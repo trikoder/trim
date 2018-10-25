@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.54.7
+* Change: computed properties on form elements refactored to simplify rendering logic
+* Change: refactored number form element
+
 ## 0.54.6
 * Change: adjusted file upload UI logic on media form element
 
