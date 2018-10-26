@@ -17,3 +17,5 @@ if (process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line no-console
     server.on('response', response => console.log(response));
 }
+
+export default server;

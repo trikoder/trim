@@ -1,4 +1,5 @@
 import auth from './auth';
+import server from 'apiServer';
 
 export default {
 
@@ -71,6 +72,14 @@ export default {
         {
             caption: 'My settings',
             url: router.url('mySettings'),
+        },
+
+        {
+            caption: 'Reset demo data',
+            action: () => {
+                server.resetData();
+                window.location.reload();
+            }
         },
 
         {

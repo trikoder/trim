@@ -1,7 +1,7 @@
 var FakeServer = require('fake-json-api-server/src/nodeServer.js');
 var fakeServerConfig = require('./fakeServerConfig');
 
-new FakeServer({
+module.exports = new FakeServer({
     port: process.env.API_PORT,
     resources: fakeServerConfig.resources,
     beforeServerStart: function(app) {
