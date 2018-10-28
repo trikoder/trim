@@ -276,7 +276,6 @@ export default {
                 font-size: 2em; padding: 0 em(20,20) 0 em(60,20);
                 position: absolute; right: 0; top: 0; height: em(60,20); width: inherit;
                 color: #adadad; letter-spacing: 0.03em; background-color: #fff;
-                background: linear-gradient(to right, transparent, #fff 30%, #fff 100%);
 
                 @include hover {
                     color: $colorGrayDark1;
@@ -293,6 +292,10 @@ export default {
             &.canContract {
 
                 white-space: nowrap;
+
+                .submitBtn {
+                    background: linear-gradient(to right, rgba(#fff, 0), #fff 30%, #fff 100%);
+                }
 
                 > .toggleSizeBtn { display: block; }
 
