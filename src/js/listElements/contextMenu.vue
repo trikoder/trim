@@ -36,7 +36,7 @@
 
 <script>
 
-import dismissListener from '../mixins/dismissListener';
+import vueDismiss from 'vue-dismiss';
 import translate from '../library/translate';
 import {assign, result} from '../library/toolkit';
 import {confirm} from '../components/dialogModal';
@@ -45,7 +45,7 @@ export default {
 
     elementType: 'contextMenu',
 
-    mixins: [dismissListener],
+    mixins: [vueDismiss],
 
     props: {
         resourceModel: {type: Object, required: true},

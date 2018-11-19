@@ -57,12 +57,12 @@
 
 import translate from '../library/translate';
 import {assign} from '../library/toolkit';
-import dismissListener from '../mixins/dismissListener';
+import vueDismiss from 'vue-dismiss';
 import screenSize from '../mixins/screenSize';
 
 export default {
 
-    mixins: [dismissListener, screenSize],
+    mixins: [vueDismiss, screenSize],
 
     props: {
         controls: {type: Array, default: () => []}

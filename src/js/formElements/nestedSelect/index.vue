@@ -59,7 +59,7 @@ import translate from '../../library/translate';
 import ElementWrapper from '../elementWrapper';
 import TreeNode from './treeNode';
 import {Model, Collection} from '../../library/resource';
-import dismissListener from '../../mixins/dismissListener';
+import vueDismiss from 'vue-dismiss';
 
 export default {
 
@@ -67,7 +67,7 @@ export default {
 
     components: {ElementWrapper, TreeNode},
 
-    mixins: [base, dismissListener],
+    mixins: [base, vueDismiss],
 
     props: {
         value: {type: String, default: ''},

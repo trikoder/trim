@@ -47,14 +47,14 @@
 
 <script>
 import {find, result, assign} from '../library/toolkit';
-import dismissListener from '../mixins/dismissListener';
+import vueDismiss from 'vue-dismiss';
 import translate from '../library/translate';
 import {confirm} from '../components/dialogModal';
 import Loader from '../library/loader';
 
 export default {
 
-    mixins: [dismissListener],
+    mixins: [vueDismiss],
 
     props: {
         selectedModels: Array,

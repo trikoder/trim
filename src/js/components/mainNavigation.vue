@@ -91,7 +91,7 @@
 <script>
 import Vue from 'vue';
 import {pickTo} from '../library/toolkit';
-import dismissListener from '../mixins/dismissListener';
+import vueDismiss from 'vue-dismiss';
 import serviceContainer from '../library/serviceContainer';
 import GlobalEvents from 'vue-global-events';
 import Vuebar from 'vuebar';
@@ -101,7 +101,7 @@ Vue.use(Vuebar);
 
 export default Vue.extend({
 
-    mixins: [dismissListener],
+    mixins: [vueDismiss],
 
     components: {GlobalEvents},
 

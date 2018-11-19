@@ -32,12 +32,12 @@
 <script>
 
 import Vue from 'vue';
-import dismissListener from '../mixins/dismissListener';
+import vueDismiss from 'vue-dismiss';
 import Fuse from 'fuse.js';
 
 export default Vue.extend({
 
-    mixins: [dismissListener],
+    mixins: [vueDismiss],
 
     props: {
         dataset: {type: Array, required: true}
