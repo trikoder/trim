@@ -167,6 +167,10 @@ export default {
 
     .inputBlockType1, .inlineInputBlockType1 {
 
+        .multiselect--active {
+            z-index: 15;
+        }
+
         .multiselect__tags {
 
             padding-left: 0; padding-right: 1em;
