@@ -1,6 +1,6 @@
 <template>
     <element-wrapper v-bind:renderInputWrapper="false" v-bind="elementWrapperProps">
-        <calendar
+        <date-pick
             v-bind="inputWrapperAttributes"
             v-bind:format="format"
             v-bind:displayFormat="displayFormat"
@@ -18,7 +18,7 @@
             v-bind:setTimeCaption="setTimeCaption"
             v-bind:value="value"
             v-on:input="processInputEvent"
-        ></calendar>
+        ></date-pick>
     </element-wrapper>
 </template>
 
@@ -27,13 +27,13 @@
 import base from './base';
 import translate from '../library/translate';
 import ElementWrapper from './elementWrapper';
-import Calendar from '../components/calendar';
+import DatePick from 'vue-date-pick';
 
 export default {
 
     elementType: 'date',
 
-    components: {ElementWrapper, Calendar},
+    components: {ElementWrapper, DatePick},
 
     mixins: [base],
 
@@ -96,9 +96,11 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 
-    .scComponent /deep/ {
+    @import '~vue-date-pick/src/vueDatePick.scss';
+
+    .vdpComponent /deep/ {
 
         .inputType1 {
 
@@ -149,38 +151,6 @@ export default {
                 letter-spacing: -0.01em;
                 @include fontSansBold;
             }
-
-        }
-
-        .scArrowPrev:after {
-
-            border-right-color: $colorMain1;
-
-        }
-
-        .scArrowNext:after {
-
-            border-left-color: $colorMain1;
-
-        }
-
-        .scCell.selectable:hover .scCellContent,
-        .scCell.selected .scCellContent {
-
-            background: $colorMain1;
-
-        }
-
-        .scCell.today {
-
-            color: $colorMain1;
-
-        }
-
-        .scTimeUnit > input:hover,
-        .scTimeUnit > input:focus {
-
-            border-bottom-color: $colorMain1;
 
         }
 

@@ -92,11 +92,11 @@ export default {
 
         }
 
-        .scComponent {
+        .vdpComponent {
 
             display: block;
 
-            .scClearInput {
+            .vdpClearInput {
 
                 top: -1.5em; bottom: 1.5em; right: -1.2em;
 
