@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.54.8
+* Change: fix #4 tick icon in checkbox form element
+* Change: use date time picker and dismiss directive via external packages
+
 ## 0.54.7
 * Change: computed properties on form elements refactored to simplify rendering logic
 * Change: refactored number form element
