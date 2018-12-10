@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.54.9
+* Change: update project dependencies
+
 ## 0.54.8
 * Change: fix #4 tick icon in checkbox form element
 * Change: use date time picker and dismiss directive via external packages
