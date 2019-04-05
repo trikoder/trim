@@ -457,8 +457,10 @@ export default Component;
 
             > .openBtn {
 
-                font-size: 1.4em; display: inline-block; padding: 0 em(30,14) 0 em(10,14); margin-left: em(-2,14);
+                font-size: 1.4em; text-align: left;
+                display: inline-block; padding: 0 em(30,14) 0 em(10,14); margin-left: em(-2,14);
                 color: $colorGrayDark1;
+                width: 100%; height: 100%;
 
                 &:before {
 
