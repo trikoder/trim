@@ -50,6 +50,8 @@ export default {
                     ? undefined
                     : this.controller.params
                 ;
+            } else {
+                return undefined;
             }
 
         },

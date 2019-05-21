@@ -1,10 +1,13 @@
-import {format as formatDate} from 'fecha';
+import fecha from 'fecha';
 
 export default function(dateInput, format) {
 
     try {
 
-        return dateInput ? formatDate(dateInput instanceof Date ? dateInput : new Date(dateInput), format) : '';
+        return dateInput
+            ? fecha.format(dateInput instanceof Date ? dateInput : new Date(dateInput), format)
+            : ''
+        ;
 
     } catch (error) {
 

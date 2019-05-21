@@ -11,7 +11,7 @@ import {assign, elementFromString} from '../library/toolkit';
 import {loadApi} from '../library/googleMaps';
 import translate from '../library/translate';
 
-export default{
+export default {
 
     elementType: 'map',
 
