@@ -9,8 +9,8 @@
   <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/trim/apple-touch-icon-152x152.png">
   <link rel="icon" sizes="196x196" href="/trim/favicon-196x196.png">
     
-    <link rel="preload" href="/trim/assets/css/0.styles.86923e69.css" as="style"><link rel="preload" href="/trim/assets/js/app.acbbc981.js" as="script"><link rel="preload" href="/trim/assets/js/7.f9187128.js" as="script"><link rel="prefetch" href="/trim/assets/js/10.46684615.js"><link rel="prefetch" href="/trim/assets/js/11.2674a5b8.js"><link rel="prefetch" href="/trim/assets/js/12.407b1b9c.js"><link rel="prefetch" href="/trim/assets/js/13.897a14a8.js"><link rel="prefetch" href="/trim/assets/js/2.5252b593.js"><link rel="prefetch" href="/trim/assets/js/3.1f55b420.js"><link rel="prefetch" href="/trim/assets/js/4.52a00fa7.js"><link rel="prefetch" href="/trim/assets/js/5.821f158c.js"><link rel="prefetch" href="/trim/assets/js/6.19f625a3.js"><link rel="prefetch" href="/trim/assets/js/8.ce72e183.js"><link rel="prefetch" href="/trim/assets/js/9.b90cf0c2.js">
-    <link rel="stylesheet" href="/trim/assets/css/0.styles.86923e69.css">
+    <link rel="preload" href="/trim/assets/css/0.styles.7e74050b.css" as="style"><link rel="preload" href="/trim/assets/js/app.83aa2a69.js" as="script"><link rel="preload" href="/trim/assets/js/7.9e3b96e5.js" as="script"><link rel="prefetch" href="/trim/assets/js/10.969a5ca2.js"><link rel="prefetch" href="/trim/assets/js/11.fd0948c1.js"><link rel="prefetch" href="/trim/assets/js/12.151be78f.js"><link rel="prefetch" href="/trim/assets/js/13.9cbdab3a.js"><link rel="prefetch" href="/trim/assets/js/2.24cf6821.js"><link rel="prefetch" href="/trim/assets/js/3.ea9d6b00.js"><link rel="prefetch" href="/trim/assets/js/4.ff68295b.js"><link rel="prefetch" href="/trim/assets/js/5.bf6c69a1.js"><link rel="prefetch" href="/trim/assets/js/6.c763f9e7.js"><link rel="prefetch" href="/trim/assets/js/8.2ef66dbc.js"><link rel="prefetch" href="/trim/assets/js/9.fa44856b.js">
+    <link rel="stylesheet" href="/trim/assets/css/0.styles.7e74050b.css">
   </head>
   <body>
     <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/trim/" class="home-link router-link-active"><!----> <span class="site-name">Trikoder Trim</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/trim/about.html" class="nav-link">Documentation</a></div><div class="nav-item"><a href="https://trikoder.github.io/trim/demo/index.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
@@ -27,11 +27,11 @@ Example <a href="https://trikoder.github.io/trim/demo/index.html#page" target="_
 
     resourceName<span class="token punctuation">:</span> <span class="token string">'tag'</span><span class="token punctuation">,</span>
 
-    <span class="token function">setupList</span><span class="token punctuation">(</span><span class="token punctuation">{</span>list<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">setupList</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>list<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token comment">// how is resource listed?</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-    <span class="token function">setupEdit</span><span class="token punctuation">(</span><span class="token punctuation">{</span>edit<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">setupEdit</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>edit<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token comment">// how is resource edited?</span>
     <span class="token punctuation">}</span>
 
@@ -72,9 +72,9 @@ Code example:</p> <div class="language-js extra-class"><pre class="language-js">
 
     extendsController<span class="token punctuation">:</span> <span class="token string">'BaseResourceEdit'</span><span class="token punctuation">,</span>
 
-    getModel<span class="token punctuation">:</span> Model <span class="token operator">=&gt;</span> Model<span class="token punctuation">.</span><span class="token function">getFromApi</span><span class="token punctuation">(</span><span class="token punctuation">{</span>type<span class="token punctuation">:</span> <span class="token string">'user'</span><span class="token punctuation">,</span> id<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token function-variable function">getModel</span><span class="token punctuation">:</span> <span class="token parameter">Model</span> <span class="token operator">=&gt;</span> Model<span class="token punctuation">.</span><span class="token function">getFromApi</span><span class="token punctuation">(</span><span class="token punctuation">{</span>type<span class="token punctuation">:</span> <span class="token string">'user'</span><span class="token punctuation">,</span> id<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
 
-    <span class="token function">setupEdit</span><span class="token punctuation">(</span><span class="token punctuation">{</span>edit<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">setupEdit</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>edit<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
         <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setPageTitle</span><span class="token punctuation">(</span><span class="token string">'My settings'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addSaveControl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -117,11 +117,11 @@ Via resourceConfig property we define parent and children relation mappings.</p>
     mapParentTo<span class="token punctuation">:</span> <span class="token string">'parentCategory'</span><span class="token punctuation">,</span>
     mapChildrenTo<span class="token punctuation">:</span> <span class="token string">'childCategories'</span><span class="token punctuation">,</span>
 
-    <span class="token function">setupList</span><span class="token punctuation">(</span><span class="token punctuation">{</span>list<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">setupList</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>list<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token comment">// how is resource listed?</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-    <span class="token function">setupEdit</span><span class="token punctuation">(</span><span class="token punctuation">{</span>edit<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">setupEdit</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>edit<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token comment">// how is resource edited?</span>
     <span class="token punctuation">}</span>
 
@@ -129,8 +129,8 @@ Via resourceConfig property we define parent and children relation mappings.</p>
 </code></pre></div><p>Resource config has following defaults:</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">{</span>
     mapParentTo<span class="token punctuation">:</span> <span class="token string">'parent'</span><span class="token punctuation">,</span>
     mapChildrenTo<span class="token punctuation">:</span> <span class="token string">'children'</span><span class="token punctuation">,</span>
-    mapLevelTo<span class="token punctuation">:</span> undefined<span class="token punctuation">,</span>
-    mapIsLeafTo<span class="token punctuation">:</span> undefined<span class="token punctuation">,</span>
+    mapLevelTo<span class="token punctuation">:</span> <span class="token keyword">undefined</span><span class="token punctuation">,</span>
+    mapIsLeafTo<span class="token punctuation">:</span> <span class="token keyword">undefined</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">,</span>
 </code></pre></div><p>Properties mapChildrenTo, mapLevelTo, mapIsLeafTo can be defined as strings or functions if needed.</p> <h2 id="media-resource-controller"><a href="#media-resource-controller" aria-hidden="true" class="header-anchor">#</a> Media resource controller</h2> <p>Used for browse, create (upload) and edit media resources sush as images or files.
 Example <a href="https://trikoder.github.io/trim/demo/index.html#media" target="_blank" rel="noopener noreferrer">demo controller<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> and <a href="https://github.com/trikoder/trim/tree/master/demo/controllers/media.js" target="_blank" rel="noopener noreferrer">codebase<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>.</p> <p>Lets examine typical media api response:</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">{</span>
@@ -157,7 +157,7 @@ For each media type a method for edit handling is defined (setup[MediaType]Edit)
         hasUploadUi<span class="token punctuation">:</span> <span class="token boolean">false</span>
     <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
 
-    <span class="token function">setupList</span><span class="token punctuation">(</span><span class="token punctuation">{</span>list<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">setupList</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>list<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
         <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">addCreateImageControl</span><span class="token punctuation">(</span><span class="token string">'Create new image'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addDropdownControl</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">{</span>
             caption<span class="token punctuation">:</span> <span class="token string">'Create video embed'</span><span class="token punctuation">,</span>
@@ -171,7 +171,7 @@ For each media type a method for edit handling is defined (setup[MediaType]Edit)
 
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-    <span class="token function">setupImageEdit</span><span class="token punctuation">(</span><span class="token punctuation">{</span>edit<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">setupImageEdit</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>edit<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
         <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">addToIndexControl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addSaveControl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -184,13 +184,13 @@ For each media type a method for edit handling is defined (setup[MediaType]Edit)
 
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-    <span class="token function">setupVideoEmbedEdit</span><span class="token punctuation">(</span><span class="token punctuation">{</span>edit<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">setupVideoEmbedEdit</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>edit<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
         <span class="token operator">...</span>
 
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-    <span class="token function">setupFileEdit</span><span class="token punctuation">(</span><span class="token punctuation">{</span>edit<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">setupFileEdit</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>edit<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
         <span class="token operator">...</span>
 
@@ -208,6 +208,6 @@ For each media type a method for edit handling is defined (setup[MediaType]Edit)
         </a>
         →
       </span></p></div> </div> <!----></div></div>
-    <script src="/trim/assets/js/7.f9187128.js" defer></script><script src="/trim/assets/js/app.acbbc981.js" defer></script>
+    <script src="/trim/assets/js/app.83aa2a69.js" defer></script><script src="/trim/assets/js/7.9e3b96e5.js" defer></script>
   </body>
 </html>
