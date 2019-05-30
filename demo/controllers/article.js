@@ -1,3 +1,5 @@
+import ImageHtmlComponent from 'trim/formElements/htmlWithComponents/image';
+
 export default {
 
     resourceName: 'article',
@@ -180,9 +182,12 @@ export default {
                 relation: {resourceName: 'media'},
                 layoutReference: 'mainTab.mainRegion'
             }],
-            ['HtmlFormElement', {
+            ['HtmlWithComponentsFormElement', {
                 label: 'Content',
-                name: 'contentRaw',
+                name: 'contentComponents',
+                components: [
+                    ImageHtmlComponent
+                ],
                 layoutReference: 'mainTab.mainRegion'
             }],
             ['ExternalAdminFormElement', {

@@ -5,7 +5,7 @@ export function load() {
 
     window.CKEDITOR_BASEPATH = bootData(
         'ckEditorPath',
-        'https://cdn.ckeditor.com/4.10.0/standard-all/'
+        'https://cdn.ckeditor.com/4.11.4/standard-all/'
     );
 
     return import('ckeditor').then(() => {
@@ -17,8 +17,6 @@ export function load() {
         ckeditor.config.defaultLanguage = locale;
         ckeditor.config.language = locale;
         ckeditor.config.extraPlugins = 'sourcedialog';
-
-        // ckeditor.config.extraPlugins = 'sourcedialog,specialchar,pastetext';
 
         ckeditor.customStyles = {
             richCombo: `

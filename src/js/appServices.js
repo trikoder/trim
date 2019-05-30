@@ -54,6 +54,7 @@ export default {
     DateTimeFormElement: () => import('./formElements/dateTime'),
     HiddenFormElement: () => import('./formElements/hidden'),
     HtmlFormElement: () => import('./formElements/html'),
+    HtmlWithComponentsFormElement: () => import('./formElements/htmlWithComponents'),
     MapFormElement: () => import('./formElements/map'),
     MultipleSelectFormElement: () => import('./formElements/multipleSelect'),
     FileAttachmentFormElement: () => import('./formElements/fileAttachment'),
