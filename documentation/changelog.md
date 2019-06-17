@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.55.1
+* Change: update project dependencies to latest stable versions
+
 ## 0.55.0
 * Change: update project dependencies to latest stable versions
 
