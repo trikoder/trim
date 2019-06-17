@@ -287,7 +287,7 @@ export default {
 ```
 If you need to access service container manually somewhere in your code:
 ```js
-import serviceContainer from 'cmf/js/library/serviceContainer';
+import serviceContainer from 'trim/library/serviceContainer';
 
 serviceContainer.register('myService', () => {foo: 'bar'});
 
@@ -454,8 +454,8 @@ It is used to connect services and routes, load translations, inject boot (confi
 
 ### Code example
 ```js
-import app from 'cmf/js/app';
-import translations from 'cmf/js/lang/english';
+import app from 'trim/app';
+import translations from 'trim/lang/english';
 import routes from './routes';
 import services from './services';
 
@@ -482,7 +482,7 @@ app.setBootData(window.bootData)
 ```
 Boot data can later be retrieved like so:
 ```js
-import bootData from 'cmf/js/library/bootData';
+import bootData from 'trim/library/bootData';
 bootData('baseUrl'); // outputs boot data baseUrl value
 ```
 
@@ -526,8 +526,8 @@ Examine [base auth api](https://github.com/trikoder/trim/tree/master/src/js/libr
 Simple driver implementation is shown bellow:
 
 ```js
-import api from 'cmf/js/library/api';
-import auth from 'cmf/js/library/auth';
+import api from 'trim/library/api';
+import auth from 'trim/library/auth';
 
 export default auth.extend({
 

@@ -1,6 +1,6 @@
 import {assert} from 'chai';
 import {mount} from '@vue/test-utils';
-import FormElement from 'cmf/js/formElements/color';
+import FormElement from 'trim/formElements/color';
 
 describe('Color form element', () => {
 

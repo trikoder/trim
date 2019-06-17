@@ -7,8 +7,8 @@
 
 <script>
 import base from './base';
-import ElementWrapper from 'cmf/js/formElements/elementWrapper';
-import {assign} from 'cmf/js/library/toolkit';
+import ElementWrapper from './elementWrapper';
+import {assign} from '../library/toolkit';
 import CodeMirror from 'codemirror';
 import 'codemirror/mode/htmlmixed/htmlmixed.js';
 import 'codemirror/lib/codemirror.css';

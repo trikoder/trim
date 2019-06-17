@@ -1,6 +1,6 @@
 import FakeServer from 'fake-json-api-server';
 import fakeServerConfig from '../server/fakeServerConfig';
-import bootData from 'cmf/js/library/bootData';
+import bootData from 'trim/library/bootData';
 
 const apiUrl = window.location.href + '/api/';
 let currentserver;

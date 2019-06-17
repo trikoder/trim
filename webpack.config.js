@@ -92,7 +92,7 @@ module.exports = {
 
         alias: {
             'vue$': 'vue/dist/vue.esm.js',
-            'cmf': path.join(__dirname, 'src'),
+            'trim': path.join(__dirname, 'src/js'),
             'apiServer': path.join(__dirname,  process.env.CLIENT_API_ENABLED
                 ? 'server/client.js'
                 : 'server/nodePlaceholder.js'

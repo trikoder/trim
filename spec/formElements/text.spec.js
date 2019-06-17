@@ -1,6 +1,6 @@
 import {assert} from 'chai';
 import {mount} from '@vue/test-utils';
-import FormElement from 'cmf/js/formElements/text';
+import FormElement from 'trim/formElements/text';
 
 describe('Text form element', () => {
 

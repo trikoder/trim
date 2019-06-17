@@ -1,4 +1,4 @@
-import {PagePreview} from 'cmf/js/components/pagePreview';
+import {PagePreview} from 'trim/components/pagePreview';
 
 export default {
 

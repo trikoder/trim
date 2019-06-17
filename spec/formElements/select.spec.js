@@ -1,6 +1,6 @@
 import {assert} from 'chai';
 import {mount} from '@vue/test-utils';
-import FormElement from 'cmf/js/formElements/select';
+import FormElement from 'trim/formElements/select';
 import {api, wait} from '../env.js';
 import Vue from 'vue';
 

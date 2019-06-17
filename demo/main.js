@@ -1,5 +1,5 @@
-import app from 'cmf/js/app';
-import translations from 'cmf/js/lang/english';
+import app from 'trim/app';
+import translations from 'trim/lang/english';
 import routes from './routes';
 import services from './services';
 // import auth from './auth';

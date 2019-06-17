@@ -1,6 +1,6 @@
 import {assert} from 'chai';
 import {mount} from '@vue/test-utils';
-import FormElement from 'cmf/js/formElements/textarea';
+import FormElement from 'trim/formElements/textarea';
 
 describe('Textarea form element', () => {
 

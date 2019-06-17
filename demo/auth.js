@@ -1,5 +1,5 @@
-import api from 'cmf/js/library/api';
-import auth from 'cmf/js/library/auth';
+import api from 'trim/library/api';
+import auth from 'trim/library/auth';
 
 export default auth.extend({
 
