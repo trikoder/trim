@@ -166,16 +166,21 @@ export default {
 
         currentPage() {
 
-            return this.apiQuery && this.apiQuery.page
-                ? this.apiQuery.page.offset / this.apiQuery.page.limit + 1
-                : 1
-            ;
+            if (this.apiQuery && this.apiQuery.page) {
+                return Pagination.getPageFromQuery(this.apiQuery.page);
+            } else {
+                return 1;
+            }
 
         },
 
         paginationLimit() {
 
-            return this.apiQuery && this.apiQuery.page && this.apiQuery.page.limit;
+            if (this.apiQuery && this.apiQuery.page) {
+                return Pagination.getLimitFromQuery(this.apiQuery.page);
+            } else {
+                return undefined;
+            }
 
         },
 
@@ -472,7 +477,7 @@ export default {
             const apiParams = {
                 filter: {},
                 sort: definitions.sorts.length ? definitions.sorts[0].field : undefined,
-                page: Pagination.getOffsetAndLimit(this.resourceName),
+                page: Pagination.getApiParams(this.resourceName),
                 include: definitions.apiIncludes
             };
 
@@ -485,7 +490,7 @@ export default {
                 if (key === 'sort') {
                     apiParams.sort = value;
                 } else if (key === 'page') {
-                    apiParams.page = Pagination.getOffsetAndLimit(this.resourceName, value);
+                    apiParams.page = Pagination.getApiParams(this.resourceName, value);
                 } else {
                     if (allowedFilters.indexOf(key) >= 0) {
                         apiParams.filter[key] = value;

@@ -161,20 +161,87 @@ const Pagination = {
 
         return userPreferences.get(
             'pagination.' + resourceName + '.itemsPerPage',
-            bootData('itemsPerPage', 15)
+            bootData('apiPagination.itemsPerPage', bootData('itemsPerPage', 15))
         );
 
     },
 
-    getOffsetAndLimit(resourceName, page = 1) {
+    getApiParams(resourceName, page = 1) {
 
         page = parseInt(page, 10);
         page = page <= 0 ? 1 : page;
 
-        let limit = Pagination.getLimit(resourceName);
-        let offset = (page - 1) * limit;
+        const strategy = Pagination.getStrategy();
+        const limit = Pagination.getLimit(resourceName);
 
-        return {offset, limit};
+        if (strategy === 'offsetBased') {
+
+            return {
+                [Pagination.getKey('offset', strategy)]: (page - 1) * limit,
+                [Pagination.getKey('limit', strategy)]: limit
+            };
+
+        } else if (strategy === 'pageBased') {
+
+            return {
+                [Pagination.getKey('number', strategy)]: page,
+                [Pagination.getKey('limit', strategy)]: limit
+            };
+
+        } else {
+            throw new Error('Unknown api pagination strategy');
+        }
+
+    },
+
+    getPageFromQuery(pageQuery) {
+
+        const strategy = bootData('apiPagination.strategy', 'offsetBased');
+
+        if (strategy === 'offsetBased') {
+
+            const offset = pageQuery[Pagination.getKey('offset', strategy)];
+            const limit = pageQuery[Pagination.getKey('limit', strategy)];
+            return offset / limit + 1;
+
+        } else if (strategy === 'pageBased') {
+
+            return pageQuery[Pagination.getKey('number', strategy)];
+
+        } else {
+            throw new Error('Unknown api pagination strategy');
+        }
+
+    },
+
+    getLimitFromQuery(pageQuery) {
+
+        return pageQuery[Pagination.getKey('limit')];
+
+    },
+
+    getStrategy() {
+
+        return bootData('apiPagination.strategy', 'offsetBased');
+
+    },
+
+    getKey(name, strategy) {
+
+        strategy = strategy || Pagination.getStrategy();
+
+        const registry = {
+            offsetBased: {
+                limit: bootData('apiPagination.limitKey', 'limit'),
+                offset: bootData('apiPagination.offsetKey', 'offset')
+            },
+            pageBased: {
+                limit: bootData('apiPagination.limitKey', 'size'),
+                number: bootData('apiPagination.numberKey', 'number')
+            }
+        };
+
+        return registry[strategy][name];
 
     }
 

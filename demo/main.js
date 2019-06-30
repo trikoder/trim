@@ -14,7 +14,12 @@ app
         // usePatchForUpdate: true,
         googleMapsApiKey: 'AIzaSyBVqg9EqOqARXVIaKRSC7pJpVeHKDRoU2I',
         baseUrl: process.env.BASE_URL,
-        baseApiUrl: process.env.BASE_API_URL
+        baseApiUrl: process.env.BASE_API_URL,
+        // apiPagination: {
+        //     strategy: 'offsetBased',
+        //     offsetKey: 'offset',
+        //     limitKey: 'limit'
+        // }
     })
     .loadTranslations(translations, 'en')
     .registerServices(services)
