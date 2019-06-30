@@ -462,28 +462,11 @@ import services from './services';
 import './scss/main.scss';
 
 app
-    .setBootData({
-        usesPushState: true,
-        baseUrl: process.env.BASE_URL,
-        baseApiUrl: process.env.BASE_API_URL
-    })
     .loadTranslations(translations, 'en')
     .registerServices(services)
     .registerRoutes(routes)
     .start();
 
-```
-
-### setBootData
-Used to inject boot or config data. "baseUrl" and "baseApiUrl" are mandatory.
-```js
-// sometimes your data will be generated from backend to global window variable
-app.setBootData(window.bootData)
-```
-Boot data can later be retrieved like so:
-```js
-import bootData from 'trim/library/bootData';
-bootData('baseUrl'); // outputs boot data baseUrl value
 ```
 
 ### registerServices
@@ -518,6 +501,82 @@ app.beforeAdminEnter(() => { return Promise.resolve(); });
 
 ### start
 Once called application will setup router, services and main view components.
+
+## Configuration
+Trim based application is configured by setting boot (or config) data in your main entry point.
+Anything can be inserted in boot data storage, only "baseUrl" and "baseApiUrl" are mandatory.
+
+```js
+app.setBootData({
+    baseUrl: process.env.BASE_URL,
+    baseApiUrl: process.env.BASE_API_URL
+})
+````
+### Use browser history api
+Configure Trim application to use browser history api.
+```js
+app.setBootData({
+    usesPushState: true
+})
+````
+
+### Using patch for resource updates
+Api adapter can be instructed to use 'PATCH' insted of 'PUT' method when updating JSON api resources.
+```js
+app.setBootData({
+    usePatchForUpdate: true
+})
+````
+
+### Configuring resource url slugs
+JSON api resource url slugs can be customized via 'resourceToApiMap' config property.
+Used this when JSON api resource type is not directly mapped to resource api url.
+```js
+app.setBootData({
+    resourceToApiMap: {
+        article: 'articles'
+        user: 'users'
+    }
+})
+````
+
+### Api pagination strategies
+Trim comes with offset (default) and page based pagination strategies included.
+Customize offset based strategy (creates api query like ?page[offset]=0&page[limit]=15):
+```js
+app.setBootData({
+    apiPagination: {
+        strategy: 'offsetBased',
+        offsetKey: 'offset',
+        limitKey: 'limit'
+    }
+})
+````
+Set and customize page based strategy (creates api query like ?page[number]=1&page[size]=15):
+```js
+app.setBootData({
+    apiPagination: {
+        strategy: 'pageBased',
+        numberKey: 'number',
+        limitKey: 'size'
+    }
+})
+````
+### Other boot data keys
+```js
+app.setBootData({
+    itemsPerPage: 15, // default number of items per page
+    googleMapsApiKey: '123123', // api key for google maps
+    ckEditorPath: 'https://cdn.ckeditor.com/4.10.0/standard-all/' // ckeditor CDN
+})
+````
+
+### Access boot data outside of main entry point.
+Boot data can later be retrieved like so:
+```js
+import bootData from 'trim/library/bootData';
+bootData('baseUrl'); // outputs boot data baseUrl value
+```
 
 ## Authentication
 To authenticating users to your app you have to implement simple authentication driver.
