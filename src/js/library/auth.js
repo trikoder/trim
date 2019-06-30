@@ -5,7 +5,11 @@ export default {
 
     component: () => serviceContainer.get('AuthController'),
 
-    loginRoute: {path: '/login', name: 'login'},
+    loginRoute: {
+        path: '/login',
+        name: 'login',
+        isExternal: false
+    },
 
     afterLoginRoute: {path: '/'},
 
@@ -14,12 +18,14 @@ export default {
         this.router = router;
         this.beforeAdminEnter = beforeAdminEnter;
 
-        router.addRoutes([{
-            path: this.loginRoute.path,
-            name: this.loginRoute.name,
-            component: this.component,
-            props: {authApi: this}
-        }]);
+        if (!this.loginRoute.isExternal) {
+            router.addRoutes([{
+                path: this.loginRoute.path,
+                name: this.loginRoute.name,
+                component: this.component,
+                props: {authApi: this}
+            }]);
+        }
 
         router.beforeEach((to, from, next) => {
 
@@ -28,7 +34,11 @@ export default {
                     if (isUserLoggedIn) {
                         this.bootstrapEnvironment().then(() => next());
                     } else {
-                        next({name: this.loginRoute.name});
+                        if (this.loginRoute.isExternal) {
+                            window.location.href = this.loginRoute.path;
+                        } else {
+                            next({name: this.loginRoute.name});
+                        }
                     }
                 });
             } else {
@@ -81,7 +91,11 @@ export default {
     logout() {
 
         return this.teardownEnvironment().then(() => {
-            this.router.push({name: this.loginRoute.name});
+            if (this.loginRoute.isExternal) {
+                window.location.href = this.loginRoute.path;
+            } else {
+                this.router.push({name: this.loginRoute.name});
+            }
         });
 
     },
