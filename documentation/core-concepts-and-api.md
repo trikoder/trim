@@ -562,6 +562,15 @@ app.setBootData({
     }
 })
 ````
+
+### Validation error field
+Configure error message lookup field when resource model has validation errors.
+```js
+app.setBootData({
+    validationErrorField: 'detail'
+});
+````
+
 ### Other boot data keys
 ```js
 app.setBootData({

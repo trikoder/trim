@@ -68,6 +68,7 @@
 
 import Vue from 'vue';
 import loadDefinitionType from '../../library/loadDefinitionType';
+import bootData from '../../library/bootData';
 import formElementDefaults from '../../formElements/elementDefaults';
 import screenSize from '../../mixins/screenSize';
 import Loader from '../../library/loader';
@@ -815,6 +816,7 @@ const Component = Vue.extend({
             this.removeErrorMessages().then(() => {
 
                 const globalErrors = [];
+                const errorField = bootData('validationErrorField', 'title');
 
                 errors.forEach(errorObj => {
 
@@ -826,13 +828,13 @@ const Component = Vue.extend({
                         );
 
                         if (fieldDefinition) {
-                            fieldDefinition.options.errorMessage = errorObj.title;
+                            fieldDefinition.options.errorMessage = errorObj[errorField];
                         } else {
-                            globalErrors.push(errorObj.title + ' ' + (errorObj.detail || ''));
+                            globalErrors.push(errorObj[errorField]);
                         }
 
                     } else {
-                        globalErrors.push(errorObj.title || translate('validation.globalErrorsMessage'));
+                        globalErrors.push(errorObj[errorField] || translate('validation.globalErrorsMessage'));
                     }
 
                 });
