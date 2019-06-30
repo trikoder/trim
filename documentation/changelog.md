@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.56.0
+* Addition: allow validation error lookup configuration
+* Addition: add api pagination strategies and configuration
+* Addition: add support for external login workflow
+
 ## 0.55.1
 * Change: update project dependencies to latest stable versions
 
