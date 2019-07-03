@@ -113,6 +113,30 @@
 
     }
 
+    .editLayoutGroup {
+
+        @include mediaMinWidth($breakpointMedium) {
+
+            &.cols2, &.cols3 {
+                @include clearfix;
+                > div {
+                    float: left;
+                    &:first-child { margin-left: 0; }
+                }
+            }
+
+            &.cols2 > div {
+                width: 48%; margin-left: 4%;
+            }
+
+            &.cols3 > div {
+                width: 31%; margin-left: 3.5%;
+            }
+
+        }
+
+    }
+
     .messageType1 {
 
         animation: fadeIn 0.6s;
