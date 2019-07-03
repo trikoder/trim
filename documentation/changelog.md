@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.57.0
+* Addition: column field layout styles on resource edit
+* Addition: state select form element supports numeric and boolean states
+
 ## 0.56.0
 * Addition: allow validation error lookup configuration
 * Addition: add api pagination strategies and configuration
