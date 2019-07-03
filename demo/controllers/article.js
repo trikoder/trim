@@ -187,7 +187,6 @@ export default {
                 label: 'Proof read',
                 name: 'proofreadStatus',
                 updateEntityOnChange: true,
-                readOnly: true,
                 states: [{
                     value: '0',
                     name: 'notProofread',

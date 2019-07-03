@@ -2,14 +2,14 @@
     <element-wrapper v-bind:renderInputWrapper="false" v-bind="elementWrapperProps">
         <div class="stateSelectElement" v-bind="inputWrapperAttributes">
             <p class="stateCaption"><span>{{currentState.caption}}</span></p>
-            <div class="controls" v-if="selectableOptions.length">
+            <div class="controls" v-if="selectableOptions.length && !readOnly">
                 <div class="selectContainer">
                     <div class="select">
-                        <button type="button">&#8627;&nbsp; {{selectCaption}}</button>
+                        <button type="button">&#8627;&nbsp; {{ selectCaption }}</button>
                         <select v-bind:value="selectValue" v-on:input="processInputEvent">
                             <option
-                                v-for="(option, index) in selectableOptions"
-                                v-bind:key="index"
+                                v-for="option in selectableOptions"
+                                v-bind:key="option.key"
                                 v-bind:value="option.value"
                             >{{ option.caption }}</option>
                         </select>
@@ -43,7 +43,7 @@ export default {
         updateEntityOnChange: {type: Boolean, default: false},
         updateControlCaption: {type: String, default: () => translate('formElements.stateSelect.updateControlCaption')},
         nextStatePlaceholderCaption: {type: String, default: () => translate('formElements.stateSelect.nextStatePlaceholderCaption')},
-        states: {type: Array, required: true}
+        states: {type: Array, required: true, validator: states => states.length >= 2}
     },
 
     data() {
@@ -117,12 +117,12 @@ export default {
 
         selectCaption() {
 
-            if (this.selectValue) {
-                const option = find(this.selectableOptions, option => option.value === this.selectValue);
-                return option && option.caption || '';
-            } else {
-                return '';
-            }
+            const option = find(this.selectableOptions, option => option.value === this.selectValue);
+
+            return option.value === this.currentState.value
+                ? this.nextStatePlaceholderCaption
+                : option.caption
+            ;
 
         },
 
@@ -141,6 +141,21 @@ export default {
     },
 
     methods: {
+
+        processInputEvent(e) {
+
+            const firstStateValue = this.states[0].value;
+            let value = e.target.value;
+
+            if (typeof firstStateValue === 'number') {
+                value = parseFloat(value);
+            } else if (typeof firstStateValue === 'boolean') {
+                value = value === 'true';
+            }
+
+            this.$emit('input', value);
+
+        },
 
         syncCurrentStateToModel() {
 
@@ -195,7 +210,8 @@ export default {
 
                 return {
                     caption: state.actionCaption || state.caption,
-                    value: state.value
+                    value: state.value,
+                    key: state.value.toString()
                 };
 
             });
@@ -203,8 +219,9 @@ export default {
             if (!this.updateEntityOnChange && options.length) {
 
                 options.unshift({
-                    caption: this.nextStatePlaceholderCaption,
-                    value: this.currentState.value
+                    caption: this.currentState.caption,
+                    value: this.currentState.value,
+                    key: this.currentState.value.toString()
                 });
 
             }
