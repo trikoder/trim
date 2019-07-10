@@ -1,8 +1,8 @@
 <template>
     <element-wrapper v-bind="elementWrapperProps">
-        <button type="button" v-html="buttonCaption"></button>
+        <button type="button" v-bind:class="{'disabled': readOnly}" v-html="buttonCaption"></button>
         <select
-            v-if="optionElements"
+            v-if="optionElements && !readOnly"
             v-bind="inputAttributes"
             v-bind:value="stringValue"
             v-on:change="processInputEvent"
@@ -179,7 +179,7 @@ export default {
 
 <style lang="scss">
 
-    .selectType1 {
+    .selectType1, .selectType2 {
 
         display: inline-block; position: relative;
         background-color: #fff; border: 1px solid $colorGrayLight2; border-radius: em(4,14);
@@ -226,6 +226,25 @@ export default {
 
         }
 
+    }
+
+    .selectType2 {
+
+        border-width: 0 0 1px 0; border-radius: 0;
+
+        &:before {
+            text-align: right;
+        }
+
+        > button {
+
+            font-size: 1.6em; padding: em(10,16) em(30,15) em(10,16) 0; line-height: 1.4;
+
+            @include mediaMinWidth($breakpointMedium) {
+                font-size: 1.6em; padding: em(10,16) em(30,15) em(10,16) 0;
+            }
+
+        }
     }
 
 </style>

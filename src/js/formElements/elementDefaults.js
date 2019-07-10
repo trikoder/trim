@@ -131,7 +131,7 @@ export default {
             select: {
                 attributes: {
                     label: {class: 'labelType2'},
-                    inputWrapper: {class: 'selectType1'},
+                    inputWrapper: {class: 'selectType2 fullWidth'},
                     wrapper: {class: 'inputBlockType1'}
                 }
             },

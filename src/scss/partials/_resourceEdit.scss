@@ -335,6 +335,7 @@
     appearance: none;
     font-size: 1.6em; padding: em(8,16) em(10,16);
     background-color: #fff; border: 1px solid $colorGrayLight2; border-radius: em(4,16);
+    @include fontSansCondensed;
 
     &.fullWidth {
         width: 100%;
