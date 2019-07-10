@@ -20,6 +20,7 @@
             <a
                 v-if="fileUrl && !selectedFile"
                 v-bind:href="fileUrl"
+                v-on:click="clickDownload"
                 target="_blank"
                 class="downloadBtn nBtn icr iconDownload"
             ></a>
@@ -57,7 +58,8 @@ export default {
         mapThumbnailTo: {type: String},
         mapCurrentFileUrlTo: {type: String},
         addFileCaption: {type: String, default: () => translate('formElements.fileAttachment.addFileCaption')},
-        changeFileCaption: {type: String, default: () => translate('formElements.fileAttachment.changeFileCaption')}
+        changeFileCaption: {type: String, default: () => translate('formElements.fileAttachment.changeFileCaption')},
+        downloadAction: {type: Function}
     },
 
     data: () => ({
@@ -130,6 +132,15 @@ export default {
     },
 
     methods: {
+
+        clickDownload(e) {
+
+            if (this.downloadAction) {
+                e.preventDefault();
+                this.downloadAction(this.fileUrl);
+            }
+
+        },
 
         setupFileInput() {
 
