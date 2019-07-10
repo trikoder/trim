@@ -120,7 +120,8 @@ const Component = Vue.extend({
             formData: undefined,
             selectedTab: undefined,
             statusMessage: null,
-            saveInProgress: false
+            saveInProgress: false,
+            saveAllowed: true
         };
     },
 
@@ -192,6 +193,8 @@ const Component = Vue.extend({
 
         configureEdit() {
 
+            this.saveAllowed = true;
+
             this.$emit('beforeConfigure', this);
 
             if (this.apiInclude) {
@@ -224,6 +227,13 @@ const Component = Vue.extend({
                 .then(() => loader.off())
                 .catch(error => { loader.off(); return Promise.reject(error); })
             ;
+
+        },
+
+        allowSave(isAllowed = true) {
+
+            this.saveAllowed = isAllowed;
+            return this;
 
         },
 
@@ -662,7 +672,7 @@ const Component = Vue.extend({
 
             this.statusMessage = null;
 
-            if (this.saveInProgress) {
+            if (this.saveInProgress || !this.saveAllowed) {
                 loader.off();
                 return;
             }
