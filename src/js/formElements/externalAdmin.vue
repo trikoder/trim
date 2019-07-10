@@ -178,7 +178,7 @@ const Component = Vue.extend({
                 afterMount: ({component: controller}) => {
 
                     if (this.afterControllerMount) {
-                        this.afterControllerMount(controller);
+                        this.afterControllerMount(controller, this);
                     }
 
                     if (this.controllerMethod) {
