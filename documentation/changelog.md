@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.58.0
+* Addition: extend resource edit api to disallow resurce saving
+* Addition: enable custom download action in file attachment
+* Addition: add input like style option for select form element
+* Addition: add instance reference to external admin afterControllerMount hook
+
 ## 0.57.0
 * Addition: column field layout styles on resource edit
 * Addition: state select form element supports numeric and boolean states
