@@ -674,10 +674,10 @@ const Component = Vue.extend({
 
             if (this.saveInProgress || !this.saveAllowed) {
                 loader.off();
-                return Promise.reject(this.saveInProgress
+                return Promise.reject(new Error(this.saveInProgress
                     ? 'Save in progress'
                     : 'Save not allowed'
-                );
+                ));
             }
 
             this.saveInProgress = true;
