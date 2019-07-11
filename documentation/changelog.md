@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.59.0
+* Addition: add api for updating resource edit field definitions on the fly
+* Addition: allow all form element to be set as not editable
+* Change: filter out disabled form elements values when updating resource
+* Change: fix select form element styling
+
 ## 0.58.0
 * Addition: extend resource edit api to disallow resurce saving
 * Addition: enable custom download action in file attachment
