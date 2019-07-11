@@ -731,8 +731,8 @@ const Component = Vue.extend({
 
                 each(instances, instance => {
 
-                    if (instance.readOnly) {
-                        // skip readInly instance;
+                    if (instance.readOnly || instance.disabled) {
+                        // skip read only and disabled instances;
                     } else if (instance.savesFile) {
 
                         const file = instance.getFile();
