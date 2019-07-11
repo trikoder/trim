@@ -120,8 +120,8 @@ module.exports = {
                             title: 'Media item ' + index,
                             caption: 'Aenean gravida, orci in sagittis tincidunt, dolor quam pellentesque dolor, nec viverra neque nunc id mi.',
                             mediaType: 'image',
-                            thumbnailUrl: 'http://pipsum.com/400x300.jpg?v=' + String(index),
-                            originalUrl: 'http://pipsum.com/1200x900.jpg?v=' + String(index)
+                            thumbnailUrl: 'http://picsum.photos/400/300?v=' + String(index),
+                            originalUrl: 'http://picsum.photos/1200/900?v=' + String(index)
                         }
                     };
                 });
