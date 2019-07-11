@@ -114,6 +114,13 @@ export default {
 
         edit.observe('formData.title', value => {
             edit.toggleField('leadTitle', value !== 'hideLeadTitle');
+            if (value === 'freeze') {
+                edit.updateAllFields({editable: false});
+                setTimeout(() => {
+                    edit.updateAllFields({editable: true});
+                    edit.updateField('title', {value: 'unfreeze'});
+                }, 5000);
+            }
         }).listen('definitionsResolved', () => {
             if (process.env.NODE_ENV !== 'production') {
                 console.log('definitionsResolved');

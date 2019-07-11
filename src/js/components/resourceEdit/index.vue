@@ -561,22 +561,64 @@ const Component = Vue.extend({
 
         toggleField(fieldName, isVisible) {
 
-            this.whenDefinitionsResolved().then(() => {
+            return this.getResolvedFieldDefinition(fieldName).then(definition => {
 
-                const fieldDefinition = find(this.resolvedDefinitions.fields, definition => {
-                    return definition.options.name === fieldName;
-                });
-
-                if (fieldDefinition) {
-                    fieldDefinition.options.visible = typeof isVisible !== 'undefined'
-                        ? isVisible
-                        : !fieldDefinition.options.visible
-                    ;
-                }
+                definition.options.visible = typeof isVisible !== 'undefined'
+                    ? isVisible
+                    : !definition.options.visible
+                ;
 
             });
 
-            return this;
+        },
+
+        updateField(fieldName, data) {
+
+            return this.getResolvedFieldDefinition(fieldName).then(definition => {
+
+                each(data, (value, key) => {
+                    if (key === 'value') {
+                        this.formData[fieldName] = value;
+                    } else {
+                        definition.options = assign({}, definition.options, {[key]: value});
+                    }
+                });
+
+            });
+
+        },
+
+        updateAllFields(data) {
+
+            return this.whenDefinitionsResolved().then(resolvedDefinitions => {
+
+                resolvedDefinitions.fields.forEach(definition => {
+
+                    each(data, (value, key) => {
+                        if (key === 'value') {
+                            this.formData[definition.name] = value;
+                        } else {
+                            definition.options = assign({}, definition.options, {[key]: value});
+                        }
+                    });
+
+                });
+
+            });
+
+        },
+
+        getResolvedFieldDefinition(fieldName) {
+
+            return this.whenDefinitionsResolved().then(resolvedDefinitions => {
+
+                return find(resolvedDefinitions.fields, definition => {
+                    return definition.options.name === fieldName;
+                }) || Promise.reject(
+                    new Error('Uknown field: ' + fieldName)
+                );
+
+            });
 
         },
 
@@ -599,8 +641,8 @@ const Component = Vue.extend({
             return new Promise(resolve => {
 
                 this.definitionsResolved
-                    ? resolve()
-                    : this.$once('definitionsResolved', () => resolve());
+                    ? resolve(this.resolvedDefinitions)
+                    : this.$once('definitionsResolved', () => resolve(this.resolvedDefinitions));
                 ;
 
             });
