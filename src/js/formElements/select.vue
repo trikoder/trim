@@ -238,6 +238,7 @@ export default {
 
         > button {
 
+            @include fontSans;
             font-size: 1.6em; padding: em(10,16) em(30,15) em(10,16) 0; line-height: 1.4;
 
             @include mediaMinWidth($breakpointMedium) {
