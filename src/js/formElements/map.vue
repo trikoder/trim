@@ -1,6 +1,7 @@
 <template>
     <element-wrapper v-bind="elementWrapperProps">
         <div v-once ref="mapContainer" v-bind="inputAttributes" class="container"></div>
+        <div class="disableOverlay" v-if="!isInteractive"></div>
     </element-wrapper>
 </template>
 
@@ -203,6 +204,12 @@ export default {
         background-color: #fff; border: 1px solid $colorGrayLight2; border-radius: 0.3em;
 
         > .container {
+
+            position: absolute; left: 0.5em; top: 0.5em; right: 0.5em; bottom: 0.5em;
+
+        }
+
+        > .disableOverlay {
 
             position: absolute; left: 0.5em; top: 0.5em; right: 0.5em; bottom: 0.5em;
 

@@ -67,7 +67,7 @@ export default {
             const options = assign({
                 lineNumbers: true
             }, this.editorConfig, {
-                readOnly: this.readOnly,
+                readOnly: this.isInteractive,
                 value: this.value
             });
 

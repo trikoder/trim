@@ -14,6 +14,7 @@
             v-bind:preselect-first="false"
             v-bind:show-no-results="false"
             v-bind:placeholder="placeholder"
+            v-bind:disabled="!isInteractive"
             label="caption"
             track-by="value"
         ></multiselect>
@@ -253,6 +254,13 @@ export default {
         .multiselect__option--selected.multiselect__option--highlight:after {
 
             background: #fff; content: ''; color: $colorGrayDark1;
+
+        }
+
+        .multiselect--disabled {
+
+            background: transparent;
+            opacity: 1;
 
         }
 

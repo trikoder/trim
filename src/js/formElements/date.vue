@@ -17,6 +17,7 @@
             v-bind:nextMonthCaption="nextMonthCaption"
             v-bind:setTimeCaption="setTimeCaption"
             v-bind:value="value"
+            v-bind:editable="isInteractive"
             v-on:input="processInputEvent"
         ></date-pick>
     </element-wrapper>

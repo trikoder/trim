@@ -2,8 +2,8 @@
     <element-wrapper v-bind="elementWrapperProps">
        <div
             ref="content"
-            contenteditable="true"
             v-once
+            v-bind:contenteditable="isInteractive"
             v-bind="inputAttributes"
             v-html="value"
         ></div>
@@ -51,17 +51,26 @@ export default {
 
     mounted() {
 
-        this.setupEditor();
+        this.$watch('isInteractive', isInteractive => {
+            isInteractive ? this.setupEditor() : this.disableEditor();
+        }, {immediate: true});
 
     },
 
     beforeDestroy() {
 
-        this.editor && this.editor.destroy();
+        this.disableEditor();
 
     },
 
     methods: {
+
+        disableEditor() {
+
+            this.editor && this.editor.destroy();
+            delete this.editor;
+
+        },
 
         setupEditor() {
 
@@ -111,7 +120,7 @@ export default {
         @include fontSans;
 
         font-size: 1.6em; outline: none; margin-bottom: em(30,16);
-        min-height: em(10,16); padding: em(10,16) 0;
+        min-height: em(22,16); padding: em(10,16) 0;
         border-bottom: 1px solid $colorGrayLight2;
 
         > p, > ul, > ol {

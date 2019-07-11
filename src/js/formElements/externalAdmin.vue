@@ -1,17 +1,17 @@
 <template>
     <element-wrapper v-bind="elementWrapperProps">
         <template v-if="selectsOne">
-            <span class="item iconMoreHorizontal" v-on:click="open({onSelect})">
+            <span class="item iconMoreHorizontal" v-on:click="isInteractive && open({onSelect})">
                 {{ relatedModels ? getModelCaption(relatedModels[0]) : placeholderText }}
             </span>
             <button
-                v-if="relatedModels"
+                v-if="relatedModels && isInteractive"
                 type="button"
                 class="removeBtn nBtn iconClose icr"
                 v-on:click="remove(relatedModels[0])"
             ></button>
             <button
-                v-if="relatedModels && showEditControl"
+                v-if="relatedModels && showEditControl && isInteractive"
                 type="button"
                 class="editBtn nBtn iconEdit2 icr"
                 v-on:click="openEdit(relatedModels[0].get('id'))"
@@ -26,6 +26,7 @@
             >
                 {{ getModelCaption(model) }}
                 <button
+                    v-if="isInteractive"
                     type="button"
                     class="removeBtn iconX icr nBtn"
                     v-on:click="remove(model)"
@@ -35,7 +36,7 @@
                 type="button"
                 class="openBtn nBtn iconMoreHorizontal"
                 v-bind:class="{icr: Boolean(relatedModels)}"
-                v-on:click="open({onSelect})"
+                v-on:click="isInteractive && open({onSelect})"
             >
                 {{ placeholderText }}
             </button>

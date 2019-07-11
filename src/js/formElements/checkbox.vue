@@ -4,6 +4,7 @@
             type="checkbox"
             v-bind="inputAttributes"
             v-bind:checked="value === valueMap.checked"
+            v-bind:disabled="!isInteractive"
             v-on:input="processInputEvent"
         >
         <label class="icr iconCheck" v-bind:for="inputAttributes.id"></label>

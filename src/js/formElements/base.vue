@@ -11,6 +11,8 @@ export default {
         relation: Object,
         errorMessage: String,
         readOnly: {type: Boolean, default: false},
+        disabled: {type: Boolean, default: false},
+        editable: {type: Boolean, default: true},
         attributes: {type: Object, default: () => ({})},
         layoutReference: String,
         visible: {type: Boolean, default: true}
@@ -50,8 +52,12 @@ export default {
                 attributes.name = this.name;
             }
 
-            if (this.readOnly) {
+            if (this.readOnly || !this.editable) {
                 attributes.readonly = 'readonly';
+            }
+
+            if (this.disabled) {
+                attributes.disabled = 'disabled';
             }
 
             return attributes;
@@ -73,6 +79,10 @@ export default {
                 elementId: this.inputAttributes.id
             });
 
+        },
+
+        isInteractive() {
+            return !this.readOnly && !this.disabled && this.editable;
         }
 
     },

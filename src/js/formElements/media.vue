@@ -13,21 +13,23 @@
                 <button
                     type="button"
                     class="nBtn placeholderImage icr iconPlus"
-                    v-on:click="openFileDialog"
+                    v-on:click="isInteractive && openFileDialog()"
                     v-bind:class="{interactive: enableUpload}"
                 ></button>
             </template>
         </div>
         <div class="textControls">
-            <span class="openBtn" v-on:click="selectMedia">
+            <span class="openBtn" v-on:click="isInteractive && selectMedia()">
                 {{ mediaModel ? changeImageCaption : chooseImageCaption }}
             </span>
             <template v-if="enableUpload">
                 <span class="separator"> {{ separatorCaption }} </span>
-                <span v-on:click="openFileDialog" class="fileUploadHandle"> {{ uploadImageCaption }} </span>
+                <span v-on:click="isInteractive && openFileDialog()" class="fileUploadHandle">
+                    {{ uploadImageCaption }}
+                </span>
             </template>
         </div>
-        <template v-if="mediaModel">
+        <template v-if="mediaModel && isInteractive">
             <button type="button" v-on:click="openEdit" class="editBtn nBtn icr iconEdit2"></button>
             <button type="button" v-on:click="unsetValue" class="removeBtn nBtn icr iconTrash"></button>
         </template>
@@ -118,9 +120,12 @@ export default {
 
     mounted() {
 
-        if (this.enableUpload) {
-            this.setupUpload();
-        }
+        this.$watch('isInteractive', isInteractive => {
+            isInteractive && this.enableUpload
+                ? this.setupUpload()
+                : this.disableUpload()
+            ;
+        }, {immediate: true});
 
     },
 
@@ -130,10 +135,7 @@ export default {
             this.lightbox.destroy();
         }
 
-        if (this.dropzone) {
-            this.dropzone.disable();
-            this.dropzone.destroy();
-        }
+        this.disableUpload();
 
     },
 
@@ -211,6 +213,16 @@ export default {
                 });
 
             });
+
+        },
+
+        disableUpload() {
+
+            if (this.dropzone) {
+                this.dropzone.disable();
+                this.dropzone.destroy();
+                delete this.dropzone;
+            }
 
         },
 

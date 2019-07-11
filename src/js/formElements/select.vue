@@ -1,8 +1,8 @@
 <template>
     <element-wrapper v-bind="elementWrapperProps">
-        <button type="button" v-bind:class="{'disabled': readOnly}" v-html="buttonCaption"></button>
+        <button type="button" v-bind:class="{'disabled': isInteractive}" v-html="buttonCaption"></button>
         <select
-            v-if="optionElements && !readOnly"
+            v-if="optionElements && isInteractive"
             v-bind="inputAttributes"
             v-bind:value="stringValue"
             v-on:change="processInputEvent"

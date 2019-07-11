@@ -368,6 +368,10 @@
         border-bottom-color: $colorMain1;
     }
 
+    &[readonly], &[disabled] {
+        border-bottom-color: $colorGrayLight2;
+    }
+
     &.fontBold {
         letter-spacing: -0.01em;
         @include fontSansBold;

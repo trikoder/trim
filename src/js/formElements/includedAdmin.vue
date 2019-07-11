@@ -30,7 +30,7 @@
                     v-for="(control, index) in controls"
                     v-bind:key="index"
                     v-bind="control.attributes"
-                    v-on:click="control.action()"
+                    v-on:click="isInteractive && control.action()"
                 ></button>
             </div>
         </div>
@@ -143,6 +143,10 @@ export default {
 
             const controls = [];
 
+            if (!this.isInteractive) {
+                return controls;
+            }
+
             if (this.updatePosition) {
                 controls.push({
                     class: 'sortHandle iconMove'
@@ -210,12 +214,22 @@ export default {
                 });
             }
 
-            return this.setupEdit({
+            return Promise.resolve(this.setupEdit({
                 edit: editIncluded,
                 editIncluded,
                 method: params.method,
                 resourceModel: model,
                 includedAdmin: this
+            })).then(result => {
+
+                if (!this.isInteractive) {
+                    editIncluded.definitions.fields.forEach(definition => {
+                        definition.options.editable = false;
+                    });
+                }
+
+                return result;
+
             });
 
         },

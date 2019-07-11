@@ -26,7 +26,7 @@
             ></a>
             <button
                 v-if="selectedFile"
-                v-on:click="removeSelectedFile"
+                v-on:click="isInteractive && removeSelectedFile()"
                 type="button"
                 class="removeBtn nBtn icr iconRotateCcw"
             ></button>
@@ -113,7 +113,12 @@ export default {
 
     mounted() {
 
-        this.setupFileInput();
+        this.$watch('isInteractive', isInteractive => {
+            isInteractive
+                ? this.setupFileInput()
+                : this.destroyFileInput()
+            ;
+        }, {immediate: true});
 
     },
 
@@ -123,11 +128,7 @@ export default {
             this.lightbox.destroy();
         }
 
-        if (this.dropzone) {
-            this.dropzone.removeAllFiles();
-            this.dropzone.disable();
-            this.dropzone.destroy();
-        }
+        this.destroyFileInput();
 
     },
 
@@ -163,6 +164,7 @@ export default {
             dropzone.on('addedfile', file => {
                 this.clientThumbnail = undefined;
                 this.selectedFile = file;
+                this.dropzone.removeAllFiles();
             }).on('thumbnail', (file, dataUrl) => {
                 if (file === this.selectedFile) {
                     this.clientThumbnail = dataUrl;
@@ -179,6 +181,17 @@ export default {
 
         },
 
+        destroyFileInput() {
+
+            if (this.dropzone) {
+                this.dropzone.removeAllFiles();
+                this.dropzone.disable();
+                this.dropzone.destroy();
+                delete this.dropzone;
+            }
+
+        },
+
         getFile() {
 
             return this.selectedFile;
@@ -187,7 +200,9 @@ export default {
 
         openFileDialog() {
 
-            this.dropzone.hiddenFileInput.click();
+            if (this.dropzone) {
+                this.dropzone.hiddenFileInput.click();
+            }
 
         },
 

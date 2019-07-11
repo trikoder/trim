@@ -2,7 +2,7 @@
     <element-wrapper v-bind:renderInputWrapper="false" v-bind="elementWrapperProps">
         <div class="stateSelectElement" v-bind="inputWrapperAttributes">
             <p class="stateCaption"><span>{{currentState.caption}}</span></p>
-            <div class="controls" v-if="selectableOptions.length && !readOnly">
+            <div class="controls" v-if="selectableOptions.length && isInteractive">
                 <div class="selectContainer">
                     <div class="select">
                         <button type="button">&#8627;&nbsp; {{ selectCaption }}</button>
@@ -64,7 +64,7 @@ export default {
     created() {
 
         if (this.updateEntityOnChange) {
-            if (!this.resourceModel || (this.resourceModel && this.resourceModel.isNew())) {
+            if (!this.resourceModel || this.resourceModel.isNew()) {
                 throw new Error('Existing resource model required for state select in live update mode');
             }
         }

@@ -3,13 +3,19 @@
         <div class="controls">
             <div v-for="model in relatedModels" v-bind:key="model.get('id')" class="item">
                 {{ getModelCaption(model) }}
-                <button type="button" v-on:click="deselectModel(model)" class="removeBtn iconClose icr nBtn"></button>
+                <button
+                    type="button"
+                    v-on:click="isInteractive && deselectModel(model)"
+                    class="removeBtn iconClose icr nBtn"
+                ></button>
             </div>
-            <button type="button" v-on:click="toggleDropdown" class="openBtn iconMoreHorizontal nBtn">
-                {{ value ? '' : selectText }}
-            </button>
+            <button
+                type="button"
+                v-on:click="isInteractive && toggleDropdown()"
+                class="openBtn iconMoreHorizontal nBtn"
+            >{{ value ? '' : selectText }}</button>
         </div>
-        <div class="dropdown" v-if="dropdownActive && !loading">
+        <div class="dropdown" v-if="dropdownActive && isInteractive && !loading">
             <div class="search iconSearch">
                 <input
                     type="text"
