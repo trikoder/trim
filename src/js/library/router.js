@@ -45,7 +45,7 @@ assign(Router.prototype, {
     url(name, params, query) {
 
         let data = this.resolve(isPlainObject(name) ? name : {name, params, query});
-        return data.route.fullPath;
+        return data.href;
 
     },
 
