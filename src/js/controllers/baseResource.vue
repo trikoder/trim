@@ -23,6 +23,7 @@
             v-on:queryChange="openIndex"
             v-on:beforeConfigure="processIndexEvent('beforeConfigure', $event)"
             v-on:afterConfigure="processIndexEvent('afterConfigure', $event)"
+            v-on:systemError="handleListSystemError"
             ref="listHandler"
         ></component>
         <component class="resourceEdit resourceEditType1"
@@ -40,6 +41,7 @@
             v-on:beforeConfigure="processConfigureEvent('beforeConfigure', $event)"
             v-on:afterConfigure="processConfigureEvent('afterConfigure', $event)"
             v-on:resourceModelSaved="processSaveEvent($event)"
+            v-on:systemError="handleEditSystemError"
             ref="editHandler"
         ></component>
     </div>
@@ -50,6 +52,7 @@
 import Vue from 'vue';
 import {assign} from '../library/toolkit';
 import translate from '../library/translate';
+import {confirm} from '../components/dialogModal';
 import ResourceControls from '../components/resourceControls';
 import ResourceHeader from '../components/resourceHeader';
 import ResourceList from '../components/resourceList';
@@ -181,7 +184,9 @@ const BaseResourceController = Vue.extend({
             return this.addControl({
                 caption: caption || translate('resourceControls.save'),
                 className: 'accented iconUploadCloud',
-                action: () => this.$refs.editHandler.save().catch(e => {})
+                action: () => this.$refs.editHandler.save().catch(e => {
+                    this.$refs.editHandler.handleSaveError(e);
+                })
             });
 
         },
@@ -435,6 +440,29 @@ const BaseResourceController = Vue.extend({
             } else {
                 return this.edit(routeParams);
             }
+
+        },
+
+        handleSystemError(errorObj) {
+
+            confirm({
+                message: translate('validation.serverError'),
+                acceptText: translate('prompt.continueText'),
+                acceptOnly: true,
+                parent: this
+            });
+
+        },
+
+        handleListSystemError(errorObj) {
+
+            return this.handleSystemError(errorObj);
+
+        },
+
+        handleEditSystemError(errorObj) {
+
+            return this.handleSystemError(errorObj);
 
         }
 

@@ -4,7 +4,11 @@
         v-bind:autocomplete="this.tag === 'form' ? 'off' : undefined"
         v-on:submit="handleSubmit"
     >
-        <message v-if="statusMessage && tabItems.length === 0" v-bind="statusMessage" v-on:close="statusMessage = null"></message>
+        <message
+            v-if="statusMessage && tabItems.length === 0"
+            v-bind="statusMessage"
+            v-on:close="statusMessage = null"
+        ></message>
         <div
             class="layoutContainer"
             v-if="resolvedDefinitions && resourceModel"
@@ -22,7 +26,11 @@
                     v-on:click="selectTab(tab.key)"
                 >{{ tab.caption }}</button>
             </nav>
-            <message v-if="statusMessage && tabItems.length" v-bind="statusMessage" v-on:close="statusMessage = null"></message>
+            <message
+                v-if="statusMessage && tabItems.length"
+                v-bind="statusMessage"
+                v-on:close="statusMessage = null"
+            ></message>
             <template v-for="(config, key) in resolvedDefinitions.layout">
                 <tab
                     v-if="config.isTab"
@@ -120,7 +128,6 @@ const Component = Vue.extend({
             formData: undefined,
             selectedTab: undefined,
             statusMessage: null,
-            saveInProgress: false,
             saveAllowed: true
         };
     },
@@ -165,6 +172,23 @@ const Component = Vue.extend({
 
     watch: {
 
+        resourceId(newId) {
+
+            this.whenResourceModelReady.then(model => {
+
+                const resourceChanged = newId && newId !== model.get('id');
+                const switchedToCreate = !newId;
+
+                if (resourceChanged || switchedToCreate) {
+                    this.resetUI().catch(
+                        e => this.$emit('systemError', e)
+                    );
+                }
+
+            });
+
+        },
+
         breakpoint() {
 
             const oldFormData = this.formData;
@@ -177,7 +201,7 @@ const Component = Vue.extend({
                     }
                 });
 
-            });
+            }).catch(e => this.$emit('systemError', e));
 
         }
 
@@ -185,11 +209,19 @@ const Component = Vue.extend({
 
     created() {
 
-        this.configureEdit();
+        this.configureEdit().catch(e => this.$emit('systemError', e));
 
     },
 
     methods: {
+
+        resetUI() {
+
+            this.resourceModel = null;
+
+            return this.resetDefinitions().configureEdit();
+
+        },
 
         configureEdit() {
 
@@ -370,13 +402,15 @@ const Component = Vue.extend({
 
         bootstrapModel() {
 
+            let readyPromise;
+
             if (this.resourceModel) {
 
-                return Promise.resolve(this.resourceModel);
+                readyPromise = Promise.resolve(this.resourceModel);
 
             } else if (this.resourceId) {
 
-                return this.ModelType.getFromApi({
+                readyPromise = this.ModelType.getFromApi({
                     id: this.resourceId,
                     query: {include: this.definitions.apiIncludes}
                 }).then(model => {
@@ -386,7 +420,7 @@ const Component = Vue.extend({
 
             } else if (this.createRequiresDraft) {
 
-                return this.ModelType.create().save().then(model => {
+                readyPromise = this.ModelType.create().save().then(model => {
 
                     this.resourceModel = model;
                     return model;
@@ -396,9 +430,11 @@ const Component = Vue.extend({
             } else {
 
                 this.resourceModel = this.ModelType.create();
-                return Promise.resolve(this.resourceModel);
+                readyPromise = Promise.resolve(this.resourceModel);
 
             }
+            this.whenResourceModelReady = readyPromise;
+            return readyPromise;
 
         },
 
@@ -669,22 +705,17 @@ const Component = Vue.extend({
 
         save() {
 
+            if (this.currentSavePromise) {
+                return this.currentSavePromise;
+            }
+
+            if (!this.saveAllowed) {
+                return Promise.reject(new Error('Save not allowed'));
+            }
+
             const wasNewModel = this.resourceModel.isNew();
-            const loader = Loader.on();
 
             const onSave = () => {
-
-                this.removeErrorMessages().then(() => {
-
-                    const message = wasNewModel ? this.resourceCreatedMessage : this.resourceSavedMessage;
-
-                    this.statusMessage = message ? {text: message, type: 'messageType1'} : null;
-                    this.resetDefinitions();
-                    this.configureEdit();
-
-                    this.tag === 'form' && window.scrollTo(0, 0);
-
-                });
 
                 this.$emit('resourceModelSaved', {
                     resourceModel: this.resourceModel,
@@ -692,46 +723,42 @@ const Component = Vue.extend({
                     wasUpdated: !wasNewModel
                 });
 
-                this.saveInProgress = false;
-                loader.off();
+                return this.removeErrorMessages().then(() => {
+
+                    const message = wasNewModel ? this.resourceCreatedMessage : this.resourceSavedMessage;
+
+                    this.statusMessage = message ? {text: message, type: 'messageType1'} : null;
+                    this.resetDefinitions();
+
+                    return this.configureEdit();
+
+                });
 
             };
 
             const onFail = error => {
 
-                if (error.response && error.response.data && error.response.data.errors) {
+                if (this.isValidationError(error)) {
                     this.setErrorMessages(error.response.data.errors);
+                    return Promise.reject(new Error('Validation failed'));
                 } else {
-                    this.$emit('apiError', translate('validation.serverError'));
+                    return Promise.reject(error);
                 }
-
-                this.saveInProgress = false;
-                loader.off();
-
-                return Promise.reject(error);
 
             };
 
             this.statusMessage = null;
 
-            if (this.saveInProgress || !this.saveAllowed) {
-                loader.off();
-                return Promise.reject(new Error(this.saveInProgress
-                    ? 'Save in progress'
-                    : 'Save not allowed'
-                ));
-            }
-
-            this.saveInProgress = true;
-
             if (this.createRelatedStrategy === 'relatedFirst') {
 
-                return this.saveRelatedResources().catch(relatedError => {
+                this.currentSavePromise = this.saveRelatedResources().catch(relatedError => {
 
                     this.setErrorMessages();
-                    this.saveInProgress = false;
-                    loader.off();
-                    return Promise.reject(relatedError);
+
+                    return Promise.reject(this.isValidationError(relatedError)
+                        ? new Error('Validation failed')
+                        : relatedError
+                    );
 
                 }).then(() => {
 
@@ -741,7 +768,7 @@ const Component = Vue.extend({
 
             } else if (this.createRelatedStrategy === 'relatedLast') {
 
-                return this.saveMainResource().catch(onFail).then(() => {
+                this.currentSavePromise = this.saveMainResource().catch(onFail).then(() => {
 
                     return this.saveRelatedResources().then(() => this.resourceModel.fetch({
                         url: this.ModelType.url({
@@ -753,15 +780,29 @@ const Component = Vue.extend({
                         this.setErrorMessages([
                             {title: translate('validation.mainEntitySavedWithRelatedErrors')}
                         ]);
-                        this.saveInProgress = false;
-                        loader.off();
-                        return Promise.reject(relatedError);
+
+                        return Promise.reject(this.isValidationError(relatedError)
+                            ? new Error('Validation failed')
+                            : relatedError
+                        );
 
                     });
 
                 });
 
             }
+
+            const loader = Loader.on();
+
+            this.currentSavePromise.then(() => {
+                loader.off();
+                delete this.currentSavePromise;
+            }).catch(e => {
+                loader.off();
+                delete this.currentSavePromise;
+            });
+
+            return this.currentSavePromise;
 
         },
 
@@ -959,7 +1000,9 @@ const Component = Vue.extend({
 
         getFieldInstance(name) {
 
-            return this.getFieldInstances().then(instances => instances[name]);
+            return this.getFieldInstances().then(
+                instances => instances[name]
+            );
 
         },
 
@@ -967,7 +1010,30 @@ const Component = Vue.extend({
 
             if (this.tag === 'form') {
                 e.preventDefault();
-                this.save().catch(e => {});
+                this.save().catch(
+                    e => this.handleSaveError(e)
+                );
+            }
+
+        },
+
+        isValidationError(error) {
+
+            return Boolean(
+                error.response &&
+                error.response.data &&
+                error.response.data.errors
+            );
+
+        },
+
+        handleSaveError(error) {
+
+            const isValidationError = error.message === 'Validation failed';
+            const isDisallowedSaveError = error.message === 'Save not allowed';
+
+            if (!isValidationError && !isDisallowedSaveError) {
+                this.$emit('systemError', error);
             }
 
         }

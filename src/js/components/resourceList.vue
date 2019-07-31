@@ -87,7 +87,6 @@ import translate from '../library/translate';
 import Loader from '../library/loader';
 import loadDefinitionType from '../library/loadDefinitionType';
 import formElementDefaults from '../formElements/elementDefaults';
-import {confirm} from '../components/dialogModal';
 import screenSize from '../mixins/screenSize';
 import {
     assign,
@@ -270,7 +269,10 @@ export default {
                 .then(() => this.runQuery())
                 .then(() => this.$emit('afterConfigure', this))
                 .then(() => loader.off())
-                .catch(error => { loader.off(); return Promise.reject(error); })
+                .catch(error => {
+                    loader.off();
+                    this.$emit('systemError', error);
+                })
             ;
 
         },
@@ -575,8 +577,6 @@ export default {
                     this.resolvedDefinitions = definitions;
                     this.modelCollection = modelCollection;
 
-                }).catch(error => {
-                    this.showApiError(error);
                 });
 
             });
@@ -690,17 +690,6 @@ export default {
 
             this.messageData = undefined;
             return this;
-
-        },
-
-        showApiError(errorObj) {
-
-            confirm({
-                message: translate('validation.serverError'),
-                acceptText: translate('prompt.continueText'),
-                acceptOnly: true,
-                parent: this
-            });
 
         }
 

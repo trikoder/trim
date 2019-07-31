@@ -18,6 +18,7 @@
             v-on:beforeConfigure="processConfigureEvent('beforeConfigure', $event)"
             v-on:afterConfigure="processConfigureEvent('afterConfigure', $event)"
             v-on:resourceModelSaved="processSaveEvent($event)"
+            v-on:systemError="handleEditSystemError"
             ref="editHandler"
         ></component>
     </div>
@@ -27,6 +28,7 @@
 
 import Vue from 'vue';
 import {assign} from '../library/toolkit';
+import {confirm} from '../components/dialogModal';
 import translate from '../library/translate';
 import ResourceControls from '../components/resourceControls';
 import ResourceHeader from '../components/resourceHeader';
@@ -58,7 +60,9 @@ const BaseResourceEditController = Vue.extend({
 
         this.$emit('create', this);
         this.setNavSelected();
-        this.bootstrapModel();
+        this.bootstrapModel().catch(
+            e => this.handleEditSystemError(e)
+        );
 
     },
 
@@ -120,7 +124,9 @@ const BaseResourceEditController = Vue.extend({
             return this.addControl({
                 caption: caption || translate('resourceControls.save'),
                 className: 'accented iconUploadCloud',
-                action: () => this.$refs.editHandler.save().catch(e => {})
+                action: () => this.$refs.editHandler.save().catch(e => {
+                    this.$refs.editHandler.handleSaveError(e);
+                })
             });
 
         },
@@ -197,6 +203,12 @@ const BaseResourceEditController = Vue.extend({
 
         processSaveEvent(data) {
 
+            if (!this.isExternal) {
+                window.scrollTo(0, 0);
+            } else if (this.$refs.editHandler) {
+                this.$refs.editHandler.$el.scrollTop = 0;
+            }
+
             this.$emit('resourceSaved', data);
 
         },
@@ -205,6 +217,23 @@ const BaseResourceEditController = Vue.extend({
 
             this.resourceControls = [];
             return this;
+
+        },
+
+        handleSystemError(errorObj) {
+
+            confirm({
+                message: translate('validation.serverError'),
+                acceptText: translate('prompt.continueText'),
+                acceptOnly: true,
+                parent: this
+            });
+
+        },
+
+        handleEditSystemError(errorObj) {
+
+            return this.handleSystemError(errorObj);
 
         }
 
