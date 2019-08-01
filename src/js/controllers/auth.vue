@@ -64,7 +64,7 @@ export default {
                         username: this.username,
                         password: this.password
                     }))
-                    .then(() => { this.$router.push(auth.afterLoginRoute.path); })
+                    .then(() => { this.$router.navigateTo(auth.afterLoginRoute.path); })
                     .catch(error => {
                         this.loading = false;
                         this.error = error.message;

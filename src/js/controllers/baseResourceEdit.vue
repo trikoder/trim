@@ -231,7 +231,7 @@ const BaseResourceEditController = Vue.extend({
         processTabSelect(selectedTab) {
 
             if (!this.isExternal) {
-                this.$router.push(this.getTabUrl(selectedTab));
+                this.$router.navigateTo(this.getTabUrl(selectedTab));
             }
 
         },

@@ -51,7 +51,7 @@ export default {
             if (breadcrumb.action) {
                 breadcrumb.action();
             } else if (breadcrumb.url) {
-                this.$router.push(breadcrumb.url);
+                this.$router.navigateTo(breadcrumb.url);
             }
 
         }

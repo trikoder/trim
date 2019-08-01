@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import AdminDefault from '../layouts/adminDefault';
-import {assign, isPlainObject} from './toolkit';
+import {assign} from './toolkit';
 import bootData from './bootData';
 import {slug as slugcase, pascal as pascalcase} from 'to-case';
 
@@ -44,8 +44,21 @@ assign(Router.prototype, {
 
     url(name, params, query) {
 
-        let data = this.resolve(isPlainObject(name) ? name : {name, params, query});
-        return data.href;
+        return this.resolve(typeof name === 'string'
+            ? {name, params, query}
+            : name
+        ).href;
+
+    },
+
+    navigateTo(location) {
+
+        if (typeof location === 'string') {
+            const baseUrlRE = new RegExp('^' + bootData('baseUrl') + '(#/)?');
+            location = location.replace(baseUrlRE, '/');
+        }
+
+        return this.push(location);
 
     },
 

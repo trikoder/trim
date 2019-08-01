@@ -100,7 +100,7 @@ export default Vue.extend({
 
         followLink() {
 
-            this.$router.push(
+            this.$router.navigateTo(
                 this.results[this.selectedItemIndex].url
             );
 

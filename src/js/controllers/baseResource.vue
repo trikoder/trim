@@ -381,7 +381,7 @@ const BaseResourceController = Vue.extend({
         processTabSelect(selectedTab) {
 
             if (!this.isExternal) {
-                this.$router.push(this.getTabUrl(selectedTab));
+                this.$router.navigateTo(this.getTabUrl(selectedTab));
             }
 
         },
@@ -438,7 +438,7 @@ const BaseResourceController = Vue.extend({
 
                 return new Promise(resolve => {
                     this.$once('afterIndexSetup', () => resolve());
-                    this.$router.push(this.getIndexUrl(queryParams));
+                    this.$router.navigateTo(this.getIndexUrl(queryParams));
                 });
 
             } else {
@@ -458,7 +458,7 @@ const BaseResourceController = Vue.extend({
 
                 return new Promise(resolve => {
                     this.$once('afterCreateSetup', () => resolve());
-                    this.$router.push(this.getCreateUrl(queryParams));
+                    this.$router.navigateTo(this.getCreateUrl(queryParams));
                 });
 
             } else {
@@ -477,7 +477,7 @@ const BaseResourceController = Vue.extend({
 
                 return new Promise(resolve => {
                     this.$once('afterEditSetup', () => resolve());
-                    this.$router.push(this.getEditUrl(routeParams, queryParams));
+                    this.$router.navigateTo(this.getEditUrl(routeParams, queryParams));
                 });
 
             } else {

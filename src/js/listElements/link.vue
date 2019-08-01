@@ -57,7 +57,7 @@ export default {
                 this.action(this.resourceModel, e);
             } else if (!this.isExternalLink) {
                 e.preventDefault();
-                this.$router.push({path: this.href});
+                this.$router.navigateTo(this.href);
             }
 
         }

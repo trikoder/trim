@@ -227,7 +227,7 @@ export default Vue.extend({
         openItem(item) {
 
             this.selectItem(item.key);
-            this.$router.push(item.url);
+            this.$router.navigateTo(item.url);
             this.close();
 
         },
@@ -277,7 +277,7 @@ export default Vue.extend({
             if (item.action) {
                 item.action(this);
             } else if (item.appLink) {
-                this.$router.push(item.url);
+                this.$router.navigateTo(item.url);
             } else {
                 window.open(item.url, '_blank');
             }

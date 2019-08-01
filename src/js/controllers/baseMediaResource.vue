@@ -215,7 +215,7 @@ const BaseMediaController = BaseResourceController.extend({
 
                         return new Promise(resolve => {
                             this.$once('afterCreateSetup', () => resolve());
-                            this.$router.push(this[getCreateUrlMethod](queryParams));
+                            this.$router.navigateTo(this[getCreateUrlMethod](queryParams));
                         });
 
                     } else {
