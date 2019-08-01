@@ -111,7 +111,6 @@ const Component = Vue.extend({
         ModelType: {type: Function, required: true},
         model: {type: Object},
         configure: {type: Function, required: true},
-        apiInclude: {type: [Array, String]},
         createRequiresDraft: {type: Boolean, default: false},
         createRelatedStrategy: {type: String, default: 'relatedFirst'},
         resourceSavedMessage: String,
@@ -229,12 +228,6 @@ const Component = Vue.extend({
 
             this.$emit('beforeConfigure', this);
 
-            if (this.apiInclude) {
-                ensureArray(this.apiInclude).forEach(
-                    include => include && this.definitions.apiIncludes.push(include)
-                );
-            }
-
             const method = this.resourceModel
                 ? (this.resourceModel.isNew() ? 'create' : 'edit')
                 : (this.resourceId ? 'edit' : 'create')
@@ -286,7 +279,6 @@ const Component = Vue.extend({
 
             return {
                 fields: [],
-                apiIncludes: [],
                 layout: {},
                 layoutAdditions: {},
                 observers: [],
@@ -410,10 +402,9 @@ const Component = Vue.extend({
 
             } else if (this.resourceId) {
 
-                readyPromise = this.ModelType.getFromApi({
-                    id: this.resourceId,
-                    query: {include: this.definitions.apiIncludes}
-                }).then(model => {
+                readyPromise = this.ModelType.create().setId(
+                    this.resourceId
+                ).fetch().then(model => {
                     this.resourceModel = model;
                     return model;
                 });
@@ -421,10 +412,8 @@ const Component = Vue.extend({
             } else if (this.createRequiresDraft) {
 
                 readyPromise = this.ModelType.create().save().then(model => {
-
                     this.resourceModel = model;
                     return model;
-
                 });
 
             } else {
@@ -507,7 +496,6 @@ const Component = Vue.extend({
 
                 return {
                     fields: fieldDefinitions,
-                    apiIncludes: definitions.apiIncludes.slice(0),
                     layout: this.buildLayout(
                         definitions.layout, definitions.layoutAdditions, fieldDefinitions
                     )
@@ -770,12 +758,9 @@ const Component = Vue.extend({
 
                 this.currentSavePromise = this.saveMainResource().catch(onFail).then(() => {
 
-                    return this.saveRelatedResources().then(() => this.resourceModel.fetch({
-                        url: this.ModelType.url({
-                            id: this.resourceModel.get('id'),
-                            query: {include: this.definitions.apiIncludes}
-                        })
-                    })).then(onSave).catch(relatedError => {
+                    return this.saveRelatedResources().then(
+                        () => this.resourceModel.fetch()
+                    ).then(onSave).catch(relatedError => {
 
                         this.setErrorMessages([
                             {title: translate('validation.mainEntitySavedWithRelatedErrors')}

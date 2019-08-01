@@ -31,7 +31,6 @@
             v-bind:is="getResourceEditType()"
             v-bind:ModelType="getModelType()"
             v-bind:configure="getEditConfigurator()"
-            v-bind:apiInclude="includeApiData.edit"
             v-bind:resourceId="editResourceId"
             v-bind:createRequiresDraft="createRequiresDraft"
             v-bind:createRelatedStrategy="createRelatedStrategy"
@@ -104,7 +103,24 @@ const BaseResourceController = Vue.extend({
 
         getModelType() {
 
-            return Model.extend({type: this.resourceName});
+            const includeApiData = this.includeApiData.edit;
+            const extendParams = {type: this.resourceName};
+
+            if (includeApiData) {
+
+                extendParams.url = function() {
+                    return this.constructor.url({
+                        type: this.getType(),
+                        id: this.get('id'),
+                        query: {
+                            include: includeApiData
+                        }
+                    });
+                };
+
+            }
+
+            return Model.extend(extendParams);
 
         },
 

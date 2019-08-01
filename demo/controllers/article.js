@@ -3,6 +3,10 @@ export default {
     resourceName: 'article',
     resourceCaption: 'title',
 
+    includeApiData: {
+        edit: ['author']
+    },
+
     setupList({list}) {
 
         this.addCreateControl('Create new article');
