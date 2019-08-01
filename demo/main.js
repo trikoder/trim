@@ -30,5 +30,10 @@ app
     .registerServices(services)
     .registerRoutes(routes)
     .beforeAdminEnter(() => {})
+    .appendAppComponent({
+        created() {
+            console.log(123);
+        }
+    })
     // .useAuth(auth)
     .start();

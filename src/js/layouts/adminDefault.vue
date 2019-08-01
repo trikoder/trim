@@ -7,6 +7,10 @@
             v-bind="controllerProps"
             ref="currentController"
         />
+        <component
+            v-for="(Component, index) in $options.additionalComponents"
+            v-bind:is="Component" v-bind:key="index"
+        ></component>
         <loader></loader>
     </div>
 </template>

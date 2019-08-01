@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import AppView from './components/appView';
+import AdminDefaultLayout from './layouts/adminDefault';
 import {create as createRouter} from './library/router';
+import {ensureArray} from './library/toolkit';
 import translate from './library/translate';
 import bootData from './library/bootData';
 import browserFeatures from './library/browserFeatures';
@@ -113,6 +115,11 @@ const api = {
         beforeAdminEnter = callback;
         return this;
 
+    },
+
+    appendAppComponent(Component) {
+        AdminDefaultLayout.additionalComponents = ensureArray(Component);
+        return this;
     }
 
 };
