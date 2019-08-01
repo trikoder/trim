@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.60.0
+* Addition: add additional view components in admin and admin navigation layout
+* Addition: tabs on resource edit UI are linkable with configurable urls
+* Addition: resource controller has extended error handling api
+* Addition: app wide pub/sub event bus
+* Change: always use api includes when persisting resource model
+* Change: fix base url missing from manually generated urls
+* Change: simplify scss style variables overriding
+
 ## 0.59.0
 * Addition: add api for updating resource edit field definitions on the fly
 * Addition: allow all form element to be set as not editable
