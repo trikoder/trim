@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.60.2
+* Change: simplify scss style variables overriding
+
 ## 0.60.1
 * Change: update router navigation api
 
