@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.60.1
+* Change: update router navigation api
+
 ## 0.60.0
 * Addition: add additional view components in admin and admin navigation layout
 * Addition: tabs on resource edit UI are linkable with configurable urls
