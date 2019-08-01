@@ -1,7 +1,12 @@
 import auth from './auth';
 import server from 'apiServer';
+import DummyComponent from './dummy';
 
 export default {
+
+    getAdditionalComponents: () => ({
+        userPanel: DummyComponent
+    }),
 
     getNavigationItems: router => [
 

@@ -79,6 +79,10 @@
                         ></button>
                     </li>
                 </ul>
+                <component
+                    v-if="hasAdditionalComponent('userPanel')"
+                    :is="getAdditionalComponent('userPanel')"
+                ></component>
             </div>
         </div>
         <global-events
@@ -127,6 +131,10 @@ export default Vue.extend({
     },
 
     created() {
+
+        if (this.getAdditionalComponents) {
+            this.additionalComponents = this.getAdditionalComponents();
+        }
 
         if (this.selectedNavKey) {
             this.selectItem(this.selectedNavKey);
@@ -410,6 +418,18 @@ export default Vue.extend({
                 return breadcrumbs;
 
             }, {});
+
+        },
+
+        getAdditionalComponent(key) {
+
+            return this.additionalComponents && this.additionalComponents[key];
+
+        },
+
+        hasAdditionalComponent(key) {
+
+            return Boolean(this.getAdditionalComponent(key));
 
         },
 

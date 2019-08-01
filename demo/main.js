@@ -2,6 +2,7 @@ import app from 'trim/app';
 import translations from 'trim/lang/english';
 import routes from './routes';
 import services from './services';
+import DummyComponent from './dummy';
 // import auth from './auth';
 import 'apiServer';
 
@@ -30,10 +31,6 @@ app
     .registerServices(services)
     .registerRoutes(routes)
     .beforeAdminEnter(() => {})
-    .appendAppComponent({
-        created() {
-            console.log(123);
-        }
-    })
+    .appendAppComponent(DummyComponent)
     // .useAuth(auth)
     .start();
