@@ -15,9 +15,12 @@
             v-bind:model="resourceModel"
             v-bind:resourceSavedMessage="resourceSavedMessage"
             v-bind:resourceCreatedMessage="resourceCreatedMessage"
+            v-bind:initialSelectedTab="currentQuery.tab"
+            v-bind:getTabUrl="getTabUrl"
             v-on:beforeConfigure="processConfigureEvent('beforeConfigure', $event)"
             v-on:afterConfigure="processConfigureEvent('afterConfigure', $event)"
-            v-on:resourceModelSaved="processSaveEvent($event)"
+            v-on:resourceModelSaved="processSaveEvent"
+            v-on:selectTab="processTabSelect"
             v-on:systemError="handleEditSystemError"
             ref="editHandler"
         ></component>
@@ -60,6 +63,11 @@ const BaseResourceEditController = Vue.extend({
 
         this.$emit('create', this);
         this.setNavSelected();
+
+        if (!this.isExternal) {
+            this.currentQuery = this.$route.query;
+        }
+
         this.bootstrapModel().catch(
             e => this.handleEditSystemError(e)
         );
@@ -217,6 +225,31 @@ const BaseResourceEditController = Vue.extend({
 
             this.resourceControls = [];
             return this;
+
+        },
+
+        processTabSelect(selectedTab) {
+
+            if (!this.isExternal) {
+                this.$router.push(this.getTabUrl(selectedTab));
+            }
+
+        },
+
+        getTabQueryKey() {
+
+            return 'tab';
+
+        },
+
+        getTabUrl(tab) {
+
+            if (!this.isExternal) {
+                return this.$router.url({
+                    name: this.$route.name,
+                    query: assign({}, this.currentQuery, {[this.getTabQueryKey()]: tab})
+                });
+            }
 
         },
 
