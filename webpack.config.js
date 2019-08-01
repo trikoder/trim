@@ -41,8 +41,8 @@ module.exports = {
                         loader: 'sass-resources-loader',
                         options: {
                             resources: [
-                                './src/scss/library/_all.scss',
-                                './demo/scss/_variables.scss'
+                                './demo/scss/_variables.scss',
+                                './src/scss/library/_all.scss'
                             ]
                         }
                     }

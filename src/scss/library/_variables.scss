@@ -1,24 +1,23 @@
 //--------------------------------------------------------------
 // Colors
 //--------------------------------------------------------------
-$colorMain1: #e03431;
-$colorGrayDark1: #303030;
-$colorGrayDark2: #666666;
-$colorGrayDark3: #A09E9E;
+$colorMain1: #e03431 !default;
+$colorGrayDark1: #303030 !default;
+$colorGrayDark2: #666666 !default;
+$colorGrayDark3: #A09E9E !default;
 
-$colorGrayLight1: #E5E5E5;
-$colorGrayLight2: #dddddd;
+$colorGrayLight1: #E5E5E5 !default;
+$colorGrayLight2: #dddddd !default;
 
-$colorError: #ba0a0a;
-$colorPageBackground: #f5f5f5;
-$colorNavigation: #272f3d;
+$colorError: #ba0a0a !default;
+$colorPageBackground: #f5f5f5 !default;
+$colorNavigation: #272f3d !default;
 
 $vdpColor: $colorMain1;
 
 //--------------------------------------------------------------
 // Icons
 //--------------------------------------------------------------
-
 $icons: (
     activity: '\e900',
     airplay: '\e901',
@@ -287,23 +286,23 @@ $icons: (
     zoomIn: '\ea08',
     zoomOut: '\ea09'
 
-);
+) !default;
 
 //--------------------------------------------------------------
 // Breakpoints
 //--------------------------------------------------------------
-$breakpointSmall: 600;
-$breakpointMedium: 980;
-$breakpointLarge: 1100;
+$breakpointSmall: 600 !default;
+$breakpointMedium: 980 !default;
+$breakpointLarge: 1100 !default;
 
 //--------------------------------------------------------------
 // Miscellaneous
 //--------------------------------------------------------------
 $assetBasePath: '../../';
-$zIndexHeader: 200;
+$zIndexHeader: 200 !default;
 
 //--------------------------------------------------------------
 // Icon font
 //--------------------------------------------------------------
-$iconFontName: 'cmsIconFont';
-$iconFontVersion: 'v1.0';
+$iconFontName: 'cmsIconFont' !default;
+$iconFontVersion: 'v1.0' !default;
