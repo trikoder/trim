@@ -19,12 +19,12 @@
             }"
         >
             <nav class="tabNavType1" v-if="tabItems.length">
-                <button type="button" class="tabBtn nBtn"
+                <a v-bind:href="getTabUrl(tab.key)" class="tabBtn nBtn"
                     v-for="tab in tabItems"
                     v-bind:key="tab.key"
                     v-bind:class="{selected: tab.key === activeTab}"
-                    v-on:click="selectTab(tab.key)"
-                >{{ tab.caption }}</button>
+                    v-on:click.prevent="selectTab(tab.key)"
+                >{{ tab.caption }}</a>
             </nav>
             <message
                 v-if="statusMessage && tabItems.length"
@@ -115,7 +115,9 @@ const Component = Vue.extend({
         createRelatedStrategy: {type: String, default: 'relatedFirst'},
         resourceSavedMessage: String,
         resourceCreatedMessage: String,
-        resourceId: String
+        resourceId: String,
+        initialSelectedTab: String,
+        getTabUrl: Function
     },
 
     data() {
@@ -152,18 +154,30 @@ const Component = Vue.extend({
 
         activeTab() {
 
+            const firstTabKey = this.tabItems[0] && this.tabItems[0].key;
+            const tabExists = tabKey => this.tabItems.filter(
+                tab => tab.key === tabKey
+            ).length > 0;
+
             if (!this.resolvedDefinitions) {
                 return this.selectedTab;
             }
 
-            if (!this.selectedTab) {
-                return this.tabItems.length ? this.tabItems[0].key : undefined;
-            } else {
-                return this.tabItems.filter(tab => tab.key === this.selectedTab).length > 0
-                    ? this.selectedTab
-                    : this.tabItems[0].key
+            if (this.initialSelectedTab && !this.selectedTab) {
+                return tabExists(this.initialSelectedTab)
+                    ? this.initialSelectedTab
+                    : firstTabKey
                 ;
             }
+
+            if (this.selectedTab) {
+                return tabExists(this.selectedTab)
+                    ? this.selectedTab
+                    : firstTabKey
+                ;
+            }
+
+            return firstTabKey;
 
         }
 
@@ -567,6 +581,7 @@ const Component = Vue.extend({
         selectTab(key) {
 
             this.selectedTab = key;
+            this.$emit('selectTab', key);
             return this;
 
         },

@@ -32,6 +32,8 @@
             v-bind:ModelType="getModelType()"
             v-bind:configure="getEditConfigurator()"
             v-bind:resourceId="editResourceId"
+            v-bind:initialSelectedTab="currentQuery.tab"
+            v-bind:getTabUrl="getTabUrl"
             v-bind:createRequiresDraft="createRequiresDraft"
             v-bind:createRelatedStrategy="createRelatedStrategy"
             v-bind:resourceSavedMessage="resourceSavedMessage"
@@ -39,7 +41,8 @@
             v-bind="getAdditionalEditProps()"
             v-on:beforeConfigure="processConfigureEvent('beforeConfigure', $event)"
             v-on:afterConfigure="processConfigureEvent('afterConfigure', $event)"
-            v-on:resourceModelSaved="processSaveEvent($event)"
+            v-on:resourceModelSaved="processSaveEvent"
+            v-on:selectTab="processTabSelect"
             v-on:systemError="handleEditSystemError"
             ref="editHandler"
         ></component>
@@ -375,6 +378,30 @@ const BaseResourceController = Vue.extend({
 
         },
 
+        processTabSelect(selectedTab) {
+
+            if (!this.isExternal) {
+                this.$router.push(this.getTabUrl(selectedTab));
+            }
+
+        },
+
+        getTabQueryKey() {
+
+            return 'tab';
+
+        },
+
+        getTabUrl(tab) {
+
+            return this.$router.url({
+                name: `resource.${this.resourceName}.${this.currentContext === 'edit' ? 'edit' : 'create'}`,
+                params: this.currentContext === 'edit' ? {id: this.editResourceId} : undefined,
+                query: assign({}, this.currentQuery, {[this.getTabQueryKey()]: tab})
+            });
+
+        },
+
         getIndexUrl(queryParams) {
 
             return this.$router.url({
@@ -467,6 +494,10 @@ const BaseResourceController = Vue.extend({
                 acceptOnly: true,
                 parent: this
             });
+
+            if (errorObj instanceof TypeError || errorObj instanceof SyntaxError) {
+                throw errorObj;
+            }
 
         },
 
