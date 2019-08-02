@@ -117,7 +117,7 @@
 
         @include mediaMinWidth($breakpointMedium) {
 
-            &.cols2, &.cols3 {
+            &.cols2, &.cols3, &.cols4, &.cols5 {
                 @include clearfix;
                 > div {
                     float: left;
@@ -131,6 +131,14 @@
 
             &.cols3 > div {
                 width: 31%; margin-left: 3.5%;
+            }
+
+            &.cols4 > div {
+                width: 23.5%; margin-left: 2%;
+            }
+
+            &.cols5 > div {
+                width: 19%; margin-left: 1.25%;
             }
 
         }
