@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.61.0
+* Addition: add option to prepend caption on resource list elements
+* Addition: support for custom main navigation item component
+* Addition: support for 4 and 5 group column layout od resource edit
+* Change: update non interactive form elements styling
+
 ## 0.60.2
 * Change: simplify scss style variables overriding
 
