@@ -5,6 +5,7 @@ export default {
     props: {
         resourceModel: {type: Object, required: true},
         caption: {type: String, required: true},
+        prependCaption: {type: Boolean, default: false},
         mapTo: {type: [String, Function], required: true},
         attributes: {type: Object, default: () => ({})},
         cellClass: {type: String}
@@ -68,6 +69,10 @@ export default {
 
             if (typeof this.ifEmpty !== 'undefined' && (value === null || value === undefined || value === '')) {
                 value = result(this.ifEmpty, [this.resourceModel], this);
+            }
+
+            if (this.prependCaption) {
+                value = this.caption + ': ' + value;
             }
 
             return value;
