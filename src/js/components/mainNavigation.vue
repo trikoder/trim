@@ -17,7 +17,14 @@
                             v-bind:key="item.key"
                         >
                             <template v-if="!item.subItems">
+                                <component
+                                    v-if="item.Component"
+                                    v-bind:is="item.Component"
+                                    v-bind="item"
+                                    v-on:select="openItem(item)"
+                                ></component>
                                 <a
+                                    v-else
                                     v-bind:href="item.url"
                                     v-bind:class="['item', item.icon ? 'icon' + item.icon : '', {selected: item.selected}]"
                                     v-bind:title="item.caption"
@@ -39,7 +46,14 @@
                                 </button>
                                 <ul class="subMenu">
                                     <li v-for="subItem in item.subItems" v-bind:key="subItem.key">
+                                        <component
+                                            v-if="subItem.Component"
+                                            v-bind:is="subItem.Component"
+                                            v-bind="subItem"
+                                            v-on:select="openItem(subItem)"
+                                        ></component>
                                         <a
+                                            v-else
                                             v-bind:href="subItem.url"
                                             v-bind:class="['item', {selected: subItem.selected}]"
                                             v-bind:title="subItem.caption"
@@ -328,6 +342,7 @@ export default Vue.extend({
             const data = {
                 caption,
                 key,
+                Component: item.Component,
                 appLink: typeof item.appLink !== 'undefined' ? Boolean(item.appLink) : true,
                 showIf: typeof item.showIf !== 'undefined' ? Boolean(item.showIf) : true,
                 url: item.url ? item.url : (item.routeName ? this.$router.url(item.routeName) : undefined),
