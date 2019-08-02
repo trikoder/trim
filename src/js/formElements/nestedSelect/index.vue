@@ -4,7 +4,7 @@
             <div v-for="model in relatedModels" v-bind:key="model.get('id')" class="item">
                 {{ getModelCaption(model) }}
                 <button
-                    type="button"
+                    v-if="isInteractive" type="button"
                     v-on:click="isInteractive && deselectModel(model)"
                     class="removeBtn iconClose icr nBtn"
                 ></button>
@@ -12,7 +12,8 @@
             <button
                 type="button"
                 v-on:click="isInteractive && toggleDropdown()"
-                class="openBtn iconMoreHorizontal nBtn"
+                class="openBtn nBtn"
+                v-bind:class="{iconMoreHorizontal: isInteractive}"
             >{{ value ? '' : selectText }}</button>
         </div>
         <div class="dropdown" v-if="dropdownActive && isInteractive && !loading">

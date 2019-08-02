@@ -1,7 +1,7 @@
 <template>
     <element-wrapper v-bind="elementWrapperProps">
         <template v-if="selectsOne">
-            <span class="item iconMoreHorizontal" v-on:click="isInteractive && open({onSelect})">
+            <span class="item" v-bind:class="{iconMoreHorizontal: isInteractive}" v-on:click="isInteractive && open({onSelect})">
                 {{ relatedModels ? getModelCaption(relatedModels[0]) : placeholderText }}
             </span>
             <button
@@ -33,10 +33,11 @@
                 ></button>
             </div>
             <button
+                v-if="isInteractive"
                 type="button"
                 class="openBtn nBtn iconMoreHorizontal"
                 v-bind:class="{icr: Boolean(relatedModels)}"
-                v-on:click="isInteractive && open({onSelect})"
+                v-on:click="open({onSelect})"
             >
                 {{ placeholderText }}
             </button>

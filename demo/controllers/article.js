@@ -86,7 +86,8 @@ export default {
             }],
             ['DateListItem', {
                 caption: 'Date',
-                mapTo: 'publishDate'
+                mapTo: 'publishDate',
+                prependCaption: this.screenIsSmall
             }],
             ['TextListItem', {
                 caption: 'Author',
@@ -95,6 +96,7 @@ export default {
             ['TextListItem', {
                 caption: 'Tags',
                 mapTo: 'tags.title',
+                prependCaption: this.screenIsSmall,
                 ifEmpty: '<span style="opacity: 0.5">No tags</span>'
             }],
             ['BlipListItem', {

@@ -1,6 +1,8 @@
 <template>
     <element-wrapper v-bind="elementWrapperProps">
-        <button type="button" v-bind:class="{'disabled': isInteractive}" v-html="buttonCaption"></button>
+        <button type="button" class="buttonControl" v-bind:class="{hideIcon: !isInteractive}">
+            <span class="buttonCaption" v-html="buttonCaption"></span>
+        </button>
         <select
             v-if="optionElements && isInteractive"
             v-bind="inputAttributes"
@@ -184,25 +186,36 @@ export default {
         display: inline-block; position: relative;
         background-color: #fff; border: 1px solid $colorGrayLight2; border-radius: em(4,14);
 
-        &:before {
-
-            @include iconFont($iconFontName);
-            @include iconElementGraphic(30, 30);
-
-            content: map-get($icons, 'chevronDown'); left: auto; right: 0; font-size: 1.2em;
-            color: $colorMain1;
-
-        }
-
-        > button {
+        .buttonControl {
 
             @include normalizeButton;
 
-            font-size: 1.6em; padding: em(8,16) em(30,16) em(8,16) em(10,16);
+            text-align: left; width: 100%;
+            padding: 0.8em 3em 0.8em 1em;
             color: $colorGrayDark1;
 
+            &:before {
+
+                @include iconFont($iconFontName);
+                @include iconElementGraphic(30, 30);
+
+                content: map-get($icons, 'chevronDown'); left: auto; right: 0; font-size: 1.2em;
+                color: $colorMain1;
+
+            }
+
+            &.hideIcon:before {
+                display: none;
+            }
+
+        }
+
+        .buttonCaption {
+
+            font-size: 1.6em;
+
             @include mediaMinWidth($breakpointMedium) {
-                font-size: 1.4em; padding: em(8,14) em(30,14) em(8,14) em(10,14);
+                font-size: 1.4em;
             }
 
         }
@@ -232,20 +245,25 @@ export default {
 
         border-width: 0 0 1px 0; border-radius: 0;
 
-        &:before {
+        .buttonControl {
+            padding: 1em 3em 1em 0;;
+        }
+
+        .buttonControl:before {
             text-align: right;
         }
 
-        > button {
+        .buttonCaption {
 
             @include fontSans;
-            font-size: 1.6em; padding: em(10,16) em(30,15) em(10,16) 0; line-height: 1.4;
+            line-height: 1.4;
 
             @include mediaMinWidth($breakpointMedium) {
-                font-size: 1.6em; padding: em(10,16) em(30,15) em(10,16) 0;
+                font-size: 1.6em;
             }
 
         }
+
     }
 
 </style>
