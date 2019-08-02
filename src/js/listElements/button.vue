@@ -1,8 +1,8 @@
 <template>
     <button type="button"
-        v-on:click.prevent="runAction"
-        v-bind:class="classAttribute"
-        v-bind:style="styleAttribute"
+        @click.prevent="runAction"
+        :class="classAttribute"
+        :style="styleAttribute"
         v-bind="attributes"
         v-html="content"
     ></button>

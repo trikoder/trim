@@ -1,18 +1,18 @@
 <template>
-    <section v-bind:class="[this.className, 'level' + level, {modDark: dark}]">
+    <section :class="[this.className, 'level' + level, {modDark: dark}]">
         <div class="overlay"></div>
         <div class="content" ref="content">
             <component
                 v-if="component"
-                v-bind:is="component"
+                :is="component"
                 v-bind="props"
                 ref="component"
-                v-on:create="onComponentCreate"
+                @create="onComponentCreate"
             ></component>
         </div>
         <button
-            v-bind:title="closeButtonCaption"
-            v-on:click="close"
+            :title="closeButtonCaption"
+            @click="close"
             class="popupCloseBtn nBtn icr iconX"
             type="button"
         >{{closeButtonCaption}}</button>

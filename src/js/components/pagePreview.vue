@@ -1,20 +1,20 @@
 <template>
-    <section v-bind:class="className">
+    <section :class="className">
         <div class="controls">
             <div class="sizeControls">
                 <button
                     v-for="item in parsedScreenSizes"
-                    class="nBtn" v-bind:key="item.size"
-                    v-bind:class="{active: item.size === currentSize}"
-                    v-on:click="setSize(item.size)"
+                    class="nBtn" :key="item.size"
+                    :class="{active: item.size === currentSize}"
+                    @click="setSize(item.size)"
                     type="button"
                 >{{item.caption}}</button>
             </div>
-            <input disabled="disabled" type="text" class="previewUrl" v-bind:value="url" />
+            <input disabled="disabled" type="text" class="previewUrl" :value="url" />
         </div>
         <div class="pageContainerWrap">
-            <div class="pageContainer" v-bind:style="{width: currentSize}">
-                <iframe v-bind:src="url" frameborder="0"></iframe>
+            <div class="pageContainer" :style="{width: currentSize}">
+                <iframe :src="url" frameborder="0"></iframe>
             </div>
         </div>
     </section>

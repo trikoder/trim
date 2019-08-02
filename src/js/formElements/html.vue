@@ -3,7 +3,7 @@
        <div
             ref="content"
             v-once
-            v-bind:contenteditable="isInteractive"
+            :contenteditable="isInteractive"
             v-bind="inputAttributes"
             v-html="value"
         ></div>

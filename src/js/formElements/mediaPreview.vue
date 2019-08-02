@@ -2,10 +2,10 @@
     <element-wrapper v-bind="elementWrapperProps">
         <template v-if="mediaModel">
             <div class="imageContainer">
-                <img v-bind:src="mediaModel.get(mapImageTo)" />
-                <button type="button" v-on:click="zoomImage" class="zoomImage previewBtn nBtn icr iconMaximize"></button>
+                <img :src="mediaModel.get(mapImageTo)" />
+                <button type="button" @click="zoomImage" class="zoomImage previewBtn nBtn icr iconMaximize"></button>
             </div>
-            <p><span v-on:click="zoomImage" class="zoomImage">Zoom image</span></p>
+            <p><span @click="zoomImage" class="zoomImage">Zoom image</span></p>
         </template>
         <span v-else class="placeholder iconImage icr"></span>
     </element-wrapper>

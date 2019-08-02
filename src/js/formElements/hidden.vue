@@ -2,7 +2,7 @@
     <input
         type="hidden"
         v-bind="inputAttributes"
-        v-bind:value="value"
+        :value="value"
     >
 </template>
 

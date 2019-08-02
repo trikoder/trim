@@ -1,13 +1,13 @@
 <template>
-    <div class="editLayoutGroup" v-bind:class="[{collapsed}, layout.class]">
+    <div class="editLayoutGroup" :class="[{collapsed}, layout.class]">
         <component
             v-for="field in layout.fields"
-            v-bind:is="field.Type"
+            :is="field.Type"
             v-bind="field.options"
             v-model="formData[field.options.name]"
-            v-bind:visible="isFieldVisible(field)"
-            v-bind:key="field.options.name"
-            v-bind:ref="field.options.name"
+            :visible="isFieldVisible(field)"
+            :key="field.options.name"
+            :ref="field.options.name"
         ></component>
     </div>
 </template>

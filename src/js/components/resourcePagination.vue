@@ -1,14 +1,14 @@
 <template>
-    <nav v-bind:class="['pagination', {withLimitOptions: showLimitOptions}]">
+    <nav :class="['pagination', {withLimitOptions: showLimitOptions}]">
 
         <div v-if="showLimitOptions" class="limitOptions">
             <p>{{ translations.resultsCaption }}:</p>
             <button
                 v-for="limitOption in limitOptions"
-                v-bind:key="limitOption"
+                :key="limitOption"
                 type="button"
-                v-bind:class="['nBtn limitOption', {selected: limit === limitOption}]"
-                v-on:click.prevent="selectLimit(limitOption)"
+                :class="['nBtn limitOption', {selected: limit === limitOption}]"
+                @click.prevent="selectLimit(limitOption)"
             >{{ limitOption }}</button>
         </div>
 
@@ -23,8 +23,8 @@
                 <a
                     v-if="currentPage !== 1"
                     class="iconArrowLeft icon page icr"
-                    v-bind:href="getUrlForPage(currentPage - 1)"
-                    v-on:click.prevent="selectPage(currentPage - 1)"
+                    :href="getUrlForPage(currentPage - 1)"
+                    @click.prevent="selectPage(currentPage - 1)"
                 >
                     {{ currentPage - 1 }}
                 </a>
@@ -35,8 +35,8 @@
                 <li>
                     <a
                         class="page"
-                        v-bind:href="getUrlForPage(1)"
-                        v-on:click.prevent="selectPage(1)"
+                        :href="getUrlForPage(1)"
+                        @click.prevent="selectPage(1)"
                     >1</a>
                 </li>
                 <li v-if="currentPage > middlePages.length - 1">
@@ -44,11 +44,11 @@
                 </li>
             </template>
 
-            <li v-for="page in middlePages" v-bind:key="page">
+            <li v-for="page in middlePages" :key="page">
                 <a
-                    v-bind:class="['page', {selected: page == currentPage}]"
-                    v-bind:href="getUrlForPage(page)"
-                    v-on:click.prevent="selectPage(page)"
+                    :class="['page', {selected: page == currentPage}]"
+                    :href="getUrlForPage(page)"
+                    @click.prevent="selectPage(page)"
                 >{{ page }}</a>
             </li>
 
@@ -58,9 +58,9 @@
                 </li>
                 <li>
                     <a
-                        v-bind:class="['page', {selected: totalPages === currentPage}]"
-                        v-bind:href="getUrlForPage(totalPages)"
-                        v-on:click.prevent="selectPage(totalPages)"
+                        :class="['page', {selected: totalPages === currentPage}]"
+                        :href="getUrlForPage(totalPages)"
+                        @click.prevent="selectPage(totalPages)"
                     >{{ totalPages }}</a>
                 </li>
             </template>
@@ -69,8 +69,8 @@
                 <a
                     v-if="currentPage < totalPages"
                     class="iconArrowRight page icon icr"
-                    v-bind:href="getUrlForPage(currentPage + 1)"
-                    v-on:click.prevent="selectPage(currentPage + 1)"
+                    :href="getUrlForPage(currentPage + 1)"
+                    @click.prevent="selectPage(currentPage + 1)"
                 >{{ currentPage + 1 }}
                 </a>
                 <button v-else class="iconArrowRight disabled icon icr"></button>

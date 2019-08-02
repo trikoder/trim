@@ -1,24 +1,24 @@
 <template>
     <div
         v-if="imageUrl"
-        v-bind:class="[classAttribute, 'mediaListItemType1 image']"
-        v-bind:style="styleAttribute"
+        :class="[classAttribute, 'mediaListItemType1 image']"
+        :style="styleAttribute"
         v-bind="attributes"
     >
-        <button v-if="largeImageUrl" type="button" v-on:click="zoomImage" class="zoomImage previewBtn nBtn icr iconMaximize"></button>
+        <button v-if="largeImageUrl" type="button" @click="zoomImage" class="zoomImage previewBtn nBtn icr iconMaximize"></button>
     </div>
     <div
         v-else-if="isFile"
-        v-bind:class="[classAttribute, 'mediaListItemType1 file']"
-        v-bind:style="styleAttribute"
+        :class="[classAttribute, 'mediaListItemType1 file']"
+        :style="styleAttribute"
         v-bind="attributes"
     >
-        <button type="button" v-on:click="openFile" class="openFile previewBtn nBtn icr iconMaximize"></button>
+        <button type="button" @click="openFile" class="openFile previewBtn nBtn icr iconMaximize"></button>
     </div>
     <div
         v-else
-        v-bind:class="[classAttribute, 'mediaListItemType1']"
-        v-bind:style="styleAttribute"
+        :class="[classAttribute, 'mediaListItemType1']"
+        :style="styleAttribute"
     >
         <span class="placeholder iconImage icr"></span>
     </div>

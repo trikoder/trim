@@ -1,7 +1,7 @@
 <template>
     <p
-        v-bind:class="classAttribute"
-        v-bind:style="styleAttribute"
+        :class="classAttribute"
+        :style="styleAttribute"
         v-bind="attributes"
         v-html="content"
     ></p>

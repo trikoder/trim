@@ -2,29 +2,29 @@
     <li>
         <button
             type="button"
-            v-on:click="onSelect(model)"
-            v-bind:class="{selectableItem: selectable}"
+            @click="onSelect(model)"
+            :class="{selectableItem: selectable}"
             class="nBtn listItem"
         >{{ caption }}</button>
         <button
             v-if="expandable"
-            v-on:click="toggleNode"
+            @click="toggleNode"
             type="button"
             class="treeBtn nBtn icr iconPlus"
         ></button>
         <ul v-if="expanded" class="active">
             <tree-node
                 v-for="childModel in children"
-                v-bind:key="childModel.get('id')"
-                v-bind:model="childModel"
-                v-bind:expandedResourceIds="expandedResourceIds"
-                v-bind:getModelCaption="getModelCaption"
-                v-bind:onExpand="onExpand"
-                v-bind:onCollapse="onCollapse"
-                v-bind:onSelect="onSelect"
-                v-bind:isLeaf="isLeaf"
-                v-bind:isLevelSelectable="isLevelSelectable"
-                v-bind:getModelChildren="getModelChildren"
+                :key="childModel.get('id')"
+                :model="childModel"
+                :expandedResourceIds="expandedResourceIds"
+                :getModelCaption="getModelCaption"
+                :onExpand="onExpand"
+                :onCollapse="onCollapse"
+                :onSelect="onSelect"
+                :isLeaf="isLeaf"
+                :isLevelSelectable="isLevelSelectable"
+                :getModelChildren="getModelChildren"
             ></tree-node>
         </ul>
     </li>

@@ -1,22 +1,22 @@
 <template>
-    <element-wrapper v-bind:renderInputWrapper="false" v-bind="elementWrapperProps">
+    <element-wrapper :renderInputWrapper="false" v-bind="elementWrapperProps">
         <div ref="inputWrapper" v-bind="inputWrapperAttributes">
             <resource-edit ref="rows" class="includedAdminRow"
                 v-for="row in rows"
-                v-bind:tag="'section'"
-                v-bind:model="row.model"
-                v-bind:ModelType="RowModelType"
-                v-bind:configure="row.configure"
-                v-bind:key="row.id"
-                v-bind:class="{withControls: row.controls.length > 0}"
+                :tag="'section'"
+                :model="row.model"
+                :ModelType="RowModelType"
+                :configure="row.configure"
+                :key="row.id"
+                :class="{withControls: row.controls.length > 0}"
             >
                 <template slot="bottomControls" v-if="row.controls.length">
                     <div class="itemControls">
                         <button type="button" class="control nBtn icr"
                             v-for="(control, index) in row.controls"
-                            v-bind:key="index"
-                            v-bind:class="control.class"
-                            v-on:click.prevent="runRowControl(row, control)"
+                            :key="index"
+                            :class="control.class"
+                            @click.prevent="runRowControl(row, control)"
                             v-bind="control.attributes"
                         ></button>
                     </div>
@@ -24,13 +24,13 @@
             </resource-edit>
             <div
                 v-if="controls.length"
-                v-bind:class="['includedAdminControls', {noRows: rows.length === 0}]"
+                :class="['includedAdminControls', {noRows: rows.length === 0}]"
             >
                 <button type="button" class="includedAdminBtn nBtn icr"
                     v-for="(control, index) in controls"
-                    v-bind:key="index"
+                    :key="index"
                     v-bind="control.attributes"
-                    v-on:click="isInteractive && control.action()"
+                    @click="isInteractive && control.action()"
                 ></button>
             </div>
         </div>

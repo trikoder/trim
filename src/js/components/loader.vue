@@ -3,9 +3,9 @@
         <div
             v-if="$store.state.loading"
             class="loadingSpinner"
-            v-bind:class="popupClass"
+            :class="popupClass"
         >
-            <div v-for="n in 5" v-bind:key="n" v-bind:class="'rect' + n"></div>
+            <div v-for="n in 5" :key="n" :class="'rect' + n"></div>
         </div>
     </transition>
 </template>

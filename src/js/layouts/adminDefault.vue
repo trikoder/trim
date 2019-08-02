@@ -1,15 +1,15 @@
 <template>
-    <div class="appContainer" v-bind:class="popupClasses">
-        <main-navigation v-on:storeUpdated="$emit('storeReady')"></main-navigation>
+    <div class="appContainer" :class="popupClasses">
+        <main-navigation @storeUpdated="$emit('storeReady')"></main-navigation>
         <component
             v-if="currentControllerType"
-            v-bind:is="currentControllerType"
+            :is="currentControllerType"
             v-bind="controllerProps"
             ref="currentController"
         />
         <component
             v-for="(Component, index) in $options.additionalComponents"
-            v-bind:is="Component" v-bind:key="index"
+            :is="Component" :key="index"
         ></component>
         <loader></loader>
     </div>

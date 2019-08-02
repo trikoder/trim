@@ -1,65 +1,65 @@
 <template>
     <div class="resourceController">
         <component
-            v-bind:is="getResourceHeaderType()"
-            v-bind:breadcrumbs="breadcrumbs"
-            v-bind:hasBottomBorder="headerHasBorder"
+            :is="getResourceHeaderType()"
+            :breadcrumbs="breadcrumbs"
+            :hasBottomBorder="headerHasBorder"
         >
-            <component v-bind:is="getResourceControlsType()" v-bind:controls="currentResourceControls"></component>
+            <component :is="getResourceControlsType()" :controls="currentResourceControls"></component>
         </component>
         <component
             v-if="currentContext === 'index'"
-            v-bind:is="getResourceListType()"
-            v-bind:query="indexQuery"
-            v-bind:configure="getIndexConfigurator()"
-            v-bind:Collection="getCollectionType()"
-            v-bind:getEditUrl="getEditUrl"
-            v-bind:getIndexUrl="getIndexUrl"
-            v-bind:openEdit="openEdit"
-            v-bind:resourceCaption="resourceCaption"
-            v-bind:apiInclude="includeApiData.index"
-            v-on:queryChange="openIndex"
-            v-on:beforeConfigure="processIndexEvent('beforeConfigure', $event)"
-            v-on:afterConfigure="processIndexEvent('afterConfigure', $event)"
+            :is="getResourceListType()"
+            :query="indexQuery"
+            :configure="getIndexConfigurator()"
+            :Collection="getCollectionType()"
+            :getEditUrl="getEditUrl"
+            :getIndexUrl="getIndexUrl"
+            :openEdit="openEdit"
+            :resourceCaption="resourceCaption"
+            :apiInclude="includeApiData.index"
+            @queryChange="openIndex"
+            @beforeConfigure="processIndexEvent('beforeConfigure', $event)"
+            @afterConfigure="processIndexEvent('afterConfigure', $event)"
             ref="listHandler"
         ></component>
         <component class="resourceEdit resourceEditType1"
             v-else-if="isStandardEditContext"
-            v-bind:is="getResourceEditType()"
-            v-bind:ModelType="getModelType()"
-            v-bind:configure="getEditConfigurator()"
-            v-bind:apiInclude="includeApiData.edit"
-            v-bind:resourceId="editResourceId"
-            v-bind:createRequiresDraft="createRequiresDraft"
-            v-bind:createRelatedStrategy="createRelatedStrategy"
-            v-bind:resourceSavedMessage="resourceSavedMessage"
-            v-bind:resourceCreatedMessage="resourceCreatedMessage"
-            v-on:beforeConfigure="processConfigureEvent('beforeConfigure', $event)"
-            v-on:afterConfigure="processConfigureEvent('afterConfigure', $event)"
-            v-on:resourceModelSaved="processSaveEvent($event)"
+            :is="getResourceEditType()"
+            :ModelType="getModelType()"
+            :configure="getEditConfigurator()"
+            :apiInclude="includeApiData.edit"
+            :resourceId="editResourceId"
+            :createRequiresDraft="createRequiresDraft"
+            :createRelatedStrategy="createRelatedStrategy"
+            :resourceSavedMessage="resourceSavedMessage"
+            :resourceCreatedMessage="resourceCreatedMessage"
+            @beforeConfigure="processConfigureEvent('beforeConfigure', $event)"
+            @afterConfigure="processConfigureEvent('afterConfigure', $event)"
+            @resourceModelSaved="processSaveEvent($event)"
             ref="editHandler"
         ></component>
-        <div v-else v-bind:key="currentContext" class="mediaUploadType1 resourceEdit resourceEditType1">
-            <message v-if="statusMessage" v-bind="statusMessage" v-on:close="statusMessage = null"></message>
+        <div v-else :key="currentContext" class="mediaUploadType1 resourceEdit resourceEditType1">
+            <message v-if="statusMessage" v-bind="statusMessage" @close="statusMessage = null"></message>
             <div class="layoutContainer">
                 <file-upload
                     v-if="currentUploadConfig"
-                    v-bind:uploadCaption="currentUploadConfig.uploadCaption"
-                    v-bind:mediaType="currentUploadConfig.name"
-                    v-bind:uploadUrl="uploadUrl()"
-                    v-bind:paramName="uploadParameter"
-                    v-bind:headers="uploadHeaders"
-                    v-on:upload="processUploadedFile"
+                    :uploadCaption="currentUploadConfig.uploadCaption"
+                    :mediaType="currentUploadConfig.name"
+                    :uploadUrl="uploadUrl()"
+                    :paramName="uploadParameter"
+                    :headers="uploadHeaders"
+                    @upload="processUploadedFile"
                 ></file-upload>
                 <included-admin
                     ref="includedMedia"
                     name="uploadedIdentifiers"
                     v-show="uploadedIdentifiers.length > 0"
                     v-model="uploadedIdentifiers"
-                    v-bind:setupEdit="getEditConfigurator()"
-                    v-bind:removeItems="false"
-                    v-bind:addItems="false"
-                    v-bind:attributes="{
+                    :setupEdit="getEditConfigurator()"
+                    :removeItems="false"
+                    :addItems="false"
+                    :attributes="{
                         wrapper: {class: 'includedAdminBlockType1'},
                         inputWrapper: {class: 'includedAdminElement'}
                     }"

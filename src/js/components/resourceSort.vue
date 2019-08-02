@@ -3,11 +3,11 @@
         <div class="inner">
             <div class="select">
                 <button type="button"><span>{{ translations.buttonText }}</span>{{ selectedSortLabel }}</button>
-                <select v-bind:value="selectedSort" v-on:change="$emit('sortRequest', $event.target.value)">
+                <select :value="selectedSort" @change="$emit('sortRequest', $event.target.value)">
                     <option
                         v-for="(option, index) in options"
-                        v-bind:key="index"
-                        v-bind:value="option.field"
+                        :key="index"
+                        :value="option.field"
                     >{{ option.label }}</option>
                 </select>
             </div>

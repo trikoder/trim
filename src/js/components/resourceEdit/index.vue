@@ -1,69 +1,69 @@
 <template>
     <component
-        v-bind:is="tag"
-        v-bind:autocomplete="this.tag === 'form' ? 'off' : undefined"
-        v-on:submit="handleSubmit"
+        :is="tag"
+        :autocomplete="this.tag === 'form' ? 'off' : undefined"
+        @submit="handleSubmit"
     >
         <message
             v-if="statusMessage && tabItems.length === 0"
             v-bind="statusMessage"
-            v-on:close="statusMessage = null"
+            @close="statusMessage = null"
         ></message>
         <div
             class="layoutContainer"
             v-if="resolvedDefinitions && resourceModel"
-            v-bind:class="{
+            :class="{
                 withTabs: resolvedDefinitions.layout.hasTabs,
                 withRegions: resolvedDefinitions.layout.hasRegions,
                 editLayoutRegions: resolvedDefinitions.layout.hasRegions
             }"
         >
             <nav class="tabNavType1" v-if="tabItems.length">
-                <a v-bind:href="getTabUrl(tab.key)" class="tabBtn nBtn"
+                <a :href="getTabUrl(tab.key)" class="tabBtn nBtn"
                     v-for="tab in tabItems"
-                    v-bind:key="tab.key"
-                    v-bind:class="{selected: tab.key === activeTab}"
-                    v-on:click.prevent="selectTab(tab.key)"
+                    :key="tab.key"
+                    :class="{selected: tab.key === activeTab}"
+                    @click.prevent="selectTab(tab.key)"
                 >{{ tab.caption }}</a>
             </nav>
             <message
                 v-if="statusMessage && tabItems.length"
                 v-bind="statusMessage"
-                v-on:close="statusMessage = null"
+                @close="statusMessage = null"
             ></message>
             <template v-for="(config, key) in resolvedDefinitions.layout">
                 <tab
                     v-if="config.isTab"
-                    v-bind:layout="config"
-                    v-bind:formData="formData"
-                    v-bind:selected="key === activeTab"
-                    v-bind:key="key"
-                    v-bind:ref="key"
-                    v-bind:tab-key="key"
+                    :layout="config"
+                    :formData="formData"
+                    :selected="key === activeTab"
+                    :key="key"
+                    :ref="key"
+                    :tab-key="key"
                 ></tab>
                 <region
                     v-if="config.isRegion"
-                    v-bind:layout="config"
-                    v-bind:formData="formData"
-                    v-bind:key="key"
-                    v-bind:class="key"
-                    v-bind:ref="key"
+                    :layout="config"
+                    :formData="formData"
+                    :key="key"
+                    :class="key"
+                    :ref="key"
                 ></region>
                 <group
                     v-if="config.isGroup"
-                    v-bind:layout="config"
-                    v-bind:formData="formData"
-                    v-bind:key="key"
-                    v-bind:ref="key"
+                    :layout="config"
+                    :formData="formData"
+                    :key="key"
+                    :ref="key"
                 ></group>
                 <component
                     v-if="key === 'fields'"
                     v-for="field in config"
-                    v-bind:is="field.Type"
+                    :is="field.Type"
                     v-bind="field.options"
                     v-model="formData[field.options.name]"
-                    v-bind:key="field.options.name"
-                    v-bind:ref="field.options.name"
+                    :key="field.options.name"
+                    :ref="field.options.name"
                 ></component>
             </template>
             <slot name="bottomControls"></slot>

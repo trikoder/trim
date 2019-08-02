@@ -1,17 +1,17 @@
 <template>
     <form
-        v-on:submit.prevent="submit"
+        @submit.prevent="submit"
         class="filters filtersType1"
-        v-bind:class="{canContract, sizeExpanded, active}"
+        :class="{canContract, sizeExpanded, active}"
         autocomplete="off"
     >
         <div class="inner" ref="container">
             <component
                 v-for="definition in definitions"
-                v-bind:is="definition.Type"
+                :is="definition.Type"
                 v-bind="definition.options"
                 v-model="filters[definition.options.name]"
-                v-bind:key="definition.options.name"
+                :key="definition.options.name"
             ></component>
             <button class="submitBtn" type="submit">
                 {{ translations.filterButtonCaption }}
@@ -19,18 +19,18 @@
         </div>
         <button
             type="button"
-            v-bind:title="translations.toggleButtonCaption"
+            :title="translations.toggleButtonCaption"
             class="toggleBtn nBtn icr iconSliders"
-            v-on:click="toggleActive"
+            @click="toggleActive"
         >
             {{ translations.toggleButtonCaption }}
         </button>
         <button
             v-if="canContract"
             type="button"
-            v-bind:title="translations.toggleSizeButtonCaption"
+            :title="translations.toggleSizeButtonCaption"
             class="toggleSizeBtn nBtn icr iconMoreHorizontal"
-            v-on:click="toggleSize"
+            @click="toggleSize"
         >
             {{ translations.toggleSizeButtonCaption }}
         </button>

@@ -1,19 +1,19 @@
 <template>
     <div class="overlay">
-        <form class="modal" v-on:submit.prevent="accept">
+        <form class="modal" @submit.prevent="accept">
             <p class="message">{{ message }}</p>
             <div class="controls">
                 <button
                     class="cancelBtn nBtn"
                     type="button"
                     v-if="!acceptOnly"
-                    v-on:click.prevent="cancel"
+                    @click.prevent="cancel"
                 >{{ cancelText }}</button>
                 <button
                     ref="acceptBtn"
-                    v-bind:class="['acceptBtn nBtn', {fullSize: acceptOnly}]"
+                    :class="['acceptBtn nBtn', {fullSize: acceptOnly}]"
                     type="submit"
-                    v-on:click.prevent="accept"
+                    @click.prevent="accept"
                 >{{ acceptText }}</button>
             </div>
         </form>

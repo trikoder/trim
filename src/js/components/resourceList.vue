@@ -2,52 +2,52 @@
     <div class="resourceList resourceListType1">
         <filters
             v-if="showFilters"
-            v-bind:definitions="resolvedDefinitions.filters"
-            v-bind:initialFilters="apiQuery.filter"
-            v-bind:persistentFilters="resolvedDefinitions.persistentFilters"
-            v-on:filterRequest="handleFilterRequest"
+            :definitions="resolvedDefinitions.filters"
+            :initialFilters="apiQuery.filter"
+            :persistentFilters="resolvedDefinitions.persistentFilters"
+            @filterRequest="handleFilterRequest"
         ></filters>
-        <message v-if="messageData" v-bind="messageData" v-on:close="hideMessage"></message>
+        <message v-if="messageData" v-bind="messageData" @close="hideMessage"></message>
         <div class="topListControls cf">
             <mass-actions
                 v-if="showMassActions"
-                v-bind:resourceCaption="resourceCaption"
-                v-bind:actions="resolvedDefinitions.massActions"
-                v-bind:selectedModels="selectedModels"
-                v-on:deselectModel="deselectModel"
-                v-on:message="showMessage"
+                :resourceCaption="resourceCaption"
+                :actions="resolvedDefinitions.massActions"
+                :selectedModels="selectedModels"
+                @deselectModel="deselectModel"
+                @message="showMessage"
             ></mass-actions>
             <pagination
                 v-if="showPagination"
-                v-bind:getUrlForPage="getUrlForPage"
-                v-bind:totalItems="totalItems"
-                v-bind:currentPage="currentPage"
-                v-bind:limit="paginationLimit"
-                v-on:pageRequest="handlePageRequest"
+                :getUrlForPage="getUrlForPage"
+                :totalItems="totalItems"
+                :currentPage="currentPage"
+                :limit="paginationLimit"
+                @pageRequest="handlePageRequest"
             ></pagination>
             <sort
                 v-if="showSort"
-                v-bind:currentSort="apiQuery.sort"
-                v-bind:options="resolvedDefinitions.sorts"
-                v-on:sortRequest="handleSortRequest"
+                :currentSort="apiQuery.sort"
+                :options="resolvedDefinitions.sorts"
+                @sortRequest="handleSortRequest"
             ></sort>
         </div>
-        <div class="itemListCont" v-bind:class="{
+        <div class="itemListCont" :class="{
             withMassActions: definitions.massActions.length > 0,
             selectsOne: selectsResource === 'one',
             selectsMany: selectsResource === 'many'
         }">
             <component
                 v-if="modelsPresent"
-                v-bind:is="getListTemplateType()"
-                v-bind:modelCollection="modelCollection"
-                v-bind:definitions="resolvedDefinitions"
-                v-bind:allModelsAreSelected="allModelsAreSelected"
-                v-bind:selectAllModels="selectAllModels"
-                v-bind:deselectAllModels="deselectAllModels"
-                v-bind:isModelSelected="isModelSelected"
-                v-bind:selectModel="selectModel"
-                v-bind:deselectModel="deselectModel"
+                :is="getListTemplateType()"
+                :modelCollection="modelCollection"
+                :definitions="resolvedDefinitions"
+                :allModelsAreSelected="allModelsAreSelected"
+                :selectAllModels="selectAllModels"
+                :deselectAllModels="deselectAllModels"
+                :isModelSelected="isModelSelected"
+                :selectModel="selectModel"
+                :deselectModel="deselectModel"
                 v-bind="getAdditionalTemplateParams()"
             ></component>
             <p v-if="modelCollection && !modelsPresent" class="noResults">
@@ -57,19 +57,19 @@
         <div class="bottomListControls cf" v-if="showPagination || showSort">
             <pagination
                 v-if="showPagination"
-                v-bind:showLimitOptions="true"
-                v-bind:getUrlForPage="getUrlForPage"
-                v-bind:totalItems="totalItems"
-                v-bind:currentPage="currentPage"
-                v-bind:limit="paginationLimit"
-                v-on:pageRequest="handlePageRequest"
-                v-on:limitRequest="handleLimitRequest"
+                :showLimitOptions="true"
+                :getUrlForPage="getUrlForPage"
+                :totalItems="totalItems"
+                :currentPage="currentPage"
+                :limit="paginationLimit"
+                @pageRequest="handlePageRequest"
+                @limitRequest="handleLimitRequest"
             ></pagination>
             <sort
                 v-if="showSort"
-                v-bind:currentSort="apiQuery.sort"
-                v-bind:options="resolvedDefinitions.sorts"
-                v-on:sortRequest="handleSortRequest"
+                :currentSort="apiQuery.sort"
+                :options="resolvedDefinitions.sorts"
+                @sortRequest="handleSortRequest"
             ></sort>
         </div>
     </div>

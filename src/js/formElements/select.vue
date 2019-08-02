@@ -1,19 +1,19 @@
 <template>
     <element-wrapper v-bind="elementWrapperProps">
-        <button type="button" class="buttonControl" v-bind:class="{hideIcon: !isInteractive}">
+        <button type="button" class="buttonControl" :class="{hideIcon: !isInteractive}">
             <span class="buttonCaption" v-html="buttonCaption"></span>
         </button>
         <select
             v-if="optionElements && isInteractive"
             v-bind="inputAttributes"
-            v-bind:value="stringValue"
-            v-on:change="processInputEvent"
+            :value="stringValue"
+            @change="processInputEvent"
         >
             <option
                 v-for="(option, index) in optionElements"
-                v-bind:key="index"
-                v-bind:value="option.value"
-                v-bind:disabled="option.disabled"
+                :key="index"
+                :value="option.value"
+                :disabled="option.disabled"
             >{{ option.caption }}</option>
         </select>
     </element-wrapper>

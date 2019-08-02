@@ -1,21 +1,21 @@
 <template>
-    <header class="headerType1" v-bind:class={hasBottomBorder}>
+    <header class="headerType1" :class={hasBottomBorder}>
         <h1 class="projectCaption">{{ projectCaption }}</h1>
         <h2 v-if="breadcrumbs.length" class="title">
             <template v-for="(breadcrumb, index) in breadcrumbs">
                 <a
                     v-if="breadcrumb.url"
-                    v-bind:key="breadcrumb.caption"
-                    v-bind:href="breadcrumb.url"
-                    v-bind:class="{iconChevronRight: index + 1 < breadcrumbs.length}"
-                    v-on:click.prevent="clickBreadcrumb(breadcrumb)"
+                    :key="breadcrumb.caption"
+                    :href="breadcrumb.url"
+                    :class="{iconChevronRight: index + 1 < breadcrumbs.length}"
+                    @click.prevent="clickBreadcrumb(breadcrumb)"
                 >
                     {{ breadcrumb.caption }}
                 </a>
                 <span
                     v-else
-                    v-bind:key="breadcrumb.caption"
-                    v-bind:class="{iconChevronRight: index + 1 < breadcrumbs.length}"
+                    :key="breadcrumb.caption"
+                    :class="{iconChevronRight: index + 1 < breadcrumbs.length}"
                 >
                     {{ breadcrumb.caption }}
                 </span>

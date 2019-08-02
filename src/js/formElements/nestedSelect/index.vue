@@ -1,19 +1,19 @@
 <template>
     <element-wrapper v-bind="elementWrapperProps" v-on-dismiss="{callback: closeDropdown, watch: dropdownActive}">
         <div class="controls">
-            <div v-for="model in relatedModels" v-bind:key="model.get('id')" class="item">
+            <div v-for="model in relatedModels" :key="model.get('id')" class="item">
                 {{ getModelCaption(model) }}
                 <button
                     v-if="isInteractive" type="button"
-                    v-on:click="isInteractive && deselectModel(model)"
+                    @click="isInteractive && deselectModel(model)"
                     class="removeBtn iconClose icr nBtn"
                 ></button>
             </div>
             <button
                 type="button"
-                v-on:click="isInteractive && toggleDropdown()"
+                @click="isInteractive && toggleDropdown()"
                 class="openBtn nBtn"
-                v-bind:class="{iconMoreHorizontal: isInteractive}"
+                :class="{iconMoreHorizontal: isInteractive}"
             >{{ value ? '' : selectText }}</button>
         </div>
         <div class="dropdown" v-if="dropdownActive && isInteractive && !loading">
@@ -23,20 +23,20 @@
                     class="searchInput"
                     v-model="searchQuery"
                     ref="searchInput"
-                    v-bind:placeholder="searchPlaceholder"
-                    v-on:keyup.down="focusNextResult()"
-                    v-on:keyup.up="focusPrevResult()"
-                    v-on:keydown.enter.prevent="selectFocusedItem"
+                    :placeholder="searchPlaceholder"
+                    @keyup.down="focusNextResult()"
+                    @keyup.up="focusPrevResult()"
+                    @keydown.enter.prevent="selectFocusedItem"
                 />
                 <div v-if="searchResults" class="searchResults">
                     <span
                         v-for="(item, index) in searchResults"
-                        v-bind:key="item.id"
+                        :key="item.id"
                         class="searchResultItem"
-                        v-bind:class="{focused: item.selected}"
+                        :class="{focused: item.selected}"
                         v-html="item.searchCaption || item.caption"
-                        v-on:mouseover="focusSearchResult(index)"
-                        v-on:click="selectSearchResult(item)"
+                        @mouseover="focusSearchResult(index)"
+                        @click="selectSearchResult(item)"
                     ></span>
                     <p v-if="searchResults.length === 0" class="noSearchResults">No results</p>
                 </div>
@@ -44,16 +44,16 @@
             <ul class="itemList">
                 <tree-node
                     v-for="model in rootResourceModels"
-                    v-bind:key="model.get('id')"
-                    v-bind:model="model"
-                    v-bind:expandedResourceIds="expandedResourceIds"
-                    v-bind:getModelCaption="getModelCaption"
-                    v-bind:onExpand="expandNode"
-                    v-bind:onCollapse="collapseNode"
-                    v-bind:onSelect="selectModel"
-                    v-bind:isLeaf="isLeaf"
-                    v-bind:isLevelSelectable="isLevelSelectable"
-                    v-bind:getModelChildren="getModelChildren"
+                    :key="model.get('id')"
+                    :model="model"
+                    :expandedResourceIds="expandedResourceIds"
+                    :getModelCaption="getModelCaption"
+                    :onExpand="expandNode"
+                    :onCollapse="collapseNode"
+                    :onSelect="selectModel"
+                    :isLeaf="isLeaf"
+                    :isLevelSelectable="isLevelSelectable"
+                    :getModelChildren="getModelChildren"
                 ></tree-node>
             </ul>
         </div>

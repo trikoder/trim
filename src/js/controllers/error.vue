@@ -1,6 +1,6 @@
 <template>
     <div class="errorPageType1">
-        <resource-header v-bind:breadcrumbs="[{caption: this.getPageTitle()}]" />
+        <resource-header :breadcrumbs="[{caption: this.getPageTitle()}]" />
         <div class="box">
             <h1>{{title}}</h1>
             <p>{{message}}</p>

@@ -4,21 +4,21 @@
             <template v-for="(config, key) in layout">
                 <group
                     v-if="config.isGroup"
-                    v-bind:layout="config"
-                    v-bind:formData="formData"
-                    v-bind:visible="visible"
-                    v-bind:key="key"
-                    v-bind:ref="key"
+                    :layout="config"
+                    :formData="formData"
+                    :visible="visible"
+                    :key="key"
+                    :ref="key"
                 ></group>
                 <component
                     v-if="key === 'fields'"
                     v-for="field in config"
-                    v-bind:is="field.Type"
+                    :is="field.Type"
                     v-bind="field.options"
                     v-model="formData[field.options.name]"
-                    v-bind:visible="isFieldVisible(field)"
-                    v-bind:key="field.options.name"
-                    v-bind:ref="field.options.name"
+                    :visible="isFieldVisible(field)"
+                    :key="field.options.name"
+                    :ref="field.options.name"
                 ></component>
             </template>
         </div>

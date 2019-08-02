@@ -1,24 +1,24 @@
 <template>
-    <element-wrapper v-bind:renderInputWrapper="false" v-bind="elementWrapperProps">
+    <element-wrapper :renderInputWrapper="false" v-bind="elementWrapperProps">
         <date-pick
             v-bind="inputWrapperAttributes"
-            v-bind:format="format"
-            v-bind:displayFormat="displayFormat"
-            v-bind:inputAttributes="dateInputAttributes"
-            v-bind:isDateDisabled="isDateDisabled"
-            v-bind:weekdays="weekdays"
-            v-bind:months="months"
-            v-bind:parseDate="parseDate"
-            v-bind:formatDate="formatDate"
-            v-bind:pickTime="pickTime"
-            v-bind:pickMinutes="pickMinutes"
-            v-bind:pickSeconds="pickSeconds"
-            v-bind:prevMonthCaption="prevMonthCaption"
-            v-bind:nextMonthCaption="nextMonthCaption"
-            v-bind:setTimeCaption="setTimeCaption"
-            v-bind:value="value"
-            v-bind:editable="isInteractive"
-            v-on:input="processInputEvent"
+            :format="format"
+            :displayFormat="displayFormat"
+            :inputAttributes="dateInputAttributes"
+            :isDateDisabled="isDateDisabled"
+            :weekdays="weekdays"
+            :months="months"
+            :parseDate="parseDate"
+            :formatDate="formatDate"
+            :pickTime="pickTime"
+            :pickMinutes="pickMinutes"
+            :pickSeconds="pickSeconds"
+            :prevMonthCaption="prevMonthCaption"
+            :nextMonthCaption="nextMonthCaption"
+            :setTimeCaption="setTimeCaption"
+            :value="value"
+            :editable="isInteractive"
+            @input="processInputEvent"
         ></date-pick>
     </element-wrapper>
 </template>

@@ -1,22 +1,22 @@
 <template>
-    <element-wrapper v-bind:renderInputWrapper="false" v-bind="elementWrapperProps">
+    <element-wrapper :renderInputWrapper="false" v-bind="elementWrapperProps">
         <div class="stateSelectElement" v-bind="inputWrapperAttributes">
             <p class="stateCaption"><span>{{currentState.caption}}</span></p>
             <div class="controls" v-if="selectableOptions.length && isInteractive">
                 <div class="selectContainer">
                     <div class="select">
                         <button type="button">&#8627;&nbsp; {{ selectCaption }}</button>
-                        <select v-bind:value="selectValue" v-on:input="processInputEvent">
+                        <select :value="selectValue" @input="processInputEvent">
                             <option
                                 v-for="option in selectableOptions"
-                                v-bind:key="option.key"
-                                v-bind:value="option.value"
+                                :key="option.key"
+                                :value="option.value"
                             >{{ option.caption }}</option>
                         </select>
                     </div>
                 </div>
                 <button type="button" class="updateBtn nBtn"
-                    v-if="updateEntityOnChange" v-on:click="persistState"
+                    v-if="updateEntityOnChange" @click="persistState"
                 >{{updateControlCaption}}</button>
             </div>
         </div>

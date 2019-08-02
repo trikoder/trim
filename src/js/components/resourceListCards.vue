@@ -1,22 +1,22 @@
 <template>
-    <ul class="cardListType1" v-bind:key="modelCollection.cid">
-        <li v-for="model in modelCollection.models" v-bind:key="model.cid">
+    <ul class="cardListType1" :key="modelCollection.cid">
+        <li v-for="model in modelCollection.models" :key="model.cid">
             <div class="cardType1">
                 <div v-if="definitions.massActions.length" class="massActionCheckboxControl">
                     <input
                         type="checkbox"
-                        v-bind:id="'mac-' + model.cid"
+                        :id="'mac-' + model.cid"
                         class="checkboxType1 massActionCheckbox"
-                        v-bind:checked="isModelSelected(model)"
-                        v-on:change="$event.target.checked ? selectModel(model) : deselectModel(model)"
+                        :checked="isModelSelected(model)"
+                        @change="$event.target.checked ? selectModel(model) : deselectModel(model)"
                     >
-                    <label class="icr iconCheck" v-bind:for="'mac-' + model.cid"></label>
+                    <label class="icr iconCheck" :for="'mac-' + model.cid"></label>
                 </div>
                 <component
                     v-for="(definition, index) in definitions.listItems"
-                    v-bind:key="index"
-                    v-bind:is="definition.Type"
-                    v-bind:resourceModel="model"
+                    :key="index"
+                    :is="definition.Type"
+                    :resourceModel="model"
                     v-bind="definition.options"
                 ></component>
             </div>

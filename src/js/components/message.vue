@@ -1,11 +1,11 @@
 <template>
-    <div class="message" v-bind:class="[type, {withAction: Boolean(action), withClose: Boolean(closeAfter) === false}]">
+    <div class="message" :class="[type, {withAction: Boolean(action), withClose: Boolean(closeAfter) === false}]">
         <div class="text" v-html="text"></div>
         <button
             v-if="!closeAfter"
             type="button"
             class="closeBtn nBtn icr iconClose"
-            v-on:click="close"
+            @click="close"
         >
             {{ translations.closeCaption}}
         </button>
@@ -13,7 +13,7 @@
             v-if="action"
             type="button"
             class="actionBtn nBtn"
-            v-on:click="runAction"
+            @click="runAction"
         >
             {{ actionCaption }}
         </button>

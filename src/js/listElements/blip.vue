@@ -1,8 +1,8 @@
 <template>
     <span
-        v-bind:class="[classAttribute, value ? 'active': 'inactive']"
-        v-bind:style="styleAttribute"
-        v-bind:title="titleAttribute"
+        :class="[classAttribute, value ? 'active': 'inactive']"
+        :style="styleAttribute"
+        :title="titleAttribute"
         v-bind="attributes"
     ></span>
 </template>

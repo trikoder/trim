@@ -1,7 +1,7 @@
 <template>
     <section class="login">
         <h1 class="title">{{title}}</h1>
-        <form class="form" v-on:submit.prevent="submitForm">
+        <form class="form" @submit.prevent="submitForm">
             <div class="message error" v-if="error">{{error}}</div>
             <div class="formItem">
                 <label for="username">{{usernameLabel}}</label>

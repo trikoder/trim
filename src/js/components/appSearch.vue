@@ -2,25 +2,25 @@
     <form
         class="appSearchType1 iconSearch"
         v-on-dismiss="{callback: close, watch: isOpened}"
-        v-bind:class="{opened: results.length > 0}"
-        v-on:submit.prevent
+        :class="{opened: results.length > 0}"
+        @submit.prevent
     >
         <input
             ref="input"
             v-model="query"
-            v-on:keyup.down="selectNextResult()"
-            v-on:keyup.up="selectPrevResult()"
-            v-on:keyup.enter="followLink()"
+            @keyup.down="selectNextResult()"
+            @keyup.up="selectPrevResult()"
+            @keyup.enter="followLink()"
             placeholder="Search"
         />
         <ul v-if="results.length" class="results">
-            <li v-for="(item, index) in results" v-bind:key="item.key">
+            <li v-for="(item, index) in results" :key="item.key">
                 <router-link
                     class="resultItem"
-                    v-on:mouseover.native="selectedItemIndex = index"
-                    v-on:click.native="close()"
-                    v-bind:class="{focused: item.selected}"
-                    v-bind:to="item.url"
+                    @mouseover.native="selectedItemIndex = index"
+                    @click.native="close()"
+                    :class="{focused: item.selected}"
+                    :to="item.url"
                 >
                     {{ item.caption }}
                 </router-link>

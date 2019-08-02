@@ -1,11 +1,11 @@
 <template>
-    <nav class="mainNavigation" v-bind:class="{active: isOpened}" v-on-dismiss="{callback: close, watch: isOpened}">
-        <div class="overlay" v-if="isOpened" v-on:click="close"></div>
-        <button v-on:click="toggle" class="nBtn toggleBtn iconMenu icr">
+    <nav class="mainNavigation" :class="{active: isOpened}" v-on-dismiss="{callback: close, watch: isOpened}">
+        <div class="overlay" v-if="isOpened" @click="close"></div>
+        <button @click="toggle" class="nBtn toggleBtn iconMenu icr">
             {{ getProjectCaption() }}
         </button>
         <div class="inner">
-            <button v-on:click="toggle" class="nBtn toggleBtn iconMenu">
+            <button @click="toggle" class="nBtn toggleBtn iconMenu">
                 {{ getProjectCaption() }}
             </button>
             <div class="scrollWrapper">
@@ -13,22 +13,22 @@
                     <ul class="menu">
                         <li
                             v-for="item in navigationItems"
-                            v-bind:class="{opened: item.opened}"
-                            v-bind:key="item.key"
+                            :class="{opened: item.opened}"
+                            :key="item.key"
                         >
                             <template v-if="!item.subItems">
                                 <component
                                     v-if="item.Component"
-                                    v-bind:is="item.Component"
+                                    :is="item.Component"
                                     v-bind="item"
-                                    v-on:select="openItem(item)"
+                                    @select="openItem(item)"
                                 ></component>
                                 <a
                                     v-else
-                                    v-bind:href="item.url"
-                                    v-bind:class="['item', item.icon ? 'icon' + item.icon : '', {selected: item.selected}]"
-                                    v-bind:title="item.caption"
-                                    v-on:click.prevent="openItem(item)"
+                                    :href="item.url"
+                                    :class="['item', item.icon ? 'icon' + item.icon : '', {selected: item.selected}]"
+                                    :title="item.caption"
+                                    @click.prevent="openItem(item)"
                                 >
                                     {{ item.caption }}
                                     <span v-if="!item.icon" class="initials">{{ item.initials }}</span>
@@ -37,27 +37,27 @@
                             <template v-else>
                                 <button
                                     type="button"
-                                    v-bind:class="['nBtn itemToggle', item.icon ? 'icon' + item.icon : '', {selected: item.selected}]"
-                                    v-bind:title="item.caption"
-                                    v-on:click="toggleGroup(item.key)"
+                                    :class="['nBtn itemToggle', item.icon ? 'icon' + item.icon : '', {selected: item.selected}]"
+                                    :title="item.caption"
+                                    @click="toggleGroup(item.key)"
                                 >
                                     {{ item.caption }}
                                     <span v-if="!item.icon" class="initials">{{ item.initials }}</span>
                                 </button>
                                 <ul class="subMenu">
-                                    <li v-for="subItem in item.subItems" v-bind:key="subItem.key">
+                                    <li v-for="subItem in item.subItems" :key="subItem.key">
                                         <component
                                             v-if="subItem.Component"
-                                            v-bind:is="subItem.Component"
+                                            :is="subItem.Component"
                                             v-bind="subItem"
-                                            v-on:select="openItem(subItem)"
+                                            @select="openItem(subItem)"
                                         ></component>
                                         <a
                                             v-else
-                                            v-bind:href="subItem.url"
-                                            v-bind:class="['item', {selected: subItem.selected}]"
-                                            v-bind:title="subItem.caption"
-                                            v-on:click.prevent="openItem(subItem)"
+                                            :href="subItem.url"
+                                            :class="['item', {selected: subItem.selected}]"
+                                            :title="subItem.caption"
+                                            @click.prevent="openItem(subItem)"
                                         >
                                             {{ subItem.caption }}
                                         </a>
@@ -70,26 +70,26 @@
             </div>
             <div
                 class="userPanel"
-                v-bind:class="{active: isUserPanelOpened}"
+                :class="{active: isUserPanelOpened}"
                 v-on-dismiss="{callback: closeUserPanel, watch: isUserPanelOpened}"
             >
-                <button v-on:click="toggleUserPanel" type="button" class="nBtn toggleBtn iconArrowUpCircle">
+                <button @click="toggleUserPanel" type="button" class="nBtn toggleBtn iconArrowUpCircle">
                     {{ getUserCaption() }}
                 </button>
                 <ul>
-                    <li v-for="item in userNavigationItems" v-bind:key="item.key">
+                    <li v-for="item in userNavigationItems" :key="item.key">
                         <a
                             v-if="item.url"
                             class="item"
-                            v-bind:href="item.url"
+                            :href="item.url"
                             v-html="item.caption"
-                            v-on:click.prevent="openUserItem(item)"
+                            @click.prevent="openUserItem(item)"
                         ></a>
                         <button
                             v-else
                             class="nBtn item"
                             v-html="item.caption"
-                            v-on:click="openUserItem(item)"
+                            @click="openUserItem(item)"
                         ></button>
                     </li>
                 </ul>
@@ -101,7 +101,7 @@
         </div>
         <global-events
             :filter="(event, handler, eventName) => { return ['INPUT', 'TEXTAREA'].indexOf(event.target.tagName) < 0; }"
-            v-on:keyup.shift.76.exact="showSearch"
+            @keyup.shift.76.exact="showSearch"
         />
     </nav>
 </template>

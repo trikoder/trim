@@ -3,8 +3,8 @@
         <pre v-bind="mirrorAttributes"><span ref="mirror">{{ value }}</span><br></pre>
         <textarea
             v-bind="inputAttributes"
-            v-bind:value="value"
-            v-on:input="processInputEvent"
+            :value="value"
+            @input="processInputEvent"
         ></textarea>
     </element-wrapper>
 </template>

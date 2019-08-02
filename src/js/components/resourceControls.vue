@@ -3,26 +3,26 @@
         <template v-for="(control, index) in parsedControls">
             <div
                 v-if="control.isDropdown"
-                v-bind:key="control.caption + index"
+                :key="control.caption + index"
                 class="dropdownControls"
-                v-bind:class="{active: control.active, accentedAdjecent: control.accentedAdjecent}"
+                :class="{active: control.active, accentedAdjecent: control.accentedAdjecent}"
                 v-on-dismiss="{callback: () => closeDropdown(control), watch: control.active}"
             >
                 <button
                     class="toggleBtn nBtn"
-                    v-bind:class="control.className"
-                    v-on:click="toggleDropdown(control)"
+                    :class="control.className"
+                    @click="toggleDropdown(control)"
                 >
                     {{ control.caption }}
                 </button>
                 <div class="dropdown">
                     <button
                         v-for="(item, index) in control.items"
-                        v-bind:key="item.caption + index"
+                        :key="item.caption + index"
                         type="button"
                         class="nBtn"
-                        v-bind:title="item.caption"
-                        v-on:click.prevent="runDropdownAction(control, item)"
+                        :title="item.caption"
+                        @click.prevent="runDropdownAction(control, item)"
                     >
                     {{ item.caption }}
                     </button>
@@ -30,11 +30,11 @@
             </div>
             <a
                 v-else-if="control.url"
-                v-bind:href="control.url"
-                v-bind:key="control.caption + index"
-                v-bind:class="control.className"
-                v-bind:title="control.caption"
-                v-on:click.prevent="runControlAction(control)"
+                :href="control.url"
+                :key="control.caption + index"
+                :class="control.className"
+                :title="control.caption"
+                @click.prevent="runControlAction(control)"
             >
               <span>{{ control.caption }}</span>
             </a>
@@ -42,10 +42,10 @@
                 v-else
                 class="nBtn"
                 type="button"
-                v-bind:key="control.caption + index"
-                v-bind:class="control.className"
-                v-bind:title="control.caption"
-                v-on:click.prevent="runControlAction(control)"
+                :key="control.caption + index"
+                :class="control.className"
+                :title="control.caption"
+                @click.prevent="runControlAction(control)"
             >
                 <span>{{ control.caption }}</span>
             </button>

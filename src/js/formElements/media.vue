@@ -2,10 +2,10 @@
     <element-wrapper ref="wrapper" v-bind="elementWrapperProps">
         <div class="mediaContainer">
             <template v-if="mediaModel">
-                <img v-bind:src="thumbImageUrl"/>
+                <img :src="thumbImageUrl"/>
                 <button
                     type="button"
-                    v-on:click="zoomImage"
+                    @click="zoomImage"
                     class="zoomInBtn nBtn icr iconMaximize"
                 ></button>
             </template>
@@ -13,25 +13,25 @@
                 <button
                     type="button"
                     class="nBtn placeholderImage icr iconPlus"
-                    v-on:click="isInteractive && openFileDialog()"
-                    v-bind:class="{interactive: enableUpload}"
+                    @click="isInteractive && openFileDialog()"
+                    :class="{interactive: enableUpload}"
                 ></button>
             </template>
         </div>
         <div class="textControls">
-            <span class="openBtn" v-on:click="isInteractive && selectMedia()">
+            <span class="openBtn" @click="isInteractive && selectMedia()">
                 {{ mediaModel ? changeImageCaption : chooseImageCaption }}
             </span>
             <template v-if="enableUpload">
                 <span class="separator"> {{ separatorCaption }} </span>
-                <span v-on:click="isInteractive && openFileDialog()" class="fileUploadHandle">
+                <span @click="isInteractive && openFileDialog()" class="fileUploadHandle">
                     {{ uploadImageCaption }}
                 </span>
             </template>
         </div>
         <template v-if="mediaModel && isInteractive">
-            <button type="button" v-on:click="openEdit" class="editBtn nBtn icr iconEdit2"></button>
-            <button type="button" v-on:click="unsetValue" class="removeBtn nBtn icr iconTrash"></button>
+            <button type="button" @click="openEdit" class="editBtn nBtn icr iconEdit2"></button>
+            <button type="button" @click="unsetValue" class="removeBtn nBtn icr iconTrash"></button>
         </template>
     </element-wrapper>
 </template>

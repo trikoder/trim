@@ -2,9 +2,9 @@
     <element-wrapper v-bind="elementWrapperProps">
         <input
             v-bind="inputAttributes"
-            v-bind:type="inputAttributes.type || 'text'"
-            v-bind:value="value"
-            v-on:input="processInputEvent"
+            :type="inputAttributes.type || 'text'"
+            :value="value"
+            @input="processInputEvent"
         >
         <slot name="inputWrapperEnd"></slot>
     </element-wrapper>

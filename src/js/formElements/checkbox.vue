@@ -3,11 +3,11 @@
         <input
             type="checkbox"
             v-bind="inputAttributes"
-            v-bind:checked="value === valueMap.checked"
-            v-bind:disabled="!isInteractive"
-            v-on:input="processInputEvent"
+            :checked="value === valueMap.checked"
+            :disabled="!isInteractive"
+            @input="processInputEvent"
         >
-        <label class="icr iconCheck" v-bind:for="inputAttributes.id"></label>
+        <label class="icr iconCheck" :for="inputAttributes.id"></label>
     </element-wrapper>
 </template>
 

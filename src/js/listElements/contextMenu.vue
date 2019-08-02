@@ -1,32 +1,32 @@
 <template>
     <div
-        v-bind:class="[classAttribute, {active: opened}]"
-        v-bind:style="styleAttribute"
+        :class="[classAttribute, {active: opened}]"
+        :style="styleAttribute"
         v-bind="attributes"
         v-on-dismiss="{callback: close, watch: opened}"
     >
-        <button type="button" v-on:click="toggle" class="toggleContextMenu nBtn icr iconMenu">
+        <button type="button" @click="toggle" class="toggleContextMenu nBtn icr iconMenu">
             {{ toggleButtonCaption }}
         </button>
         <ul>
             <li
                 v-for="(item, index) in dropdownItems"
-                v-bind:key="index"
+                :key="index"
             >
                 <a
                     v-if="item.url"
                     class="contextItem"
-                    v-on:click="runItemAction(item, $event)"
-                    v-bind:target="item.isExternalLink ? '_blank' : undefined"
-                    v-bind:class="item.class"
-                    v-bind:href="item.url"
+                    @click="runItemAction(item, $event)"
+                    :target="item.isExternalLink ? '_blank' : undefined"
+                    :class="item.class"
+                    :href="item.url"
                 >{{ item.caption }}</a>
                 <button
                     v-else
                     type="button"
                     class="contextItem"
-                    v-on:click="runItemAction(item, $event)"
-                    v-bind:class="item.class"
+                    @click="runItemAction(item, $event)"
+                    :class="item.class"
                 >{{ item.caption }}</button>
 
             </li>

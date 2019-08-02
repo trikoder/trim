@@ -1,9 +1,9 @@
 <template>
     <a
-        v-bind:href="href"
-        v-bind:class="classAttribute"
-        v-bind:style="styleAttribute"
-        v-on:click="handleClick"
+        :href="href"
+        :class="classAttribute"
+        :style="styleAttribute"
+        @click="handleClick"
         v-bind="attributes"
         v-html="content"
     ></a>

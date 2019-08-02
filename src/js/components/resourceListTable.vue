@@ -1,5 +1,5 @@
 <template>
-    <table class="tableType1" v-bind:key="modelCollection.cid">
+    <table class="tableType1" :key="modelCollection.cid">
         <thead>
             <th
                 v-if="definitions.massActions.length"
@@ -7,44 +7,44 @@
             >
                 <input
                     type="checkbox"
-                    v-bind:id="'mac-' + modelCollection.cid"
+                    :id="'mac-' + modelCollection.cid"
                     class="checkboxType1 massActionCheckbox"
-                    v-bind:checked="allModelsAreSelected"
-                    v-on:change="$event.target.checked ? selectAllModels() : deselectAllModels()"
+                    :checked="allModelsAreSelected"
+                    @change="$event.target.checked ? selectAllModels() : deselectAllModels()"
                 >
-                <label class="icr iconCheck" v-bind:for="'mac-' + modelCollection.cid"></label>
+                <label class="icr iconCheck" :for="'mac-' + modelCollection.cid"></label>
             </th>
             <th
                 v-for="(definition, index) in definitions.listItems"
-                v-bind:key="index"
-                v-bind:class="definition.Type.elementType + 'CellHeading'"
+                :key="index"
+                :class="definition.Type.elementType + 'CellHeading'"
             >
                 {{ definition.options.caption }}
             </th>
         </thead>
         <tbody>
-            <tr v-for="model in modelCollection.models" v-bind:key="model.cid">
+            <tr v-for="model in modelCollection.models" :key="model.cid">
                 <td
                     v-if="definitions.massActions.length"
                     class="massActionCheckboxCell"
                 >
                     <input
                         type="checkbox"
-                        v-bind:id="'mac-' + model.cid"
+                        :id="'mac-' + model.cid"
                         class="checkboxType1 massActionCheckbox"
-                        v-bind:checked="isModelSelected(model)"
-                        v-on:change="$event.target.checked ? selectModel(model) : deselectModel(model)"
+                        :checked="isModelSelected(model)"
+                        @change="$event.target.checked ? selectModel(model) : deselectModel(model)"
                     >
-                    <label class="icr iconCheck" v-bind:for="'mac-' + model.cid"></label>
+                    <label class="icr iconCheck" :for="'mac-' + model.cid"></label>
                 </td>
                 <td
                     v-for="(definition, index) in definitions.listItems"
-                    v-bind:key="index"
-                    v-bind:class="getCellClass(definition)"
+                    :key="index"
+                    :class="getCellClass(definition)"
                 >
                     <component
-                        v-bind:is="definition.Type"
-                        v-bind:resourceModel="model"
+                        :is="definition.Type"
+                        :resourceModel="model"
                         v-bind="definition.options"
                     ></component>
                 </td>

@@ -1,8 +1,8 @@
 <template>
     <form
         class="massActionsType1"
-        v-on:submit.prevent="runSelectedAction"
-        v-bind:class="{activeDropdown: selectedModelsOpened, withSelection: selectedModels.length}"
+        @submit.prevent="runSelectedAction"
+        :class="{activeDropdown: selectedModelsOpened, withSelection: selectedModels.length}"
         v-on-dismiss="{callback: closeSelectedModels, watch: selectedModelsOpened}"
     >
         <div class="selectCont">
@@ -14,29 +14,29 @@
                 <select v-model="selectedAction">
                     <option
                         v-for="action in actions"
-                        v-bind:key="action.caption"
+                        :key="action.caption"
                     >{{ action.caption }}</option>
                 </select>
             </div>
         </div>
         <button
             class="submitBtn"
-            v-bind:class="{active: selectedModels.length > 0}"
+            :class="{active: selectedModels.length > 0}"
             type="submit"
         >{{ submitButtonCaption }}</button>
         <div class="selectedItems withItems" v-if="selectedModels.length">
             <button
                 type="button"
                 class="toggleSelectedItems nBtn iconChevronDown"
-                v-on:click="toggleSelectedItems"
+                @click="toggleSelectedItems"
             >{{ translations.selectedItemsCaption }}: {{ selectedModels.length }}</button>
             <div class="dropdown">
                 <ul>
-                    <li v-for="model in selectedModels" v-bind:key="model.cid">
+                    <li v-for="model in selectedModels" :key="model.cid">
                         <button
                             class="nBtn removeItem iconX"
                             type="button"
-                            v-on:click="$emit('deselectModel', model)"
+                            @click="$emit('deselectModel', model)"
                         >{{ getModelCaption(model) }}</button>
                     </li>
                 </ul>

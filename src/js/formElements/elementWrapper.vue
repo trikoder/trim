@@ -3,14 +3,14 @@
         <label
             v-if="label"
             v-bind="labelAttributes"
-            v-bind:for="elementId"
+            :for="elementId"
             v-html="label"
         ></label>
         <div v-if="renderInputWrapper" ref="inputWrapper" v-bind="inputWrapperAttributes">
             <slot></slot>
         </div>
         <slot v-else></slot>
-        <p v-if="errorMessage" v-bind:class="errorMessageClass" >
+        <p v-if="errorMessage" :class="errorMessageClass" >
             {{ errorMessage }}
         </p>
     </div>

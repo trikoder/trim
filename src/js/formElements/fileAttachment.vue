@@ -1,32 +1,32 @@
 <template>
-    <element-wrapper v-bind:renderInputWrapper="false" v-bind="elementWrapperProps">
+    <element-wrapper :renderInputWrapper="false" v-bind="elementWrapperProps">
         <div v-bind="inputWrapperAttributes" ref="inputWrapper">
             <div class="mediaContainer">
                 <template v-if="thumbnailUrl">
-                    <img v-bind:src="thumbnailUrl"/>
-                    <button type="button" v-on:click="zoomImage" class="nBtn icr zoomInBtn iconMaximize"></button>
+                    <img :src="thumbnailUrl"/>
+                    <button type="button" @click="zoomImage" class="nBtn icr zoomInBtn iconMaximize"></button>
                 </template>
-                <button v-else type="button" v-on:click="openFileDialog" v-bind:class="[{
+                <button v-else type="button" @click="openFileDialog" :class="[{
                         'iconFile large': selectedFile || fileUrl,
                         'iconPlus': !selectedFile && !fileUrl
                 }, 'nBtn fileUploadClickable placeholderImage icr']"/>
             </div>
             <div class="textControls">
-                <span class="fileUploadHandle" v-on:click="openFileDialog">
+                <span class="fileUploadHandle" @click="openFileDialog">
                     {{ textControlCaption }}
                     <span class="fileName" v-if="selectedFileName">{{ selectedFileName }}</span>
                 </span>
             </div>
             <a
                 v-if="fileUrl && !selectedFile"
-                v-bind:href="fileUrl"
-                v-on:click="clickDownload"
+                :href="fileUrl"
+                @click="clickDownload"
                 target="_blank"
                 class="downloadBtn nBtn icr iconDownload"
             ></a>
             <button
                 v-if="selectedFile"
-                v-on:click="isInteractive && removeSelectedFile()"
+                @click="isInteractive && removeSelectedFile()"
                 type="button"
                 class="removeBtn nBtn icr iconRotateCcw"
             ></button>

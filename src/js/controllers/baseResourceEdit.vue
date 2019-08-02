@@ -1,27 +1,27 @@
 <template>
     <div class="resourceController">
         <component
-            v-bind:is="getResourceHeaderType()"
-            v-bind:breadcrumbs="breadcrumbs"
-            v-bind:hasBottomBorder="headerHasBorder"
+            :is="getResourceHeaderType()"
+            :breadcrumbs="breadcrumbs"
+            :hasBottomBorder="headerHasBorder"
         >
-            <component v-bind:is="getResourceControlsType()" v-bind:controls="resourceControls"></component>
+            <component :is="getResourceControlsType()" :controls="resourceControls"></component>
         </component>
         <component class="resourceEdit resourceEditType1"
             v-if="resourceModel"
-            v-bind:is="getResourceEditType()"
-            v-bind:ModelType="getModelType()"
-            v-bind:configure="getEditConfigurator()"
-            v-bind:model="resourceModel"
-            v-bind:resourceSavedMessage="resourceSavedMessage"
-            v-bind:resourceCreatedMessage="resourceCreatedMessage"
-            v-bind:initialSelectedTab="currentQuery.tab"
-            v-bind:getTabUrl="getTabUrl"
-            v-on:beforeConfigure="processConfigureEvent('beforeConfigure', $event)"
-            v-on:afterConfigure="processConfigureEvent('afterConfigure', $event)"
-            v-on:resourceModelSaved="processSaveEvent"
-            v-on:selectTab="processTabSelect"
-            v-on:systemError="handleEditSystemError"
+            :is="getResourceEditType()"
+            :ModelType="getModelType()"
+            :configure="getEditConfigurator()"
+            :model="resourceModel"
+            :resourceSavedMessage="resourceSavedMessage"
+            :resourceCreatedMessage="resourceCreatedMessage"
+            :initialSelectedTab="currentQuery.tab"
+            :getTabUrl="getTabUrl"
+            @beforeConfigure="processConfigureEvent('beforeConfigure', $event)"
+            @afterConfigure="processConfigureEvent('afterConfigure', $event)"
+            @resourceModelSaved="processSaveEvent"
+            @selectTab="processTabSelect"
+            @systemError="handleEditSystemError"
             ref="editHandler"
         ></component>
     </div>
