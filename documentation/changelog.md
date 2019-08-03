@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.62.0
+* Addition: reasonable defaults for custom form elements
+* Change: upgrade toolkit object check and deep assign
+* Change: unhandled errors are thrown on resource controllers
+* Change: update modal stacking order
+
 ## 0.61.0
 * Addition: add option to prepend caption on resource list elements
 * Addition: support for custom main navigation item component
