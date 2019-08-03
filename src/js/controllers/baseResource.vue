@@ -495,9 +495,7 @@ const BaseResourceController = Vue.extend({
                 parent: this
             });
 
-            if (errorObj instanceof TypeError || errorObj instanceof SyntaxError) {
-                throw errorObj;
-            }
+            throw errorObj;
 
         },
 

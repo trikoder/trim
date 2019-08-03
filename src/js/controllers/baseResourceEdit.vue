@@ -262,6 +262,8 @@ const BaseResourceEditController = Vue.extend({
                 parent: this
             });
 
+            throw errorObj;
+
         },
 
         handleEditSystemError(errorObj) {
