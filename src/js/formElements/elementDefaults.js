@@ -68,6 +68,12 @@ export default {
                 wrapper: {class: 'inlineInputBlockType1'},
                 inputWrapper: {class: 'colorInputType1'}
             }
+        },
+        other: {
+            attributes: {
+                label: {class: 'labelType1'},
+                wrapper: {class: 'inlineInputBlockType1'}
+            }
         }
     },
     resourceEdit: {
@@ -204,6 +210,12 @@ export default {
                     wrapper: {class: 'inputBlockType1'},
                     inputWrapper: {class: 'colorInputType1'}
                 }
+            },
+            other: {
+                attributes: {
+                    label: {class: 'labelType2'},
+                    wrapper: {class: 'inputBlockType1'}
+                }
             }
         },
         sideRegion: {
@@ -309,6 +321,12 @@ export default {
                     label: {class: 'labelType2'},
                     wrapper: {class: 'inputBlockType1'},
                     inputWrapper: {class: 'colorInputType1'}
+                }
+            },
+            other: {
+                attributes: {
+                    label: {class: 'labelType2'},
+                    wrapper: {class: 'inputBlockType1'}
                 }
             }
         }

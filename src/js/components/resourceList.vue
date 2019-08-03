@@ -433,8 +433,9 @@ export default {
 
         decorateFilterDefinition(definition) {
 
-            const elementType = getComponentOption(definition.Type, 'elementType');
-            const defaultOptions = formElementDefaults.resourceFilters[elementType];
+            const elementType = getComponentOption(definition.Type, 'elementType') || 'other';
+            const filterDefaults = formElementDefaults.resourceFilters;
+            const defaultOptions = filterDefaults[elementType] || filterDefaults.other;
 
             definition.options = assignDeep({}, defaultOptions, definition.options);
 

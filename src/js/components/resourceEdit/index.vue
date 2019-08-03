@@ -443,14 +443,14 @@ const Component = Vue.extend({
 
         decorateFieldDefinition(definition) {
 
-            const elementType = getComponentOption(definition.Type, 'elementType');
+            const elementType = getComponentOption(definition.Type, 'elementType') || 'other';
             const layoutReference = definition.options.layoutReference;
             const regionPointer = layoutReference && layoutReference.indexOf('sideRegion') >= 0
                 ? 'sideRegion'
                 : 'mainRegion'
             ;
-
-            const defaultOptions = formElementDefaults.resourceEdit[regionPointer][elementType];
+            const regionOptions = formElementDefaults.resourceEdit[regionPointer];
+            const defaultOptions = regionOptions[elementType] || regionOptions.other;
 
             definition.options = assignDeep({}, defaultOptions, definition.options);
 
