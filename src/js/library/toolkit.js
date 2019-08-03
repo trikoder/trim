@@ -70,7 +70,10 @@ export function assignDeep(out) {
     for (var i = 1; i < arguments.length; i++) {
 
         var obj = arguments[i];
-        if (!obj) { continue; }
+
+        if (!obj || !isPlainObject(obj)) {
+            continue;
+        }
 
         for (var key in obj) {
             if (obj.hasOwnProperty(key)) {
@@ -80,7 +83,7 @@ export function assignDeep(out) {
                         return isPlainObject(item) ? assignDeep({}, item) : item;
                     });
 
-                } else if (typeof obj[key] === 'object' && obj[key] !== null) {
+                } else if (isPlainObject(obj[key])) {
 
                     typeof out[key] === 'undefined' && (out[key] = {});
                     assignDeep(out[key], obj[key]);
@@ -159,9 +162,13 @@ export function limitCharacters(string, limit, sufix) {
 
 }
 
-export function isPlainObject(obj) {
+export function isPlainObject(value) {
 
-    return Object.prototype.toString.call(obj) === '[object Object]';
+    return (
+        Boolean(value) &&
+        typeof value === 'object' &&
+        value.constructor === Object
+    );
 
 }
 
