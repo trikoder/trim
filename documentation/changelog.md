@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.62.1
+* Change: fix code form element read-only state on startup
+
 ## 0.62.0
 * Addition: reasonable defaults for custom form elements
 * Change: upgrade toolkit object check and deep assign
