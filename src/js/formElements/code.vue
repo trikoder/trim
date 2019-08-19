@@ -41,6 +41,14 @@ export default {
                 this.editor.setValue(newValue);
             }
 
+        },
+
+        isInteractive() {
+
+            if (this.editor) {
+                this.editor.setOption('readOnly', !this.isInteractive);
+            }
+
         }
 
     },
@@ -67,11 +75,13 @@ export default {
             const options = assign({
                 lineNumbers: true
             }, this.editorConfig, {
-                readOnly: this.isInteractive,
+                readOnly: !this.isInteractive,
                 value: this.value
             });
 
-            const editor = this.editor = CodeMirror(this.$refs.content, options);
+            const editor = this.editor = CodeMirror(
+                this.$refs.content, options
+            );
 
             editor.on('change', () => {
 
