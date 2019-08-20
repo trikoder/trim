@@ -82,6 +82,13 @@ const api = {
 
     },
 
+    setTranslationPluralizationRule(locale, rule, options) {
+
+        translate.setPluralizationRule(locale, rule, options);
+        return this;
+
+    },
+
     setBootData(data) {
 
         bootData.set(data);
