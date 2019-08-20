@@ -240,9 +240,13 @@ export default Vue.extend({
 
         openItem(item) {
 
-            this.selectItem(item.key);
-            this.$router.navigateTo(item.url);
-            this.close();
+            if (item.appLink && item.url) {
+                this.selectItem(item.key);
+                this.$router.navigateTo(item.url);
+                this.close();
+            } else if (item.url) {
+                window.location.assign(item.url);
+            }
 
         },
 
@@ -365,24 +369,6 @@ export default Vue.extend({
 
         },
 
-        getFlattenedNavigationItems() {
-
-            return this.navigationItems.reduce((acc, item) => {
-
-                item.subItems ? item.subItems.forEach(subItem => {
-                    acc.push(subItem);
-                }) : acc.push(item);
-
-                return acc;
-
-            }, []).filter(item => item.appLink).map(item => ({
-                key: item.key,
-                caption: item.caption,
-                url: item.url
-            }));
-
-        },
-
         getNavigationItems() {
 
             return [];
@@ -448,20 +434,65 @@ export default Vue.extend({
 
         },
 
-        showSearch() {
+        getFlattenedNavigationItems() {
 
-            serviceContainer.get('AppSearch').then(AppSearch => {
+            return this.navigationItems.concat(
+                this.userNavigationItems
+            ).reduce((acc, item) => {
 
-                if (!this.appSearch) {
-                    this.appSearch = new AppSearch({
-                        propsData: {dataset: this.getFlattenedNavigationItems()},
-                        parent: this
-                    });
+                item.subItems ? item.subItems.forEach(subItem => {
+                    acc.push(subItem);
+                }) : acc.push(item);
+
+                return acc;
+
+            }, []).map(item => {
+
+                const navItem = Object.assign({}, item);
+
+                if (item.action) {
+                    navItem.action = () => item.action(this);
                 }
 
-                this.appSearch.open();
-
+                return navItem;
             });
+
+        },
+
+        getAppSearchItems() {
+
+            return this.getFlattenedNavigationItems().filter(
+                item => item.key !== 'showSearch'
+            );
+
+        },
+
+        setupAppSearch() {
+
+            if (!this.setupAppSearchPromise) {
+
+                this.setupAppSearchPromise = Promise.all([
+                    serviceContainer.get('AppSearch'),
+                    this.getAppSearchItems()
+                ]).then(([AppSearch, dataset]) => {
+
+                    return new AppSearch({
+                        propsData: {dataset},
+                        parent: this
+                    });
+
+                });
+            }
+
+            return this.setupAppSearchPromise;
+
+        },
+
+        showSearch() {
+
+            this.setupAppSearch().then(
+                appSearch => appSearch.open()
+            );
 
             return this;
 

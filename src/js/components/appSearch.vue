@@ -8,22 +8,21 @@
         <input
             ref="input"
             v-model="query"
-            @keyup.down="selectNextResult()"
-            @keyup.up="selectPrevResult()"
-            @keyup.enter="followLink()"
+            @keyup.down="selectNextResult"
+            @keyup.up="selectPrevResult"
+            @keyup.enter="openResult"
             placeholder="Search"
         />
         <ul v-if="results.length" class="results">
             <li v-for="(item, index) in results" :key="item.key">
-                <router-link
+                <a
                     class="resultItem"
                     @mouseover.native="selectedItemIndex = index"
-                    @click.native="close()"
+                    @click.prevent="openResult"
                     :class="{focused: item.selected}"
-                    :to="item.url"
-                >
-                    {{ item.caption }}
-                </router-link>
+                    :href="item.url"
+                    v-html="item.caption"
+                ></a>
             </li>
         </ul>
     </form>
@@ -98,11 +97,17 @@ export default Vue.extend({
 
         },
 
-        followLink() {
+        openResult() {
 
-            this.$router.navigateTo(
-                this.results[this.selectedItemIndex].url
-            );
+            const resultItem = this.results[this.selectedItemIndex];
+
+            if (resultItem.action) {
+                resultItem.action();
+            } else if (resultItem.url && resultItem.appLink) {
+                this.$router.navigateTo(resultItem.url);
+            } else if (resultItem.url) {
+                window.location.assign(resultItem.url);
+            }
 
             this.close();
 

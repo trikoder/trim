@@ -88,6 +88,7 @@ export default {
         },
 
         {
+            key: 'showSearch',
             caption: 'Show search <span style="opacity: 0.4;">(Shift + l)</span>',
             action: mainNavigation => mainNavigation.showSearch().close()
         }
