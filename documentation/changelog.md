@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.63.0
+* Addition: api for adding locale specific pluralization rules
+* Addition: external app links allowed in main navigation and search
+
 ## 0.62.1
 * Change: fix code form element read-only state on startup
 
