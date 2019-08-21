@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.64.0
+* Addition: allow custom translation variable interpolation
+* Change: dialog prompt and dropdowns styling
+
 ## 0.63.0
 * Addition: api for adding locale specific pluralization rules
 * Addition: external app links allowed in main navigation and search
