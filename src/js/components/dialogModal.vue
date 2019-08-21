@@ -122,11 +122,17 @@ export function confirm(message, onAccept, config) {
         box-shadow: 0 0.2em 0.5em rgba(#000, 0.2); border-radius: 0.3em;
         animation: slideDownFadeIn 0.5s;
 
+        @include mediaMinWidth($breakpointMedium) {
+            width: 32em; margin-left: -16em;
+        }
+
     }
 
     .message {
 
-        font-size: 1.6em; padding: em(30,16) em(30,16) em(20,16); margin: 0;
+        @include fontSans;
+        font-size: 1.4em; padding: em(25,14) em(30,14) em(25,14); margin: 0;
+        line-height: 1.5;
         text-align: center; color: #4B4B4B;
 
     }

@@ -165,9 +165,15 @@ export default {
         > .dropdown {
 
             position: absolute; top: 100%; right: 0; margin-top: -0.5em; display: none;
-            padding: 0.5em 0; box-sizing: border-box; min-width: 100%;
-            border: 1px solid rgba(#000, 0.1); background-color: #fff;
-            box-shadow: 0 0.1em 0.3em rgba(#000, 0.06); border-radius: 0.4em;
+            padding: 0.8em 0; box-sizing: border-box; min-width: 22em;
+            background-color: #fff; border: 1px solid rgba(#000, 0.1);
+            box-shadow: 0 0.1em 0.3em rgba(#000, 0.06);
+
+            @include mediaMinWidth($breakpointMedium) {
+
+                border-radius: 0.4em 0 0.4em 0.4em;
+
+            }
 
             &:after {
 
@@ -179,7 +185,8 @@ export default {
 
             > button, > a {
 
-                font-size: 1.6em; display: block; width: 100%; padding: em(9,16) em(20,16);
+                @include fontSans;
+                font-size: 1.4em; display: block; width: 100%; padding: em(9,14) em(20,14);
                 text-align: left; white-space: nowrap;
 
                 @include hover { color: $colorMain1; }
@@ -190,7 +197,7 @@ export default {
 
         &.active > .dropdown {
 
-            animation: slideDownFadeIn 0.3s;
+            animation: slideDownFadeIn 0.2s;
             display: block;
 
         }
