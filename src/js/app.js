@@ -89,6 +89,13 @@ const api = {
 
     },
 
+    interpolateTranslationWith(interpolateRE) {
+
+        translate.interpolateWith(interpolateRE);
+        return this;
+
+    },
+
     setBootData(data) {
 
         bootData.set(data);
