@@ -441,29 +441,48 @@ export default Vue.extend({
             ).reduce((acc, item) => {
 
                 item.subItems ? item.subItems.forEach(subItem => {
-                    acc.push(subItem);
-                }) : acc.push(item);
+                    acc.push(Object.assign({}, subItem, {parentCaption: item.caption}));
+                }) : acc.push(Object.assign({}, item));
 
                 return acc;
 
             }, []).map(item => {
 
-                const navItem = Object.assign({}, item);
-
                 if (item.action) {
-                    navItem.action = () => item.action(this);
+                    const oldAction = item.action;
+                    item.action = () => oldAction.call(item, this);
                 }
 
-                return navItem;
+                return item;
             });
 
         },
 
         getAppSearchItems() {
 
-            return this.getFlattenedNavigationItems().filter(
+            return Promise.resolve(this.getFlattenedNavigationItems().filter(
                 item => item.key !== 'showSearch'
+            ));
+
+        },
+
+        getSearchItems(query) {
+
+            return this.getAppSearchItems().then(
+                results => this.fuzzySearch(results, query)
             );
+
+        },
+
+        fuzzySearch(items, query) {
+
+            return import('fuse.js').then(({default: Fuse}) => {
+
+                return new Fuse(
+                    items, {keys: ['caption', 'parentCaption'], threshold: 0.4}
+                ).search(query);
+
+            });
 
         },
 
@@ -471,13 +490,14 @@ export default Vue.extend({
 
             if (!this.setupAppSearchPromise) {
 
-                this.setupAppSearchPromise = Promise.all([
-                    serviceContainer.get('AppSearch'),
-                    this.getAppSearchItems()
-                ]).then(([AppSearch, dataset]) => {
+                this.setupAppSearchPromise = serviceContainer.get(
+                    'AppSearch'
+                ).then(AppSearch => {
 
                     return new AppSearch({
-                        propsData: {dataset},
+                        propsData: {
+                            getSearchItems: query => this.getSearchItems(query)
+                        },
                         parent: this
                     });
 

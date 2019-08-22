@@ -7,7 +7,7 @@
     >
         <input
             ref="input"
-            v-model="query"
+            v-model.trim="query"
             @keyup.down="selectNextResult"
             @keyup.up="selectPrevResult"
             @keyup.enter="openResult"
@@ -17,12 +17,18 @@
             <li v-for="(item, index) in results" :key="item.key">
                 <a
                     class="resultItem"
-                    @mouseover.native="selectedItemIndex = index"
+                    @mouseover="selectedItemIndex = index"
                     @click.prevent="openResult"
                     :class="{focused: item.selected}"
                     :href="item.url"
-                    v-html="item.caption"
-                ></a>
+                >
+                    <span
+                        v-if="item.parentCaption"
+                        class="parentCaption"
+                        v-html="item.parentCaption"
+                    ></span>
+                    <span v-html="item.caption"></span>
+                </a>
             </li>
         </ul>
     </form>
@@ -32,20 +38,14 @@
 
 import Vue from 'vue';
 import vueDismiss from 'vue-dismiss';
-import Fuse from 'fuse.js';
 
 export default Vue.extend({
 
     mixins: [vueDismiss],
 
     props: {
-        dataset: {type: Array, required: true}
-    },
-
-    created() {
-
-        this.fuse = new Fuse(this.dataset, {keys: ['caption'], threshold: 0.4});
-
+        getSearchItems: {type: Function, required: true},
+        typeTimeout: {type: Number, default: 100}
     },
 
     data() {
@@ -53,18 +53,20 @@ export default Vue.extend({
         return {
             query: '',
             selectedItemIndex: 0,
-            isOpened: false
+            isOpened: false,
+            results: []
         };
 
     },
 
-    computed: {
+    watch: {
 
-        results() {
+        query: 'runQuery',
 
-            return this.fuse.search(this.query).map((item, index) => {
+        selectedItemIndex() {
+
+            this.results.forEach((item, index) => {
                 item.selected = this.selectedItemIndex === index;
-                return item;
             });
 
         }
@@ -72,6 +74,33 @@ export default Vue.extend({
     },
 
     methods: {
+
+        runQuery() {
+
+            clearTimeout(this.queryTimeout);
+
+            this.selectedItemIndex = 0;
+
+            if (!this.query) {
+                this.results = [];
+                return;
+            }
+
+            this.queryTimeout = setTimeout(() => {
+
+                Promise.resolve(this.getSearchItems(this.query)).then(results => {
+
+                    this.results = results.map(
+                        (result, index) => Object.assign({}, result, {
+                            selected: this.selectedItemIndex === index
+                        })
+                    );
+
+                });
+
+            }, this.typeTimeout);
+
+        },
 
         selectNextResult() {
 
@@ -100,6 +129,10 @@ export default Vue.extend({
         openResult() {
 
             const resultItem = this.results[this.selectedItemIndex];
+
+            if (!resultItem) {
+                return;
+            }
 
             if (resultItem.action) {
                 resultItem.action();
@@ -196,6 +229,14 @@ export default Vue.extend({
                 background-color: #f9f9f9; color: $colorGrayDark1;
 
             }
+
+        }
+
+        .parentCaption {
+
+            display: block; font-size: em(12,17); margin-bottom: em(5,12);
+            text-transform: uppercase; letter-spacing: 0.05em;
+            color: lighten($colorGrayDark2, 20%);
 
         }
 
