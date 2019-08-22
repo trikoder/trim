@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.65.0
+* Addition: add navigation item parent caption to app search results
+* Addition: allow custom search engine implemenation
+
 ## 0.64.0
 * Addition: allow custom translation variable interpolation
 * Change: dialog prompt and dropdowns styling
