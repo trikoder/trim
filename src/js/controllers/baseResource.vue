@@ -374,6 +374,12 @@ const BaseResourceController = Vue.extend({
             }
 
             this.$emit('resourceSaved', data);
+            this.afterResourceSave(data);
+
+        },
+
+        afterResourceSave(data) {
+
             this.openEdit({id: data.resourceModel.get('id')});
 
         },
