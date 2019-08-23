@@ -13,6 +13,7 @@ export function load() {
         const locale = app.getLocale();
         const ckeditor = window.CKEDITOR;
 
+        ckeditor.disableAutoInline = true;
         ckeditor.config.defaultLanguage = locale;
         ckeditor.config.language = locale;
         ckeditor.config.extraPlugins = 'sourcedialog';
