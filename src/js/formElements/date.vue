@@ -101,7 +101,7 @@ export default {
 
     @import '~vue-date-pick/src/vueDatePick.scss';
 
-    .vdpComponent /deep/ {
+    .vdpComponent {
 
         .inputType1 {
 

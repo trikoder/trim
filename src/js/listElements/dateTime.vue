@@ -40,7 +40,7 @@ export default {
 
         getModelValue() {
 
-            let value = base.methods.getModelValue.call(this);
+            const value = base.methods.getModelValue.call(this);
             return value ? formatDate(value, this.format) : value;
 
         }

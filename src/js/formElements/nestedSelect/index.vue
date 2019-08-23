@@ -338,7 +338,7 @@ export default {
 
         syncRelatedModels() {
 
-            let modelIds = this.value.split(',').filter(id => id.length);
+            const modelIds = this.value.split(',').filter(id => id.length);
 
             if (modelIds.length === 0) {
                 this.relatedModels = undefined;

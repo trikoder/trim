@@ -315,7 +315,7 @@ export default Vue.extend({
                 if (navItem.subItems) {
 
                     navItem.subItems = navItem.subItems.filter(subItem => {
-                        let showIf = subItem.showIf;
+                        const showIf = subItem.showIf;
                         delete subItem.showIf;
                         return showIf;
                     });

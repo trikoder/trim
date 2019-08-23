@@ -85,7 +85,7 @@ export default Component;
 
 export function confirm(message, onAccept, config) {
 
-    let params, component;
+    let params;
 
     if (isPlainObject(message)) {
         params = message;
@@ -95,12 +95,10 @@ export function confirm(message, onAccept, config) {
         params = assign({}, config, {message, onAccept});
     }
 
-    component = new Component({
+    return new Component({
         propsData: params,
         parent: params.parent || app.rootView
-    });
-
-    return component.open();
+    }).open();
 
 }
 

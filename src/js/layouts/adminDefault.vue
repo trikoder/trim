@@ -91,7 +91,7 @@ export default {
 
         runController() {
 
-            let controller = this.controller;
+            const controller = this.controller;
 
             this.whenStoreReady
                 .then(() => loadControllerType(controller.name))

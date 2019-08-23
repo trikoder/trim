@@ -10,9 +10,9 @@ function setBrowserFeature(feature, supported) {
 
 function prefixedProperty(property) {
 
-    let style = document.createElement('div').style;
-    let prefixes = ['Webkit', 'Moz', 'ms', 'O'];
-    let upperCaseProperty = property.charAt(0).toUpperCase() + property.slice(1);
+    const style = document.createElement('div').style;
+    const prefixes = ['Webkit', 'Moz', 'ms', 'O'];
+    const upperCaseProperty = property.charAt(0).toUpperCase() + property.slice(1);
     let actualProp = false;
 
     if (property in style) {
@@ -21,7 +21,7 @@ function prefixedProperty(property) {
 
     for (let i = 0; i < prefixes.length; i++) {
 
-        let possibleProp = prefixes[i] + upperCaseProperty;
+        const possibleProp = prefixes[i] + upperCaseProperty;
 
         if (possibleProp in style) {
 

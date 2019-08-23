@@ -146,9 +146,9 @@ export default {
 
                     if (definition.updateMessage) {
 
-                        let errorsPresent = rejections.length > 0;
-                        let userMessageData = result(definition.updateMessage[errorsPresent ? 'error' : 'success'], params);
-                        let messageData = assign({
+                        const errorsPresent = rejections.length > 0;
+                        const userMessageData = result(definition.updateMessage[errorsPresent ? 'error' : 'success'], params);
+                        const messageData = assign({
                             type: errorsPresent ? 'error' : 'success'
                         }, typeof userMessageData === 'string' ? {text: userMessageData} : userMessageData);
 

@@ -87,7 +87,7 @@ export default {
 
             }).map(item => {
 
-                let dropdownItem = assign({}, item);
+                const dropdownItem = assign({}, item);
 
                 dropdownItem.caption = result(dropdownItem.caption, resultOptions);
 

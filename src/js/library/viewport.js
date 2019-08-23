@@ -8,11 +8,11 @@ function checkBreakpoints() {
         : document.documentElement.offsetWidth
     ;
 
-    for (let key in config.ranges) {
+    for (var key in config.ranges) {
 
-        let range = config.ranges[key];
-        let from = range[0];
-        let to = range[1];
+        const range = config.ranges[key];
+        const from = range[0];
+        const to = range[1];
 
         if (windowWidth >= from && windowWidth <= to && currentBreakpoint !== key) {
             currentBreakpoint = key;

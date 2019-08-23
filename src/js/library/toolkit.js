@@ -4,10 +4,14 @@ export function escapeHtml(html) {
     return escapeHtmlLib(html);
 }
 
+export function hasOwnProperty(obj, key) {
+    return Object.prototype.hasOwnProperty.call(obj, key);
+}
+
 export function pickTo(target, from, keys) {
 
     keys.forEach(key => {
-        if (from.hasOwnProperty(key)) {
+        if (hasOwnProperty(from, key)) {
             target[key] = from[key];
         }
     });
@@ -21,7 +25,7 @@ export function omit(target, keys, params = {}) {
     const data = params.deep ? assignDeep({}, target) : assign({}, target);
 
     ensureArray(keys).forEach(key => {
-        if (data.hasOwnProperty(key)) {
+        if (hasOwnProperty(data, key)) {
             delete data[key];
         }
     });
@@ -51,11 +55,11 @@ export function assign(target) {
 
     for (let i = 1; i < arguments.length; i++) {
 
-        let obj = arguments[i];
+        const obj = arguments[i];
 
         if (obj) {
-            for (let key in obj) {
-                obj.hasOwnProperty(key) && (target[key] = obj[key]);
+            for (var key in obj) {
+                hasOwnProperty(obj, key) && (target[key] = obj[key]);
             }
         }
 
@@ -76,7 +80,7 @@ export function assignDeep(out) {
         }
 
         for (var key in obj) {
-            if (obj.hasOwnProperty(key)) {
+            if (hasOwnProperty(obj, key)) {
                 if (Array.isArray(obj[key])) {
 
                     out[key] = obj[key].map(item => {
@@ -118,8 +122,8 @@ export function each(collection, callback) {
 
     } else {
 
-        for (let key in collection) {
-            if (collection.hasOwnProperty(key)) {
+        for (var key in collection) {
+            if (hasOwnProperty(collection, key)) {
                 if (callback(collection[key], key) === false) { break; }
             }
         }
@@ -130,7 +134,7 @@ export function each(collection, callback) {
 
 export function limitWords(string, limit, sufix) {
 
-    let words = string.split(' ');
+    const words = string.split(' ');
 
     limit = typeof limit !== 'undefined' ? limit : 20;
     sufix = sufix || '...';
@@ -174,14 +178,14 @@ export function isPlainObject(value) {
 
 export function isEmptyObject(obj) {
 
-    for (let name in obj) { return false; }
+    for (var name in obj) { return false; }
     return true;
 
 }
 
 export function stripTags(html) {
 
-    let div = document.createElement('div');
+    const div = document.createElement('div');
     div.innerHTML = html;
     return div.textContent || div.innerText || '';
 
@@ -218,7 +222,7 @@ export function ensureArray(item) {
 export function deepSet(obj, pointer, data) {
 
     let currentContext = obj;
-    let keys = pointer.split('.');
+    const keys = pointer.split('.');
 
     keys.forEach((key, index) => {
         if (index === keys.length - 1) {
@@ -252,8 +256,8 @@ export function clientId() {
 
 export function elementMatches(el, selector) {
 
-    let p = Element.prototype;
-    let f = p.matches || p.webkitMatchesSelector || p.mozMatchesSelector || p.msMatchesSelector || function(s) {
+    const p = Element.prototype;
+    const f = p.matches || p.webkitMatchesSelector || p.mozMatchesSelector || p.msMatchesSelector || function(s) {
         return [].indexOf.call(document.querySelectorAll(s), this) !== -1;
     };
     return f.call(el, selector);

@@ -20,7 +20,7 @@ assign(Router.prototype, {
             meta: {requiresAuth: true},
             props: route => {
 
-                let controllerString = typeof params === 'string' ? params : params.uses;
+                const controllerString = typeof params === 'string' ? params : params.uses;
 
                 const parts = controllerString.split('@');
                 const controllerName = parts[0];
@@ -75,7 +75,7 @@ assign(Router.prototype, {
             return this;
         }
 
-        let params = assign({
+        const params = assign({
             hasIndexRoute: true,
             hasCreateRoute: true,
             hasEditRoute: true

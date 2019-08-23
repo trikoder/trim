@@ -521,7 +521,7 @@ export default {
             const filterConditionals = definition => {
 
                 let addIf = true;
-                let options = definition.options;
+                const options = definition.options;
 
                 if (options && typeof options.addIf !== 'undefined') {
                     addIf = Boolean(options.addIf);
@@ -586,7 +586,7 @@ export default {
 
         getUrlForPage(page) {
 
-            let queryData = assign({}, this.query, {page});
+            const queryData = assign({}, this.query, {page});
 
             if (page <= 1) {
                 delete queryData.page;
@@ -598,7 +598,7 @@ export default {
 
         handlePageRequest(page) {
 
-            let data = assign({}, this.query, {page});
+            const data = assign({}, this.query, {page});
 
             if (data.page <= 1) {
                 delete data.page;
@@ -622,7 +622,7 @@ export default {
 
         handleSortRequest(sort) {
 
-            let data = assign({}, this.query, {sort});
+            const data = assign({}, this.query, {sort});
 
             delete data.page;
 
