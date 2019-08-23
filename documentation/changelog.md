@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.66.0
+* Addition: allow main navigation item custom action
+* Addition: override after save behaviour on resource controller
+* Change: update package dependencies
+* Change: fix html editor auto inline bugs
+* Change: catch errors from new router push api
+
 ## 0.65.0
 * Addition: add navigation item parent caption to app search results
 * Addition: allow custom search engine implemenation
