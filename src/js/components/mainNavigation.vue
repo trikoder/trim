@@ -240,7 +240,9 @@ export default Vue.extend({
 
         openItem(item) {
 
-            if (item.appLink && item.url) {
+            if (item.action) {
+                item.action(this);
+            } else if (item.appLink && item.url) {
                 this.selectItem(item.key);
                 this.$router.navigateTo(item.url);
                 this.close();
@@ -294,10 +296,10 @@ export default Vue.extend({
 
             if (item.action) {
                 item.action(this);
-            } else if (item.appLink) {
+            } else if (item.appLink && item.url) {
                 this.$router.navigateTo(item.url);
-            } else {
-                window.open(item.url, '_blank');
+            } else if (item.url) {
+                window.location.assign(item.url);
             }
 
             this.close();
