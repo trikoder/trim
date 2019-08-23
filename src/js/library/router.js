@@ -58,7 +58,13 @@ assign(Router.prototype, {
             location = location.replace(baseUrlRE, '/');
         }
 
-        return this.push(location);
+        const pushValue = this.push(location);
+
+        if (pushValue && pushValue.catch) {
+            pushValue.catch(() => {});
+        }
+
+        return pushValue;
 
     },
 
