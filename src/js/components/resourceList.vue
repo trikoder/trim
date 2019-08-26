@@ -51,7 +51,7 @@
                 v-bind="getAdditionalTemplateParams()"
             ></component>
             <p v-if="modelCollection && !modelsPresent" class="noResults">
-                {{ translations.noResultsText }}
+                {{ getEmptyListMessage() }}
             </p>
         </div>
         <div class="bottomListControls cf" v-if="showPagination || showSort">
@@ -83,7 +83,6 @@ import TableComponent from './resourceListTable';
 import CardsComponent from './resourceListCards';
 import MassActions from './massActions';
 import Message from './message';
-import translate from '../library/translate';
 import Loader from '../library/loader';
 import loadDefinitionType from '../library/loadDefinitionType';
 import formElementDefaults from '../formElements/elementDefaults';
@@ -113,6 +112,7 @@ export default {
         selectsResource: {type: [String, Boolean], default: false},
         query: {type: Object, required: true},
         configure: {type: Function, required: true},
+        getEmptyListMessage: {type: Function, required: true},
         apiInclude: {type: [Array, String]}
     },
 
@@ -124,10 +124,7 @@ export default {
             modelCollection: undefined,
             selectedModels: [],
             apiQuery: {},
-            messageData: undefined,
-            translations: {
-                noResultsText: translate('baseResourceController.noResultsMessage')
-            }
+            messageData: undefined
         };
     },
 

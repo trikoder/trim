@@ -19,6 +19,7 @@
             :resourceCaption="resourceCaption"
             :apiInclude="includeApiData.index"
             :selectsResource="selectsResource"
+            :getEmptyListMessage="getEmptyListMessage"
             v-bind="getAdditionalListProps()"
             @queryChange="openIndex"
             @beforeConfigure="processIndexEvent('beforeConfigure', $event)"
@@ -274,6 +275,12 @@ const BaseResourceController = Vue.extend({
             }).concat([lastBreadCrumb]);
 
             return this;
+
+        },
+
+        getEmptyListMessage() {
+
+            return translate('baseResourceController.noResultsMessage');
 
         },
 
