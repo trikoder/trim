@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.67.0
+* Addition: customize header UI on small screen via scss variables
+* Addition: css class option for controllers
+* Addition: api for customization of empty list message text
+* Change: update pagination rendering
+* Change: update package dependencies
+
 ## 0.66.0
 * Addition: allow main navigation item custom action
 * Addition: override after save behaviour on resource controller
