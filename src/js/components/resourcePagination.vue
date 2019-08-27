@@ -1,5 +1,8 @@
 <template>
-    <nav :class="['pagination', {withLimitOptions: showLimitOptions}]">
+    <nav :class="[
+        'pagination',
+        {withLimitOptions: showLimitOptions}
+    ]">
 
         <div v-if="showLimitOptions" class="limitOptions">
             <p>{{ translations.resultsCaption }}:</p>
@@ -31,39 +34,39 @@
                 <button v-else class="iconArrowLeft disabled icon icr"></button>
             </li>
 
-            <template v-if="currentPage - 2 > 1">
-                <li>
-                    <a
-                        class="page"
-                        :href="getUrlForPage(1)"
-                        @click.prevent="selectPage(1)"
-                    >1</a>
-                </li>
-                <li v-if="currentPage > middlePages.length - 1">
-                    <span class="separator">...</span>
-                </li>
-            </template>
-
-            <li v-for="page in middlePages" :key="page">
+            <li>
                 <a
-                    :class="['page', {selected: page == currentPage}]"
-                    :href="getUrlForPage(page)"
-                    @click.prevent="selectPage(page)"
-                >{{ page }}</a>
+                    :class="['page', {selected: 1 == currentPage}]"
+                    :href="getUrlForPage(1)"
+                    @click.prevent="selectPage(1)"
+                >1</a>
             </li>
 
-            <template v-if="middlePages[middlePages.length - 1] + 1 <= totalPages">
-                <li v-if="currentPage < totalPages - middlePages.length + 2">
+            <template v-if="middlePages">
+                <li v-if="middlePages.hasStartSeparator">
                     <span class="separator">...</span>
                 </li>
-                <li>
+
+                <li v-for="page in middlePages.range" :key="page">
                     <a
-                        :class="['page', {selected: totalPages === currentPage}]"
-                        :href="getUrlForPage(totalPages)"
-                        @click.prevent="selectPage(totalPages)"
-                    >{{ totalPages }}</a>
+                        :class="['page', {selected: page == currentPage}]"
+                        :href="getUrlForPage(page)"
+                        @click.prevent="selectPage(page)"
+                    >{{ page }}</a>
+                </li>
+
+                <li v-if="middlePages.hasEndSeparator">
+                    <span class="separator">...</span>
                 </li>
             </template>
+
+            <li>
+                <a
+                    :class="['page', {selected: totalPages === currentPage}]"
+                    :href="getUrlForPage(totalPages)"
+                    @click.prevent="selectPage(totalPages)"
+                >{{ totalPages }}</a>
+            </li>
 
             <li class="next">
                 <a
@@ -87,8 +90,11 @@ import userPreferences from '../library/userPreferences';
 import translate from '../library/translate';
 import {range} from '../library/toolkit';
 import bootData from '../library/bootData';
+import screenSize from '../mixins/screenSize';
 
 const Pagination = {
+
+    mixins: [screenSize],
 
     props: {
         currentPage: {type: Number, default: 1},
@@ -116,19 +122,43 @@ const Pagination = {
 
         middlePages() {
 
-            let start = this.currentPage - 2;
-            let end = this.currentPage + 2;
+            const current = this.currentPage;
+            const total = this.totalPages;
+            const lookAheadCount = this.screenIsSmall ? 1 : 2;
 
-            if (start <= 0) {
-                end -= (start - 1);
-                start = 1;
+            if (total <= 2) {
+                return null;
             }
 
-            if (end > this.totalPages) {
-                end = this.totalPages;
+            let end = current + lookAheadCount;
+            let start = current - lookAheadCount;
+
+            // constrain interval start
+            if (start <= 1) {
+                start = 2;
+                end = 2 * lookAheadCount + 1;
             }
 
-            return range(start, end);
+            // show page number insted of separator on interval start
+            if (start === 3) {
+                start = 2;
+            }
+
+            // constrain interval end
+            if (end + 1 >= total) {
+                end = total - 1;
+            }
+
+            // show page number insted of separator at interval end
+            if (end + 1 === total - 1) {
+                end++;
+            }
+
+            return {
+                hasStartSeparator: start > 3,
+                hasEndSeparator: total - end > 1,
+                range: range(start, end)
+            };
 
         }
 

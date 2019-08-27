@@ -24,6 +24,10 @@
         font-size: 2.5em; padding: em(60,25) em(10,25);
         text-align: center; color: $colorGrayDark2;
 
+        @include mediaMaxWidth($breakpointMedium) {
+            background: #fff;
+        }
+
     }
 
     & .message {
@@ -52,7 +56,7 @@
 
         > .bottomListControls {
 
-            padding: 1em 0.5em 1em; text-align: center;
+            padding: 0 0.5em; text-align: center;
             background-color: #fff;
 
             .limitOptions {

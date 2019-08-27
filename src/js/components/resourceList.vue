@@ -54,7 +54,7 @@
                 {{ getEmptyListMessage() }}
             </p>
         </div>
-        <div class="bottomListControls cf" v-if="showPagination || showSort">
+        <div v-if="showPagination || showSort" class="bottomListControls cf">
             <pagination
                 v-if="showPagination"
                 :showLimitOptions="true"
@@ -217,7 +217,7 @@ export default {
 
         showPagination() {
 
-            return this.paginationLimit && this.modelsPresent && this.totalItems > this.paginationLimit;
+            return this.paginationLimit && this.modelsPresent;
 
         },
 
