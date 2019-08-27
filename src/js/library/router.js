@@ -61,7 +61,11 @@ assign(Router.prototype, {
         const pushValue = this.push(location);
 
         if (pushValue && pushValue.catch) {
-            pushValue.catch(() => {});
+            pushValue.catch(error => {
+                if (error.name !== 'NavigationDuplicated') {
+                    return Promise.reject(error);
+                }
+            });
         }
 
         return pushValue;
