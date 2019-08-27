@@ -156,49 +156,49 @@ export default {
 
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 
-    .dropdownControls {
+    .resourceControls .dropdownControls {
 
         float: left; position: relative;
-
-        > .dropdown {
-
-            position: absolute; top: 100%; right: 0; margin-top: -0.5em; display: none;
-            padding: 0.8em 0; box-sizing: border-box; min-width: 22em;
-            background-color: #fff; border: 1px solid rgba(#000, 0.1);
-            box-shadow: 0 0.1em 0.3em rgba(#000, 0.06);
-
-            @include mediaMinWidth($breakpointMedium) {
-
-                border-radius: 0.4em 0 0.4em 0.4em;
-
-            }
-
-            &:after {
-
-                content: ''; width: 0.7em; height: 0.7em; position: absolute; right: 1.4em; top: -0.5em;
-                background-color: #fff; border: 1px solid rgba(#000, 0.1); border-width: 1px 1px 0 0;
-                transform: rotate(-45deg);
-
-            }
-
-            > button, > a {
-
-                @include fontSans;
-                font-size: 1.4em; display: block; width: 100%; padding: em(9,14) em(20,14);
-                text-align: left; white-space: nowrap;
-
-                @include hover { color: $colorMain1; }
-
-            }
-
-        }
 
         &.active > .dropdown {
 
             animation: slideDownFadeIn 0.2s;
             display: block;
+
+        }
+
+    }
+
+    .resourceControls .dropdown {
+
+        position: absolute; top: 100%; right: 0; margin-top: -0.5em; display: none;
+        padding: 0.8em 0; box-sizing: border-box; min-width: 22em;
+        background-color: #fff; border: 1px solid rgba(#000, 0.1);
+        box-shadow: 0 0.1em 0.3em rgba(#000, 0.06);
+
+        @include mediaMinWidth($breakpointMedium) {
+
+            border-radius: 0.4em 0 0.4em 0.4em;
+
+        }
+
+        &:after {
+
+            content: ''; width: 0.7em; height: 0.7em; position: absolute; right: 1.4em; top: -0.5em;
+            background-color: #fff; border: 1px solid rgba(#000, 0.1); border-width: 1px 1px 0 0;
+            transform: rotate(-45deg);
+
+        }
+
+        > button, > a {
+
+            @include fontSans;
+            font-size: 1.4em; display: block; width: 100%; padding: em(9,14) em(20,14);
+            text-align: left; white-space: nowrap;
+
+            @include hover { color: $colorMain1; }
 
         }
 
@@ -216,12 +216,11 @@ export default {
                 animation: slideFromRight 0.2s;
 
                 width: 4em; height: 6em; float: left;
-                color: $colorGrayDark2;
+                color: $colorHeaderIconsSmallScreen;
 
                 &:before { font-size: 2.2em; }
-
                 &.hiddenOnMobile { display: none; }
-                &.accented { color: $colorMain1; }
+                &.accented { color: $colorHeaderIconsAccentedSmallScreen; }
 
             }
 

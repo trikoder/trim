@@ -283,165 +283,161 @@ export default Pagination;
 
 <style lang="scss" scoped>
 
-    .pagination {
+    .pages {
 
-        .pages {
+        display: block; position: relative; padding: 0 3.6em; overflow: hidden;
 
-            display: block; position: relative; padding: 0 3.6em; overflow: hidden;
+        > li {
+            display: inline-block;
+        }
 
-            > li {
-                display: inline-block;
-            }
+    }
+
+    .limitOptions {
+
+        > p, > .limitOption {
+
+            font-size: em(13,10); display: inline-block; line-height: (30/13); vertical-align: middle;
+            color: $colorGrayDark2; letter-spacing: 0.03em;
 
         }
 
-        .limitOptions {
+        > p {
 
-            > p, > .limitOption {
-
-                font-size: em(13,10); display: inline-block; line-height: (30/13); vertical-align: middle;
-                color: $colorGrayDark2; letter-spacing: 0.03em;
-
-            }
-
-            > p {
-
-                margin-right: em(3,13);
-
-            }
-
-            > .limitOption {
-
-                padding: 0 em(10,13);
-
-                &.selected {
-
-                    @include fontSansCondensedBold;
-                    background: rgba(#000, 0.05); border-radius: em(4,13);
-
-                }
-
-            }
+            margin-right: em(3,13);
 
         }
 
-        .next, .prev {
+        > .limitOption {
 
-            position: absolute; top: 50%; margin-top: -2em;
-
-        }
-
-        .next {
-
-            right: 0;
-
-        }
-
-        .prev {
-
-            left: 0;
-
-        }
-
-        .page {
-
-            @include normalizeButton;
-
-            font-size: 1.4em; display:inline-block; padding: em(8,14) em(10,14); margin: 0 -1px;
-            color: $colorGrayDark2;
-
-            @include hover {
-
-                color: $colorMain1;
-
-            }
+            padding: 0 em(10,13);
 
             &.selected {
 
-                color: $colorMain1;
+                @include fontSansCondensedBold;
+                background: rgba(#000, 0.05); border-radius: em(4,13);
 
             }
 
         }
 
-        .icon {
+    }
 
-            @include normalizeButton;
+    .next, .prev {
 
-            font-size: 1.4em; width: em(40,14); height: em(40,14); padding: 0;
+        position: absolute; top: 50%; margin-top: -2em;
 
-            &:before { font-size: 0.9em; }
+    }
 
-            &.disabled {
+    .next {
 
-                cursor: default; opacity: 0.2;
+        right: 0;
 
-            }
+    }
 
-        }
+    .prev {
 
-        .separator {
+        left: 0;
 
-            font-size: 1.3em;
+    }
 
-        }
+    .page {
 
-        .totalItems {
+        @include normalizeButton;
 
-            float: right; font-size: 1.4em; padding: em(8,14) em(15,14);
-            color: $colorGrayDark2;
+        font-size: 1.4em; display:inline-block; padding: em(8,14) em(10,14); margin: 0 -1px;
+        color: $colorGrayDark2;
 
-            > .caption {
+        @include hover {
 
-                opacity: 0.5;
-                &:after { content: ": "; }
-
-            }
-
-            > .count {}
+            color: $colorMain1;
 
         }
 
-        @include mediaMaxWidth($breakpointMedium) {
+        &.selected {
 
-            .totalItems { display: none; }
-
-            .icon:before { font-size: 1.2em; }
-
-            .limitOptions {
-
-                padding: 0 1.5em 1em; box-sizing: border-box;
-                border-bottom: 1px solid $colorGrayLight1;
-
-            }
-
-            .pages {
-
-                display: block; padding: 1em 0.3em; text-align: center;
-
-            }
+            color: $colorMain1;
 
         }
 
-        @include mediaMinWidth($breakpointMedium) {
+    }
 
-            .totalItems { display: block; }
+    .icon {
 
-            &.withLimitOptions {
+        @include normalizeButton;
 
-                @include clearfix;
+        font-size: 1.4em; width: em(40,14); height: em(40,14); padding: 0;
 
-                > .pages {
+        &:before { font-size: 0.9em; }
 
-                    float: right;
+        &.disabled {
 
-                }
+            cursor: default; opacity: 0.2;
 
-                > .limitOptions {
+        }
 
-                    float: left;
+    }
 
-                }
+    .separator {
+
+        font-size: 1.3em;
+
+    }
+
+    .totalItems {
+
+        float: right; font-size: 1.4em; padding: em(8,14) em(15,14);
+        color: $colorGrayDark2;
+
+        > .caption {
+
+            opacity: 0.5;
+            &:after { content: ": "; }
+
+        }
+
+        > .count {}
+
+    }
+
+    @include mediaMaxWidth($breakpointMedium) {
+
+        .totalItems { display: none; }
+
+        .icon:before { font-size: 1.2em; }
+
+        .limitOptions {
+
+            padding: 0 1.5em 1em; box-sizing: border-box;
+            border-bottom: 1px solid $colorGrayLight1;
+
+        }
+
+        .pages {
+
+            display: block; padding: 1em 0.3em; text-align: center;
+
+        }
+
+    }
+
+    @include mediaMinWidth($breakpointMedium) {
+
+        .totalItems { display: block; }
+
+        &.withLimitOptions {
+
+            @include clearfix;
+
+            > .pages {
+
+                float: right;
+
+            }
+
+            > .limitOptions {
+
+                float: left;
 
             }
 

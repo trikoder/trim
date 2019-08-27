@@ -201,7 +201,7 @@ export default {
     .contextItem {
 
         @include normalizeButton;
-        @include fontSansCondensed;
+        @include fontSans;
         font-size: 1.6em; padding: em(10,16) em(15,16); display: block; width: 100%; box-sizing: border-box;
         text-align: left; color: $colorGrayDark1;
 

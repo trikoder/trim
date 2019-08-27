@@ -9,13 +9,13 @@
                 ref="component"
                 @create="onComponentCreate"
             ></component>
+            <button
+                :title="closeButtonCaption"
+                @click="close"
+                class="popupCloseBtn nBtn icr iconX"
+                type="button"
+            >{{closeButtonCaption}}</button>
         </div>
-        <button
-            :title="closeButtonCaption"
-            @click="close"
-            class="popupCloseBtn nBtn icr iconX"
-            type="button"
-        >{{closeButtonCaption}}</button>
     </section>
 </template>
 
@@ -143,16 +143,12 @@ export function Popup(config) {
 
         }
 
-        > .popupCloseBtn {
-
-            animation: slideUpFadeIn 0.5s;
+        .popupCloseBtn {
 
             position: absolute; left: 1em; top: 1em; width: 4em; height: 4em; z-index: 300;
-            background-color: #fff; color: $colorGrayDark1; border-radius: 50%;
+            color: $colorHeaderIconsSmallScreen; border-radius: 50%;
 
-            &:before { font-size: 1.8em; }
-
-            &:hover { color: darken(#666,25%); }
+            &:before { font-size: 2.2em; }
 
         }
 
@@ -171,10 +167,12 @@ export function Popup(config) {
 
             }
 
-            > .popupCloseBtn {
+            .popupCloseBtn {
 
-                left: 1.5em; top: 1.5em; width: 5em; height: 5em;
-                background: transparent;
+                left: 0; top: 0; width: 5em; height: 5em;
+                color: $colorGrayDark1;
+
+                &:hover { color: $colorMain1; }
 
             }
 
@@ -184,7 +182,7 @@ export function Popup(config) {
                     left: 3em; top: 3em; right: 3em;
                 }
 
-                > .popupCloseBtn {
+                .popupCloseBtn {
 
                     left: 3em; top: 3em;
 
@@ -202,16 +200,17 @@ export function Popup(config) {
 
                 }
 
-                > .popupCloseBtn {
+                .popupCloseBtn {
 
-                    left: auto; right: 2.5em; top: 2.5em;
+                    left: auto; right: 0.5em; top: 0.5em;
                     border: 0; color: #fff; background-color: transparent;
 
+                    &:hover { color: #fff; }
                     &:before { font-size: 2.2em; }
 
                 }
 
-                &.level2 > .popupCloseBtn {
+                &.level2 .popupCloseBtn {
 
                     top: 4.3em; right: 4.3em;
 

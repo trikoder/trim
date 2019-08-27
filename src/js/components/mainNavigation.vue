@@ -1,11 +1,11 @@
 <template>
     <nav class="mainNavigation" :class="{active: isOpened}" v-on-dismiss="{callback: close, watch: isOpened}">
         <div class="overlay" v-if="isOpened" @click="close"></div>
-        <button @click="toggle" class="nBtn toggleBtn iconMenu icr">
+        <button @click="toggle" class="nBtn toggleBtn headerToggleBtn iconMenu icr">
             {{ getProjectCaption() }}
         </button>
         <div class="inner">
-            <button @click="toggle" class="nBtn toggleBtn iconMenu">
+            <button @click="toggle" class="nBtn toggleBtn navToggleBtn iconMenu">
                 {{ getProjectCaption() }}
             </button>
             <div class="scrollWrapper">
@@ -73,7 +73,7 @@
                 :class="{active: isUserPanelOpened}"
                 v-on-dismiss="{callback: closeUserPanel, watch: isUserPanelOpened}"
             >
-                <button @click="toggleUserPanel" type="button" class="nBtn toggleBtn iconArrowUpCircle">
+                <button @click="toggleUserPanel" type="button" class="nBtn toggleBtn userNavToggleBtn iconArrowUpCircle">
                     {{ getUserCaption() }}
                 </button>
                 <ul>
@@ -526,20 +526,18 @@ export default Vue.extend({
 
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 
     .mainNavigation {
 
         position: absolute; left: 0; top: 0; bottom: 0; z-index: $zIndexHeader + 10;
 
-        > .toggleBtn {
+        > .headerToggleBtn {
 
             width: 5.8em; height: 6em; position: absolute; left: 0; top: 0;
 
             &:before {
-
-                font-size: 2.2em; color: $colorGrayDark1;
-
+                font-size: 2.2em; color: $colorHeaderIconsSmallScreen;
             }
 
         }
@@ -564,7 +562,7 @@ export default Vue.extend({
 
         }
 
-        > .inner > .toggleBtn {
+        .navToggleBtn {
 
             @include fontSansCondensedBold;
 
@@ -758,6 +756,8 @@ export default Vue.extend({
 
         @include mediaMinWidth($breakpointMedium) {
 
+            position: fixed;
+
             > .inner { left: -17em; }
 
             &.active > .inner {
@@ -766,11 +766,8 @@ export default Vue.extend({
 
             }
 
-            > .toggleBtn { display: none; }
-            > .inner > .toggleBtn { display: block; }
-
-            position: fixed;
-
+            .headerToggleBtn { display: none; }
+            .navToggleBtn { display: block; }
             .scrollWrapper { top: 5em; }
 
         }

@@ -241,18 +241,28 @@
 
     .treeBtn {
 
-        font-size: 1.2em; width: em(20,12); height: em(15,12); position: relative;
-        opacity: 0.5; top: 2px;
+        font-size: 1.2em; width: em(20,12);
+        height: em(15,12); position: relative;
+        opacity: 0.5; vertical-align: middle;
 
-        & + p { display: inline-block; }
+        & + p,
+        & + a {
+            display: inline-block;
+            vertical-align: middle;
+        }
 
     }
 
     .treeSpacer {
 
         width: em(20,10); display: inline-block;
+        vertical-align: middle;
 
-        & + p { display: inline-block;}
+        & + p,
+        & + a {
+            display: inline-block;
+            vertical-align: middle;
+        }
 
     }
 

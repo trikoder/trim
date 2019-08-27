@@ -165,7 +165,7 @@ export default {
 
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 
     .filtersType1 {
 
@@ -179,28 +179,24 @@ export default {
 
         }
 
-        & /deep/ {
+        .inlineInputBlockType1 {
 
-            .inlineInputBlockType1 {
+            margin: 0 1.5em 1em 0;
 
-                margin: 0 1.5em 1em 0;
+        }
 
-            }
+        .inputType1 {
 
-            .inputType1 {
-
-                border: 0 !important;
-
-            }
+            border: 0 !important;
 
         }
 
         > .toggleBtn {
 
             animation: fadeIn 0.3s;
-
             position: absolute; right: 0em; top: -5em; z-index: 10;
-            color: $colorGrayDark2; height: 4.7em; width: 5.2em;
+            height: 4.7em; width: 5.2em;
+            color: $colorHeaderIconsSmallScreen;
 
             &:before { font-size: 1.7em; }
 
@@ -257,7 +253,9 @@ export default {
 
             }
 
-            &.active > .toggleBtn { color: $colorMain1; }
+            &.active > .toggleBtn {
+                color: $colorHeaderIconsAccentedSmallScreen;
+            }
 
         }
 

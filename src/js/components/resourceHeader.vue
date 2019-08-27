@@ -62,7 +62,7 @@ export default {
 
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 
 .headerType1 {
 
@@ -71,7 +71,8 @@ export default {
 
     @include mediaMaxWidth($breakpointMedium) {
 
-        background-color: #fff; padding-bottom: 0.4em;
+        padding-bottom: 0.4em;
+        background-color: $colorHeaderSmallScreen;
         border-bottom: 1px solid $colorGrayLight2;
 
     }
@@ -81,7 +82,10 @@ export default {
         @include fontSansCondensed;
         font-size: 2em; line-height: em(60,20); position: relative;
         padding: 0 em(60,20); text-align: center;
-        // text-align: center;
+
+        @include mediaMaxWidth($breakpointMedium) {
+            color: $colorHeaderTextSmallScreen;
+        }
 
     }
 
@@ -89,14 +93,17 @@ export default {
 
         @include fontSansCondensedBold;
         @include ellipsis;
-        font-size: 1.2em; padding: em(15,12) em(40,12) em(10,12) em(15,12); box-sizing: border-box; display: block;
-        color: $colorGrayDark2; text-transform: uppercase; letter-spacing: 0.04em;
+        font-size: 1.2em; box-sizing: border-box; display: block;
+        padding: em(15,12) em(40,12) em(10,12) em(15,12);
+        color: $colorGrayDark2;  text-transform: uppercase;
+        letter-spacing: 0.04em;
 
         > a, > span {
 
             animation: slideDownFadeIn 0.2s;
-
-            color: $colorGrayDark2; padding: 0; padding-right: em(20,12); position: relative; display: inline-block;
+            padding: 0; padding-right: em(20,12);
+            position: relative; display: inline-block;
+            color: $colorGrayDark2;
 
             &:before {
 
@@ -109,15 +116,23 @@ export default {
 
         }
 
-        > a:hover {
+        @include mediaMinWidth($breakpointMedium) {
 
-            color: $colorMain1;
+            > a:hover {
+
+                color: $colorMain1;
+
+            }
 
         }
 
         @include mediaMaxWidth($breakpointMedium) {
 
             padding: em(15,12) em(45,12) em(15,12) em(20,12);
+
+            &, > a,  > a:before, > span, > span:before {
+                color: $colorHeaderTextSmallScreen;
+            }
 
         }
 
