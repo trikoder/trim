@@ -18,6 +18,7 @@
             :openEdit="openEdit"
             :resourceCaption="resourceCaption"
             :apiInclude="includeApiData.index"
+            :getEmptyListMessage="getEmptyListMessage"
             @queryChange="openIndex"
             @beforeConfigure="processIndexEvent('beforeConfigure', $event)"
             @afterConfigure="processIndexEvent('afterConfigure', $event)"
