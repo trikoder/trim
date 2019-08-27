@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.67.1
+* Change: update popup styles
+
 ## 0.67.0
 * Addition: customize header UI on small screen via scss variables
 * Addition: css class option for controllers

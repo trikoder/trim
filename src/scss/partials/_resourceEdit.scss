@@ -155,7 +155,10 @@
 
     .popupType1 & {
 
-        position: absolute; left: 0; right: 0; bottom: 0; top: 5em; overflow-y: auto; min-height: 0;
+        @include mediaMinWidth($breakpointMedium) {
+            position: absolute; left: 0; right: 0; bottom: 0; top: 5em;
+            overflow-y: auto; min-height: 0;
+        }
 
     }
 
