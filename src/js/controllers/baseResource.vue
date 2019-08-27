@@ -1,5 +1,5 @@
 <template>
-    <div class="resourceController">
+    <div class="resourceController" :class="cssClass">
         <component
             :is="getResourceHeaderType()"
             :breadcrumbs="breadcrumbs"
@@ -78,6 +78,7 @@ const BaseResourceController = Vue.extend({
     data: () => ({
         resourceName: null,
         resourceCaption: undefined,
+        cssClass: undefined,
         includeApiData: {},
         createRequiresDraft: false,
         createRelatedStrategy: 'relatedFirst',
@@ -531,6 +532,7 @@ const BaseResourceController = Vue.extend({
 BaseResourceController.getDataKeys = () => ([
     'resourceName',
     'resourceCaption',
+    'cssClass',
     'includeApiData',
     'createRequiresDraft',
     'createRelatedStrategy',

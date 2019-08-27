@@ -2,6 +2,7 @@ export default {
 
     resourceName: 'article',
     resourceCaption: 'title',
+    cssClass: 'articleResourceController',
 
     includeApiData: {
         edit: ['author']

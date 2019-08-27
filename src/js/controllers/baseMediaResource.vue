@@ -1,5 +1,5 @@
 <template>
-    <div class="resourceController">
+    <div class="resourceController" :class="cssClass">
         <component
             :is="getResourceHeaderType()"
             :breadcrumbs="breadcrumbs"

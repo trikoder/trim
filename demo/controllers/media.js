@@ -3,6 +3,7 @@ export default {
     extendsController: 'BaseMediaResource',
     resourceName: 'media',
     resourceCaption: 'title',
+    cssClass: 'mediaResourceController',
     mediaTypes: ['image', 'file', {
         name: 'videoEmbed',
         createPageTitle: 'Create video embed',

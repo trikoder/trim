@@ -1,6 +1,7 @@
 export default {
 
     extendsController: 'BaseResourceEdit',
+    cssClass: 'mySettingsController',
 
     getModel: Model => Model.getFromApi({type: 'user', id: 1}),
 

@@ -1,5 +1,5 @@
 <template>
-    <div class="resourceController">
+    <div class="resourceController" :class="cssClass">
         <component
             :is="getResourceHeaderType()"
             :breadcrumbs="breadcrumbs"
@@ -51,6 +51,7 @@ const BaseResourceEditController = Vue.extend({
 
     data: () => ({
         resourceModel: undefined,
+        cssClass: undefined,
         navigationKey: undefined,
         resourceCreatedMessage: translate('baseResourceController.entityCreatedMessage'),
         resourceSavedMessage: translate('baseResourceController.entitySavedMessage'),
@@ -278,6 +279,7 @@ const BaseResourceEditController = Vue.extend({
 
 BaseResourceEditController.getDataKeys = () => ([
     'navigationKey',
+    'cssClass',
     'resourceSavedMessage',
     'resourceCreatedMessage'
 ]);
