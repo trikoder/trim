@@ -44,7 +44,7 @@
     "vue-dismiss": "^1.2.1",
     "vue-global-events": "^1.1.2",
     "vue-multiselect": "^2.1.6",
-    "vue-router": "^3.0.6",
+    "vue-router": "^3.1.2",
     "vuebar": "0.0.20",
     "vuex": "^3.1.1"
   },
