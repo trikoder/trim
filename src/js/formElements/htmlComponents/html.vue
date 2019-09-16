@@ -108,6 +108,8 @@ export default {
                             componentType, editor.getSelection().getRanges()[0]
                         );
 
+                        editor.focusManager.blur(true);
+
                     }
                 });
 
@@ -172,8 +174,8 @@ export default {
 
                 if (lastContentContainer) {
 
-                    let contentContainers = [lastContentContainer];
-                    let contentCutContainers = [];
+                    const contentCutContainers = [];
+                    const contentContainers = [lastContentContainer];
                     let currentContainer = lastContentContainer;
 
                     while (currentContainer.hasPrevious()) {
@@ -214,7 +216,15 @@ export default {
 </script>
 
 <style lang="scss">
-
-    .ck_add_components .cke_combo_text { width: auto; }
-
+.ck_add_components .cke_combo_text {
+    width: auto;
+}
 </style>
+
+<style lang="scss" scoped>
+.htmlInputType1:not(:last-child) {
+    margin-bottom: em(15,16);
+    border: 0;
+}
+</style>
+

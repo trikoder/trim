@@ -8,14 +8,16 @@
                 :editorConfig="editorConfig"
                 :key="componentConfig.clientId"
                 :components="components"
-                @updateContent="onUpdateContent"
-                @insertComponent="onInsertComponent"
+                @updateContent="updateComponent"
+                @insertComponent="insertComponent"
             ></html-editor>
             <component
                 v-else
                 v-bind="componentConfig"
                 :is="getComponent(componentConfig)"
                 :key="componentConfig.clientId"
+                @updateComponent="updateComponent"
+                @deleteComponent="deleteComponent"
             ></component>
         </template>
     </element-wrapper>
@@ -32,7 +34,7 @@ const clientId = () => (Date.now() + (++instanceCounter)).toString();
 
 export default {
 
-    elementType: 'htmlWithComponents',
+    elementType: 'htmlComponents',
 
     components: {ElementWrapper, HtmlEditor},
 
@@ -80,12 +82,12 @@ export default {
 
         },
 
-        onUpdateContent(event) {
+        updateComponent(updatedConfig) {
 
             this.$emit('input', this.value.map(config => {
 
-                return config.clientId === event.clientId
-                    ? Object.assign({}, config, {content: event.content})
+                return config.clientId === updatedConfig.clientId
+                    ? Object.assign({}, config, updatedConfig)
                     : config
                 ;
 
@@ -93,7 +95,7 @@ export default {
 
         },
 
-        onInsertComponent(event) {
+        insertComponent(event) {
 
             const prepComponent = component => Object.assign({
                 clientId: clientId()
@@ -138,20 +140,25 @@ export default {
 
         },
 
-        onDeleteComponent(event) {
+        deleteComponent(clientId) {
 
             this.$emit('input', this.normalize(
-                this.value.filter(config => config.clientId === event.clientId)
+                this.value.filter(config => config.clientId !== clientId)
             ));
 
         },
 
         normalize(components) {
 
-            const normalizedComponents = components.reduce((acc, config, index) => {
+            const normalizedComponents = components.reduce((acc, config) => {
 
                 const size = acc.length;
-                const prevConfig = size > 1 ? acc[size - 1] : null;
+                const prevConfig = size >= 1 ? acc[size - 1] : null;
+
+                // remove emtpy html editors
+                // if (config.type === 'html' && !config.content.trim()) {
+                //     return acc;
+                // }
 
                 if (config.type === 'html' && prevConfig && prevConfig.type === 'html') {
                     // merge current component content into prev component
@@ -185,3 +192,9 @@ export default {
 
 };
 </script>
+
+<style lang="scss">
+.htmlComponentsType1 {
+    @include clearfix;
+}
+</style>

@@ -113,11 +113,11 @@ export default {
                     wrapper: {class: 'inputBlockType1'}
                 }
             },
-            htmlWithComponents: {
+            htmlComponents: {
                 attributes: {
                     input: {class: 'htmlInputType1'},
                     label: {class: 'labelType2 mod1'},
-                    wrapper: {class: 'inputBlockType1'}
+                    wrapper: {class: 'inputBlockType1 htmlComponentsType1'}
                 }
             },
             date: {
