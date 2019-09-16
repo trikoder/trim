@@ -76,7 +76,9 @@ module.exports = {
                             }, {
                                 clientId: '2',
                                 imageId: '5146',
-                                type: 'image'
+                                type: 'image',
+                                alignment: 'central',
+                                caption: 'Lorem ipsum dolor sit amet'
                             }, {
                                 clientId: '3',
                                 content: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at turpis sed erat tincidunt iaculis facilisis ac leo. Cras semper, dui in suscipit hendrerit, dui felis molestie elit, bibendum efficitur sapien elit sed magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis purus sagittis velit lacinia dignissim. Maecenas at pellentesque ante, in dignissim ex.</p>',

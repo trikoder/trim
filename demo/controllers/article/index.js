@@ -1,4 +1,5 @@
-import ImageHtmlComponent from 'trim/formElements/htmlWithComponents/image';
+import ImageInContent from './imageInContent';
+import QuoteInContent from './quoteInContent';
 
 export default {
 
@@ -182,11 +183,12 @@ export default {
                 relation: {resourceName: 'media'},
                 layoutReference: 'mainTab.mainRegion'
             }],
-            ['HtmlWithComponentsFormElement', {
+            ['HtmlComponentsFormElement', {
                 label: 'Content',
                 name: 'contentComponents',
                 components: [
-                    ImageHtmlComponent
+                    ImageInContent,
+                    QuoteInContent
                 ],
                 layoutReference: 'mainTab.mainRegion'
             }],
