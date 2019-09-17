@@ -3,7 +3,8 @@
             <textarea-form-element
                 :value="text" :attributes="{input: {
                     class: 'inputType2',
-                    placeholder: 'Enter qoute text'
+                    placeholder: 'Enter qoute text',
+                    spellcheck: 'false'
                 }}"
                 @input="updateComponent({text: $event})"
             ></textarea-form-element>
@@ -58,6 +59,7 @@ export default {
 .quote {
     min-height: em(100); position: relative;
     margin: 2em 0; padding-right: 6em;
+    clear: both;
 
     ::v-deep .inputType2 {
         font-size: em(24,10); padding: 0;

@@ -12,6 +12,9 @@ export default {
         defaultControls() {
 
             return [{
+                icon: 'move',
+                isSortHandle: true
+            }, {
                 icon: 'trash',
                 action: () => this.removeComponent()
             }];

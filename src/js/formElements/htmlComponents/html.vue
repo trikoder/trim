@@ -134,6 +134,26 @@ export default {
 
         },
 
+        splitContentByIndex(splitIndex) {
+
+            const content = ['', ''];
+
+            let currentIndex = 0;
+            let currentContainer = this.editor.container.getChild(0);
+
+            while (currentContainer) {
+
+                const html = currentContainer.getOuterHtml().trim();
+
+                content[currentIndex < splitIndex ? 0 : 1] += html;
+                currentContainer = currentContainer.getNext();
+                currentIndex++;
+            }
+
+            return content;
+
+        },
+
         prepareInsertEvent(componentType, selection) {
 
             const Component = this.components.find(

@@ -2,9 +2,9 @@
     <div class="componentControls">
         <template v-for="(control, index) in controls">
             <button
-                v-if="isButtonControl(control)" type="button"
-                class="buttonControl nBtn icr" :class="getIconClass(control)"
+                type="button" class="buttonControl nBtn icr" :class="getIconClass(control)"
                 :key="index" :title="control.caption"
+                :data-sort-handle="control.isSortHandle ? 'true' : null"
                 @click="runControlAction(control)"
             >{{ control.caption }}</button>
         </template>
@@ -24,10 +24,6 @@ export default {
 
         getIconClass(control) {
             return control.icon ? 'icon' + capitalize(control.icon) : null;
-        },
-
-        isButtonControl(control) {
-            return true;
         },
 
         runControlAction(control) {
@@ -55,6 +51,10 @@ export default {
 
     &:hover {
         color: $colorMain1;
+    }
+
+    &[data-sort-handle] {
+        cursor: move;
     }
 }
 

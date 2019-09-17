@@ -34,8 +34,10 @@ export default {
 
         imageControls() {
 
-            return [
-            this.alignment === 'central' ? {
+            return [{
+                icon: 'move',
+                isSortHandle:true
+            }, this.alignment === 'central' ? {
                 icon: 'arrowLeft',
                 action: () => this.updateComponent({alignment: 'left'})
             } : {

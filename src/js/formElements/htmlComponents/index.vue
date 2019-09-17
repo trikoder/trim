@@ -1,25 +1,29 @@
 <template>
-    <element-wrapper v-bind="elementWrapperProps">
-        <template v-for="componentConfig in value">
-            <html-editor
-                v-if="componentConfig.type === 'html'"
-                v-bind="componentConfig"
-                :inputAttributes="sanitizedInputAttributes"
-                :editorConfig="editorConfig"
-                :key="componentConfig.clientId"
-                :components="components"
-                @updateContent="updateComponent"
-                @insertComponent="insertComponent"
-            ></html-editor>
-            <component
-                v-else
-                v-bind="componentConfig"
-                :is="getComponent(componentConfig)"
-                :key="componentConfig.clientId"
-                @updateComponent="updateComponent"
-                @deleteComponent="deleteComponent"
-            ></component>
-        </template>
+    <element-wrapper :renderInputWrapper="false" v-bind="elementWrapperProps">
+        <div v-bind="inputWrapperAttributes" ref="inputWrapper">
+            <template v-for="componentConfig in value">
+                <html-editor
+                    v-if="componentConfig.type === 'html'"
+                    v-bind="componentConfig"
+                    :inputAttributes="sanitizedInputAttributes"
+                    :editorConfig="editorConfig"
+                    :key="componentConfig.clientId"
+                    :components="components"
+                    ref="componentInstances"
+                    @updateContent="updateComponent"
+                    @insertComponent="insertComponent"
+                ></html-editor>
+                <component
+                    v-else
+                    v-bind="componentConfig"
+                    :is="getComponent(componentConfig)"
+                    :key="componentConfig.clientId"
+                    ref="componentInstances"
+                    @updateComponent="updateComponent"
+                    @deleteComponent="deleteComponent"
+                ></component>
+            </template>
+        </div>
     </element-wrapper>
 </template>
 
@@ -27,6 +31,7 @@
 
 import base from '../base';
 import ElementWrapper from '../elementWrapper';
+import {elementIndex} from '../../library/toolkit';
 import HtmlEditor from './html';
 
 let instanceCounter = 0;
@@ -72,6 +77,29 @@ export default {
 
     },
 
+    mounted() {
+
+        const unWatch = this.$watch('value', components => {
+
+            if (components.length > 1) {
+                this.$nextTick(() => {
+                    this.setupDragAndDrop();
+                    unWatch();
+                });
+            }
+
+        }, {immediate: true});
+
+    },
+
+    beforeDestroy() {
+
+        if (this.drake) {
+            this.drake.destroy();
+        }
+
+    },
+
     methods: {
 
         getComponent(config) {
@@ -97,11 +125,19 @@ export default {
 
         insertComponent(event) {
 
+            this.$emit('input', this.normalize(
+                this.prepInsert(this.value, event)
+            ));
+
+        },
+
+        prepInsert(components, event) {
+
             const prepComponent = component => Object.assign({
                 clientId: clientId()
             }, component);
 
-            const value = this.value.reduce((acc, config) => {
+            return components.reduce((acc, config) => {
 
                 if (config.clientId === event.clientId) {
 
@@ -135,8 +171,6 @@ export default {
                 return acc;
 
             }, []);
-
-            this.$emit('input', this.normalize(value));
 
         },
 
@@ -185,6 +219,109 @@ export default {
             }
 
             return normalizedComponents;
+
+        },
+
+        setupDragAndDrop() {
+
+            const inputWrapper = this.$refs.inputWrapper;
+
+            import('dragula').then(({default: dragula}) => {
+
+                this.drake = dragula([inputWrapper], {
+                    isContainer: el => {
+
+                        const isEditor = Boolean(el.getAttribute('contenteditable'));
+                        const isInputWrapper = el === inputWrapper;
+                        return isEditor || isInputWrapper;
+
+                    },
+                    moves: (el, source, handle, sibling) => {
+
+                        const isSortHandle = Boolean(handle.getAttribute('data-sort-handle'));
+                        const isInside = inputWrapper.contains(handle);
+                        return isSortHandle && isInside;
+
+                    },
+                    mirrorContainer: inputWrapper,
+                    direction: 'vertical'
+                });
+
+                this.drake.on('drop', (el, target, source, sibling) => {
+
+                    let components = this.value;
+
+                    if (target.getAttribute('contenteditable')) { // droped inside html editor
+
+                        this.drake.cancel(() => false);
+
+                        const droppedComponent = this.getComponentByEl(el);
+                        const htmlComponent = this.getComponentByEl(target);
+                        const droppedComponentConfig = components.find(
+                            component => component.clientId === droppedComponent.clientId
+                        );
+                        let placement;
+                        let content;
+                        let contentCut;
+
+                        // remove dropped component to insert it later
+                        components = components.filter(
+                            component => component.clientId !== droppedComponent.clientId
+                        );
+
+                        if (sibling) { // somewhere inside
+                            const blockIndex = elementIndex(sibling);
+                            if (blockIndex === 0) {
+                                placement = 'before';
+                            } else {
+                                placement = 'split';
+                                [content, contentCut] = htmlComponent.splitContentByIndex(blockIndex);
+                            }
+                        } else { // last position
+                            placement = 'after';
+                        }
+
+                        components = this.prepInsert(components, {
+                            clientId: htmlComponent.clientId,
+                            component: droppedComponentConfig,
+                            placement,
+                            content,
+                            contentCut
+                        });
+
+                    } else {
+
+                        components.sort((config1, config2) => {
+                            const index1 = this.getComponentDomIndex(config1.clientId);
+                            const index2 = this.getComponentDomIndex(config2.clientId);
+                            return index1 - index2;
+                        });
+
+                    }
+
+                    this.$emit('input', this.normalize(components));
+
+                });
+
+            });
+
+        },
+
+        getComponentByEl(el) {
+
+            return this.$refs.componentInstances.find(
+                instance => instance.$el === el
+            );
+
+        },
+
+        getComponentDomIndex(clientId) {
+
+            const component = this.$refs.componentInstances.find(
+                instance => instance.clientId === clientId
+            );
+
+            return elementIndex(component.$el);
 
         }
 
