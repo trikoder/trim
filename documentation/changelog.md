@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.68.0
+* Addition: html components form element
+
 ## 0.67.1
 * Change: update popup styles
 
