@@ -125,6 +125,45 @@ edit.addField('HtmlFormElement', {
 });
 ```
 
+## Html components
+Html components form element is used for extending raw html input with custom defined components.
+[Code reference](https://github.com/trikoder/trim/tree/master/src/js/formElements/htmlComponents/index.vue).
+
+```js
+import ImageInContent from './imageInContent';
+import QuoteInContent from './quoteInContent';
+
+edit.addField('HtmlComponentsFormElement', {
+    label: 'Content',
+    name: 'contentComponents',
+    components: [
+        ImageInContent,
+        QuoteInContent
+    ]
+});
+```
+
+Expects api attribute structure similar to one defined bellow:
+
+```js
+[{
+    type: 'html',
+    clientId: '1',
+    content: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>'
+}, {
+    type: 'qoute',
+    clientId: '2',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    author: 'Lorem ipsum'
+}, {
+    type: 'html'
+    clientId: '3',
+    content: '<p>Proin interdum sagittis sem in elementum.</p>',
+}]
+````
+
+[Demo examples](https://github.com/trikoder/trim/tree/master/demo/controllers/article) are available for inspiration on how to design and code your components.
+
 ## Code
 Use code form element to render and edit mixed html content with syntax highlighting.
 [Code reference](https://github.com/trikoder/trim/tree/master/src/js/formElements/code.vue).
