@@ -45,12 +45,14 @@ export default {
 
 .buttonControl {
     display: block;
-    &:before {
-        font-size: 1.4em;
-    }
+    color: darken($colorGrayLight2, 15%);
 
     &:hover {
-        color: $colorMain1;
+        color: darken($colorGrayLight2, 30%);
+    }
+
+    &:before {
+        font-size: 1.4em;
     }
 
     &[data-sort-handle] {

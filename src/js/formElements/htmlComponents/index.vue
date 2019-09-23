@@ -19,6 +19,7 @@
                     :is="getComponent(componentConfig)"
                     :key="componentConfig.clientId"
                     ref="componentInstances"
+                    class="htmlCustomComponent"
                     @updateComponent="updateComponent"
                     @deleteComponent="deleteComponent"
                 ></component>
@@ -333,5 +334,8 @@ export default {
 <style lang="scss">
 .htmlComponentsType1 {
     @include clearfix;
+}
+.htmlInputType1 > .htmlCustomComponent {
+    font-size: em(10,16);
 }
 </style>

@@ -94,7 +94,8 @@ img {
 
 .componentControls {
     right: 1em; top: 1em;
-    border: 0;
+    border: 0; background: rgba(#fff, 0.9);
+    box-shadow: 0 0.2em 0.5em rgba(#000, 0.1);
 }
 
 </style>

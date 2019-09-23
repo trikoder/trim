@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.68.1
+* Change: html components form element styling
+
 ## 0.68.0
 * Addition: html components form element
 
