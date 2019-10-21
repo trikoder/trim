@@ -64,6 +64,7 @@ export default {
         maxFileSize: {type: Number},
         mapImageTo: {type: String, default: 'thumbnailUrl'},
         mapLargeImageTo: {type: String, default: 'originalUrl'},
+        mediaControllerQuery: {type: Object},
         enableUpload: {type: Boolean, default: true},
         uploadUrl: String,
         uploadParameter: {type: String, default: 'binary'},
@@ -299,6 +300,7 @@ export default {
                 this.$emit('input', model.get('id'));
 
             }, {
+                controllerMethodParams: [{}, this.mediaControllerQuery || {}],
                 afterControllerMount: controller => this.assignOnSave(controller, admin),
                 parent: this
             });

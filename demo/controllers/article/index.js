@@ -180,6 +180,7 @@ export default {
             ['MediaFormElement', {
                 label: 'Main media',
                 name: 'media',
+                mediaControllerQuery: {mediaType: 'image'},
                 relation: {resourceName: 'media'},
                 layoutReference: 'mainTab.mainRegion'
             }],
