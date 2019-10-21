@@ -2,8 +2,14 @@
     <form
         class="massActionsType1"
         @submit.prevent="runSelectedAction"
-        :class="{activeDropdown: selectedModelsOpened, withSelection: selectedModels.length}"
-        v-on-dismiss="{callback: closeSelectedModels, watch: selectedModelsOpened}"
+        :class="{
+            activeDropdown: selectedModelsOpened,
+            withSelection: selectedModels.length
+        }"
+        v-on-dismiss="{
+            callback: closeSelectedModels,
+            watch: selectedModelsOpened
+        }"
     >
         <div class="selectCont">
             <div class="select">
@@ -24,7 +30,10 @@
             :class="{active: selectedModels.length > 0}"
             type="submit"
         >{{ submitButtonCaption }}</button>
-        <div class="selectedItems withItems" v-if="selectedModels.length">
+        <div
+            class="selectedItems withItems"
+            v-if="selectedModels.length"
+        >
             <button
                 type="button"
                 class="toggleSelectedItems nBtn iconChevronDown"
@@ -36,7 +45,7 @@
                         <button
                             class="nBtn removeItem iconX"
                             type="button"
-                            @click="$emit('deselectModel', model)"
+                            @click="deselectModel(model)"
                         >{{ getModelCaption(model) }}</button>
                     </li>
                 </ul>
@@ -190,6 +199,10 @@ export default {
 
             this.selectedModelsOpened = false;
 
+        },
+
+        deselectModel(model) {
+            setTimeout(() => this.$emit('deselectModel', model), 20);
         }
 
     }
