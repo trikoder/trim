@@ -13,7 +13,10 @@
         :style="styleAttribute"
         v-bind="attributes"
     >
-        <button type="button" @click="openFile" class="openFile previewBtn nBtn icr iconMaximize"></button>
+        <button
+            type="button" @click="openFile"
+            :class="['openFile previewBtn nBtn icr iconFile', {'withFile': fileUrl}]"
+        ></button>
     </div>
     <div
         v-else
@@ -71,8 +74,17 @@ export default {
 
         imageUrl() {
 
-            return this.isImage
+            return this.isImage && (this.mapImageTo || this.mapTo)
                 ? this.getModelMapping(this.mapImageTo || this.mapTo)
+                : undefined
+            ;
+
+        },
+
+        fileUrl() {
+
+            return this.isFile && (this.mapFileUrlTo || this.mapTo)
+                ? this.getModelMapping(this.mapFileUrlTo || this.mapTo)
                 : undefined
             ;
 
@@ -122,7 +134,9 @@ export default {
 
         openFile() {
 
-            window.open(this.getModelMapping(this.mapFileUrlTo), '_blank');
+            if (this.fileUrl) {
+                window.open(this.fileUrl, '_blank');
+            }
 
         },
 
@@ -170,15 +184,24 @@ export default {
 
         > .previewBtn {
 
-            transition: opacity 0.3s;
+            transition: opacity 0.3s, color 0.3s;
 
             position: absolute; left: 50%; top: 50%; margin: -2em 0 0 -2em; width: 4em; height: 4em;
             background-color: rgba(#000, 0.8); border-radius: 50%; opacity: 0; color: #fff;
 
             &:before { font-size: 2em; }
 
-            &.iconPlay:before { font-size: 2.2em; left: 2px; }
-            &.openFile:before { font-size: 2.2em; left: 2px; }
+            &.openFile {
+                opacity: 1; background: transparent; color: $colorGrayDark3;
+
+                &:before {
+                    font-size: 2.5em;
+                }
+
+                &.withFile:hover {
+                    color: $colorGrayDark1;
+                }
+            }
 
         }
 

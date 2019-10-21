@@ -33,14 +33,26 @@ export default {
             label: 'Caption'
         });
 
+        list.addFilter('SelectFormElement', {
+            name: 'mediaType',
+            label: 'Media type',
+            selectOptions: [
+                {caption: 'All', value: ''},
+                {caption: 'Images', value: 'image'},
+                {caption: 'Files', value: 'file'}
+            ]
+        });
+
         // --------------------------------------------------------------
         // List items
         // --------------------------------------------------------------
 
         list.addItem('MediaListItem', {
             caption: 'Main media',
+            mediaType: model => model.get('mediaType'),
             mapTo: 'thumbnailUrl',
-            mapLargeImageTo: 'originalUrl'
+            mapLargeImageTo: 'originalUrl',
+            mapFileUrlTo: 'url'
         });
 
         list.addItem('LinkListItem', {
@@ -110,9 +122,15 @@ export default {
 
         this.addToIndexControl().addSaveControl();
 
+        edit.addField('MediaPreviewFormElement', {
+            label: 'Photography',
+            name: 'mediaPreview'
+        });
+
         edit.addField('TextFormElement', {
             label: 'Title',
-            name: 'title'
+            name: 'title',
+            attributes: {input: {class: 'inputType2 size2'}}
         });
 
     }

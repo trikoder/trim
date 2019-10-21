@@ -113,6 +113,9 @@ module.exports = {
                 },
                 caption: function(caption, query) {
                     return caption.toLowerCase().indexOf(query.toLowerCase()) >= 0;
+                },
+                mediaType(mediaType, query) {
+                    return mediaType === query;
                 }
             },
             validationRules: {
@@ -132,9 +135,10 @@ module.exports = {
                         attributes: {
                             title: 'Media item ' + index,
                             caption: 'Aenean gravida, orci in sagittis tincidunt, dolor quam pellentesque dolor, nec viverra neque nunc id mi.',
-                            mediaType: 'image',
+                            mediaType: index < 40 ? 'image' : 'file',
                             thumbnailUrl: 'http://picsum.photos/400/300?v=' + String(index),
-                            originalUrl: 'http://picsum.photos/1200/900?v=' + String(index)
+                            originalUrl: 'http://picsum.photos/1200/900?v=' + String(index),
+                            url: 'http://picsum.photos/1200/900?v=' + String(index)
                         }
                     };
                 });
