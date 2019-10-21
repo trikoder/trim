@@ -338,4 +338,8 @@ export default {
 .htmlInputType1 > .htmlCustomComponent {
     font-size: em(10,16);
 }
+
+.htmlComponentsType1 .htmlInputType1:last-child {
+    margin-bottom: 0;
+}
 </style>
