@@ -56,7 +56,10 @@
                             v-if="item.expandable"
                             @click="toggleNode(item)"
                             type="button"
-                            class="treeBtn nBtn icr iconPlus"
+                            :class="[
+                                'treeBtn nBtn icr',
+                                item.expanded ? 'iconMinus' : 'iconPlus'
+                            ]"
                         ></button>
                     </template>
                     <component

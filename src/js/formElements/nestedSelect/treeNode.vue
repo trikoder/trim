@@ -10,7 +10,10 @@
             v-if="expandable"
             @click="toggleNode"
             type="button"
-            class="treeBtn nBtn icr iconPlus"
+            :class="[
+                'treeBtn nBtn icr',
+                expanded ? 'iconMinus' : 'iconPlus'
+            ]"
         ></button>
         <ul v-if="expanded" class="active">
             <tree-node

@@ -65,7 +65,7 @@ export default {
 
     },
 
-    setupEdit: function({edit}) {
+    setupEdit: function({edit, method}) {
 
         this.addToIndexControl().addSaveControl();
 
@@ -91,7 +91,7 @@ export default {
         });
 
         edit.addField('NestedSelectFormElement', {
-            readOnly: true,
+            readOnly: method === 'edit',
             name: 'parentCategory',
             label: 'Parent category',
             mapCaptionTo: 'title',
