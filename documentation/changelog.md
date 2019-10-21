@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.69.0
+* Addition: media form element can set query params on media controller before media select
+* Addition: media list element correctly renders file media types
+* Addition: better visualization of expanded state on nested resource controller and form element
+* Change: remove html components form element double bottom margin
+* Change: mass actions dropdown remains open when deselecting models
+
 ## 0.68.1
 * Change: html components form element styling
 
@@ -18,7 +25,7 @@
 
 ## 0.66.0
 * Addition: allow main navigation item custom action
-* Addition: override after save behaviour on resource controller
+* Addition: override after save behavior on resource controller
 * Change: update package dependencies
 * Change: fix html editor auto inline bugs
 * Change: catch errors from new router push api
