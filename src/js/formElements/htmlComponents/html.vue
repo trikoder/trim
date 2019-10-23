@@ -10,6 +10,7 @@
 <script>
 
 import {load as loadCkEditor} from '../../library/ckeditor';
+import translate from '../../library/translate';
 import {result} from '../../library/toolkit';
 import '../html';
 
@@ -62,6 +63,12 @@ export default {
             return loadCkEditor().then(ckeditor => {
 
                 const comboName = 'ComponentSelector';
+                const controlCaption = translate('formElements.htmlComponents.insertComponentCaption');
+                const components = this.components.filter(component => Boolean(component));
+
+                if (components.length === 0) {
+                    return;
+                }
 
                 const options = Object.assign({
                     startupShowBorders: false,
@@ -77,8 +84,6 @@ export default {
                 }, this.editorConfig);
 
                 const editor = this.editor = ckeditor.inline(this.$refs.content, options);
-                const components = this.components;
-                const controlCaption = 'Insert component';
                 const self = this;
 
                 editor.ui.addRichCombo(comboName, {
@@ -238,13 +243,6 @@ export default {
 <style lang="scss">
 .ck_add_components .cke_combo_text {
     width: auto;
-}
-</style>
-
-<style lang="scss" scoped>
-.htmlInputType1:not(:last-child) {
-    margin-bottom: em(15,16);
-    border: 0;
 }
 </style>
 

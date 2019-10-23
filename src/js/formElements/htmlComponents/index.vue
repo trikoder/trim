@@ -334,12 +334,18 @@ export default {
 <style lang="scss">
 .htmlComponentsType1 {
     @include clearfix;
-}
-.htmlInputType1 > .htmlCustomComponent {
-    font-size: em(10,16);
-}
 
-.htmlComponentsType1 .htmlInputType1:last-child {
-    margin-bottom: 0;
+    .htmlInputType1 > .htmlCustomComponent {
+        font-size: em(10,16);
+    }
+
+    .htmlInputType1:not(:last-child) {
+        margin-bottom: em(15,16);
+        border: 0;
+    }
+
+    .htmlInputType1:last-child {
+        margin-bottom: 0;
+    }
 }
 </style>

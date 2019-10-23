@@ -40,7 +40,7 @@ module.exports = {
         uploadImages: 'Uploadaj slike'
     },
     massActions: {
-        confirmButtonCaption: 'Izvedi',
+        confirmButtonCaption: 'Potvrdi',
         selectedItemsCaption: 'Odabrano',
         messageActionCaption: 'Označi stavke'
     },
@@ -112,6 +112,9 @@ module.exports = {
             previousMonthCaption: 'Prethodni mjesec',
             nextMonthCaption: 'Sljedeći mjesec',
             todayButtonCaption: 'Danas'
+        },
+        htmlComponents: {
+            insertComponentCaption: 'Dodaj komponentu'
         }
     },
     listElements: {

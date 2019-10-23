@@ -112,6 +112,9 @@ module.exports = {
             previousMonthCaption: 'Previous month',
             nextMonthCaption: 'Next month',
             todayButtonCaption: 'Today'
+        },
+        htmlComponents: {
+            insertComponentCaption: 'Insert component'
         }
     },
     listElements: {
