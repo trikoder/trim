@@ -371,6 +371,7 @@ module.exports = {
                     title: 'Category 1',
                     description: 'Aenean gravida, orci in sagittis tincidunt, dolor quam pellentesque dolor, nec viverra neque nunc id mi.',
                     published: true,
+                    position: 1,
                     imageThumbnailUrl: 'http://pipsum.com/400x300.jpg?v=1',
                     imageOriginalUrl: 'http://pipsum.com/1200x900.jpg?v=1'
                 },
@@ -385,6 +386,7 @@ module.exports = {
                     title: 'Category 2',
                     description: 'Aenean gravida, orci in sagittis tincidunt, dolor quam pellentesque dolor, nec viverra neque nunc id mi.',
                     published: true,
+                    position: 2,
                     imageThumbnailUrl: 'http://pipsum.com/400x300.jpg?v=2',
                     imageOriginalUrl: 'http://pipsum.com/1200x900.jpg?v=2'
                 },
@@ -402,6 +404,7 @@ module.exports = {
                     title: 'Category 3',
                     description: 'Aenean gravida, orci in sagittis tincidunt, dolor quam pellentesque dolor, nec viverra neque nunc id mi.',
                     published: true,
+                    position: 3,
                     imageThumbnailUrl: 'http://pipsum.com/400x300.jpg?v=3',
                     imageOriginalUrl: 'http://pipsum.com/1200x900.jpg?v=3'
                 },
@@ -418,6 +421,7 @@ module.exports = {
                     title: 'Category 4',
                     description: 'Aenean gravida, orci in sagittis tincidunt, dolor quam pellentesque dolor, nec viverra neque nunc id mi.',
                     published: true,
+                    position: 1,
                     imageThumbnailUrl: 'http://pipsum.com/400x300.jpg?v=4',
                     imageOriginalUrl: 'http://pipsum.com/1200x900.jpg?v=4'
                 },
@@ -432,6 +436,7 @@ module.exports = {
                     title: 'Category 5',
                     description: 'Aenean gravida, orci in sagittis tincidunt, dolor quam pellentesque dolor, nec viverra neque nunc id mi.',
                     published: true,
+                    position: 2,
                     imageThumbnailUrl: 'http://pipsum.com/400x300.jpg?v=5',
                     imageOriginalUrl: 'http://pipsum.com/1200x900.jpg?v=5'
                 },
@@ -448,6 +453,7 @@ module.exports = {
                     title: 'Category 6',
                     description: 'Aenean gravida, orci in sagittis tincidunt, dolor quam pellentesque dolor, nec viverra neque nunc id mi.',
                     published: true,
+                    position: 1,
                     imageThumbnailUrl: 'http://pipsum.com/400x300.jpg?v=6',
                     imageOriginalUrl: 'http://pipsum.com/1200x900.jpg?v=6'
                 },
@@ -462,6 +468,7 @@ module.exports = {
                     title: 'Category 7',
                     description: 'Aenean gravida, orci in sagittis tincidunt, dolor quam pellentesque dolor, nec viverra neque nunc id mi.',
                     published: true,
+                    position: 1,
                     imageThumbnailUrl: 'http://pipsum.com/400x300.jpg?v=7',
                     imageOriginalUrl: 'http://pipsum.com/1200x900.jpg?v=7'
                 },

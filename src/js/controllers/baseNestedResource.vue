@@ -10,6 +10,7 @@ const BaseNestedController = BaseResourceController.extend({
         mapChildrenTo: 'children',
         mapLevelTo: undefined,
         mapIsLeafTo: undefined,
+        mapPositionTo: () => 0,
         expandedResourceIds: []
     }),
 
@@ -28,6 +29,7 @@ const BaseNestedController = BaseResourceController.extend({
                 mapChildrenTo: this.mapChildrenTo,
                 mapLevelTo: this.mapLevelTo,
                 mapIsLeafTo: this.mapIsLeafTo,
+                mapPositionTo: this.mapPositionTo,
                 expandedResourceIds: this.expandedResourceIds,
                 expandNode: model => this.expandNode(model),
                 collapseNode: model => this.collapseNode(model)
@@ -57,7 +59,8 @@ BaseNestedController.getDataKeys = () => ([
     'mapParentTo',
     'mapChildrenTo',
     'mapLevelTo',
-    'mapIsLeafTo'
+    'mapIsLeafTo',
+    'mapPositionTo'
 ]);
 
 BaseNestedController.toVueComponent = getVueComponentMapper({

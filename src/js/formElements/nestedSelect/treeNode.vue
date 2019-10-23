@@ -79,12 +79,10 @@ export default {
 
         children() {
 
-            if (this.expandable && this.expanded) {
-                const collection = this.getModelChildren(this.model);
-                return collection ? collection.models : [];
-            } else {
-                return [];
-            }
+            return this.expandable && this.expanded
+                ? this.getModelChildren(this.model)
+                : []
+            ;
 
         }
 

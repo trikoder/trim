@@ -84,6 +84,7 @@ export default {
         mapChildrenTo: {type: [String, Function], default: 'children'},
         mapIsLeafTo: {type: [String, Function]},
         mapLevelTo: {type: [String, Function]},
+        mapPositionTo: {type: [Function, String], default: () => 0},
         selectableLevel: {type: [String, Array, Function], default: 'leaf'},
         resourceQuery: {type: Object},
         select: {type: String, default: 'one'},
@@ -119,12 +120,26 @@ export default {
 
         },
 
+        sortComparator() {
+
+            const mapper = this.mapPositionTo;
+
+            return typeof mapper === 'function'
+                ? mapper
+                : (m1, m2) => m1.get(mapper) - m2.get(mapper)
+            ;
+
+        },
+
         rootResourceModels() {
 
-            return this.resourceCollection
-                ? this.resourceCollection.filter(model => this.getModelLevel(model) === 0)
-                : undefined
-            ;
+            if (this.resourceCollection) {
+                return this.resourceCollection.filter(
+                    model => this.getModelLevel(model) === 0
+                ).sort(this.sortComparator);
+            } else {
+                return [];
+            }
 
         },
 
@@ -303,7 +318,7 @@ export default {
 
             } else {
 
-                return Boolean(this.getModelChildren(model)) === false;
+                return this.getModelChildren(model).length === 0;
 
             }
 
@@ -329,9 +344,14 @@ export default {
 
         getModelChildren(model) {
 
-            return typeof this.mapChildrenTo === 'function'
-                ? this.mapChildrenTo(model, this.resourceCollection)
+            const children = typeof this.mapChildrenTo === 'function'
+                ? this.mapChildrenTo(model, this.modelCollection)
                 : model.get(this.mapChildrenTo)
+            ;
+
+            return children
+                ? (children.models ? children.models : children)
+                : []
             ;
 
         },

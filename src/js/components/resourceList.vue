@@ -376,6 +376,10 @@ export default {
 
         decorateContextMenuDefinition(definition) {
 
+            if (!Array.isArray(definition.options.items)) {
+                return;
+            }
+
             const refreshItems = () => this.refreshItems();
 
             definition.options.items.forEach(item => {

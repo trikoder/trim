@@ -14,12 +14,24 @@ export default {
         mapChildrenTo: {type: [Function, String], required: true},
         mapLevelTo: {type: [Function, String]},
         mapIsLeafTo: {type: [Function, String]},
+        mapPositionTo: {type: [Function, String], required: true},
         expandedResourceIds: {type: Array, required: true},
         expandNode: {type: Function, required: true},
         collapseNode: {type: Function, required: true}
     },
 
     computed: {
+
+        sortComparator() {
+
+            const mapper = this.mapPositionTo;
+
+            return typeof mapper === 'function'
+                ? mapper
+                : (m1, m2) => m1.get(mapper) - m2.get(mapper)
+            ;
+
+        },
 
         queryIsEmpty() {
 
@@ -47,10 +59,13 @@ export default {
 
         rootResourceModels() {
 
-            return this.modelCollection
-                ? this.modelCollection.filter(model => this.getModelLevel(model) === 0)
-                : []
-            ;
+            if (this.modelCollection) {
+                return this.modelCollection.filter(
+                    model => this.getModelLevel(model) === 0
+                ).sort(this.sortComparator);
+            } else {
+                return [];
+            }
 
         },
 
@@ -79,7 +94,9 @@ export default {
             items.push({id, spacers, expanded, expandable, model, level});
 
             if (expanded) {
-                this.getModelChildren(model).forEach(childModel => {
+                this.getModelChildren(model).sort(
+                    this.sortComparator
+                ).forEach(childModel => {
                     this.buildTree(childModel, items, level + 1);
                 });
             }
@@ -115,7 +132,7 @@ export default {
 
             } else {
 
-                return Boolean(this.getModelChildren(model)) === false;
+                return this.getModelChildren(model).length === 0;
 
             }
 
@@ -123,9 +140,14 @@ export default {
 
         getModelChildren(model) {
 
-            return typeof this.mapChildrenTo === 'function'
+            const children = typeof this.mapChildrenTo === 'function'
                 ? this.mapChildrenTo(model, this.modelCollection)
                 : model.get(this.mapChildrenTo)
+            ;
+
+            return children
+                ? (children.models ? children.models : children)
+                : []
             ;
 
         },
