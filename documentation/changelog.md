@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.70.0
+* Addition: support for position aware rendering in nested resource controlle…
+* Change: translate html components form element captions
+
 ## 0.69.0
 * Addition: media form element can set query params on media controller before media select
 * Addition: media list element correctly renders file media types
