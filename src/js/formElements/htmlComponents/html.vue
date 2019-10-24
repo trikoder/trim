@@ -14,6 +14,8 @@ import translate from '../../library/translate';
 import {result} from '../../library/toolkit';
 import '../html';
 
+const comboName = 'ComponentSelector';
+
 export default {
 
     props: {
@@ -62,14 +64,6 @@ export default {
 
             return loadCkEditor().then(ckeditor => {
 
-                const comboName = 'ComponentSelector';
-                const controlCaption = translate('formElements.htmlComponents.insertComponentCaption');
-                const components = this.components.filter(component => Boolean(component));
-
-                if (components.length === 0) {
-                    return;
-                }
-
                 const options = Object.assign({
                     startupShowBorders: false,
                     toolbar: [
@@ -84,39 +78,6 @@ export default {
                 }, this.editorConfig);
 
                 const editor = this.editor = ckeditor.inline(this.$refs.content, options);
-                const self = this;
-
-                editor.ui.addRichCombo(comboName, {
-                    label: controlCaption,
-                    title: controlCaption,
-                    voiceLabel: controlCaption,
-                    className: 'ck_add_components',
-                    panel: {
-                        css: ckeditor.customStyles.richCombo
-                    },
-
-                    init: function() {
-
-                        components.forEach(Component => {
-                            this.add(
-                                Component.componentType,
-                                result(Component.insertCaption),
-                                result(Component.insertCaption)
-                            );
-                        });
-
-                    },
-
-                    onClick: function(componentType) {
-
-                        self.prepareInsertEvent(
-                            componentType, editor.getSelection().getRanges()[0]
-                        );
-
-                        editor.focusManager.blur(true);
-
-                    }
-                });
 
                 editor.on('instanceReady', () => editor.setReadOnly(false));
 
@@ -133,8 +94,52 @@ export default {
 
                 });
 
+                this.setupInsertDropdown(editor, ckeditor);
+
                 return editor;
 
+            });
+
+        },
+
+        setupInsertDropdown(editor, ckeditor) {
+
+            const controlCaption = translate('formElements.htmlComponents.insertComponentCaption');
+            const components = this.components.filter(component => Boolean(component));
+            const self = this;
+
+            if (components.length === 0) {
+                return;
+            }
+
+            editor.ui.addRichCombo(comboName, {
+                label: controlCaption,
+                title: controlCaption,
+                voiceLabel: controlCaption,
+                className: 'ck_add_components',
+                panel: {
+                    css: ckeditor.customStyles.richCombo
+                },
+                init: function() {
+
+                    components.forEach(Component => {
+                        this.add(
+                            Component.componentType,
+                            result(Component.insertCaption),
+                            result(Component.insertCaption)
+                        );
+                    });
+
+                },
+                onClick: function(componentType) {
+
+                    self.prepareInsertEvent(
+                        componentType, editor.getSelection().getRanges()[0]
+                    );
+
+                    editor.focusManager.blur(true);
+
+                }
             });
 
         },
