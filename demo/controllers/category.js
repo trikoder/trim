@@ -1,3 +1,5 @@
+import {Model} from 'trim/library/resource';
+
 export default {
 
     resourceName: 'category',
@@ -91,23 +93,32 @@ export default {
                 const minPosition = Math.min.apply(Math, positions);
                 const maxPosition = Math.max.apply(Math, positions);
 
-                const swapPosition = offset => {
+                const updatePosition = (syncModel, position) => {
+                    return Model.extend({
+                        type: 'category'
+                    }).create().setId(
+                        syncModel.get('id')
+                    ).saveAttribute('position', position).then(() => {
+                        syncModel.setAttribute('position', position);
+                    });
+                };
 
+                const swapPosition = offset => {
                     return Promise.all(siblingModels.map((sibling, index) => {
                         return sibling.get('position') !== index + 1
-                            ? sibling.saveAttribute('position', index + 1)
+                            ? updatePosition(sibling, index + 1)
                             : null
                     })).then(() => {
                         const oldPosition = model.get('position');
                         const newPosition = oldPosition + offset;
-                        const otherModel = siblingModels.find(m => m.get('position') === newPosition);
-
+                        const otherModel = siblingModels.find(
+                            m => m.get('position') === newPosition
+                        );
                         return Promise.all([
-                            model.saveAttribute('position', newPosition),
-                            otherModel.saveAttribute('position', oldPosition)
-                        ]);
+                            updatePosition(model, newPosition),
+                            updatePosition(otherModel, oldPosition)
+                        ])
                     });
-
                 };
 
                 const items = [{
