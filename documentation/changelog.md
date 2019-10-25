@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.70.1
+* Addition: example gallery and table content components added to demo codebase
+* Change: html components form element is editable when no components are defined
+
 ## 0.70.0
 * Addition: support for position aware rendering in nested resource controlle…
 * Change: translate html components form element captions
