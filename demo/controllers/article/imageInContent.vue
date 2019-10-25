@@ -24,7 +24,6 @@ export default {
 
     props: {
         type: String,
-        clientId: String,
         imageId: String,
         alignment: String,
         caption: String
@@ -45,7 +44,7 @@ export default {
                 action: () => this.updateComponent({alignment: 'central'})
             }, {
                 icon: 'trash',
-                action: () => this.removeComponent()
+                action: () => this.confirmRemove(() => this.removeComponent())
             }];
 
         }
@@ -61,6 +60,8 @@ export default {
                 alignment: 'central'
             });
 
+        }, {
+            controllerMethodParams: [{}, {mediaType: 'image'}]
         });
 
     }

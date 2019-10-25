@@ -31,12 +31,10 @@ export default {
 
     componentType: 'qoute',
 
-    insertCaption: 'Quoute componenent',
+    insertCaption: 'Quote component',
 
     props: {
         type: String,
-        clientId: String,
-        imageId: String,
         text: String,
         author: String
     },

@@ -1,5 +1,6 @@
 import ImageInContent from './imageInContent';
 import QuoteInContent from './quoteInContent';
+import GalleryInContent from './galleryInContent';
 
 export default {
 
@@ -189,7 +190,8 @@ export default {
                 name: 'contentComponents',
                 components: [
                     ImageInContent,
-                    QuoteInContent
+                    QuoteInContent,
+                    GalleryInContent
                 ],
                 layoutReference: 'mainTab.mainRegion'
             }],
