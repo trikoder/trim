@@ -1,6 +1,7 @@
 import ImageInContent from './imageInContent';
 import QuoteInContent from './quoteInContent';
 import GalleryInContent from './galleryInContent';
+import TableInContent from './tableInContent';
 
 export default {
 
@@ -191,7 +192,8 @@ export default {
                 components: [
                     ImageInContent,
                     QuoteInContent,
-                    GalleryInContent
+                    GalleryInContent,
+                    TableInContent
                 ],
                 layoutReference: 'mainTab.mainRegion'
             }],
