@@ -1,5 +1,5 @@
 <template>
-       <figure class="image" :class="alignment + 'Aligned'">
+       <figure class="imageComponent" :class="alignment + 'Aligned'">
             <img src="http://picsum.photos/1200/900?random=1">
             <component-controls :controls="imageControls"></component-controls>
             <input
@@ -23,7 +23,6 @@ export default {
     insertCaption: 'Image component',
 
     props: {
-        type: String,
         imageId: String,
         alignment: String,
         caption: String
@@ -55,7 +54,6 @@ export default {
         ExternalAdmin.select('media', model => {
 
             done({
-                type: 'image',
                 imageId: model.get('id'),
                 alignment: 'central'
             });
@@ -71,7 +69,7 @@ export default {
 
 <style lang="scss" scoped>
 
-.image {
+.imageComponent {
     min-height: em(100); position: relative;
     border-radius: 5px; overflow: hidden;
     margin: 2em 0;

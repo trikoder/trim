@@ -9,7 +9,14 @@ export default {
     },
 
     props: {
-        clientId: String
+        type: {
+            type: String,
+            required: true
+        },
+        clientId: {
+            type: String,
+            required: true
+        }
     },
 
     computed: {

@@ -1,5 +1,5 @@
 <template>
-   <div class="gallery">
+   <div class="galleryComponent">
         <textarea-form-element
             :value="title" :attributes="{input: {
                 class: 'inputType2 fontBold',
@@ -187,7 +187,6 @@ export default {
         ExternalAdmin.selectMany('media', models => {
 
             done({
-                type: 'gallery',
                 title: '',
                 template: 'default',
                 items: models.filter(
@@ -209,7 +208,7 @@ export default {
 
 <style lang="scss" scoped>
 
-.gallery {
+.galleryComponent {
     position: relative;
     border-radius: 5px; box-sizing: border-box;
     margin: 2em 0; padding: 1.3em 6em 0 2em;

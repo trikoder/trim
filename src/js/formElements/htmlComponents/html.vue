@@ -181,7 +181,9 @@ export default {
 
                 const eventData = {
                     clientId: this.clientId,
-                    component: componentData
+                    component: Object.assign({
+                        type: Component.componentType
+                    }, componentData)
                 };
 
                 if (selection.startOffset === 0 && !selectedContainer.hasPrevious()) {

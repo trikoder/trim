@@ -1,5 +1,5 @@
 <template>
-       <div class="quote">
+       <div class="quoteComponent">
             <textarea-form-element
                 :value="text" :attributes="{input: {
                     class: 'inputType2',
@@ -34,7 +34,6 @@ export default {
     insertCaption: 'Quote component',
 
     props: {
-        type: String,
         text: String,
         author: String
     },
@@ -42,7 +41,6 @@ export default {
     prepareDataModel(done) {
 
         done({
-            type: 'qoute',
             text: '',
             author: ''
         });
@@ -54,7 +52,7 @@ export default {
 
 <style lang="scss" scoped>
 
-.quote {
+.quoteComponent {
     min-height: em(100); position: relative;
     margin: 2em 0; padding-right: 6em;
     clear: both;
