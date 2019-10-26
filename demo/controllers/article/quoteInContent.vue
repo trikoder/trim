@@ -74,5 +74,4 @@ export default {
     border: 0; color: $colorGrayDark2; background: #fff;
 }
 
-
 </style>

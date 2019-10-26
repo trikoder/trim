@@ -7,7 +7,7 @@ export default {
     data: () => ({
         isDummy: true
     })
-}
+};
 </script>
 
 <style lang="scss" scoped>

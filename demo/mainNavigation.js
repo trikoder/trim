@@ -1,4 +1,4 @@
-import auth from './auth';
+// import auth from './auth';
 import server from 'apiServer';
 import DummyComponent from './dummy';
 
@@ -76,7 +76,7 @@ export default {
 
         {
             caption: 'My settings',
-            url: router.url('mySettings'),
+            url: router.url('mySettings')
         },
 
         {

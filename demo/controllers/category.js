@@ -170,6 +170,7 @@ export default {
                 return sibling.get('position') !== index + 1
                     ? updatePosition(sibling, index + 1)
                     : null
+                ;
             })).then(() => {
                 const oldPosition = model.get('position');
                 const newPosition = oldPosition + offset;
@@ -179,7 +180,7 @@ export default {
                 return Promise.all([
                     updatePosition(model, newPosition),
                     updatePosition(otherModel, oldPosition)
-                ])
+                ]);
             });
         };
 

@@ -58,8 +58,8 @@ module.exports = {
                 enforce: 'pre',
                 include: [
                     path.join(__dirname, 'src'),
-                    path.join(__dirname, 'src/demo'),
-                    path.join(__dirname, 'spec'),
+                    path.join(__dirname, 'demo'),
+                    path.join(__dirname, 'spec')
                 ],
             },
             {

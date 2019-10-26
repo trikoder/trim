@@ -44,34 +44,36 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(row, rowIndex) in rows" v-if="rowIndex !== 0">
-                        <td v-for="(cell, cellIndex) in row" :key="cellIndex">
-                            <textarea-form-element
-                                :value="cell" :attributes="getInputAttributes('cell')"
-                                @input="updateCell(rowIndex, cellIndex, $event)"
-                            ></textarea-form-element>
-                        </td>
-                        <td class="dropdownCell">
-                            <div class="dropdown" :class="{
-                                active: activeDropdown === 'row' + rowIndex
-                            }">
-                                <button
-                                    type="button" @click="toggleDropdown('row' + rowIndex)"
-                                    class="dropdownToggle nBtn icr iconMoreHorizontal"
-                                    tabindex="-1"
-                                >More</button>
-                                <ul
-                                    class="dropdownList"
-                                    v-if="activeDropdown === 'row' + rowIndex"
-                                    v-on-dismiss="closeDropdown"
-                                >
-                                    <li @click="removeRow(rowIndex)">Remove row</li>
-                                    <li @click="addRow(rowIndex)">Insert row above</li>
-                                    <li @click="addRow(rowIndex + 1)">Insert row bellow</li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
+                    <template v-for="(row, rowIndex) in rows">
+                        <tr v-if="rowIndex !== 0" :key="rowIndex">
+                            <td v-for="(cell, cellIndex) in row" :key="cellIndex">
+                                <textarea-form-element
+                                    :value="cell" :attributes="getInputAttributes('cell')"
+                                    @input="updateCell(rowIndex, cellIndex, $event)"
+                                ></textarea-form-element>
+                            </td>
+                            <td class="dropdownCell">
+                                <div class="dropdown" :class="{
+                                    active: activeDropdown === 'row' + rowIndex
+                                }">
+                                    <button
+                                        type="button" @click="toggleDropdown('row' + rowIndex)"
+                                        class="dropdownToggle nBtn icr iconMoreHorizontal"
+                                        tabindex="-1"
+                                    >More</button>
+                                    <ul
+                                        class="dropdownList"
+                                        v-if="activeDropdown === 'row' + rowIndex"
+                                        v-on-dismiss="closeDropdown"
+                                    >
+                                        <li @click="removeRow(rowIndex)">Remove row</li>
+                                        <li @click="addRow(rowIndex)">Insert row above</li>
+                                        <li @click="addRow(rowIndex + 1)">Insert row bellow</li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    </template>
                 </tbody>
             </table>
         </div>
@@ -89,7 +91,6 @@
 <script>
 import TextareaFormElement from 'trim/formElements/textarea';
 import baseComponent from 'trim/formElements/htmlComponents/baseComponent';
-import ExternalAdmin from 'trim/formElements/externalAdmin';
 import vueDismiss from 'vue-dismiss';
 
 export default {

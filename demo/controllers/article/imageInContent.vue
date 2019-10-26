@@ -34,7 +34,7 @@ export default {
 
             return [{
                 icon: 'move',
-                isSortHandle:true
+                isSortHandle: true
             }, this.alignment === 'central' ? {
                 icon: 'arrowLeft',
                 action: () => this.updateComponent({alignment: 'left'})
