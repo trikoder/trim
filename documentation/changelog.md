@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.70.2
+* Change: update html form elements style
+
 ## 0.70.1
 * Addition: example gallery and table content components added to demo codebase
 * Change: html components form element is editable when no components are defined
