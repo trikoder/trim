@@ -16,6 +16,9 @@ export default {
         clientId: {
             type: String,
             required: true
+        },
+        context: {
+            type: Object
         }
     },
 

@@ -5,6 +5,7 @@
                 <html-editor
                     v-if="componentConfig.type === 'html'"
                     v-bind="componentConfig"
+                    :context="context"
                     :inputAttributes="sanitizedInputAttributes"
                     :editorConfig="editorConfig"
                     :key="componentConfig.clientId"
@@ -16,6 +17,7 @@
                 <component
                     v-else
                     v-bind="componentConfig"
+                    :context="context"
                     :is="getComponent(componentConfig)"
                     :key="componentConfig.clientId"
                     ref="componentInstances"
@@ -60,6 +62,9 @@ export default {
             default: () => ([])
         },
         editorConfig: {
+            type: Object
+        },
+        context: {
             type: Object
         }
     },

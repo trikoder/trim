@@ -24,7 +24,8 @@ export default {
         editorConfig: Object,
         inputAttributes: Object,
         type: String,
-        components: Array
+        components: Array,
+        context: Object
     },
 
     data() {
@@ -238,7 +239,7 @@ export default {
 
                 this.$emit('insertComponent', eventData);
 
-            });
+            }, this.context);
 
         }
 

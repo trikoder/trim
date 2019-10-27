@@ -195,6 +195,7 @@ export default {
                     GalleryInContent,
                     TableInContent
                 ],
+                context: {lang: 'en'},
                 layoutReference: 'mainTab.mainRegion'
             }],
             ['ExternalAdminFormElement', {
