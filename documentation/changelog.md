@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.71.0
+* Addition: context prop in html components form element for passing arbitrary contextual data
+
 ## 0.70.2
 * Change: update html form elements style
 
