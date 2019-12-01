@@ -829,13 +829,29 @@ const Component = Vue.extend({
 
                         const relationName = instance.relation.name || instance.name;
                         const relationData = this.getFieldRelationData(instance);
-                        data.relationships = data.relationships || {};
-                        data.relationships[relationName] = relationData;
+                        const isEmptyArray = Array.isArray(relationData) && relationData.length === 0;
+
+                        if (
+                            instance.saveEmptyValue === false &&
+                            (relationData === null || isEmptyArray)
+                        ) {
+                            // skip saving empty relation
+                        } else {
+                            data.relationships = data.relationships || {};
+                            data.relationships[relationName] = relationData;
+                        }
 
                     } else {
 
-                        data.attributes = data.attributes || {};
-                        data.attributes[instance.name] = instance.value;
+                        if (
+                            instance.saveEmptyValue === false &&
+                            (instance.value === '' || instance.value === null)
+                        ) {
+                            // skip saving empty attribute
+                        } else {
+                            data.attributes = data.attributes || {};
+                            data.attributes[instance.name] = instance.value;
+                        }
 
                     }
 

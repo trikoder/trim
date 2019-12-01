@@ -47,7 +47,7 @@ export default {
 
     },
 
-    setupEdit({edit}) {
+    setupEdit({edit, method}) {
 
         this.addToIndexControl().addSaveControl();
 
@@ -55,6 +55,13 @@ export default {
             label: 'Email',
             name: 'email',
             attributes: {input: {class: 'inputType2 size2'}}
+        });
+
+        edit.addField('TextFormElement', {
+            label: method === 'create' ? 'Password' : 'Change password',
+            saveEmptyValue: false,
+            name: 'password',
+            attributes: {input: {type: 'password'}}
         });
 
         edit.addField('IncludedAdminFormElement', {

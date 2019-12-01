@@ -13,6 +13,7 @@ export default {
         readOnly: {type: Boolean, default: false},
         disabled: {type: Boolean, default: false},
         editable: {type: Boolean, default: true},
+        saveEmptyValue: {type: Boolean, default: true},
         attributes: {type: Object, default: () => ({})},
         layoutReference: String,
         visible: {type: Boolean, default: true}

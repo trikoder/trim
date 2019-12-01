@@ -69,20 +69,7 @@ module.exports = {
                             special: random.boolean(),
                             publishDate: new Date().toISOString(),
                             intro: 'Aenean gravida, orci in sagittis tincidunt, dolor quam pellentesque dolor, nec viverra neque nunc id mi. Nam in luctus est. Phasellus nec neque sed ante posuere maximus. Sed nibh nisl, iaculis eget maximus nec, fringilla quis sem. Aenean dictum laoreet sapien.',
-                            contentComponents: [{
-                                clientId: '1',
-                                content: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at turpis sed erat tincidunt iaculis facilisis ac leo. Cras semper, dui in suscipit hendrerit, dui felis molestie elit, bibendum efficitur sapien elit sed magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis purus sagittis velit lacinia dignissim. Maecenas at pellentesque ante, in dignissim ex.</p><ul><li>Sed eget ipsum condimentum sem interdum gravida</li><li>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos</li><li>Praesent sagittis metus et metus mollis rhoncus</li></ul><p>Maecenas imperdiet mollis leo, vitae facilisis ex accumsan a. Vivamus semper viverra nisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquet magna nec nibh vehicula molestie. Morbi vestibulum tempor molestie. Nam ante turpis, convallis a ornare nec, pellentesque id nunc. Sed neque felis, auctor et ultrices ac, euismod vel mi. Vivamus in gravida velit, nec convallis dui.</p>',
-                                type: 'html'
-                            }, {
-                                clientId: '2',
-                                type: 'qoute',
-                                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at turpis sed erat tincidunt iaculis facilisis ac leo.',
-                                author: 'Lorem ipsum'
-                            }, {
-                                clientId: '3',
-                                content: '<p>Proin interdum sagittis sem in elementum. Duis non libero vitae lectus viverra semper. Nunc at eros accumsan, bibendum nisl a, tincidunt nulla. Aliquam vitae nunc scelerisque libero dignissim luctus. Vestibulum iaculis hendrerit ullamcorper. Nullam porttitor risus sed luctus pretium.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at turpis sed erat tincidunt iaculis facilisis ac leo. Cras semper, dui in suscipit hendrerit, dui felis molestie elit, bibendum efficitur sapien elit sed magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis purus sagittis velit lacinia dignissim. Maecenas at pellentesque ante, in dignissim ex.</p>',
-                                type: 'html'
-                            }],
+                            contentComponents: [],
                             metaTitle: 'Lorem ipsum dolor sit ament ' + index,
                             metaDiscription: 'Aenean gravida, orci in sagittis tincidunt, dolor quam pellentesque dolor, nec viverra neque nunc id mi. Nam in luctus est. Phasellus nec neque sed ante posuere maximus. Sed nibh nisl, iaculis eget maximus nec, fringilla quis sem. Aenean dictum laoreet sapien, vel consectetur est efficitur sit amet. Vivamus quis libero dolor. Nam purus turpis, aliquet quis arcu a, molestie placerat neque.',
                             latitude: '48.2206636',
