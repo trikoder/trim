@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.72.0
+* Addition: allow omitting empty form element values when saving resource
+* Change: fix html form element rendering with empty component collection
+
 ## 0.71.0
 * Addition: context prop in html components form element for passing arbitrary contextual data
 
