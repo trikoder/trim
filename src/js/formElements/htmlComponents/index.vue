@@ -96,6 +96,16 @@ export default {
 
         }, {immediate: true});
 
+        if (this.value.length === 0) {
+
+            this.$emit('input', [{
+                clientId: clientId(),
+                type: 'html',
+                content: ''
+            }]);
+
+        }
+
     },
 
     beforeDestroy() {
