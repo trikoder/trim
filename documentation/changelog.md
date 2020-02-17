@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.73.0
+* Change: disable character encoding in html form element
+* Change: fix nested selected form element typo
+
 ## 0.72.0
 * Addition: allow omitting empty form element values when saving resource
 * Change: fix html form element rendering with empty component collection
