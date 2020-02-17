@@ -345,7 +345,7 @@ export default {
         getModelChildren(model) {
 
             const children = typeof this.mapChildrenTo === 'function'
-                ? this.mapChildrenTo(model, this.modelCollection)
+                ? this.mapChildrenTo(model, this.resourceCollection)
                 : model.get(this.mapChildrenTo)
             ;
 
