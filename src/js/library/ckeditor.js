@@ -17,6 +17,7 @@ export function load() {
         ckeditor.config.defaultLanguage = locale;
         ckeditor.config.language = locale;
         ckeditor.config.extraPlugins = 'sourcedialog';
+        ckeditor.config.entities = false;
 
         ckeditor.customStyles = {
             richCombo: `
