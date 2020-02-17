@@ -56,10 +56,9 @@ createRequiresDraft: false
 
 ### setupList
 Controller method where we define how resource is browsed, filtered and sorted in list view.
-Controller injects current [listHandler](#resource-list) instance when method is called.
 
 ```js
-setupList: function({list}) {
+setupList: function({list, query}) {
 
     this.addCreateControl('Create new tag');
 
@@ -80,10 +79,12 @@ setupList: function({list}) {
     });
 },
 ```
+Following arguments are available:
+- list: instance of [resourceList](#resource-list) object
+- query: current resource query parameters (filters, sort, page...)
 
 ### setupEdit
 Controller method where we define form fields rendered when resource is created or updated.
-Controller injects current [editHandler](#resource-edit) instance when method is called, method (edit or create) and resource model when called in editing context.
 
 ```js
 setupEdit: function({edit, method, resourceModel}) {
@@ -97,6 +98,10 @@ setupEdit: function({edit, method, resourceModel}) {
 
 }
 ```
+Following arguments are available:
+- edit: instance of [editHandler](#resource-edit) object
+- method: current resource authoring context ('edit' or 'create')
+- resourceModel: instance of resource model that is currently edited (or created)
 
 ### openIndex
 Controller instance method which opens resource index or listing.

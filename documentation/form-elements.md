@@ -19,11 +19,43 @@ They share following html structure when rendered:
 All form elements accept following set of options:
 
 * **name**: key used to map form element value to resource model attribute or relation.
-* **label**: label text content.
-* **readOnly**: Used to set form element as "read only". When resource is created or updated mappings with "readOnly" option will be excluded from put / post requests. Also, form element wrapper will receive class attribute "disabled" and form element will receive attribute "disabled".
+* **label**: form element label content.
+* **relation**: sets form element value as relation mapping.
 * **attributes**: Adds html attributes to following elements (defined as object keys) 'input', 'inputWrapper', 'label', 'wrapper' and 'errorMessage'
 * **layoutReference**: Pointer to layout area
+* **disabled**: Used to set form element as "disabled". When resource is created or updated mappings with "disabled" option will be excluded from put / post / patch requests.
+* **readOnly**: Used to set form element as "read only". Values will not be persisted when resource is saved.
+* **editable**: Used to disable form element interactivity. Values will be persisted when resource is saved.
 ---
+"name" is only required form element option.
+
+## Mapping attributes
+Form element "name" option is used to connect form field value to resource model attribute.
+
+## Mapping relationships
+"relation" option is used to describe relationship mapping beetween form element and resource model.
+"name" option is used to define resource relationship name.
+"relation" option can be written to hint "one to one" or "one to many" relationships as described bellow:
+```js
+edit.addField('SelectFormElement', {
+    name: 'category',
+    label: 'Category',
+    relation: {
+        type: 'hasOne', // one to one relationships
+        resourceName: 'tag'
+    }
+});
+
+edit.addField('MultipleSelectFormElement', {
+    name: 'tags',
+    label: 'Tags',
+    relation: {
+        type: 'hasMany', // one to many relationships
+        resourceName: 'tag'
+    }
+});
+```
+"resourceName" in relation can be ommited if value is same as one defined in field name option.
 
 ```js
 edit.addField('TextFormElement', {

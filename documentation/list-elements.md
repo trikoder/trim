@@ -9,9 +9,9 @@ All list elements are Vue components found in [listElement folder](https://githu
 ## Shared options
 All list elements accept following set of options:
 
-* **caption**: All list elements accept a "caption" option used to define table heading caption.
-* **mapTo**: used for mapping list item value to resource model attribute or relation data. Can be string of function. When defined as string it will fetch model value under that key. Learn how to use [JSON api resource](https://dbrekalo.github.io/json-api-resource/) api to query and transform data.
-* **attributes**: When attributes option is defined list element will render each key as DOM element attribute.
+* **caption**: used to define cell heading content.
+* **mapTo**: used for mapping list item content to resource attribute or relationship data. Can be string of function. When defined as string it will fetch model value under that key. Learn how to use [JSON api resource](https://dbrekalo.github.io/json-api-resource/) api to query and transform data.
+* **attributes**: List of DOM element attributes.
 
 ---
 
@@ -27,7 +27,8 @@ list.addItem('TextListItem', {
         title: 'First and last name',
         style: 'letter-spacing: 0.3em;'
     },
-    mapTo: model => model.get('firstName') + ' ' + model.get('lastName')
+    mapTo: model => model.get('firstName') + ' ' + model.get('lastName'),
+    prependCaption: this.screenIsSmall
 });
 ```
 
@@ -49,6 +50,7 @@ list.addItem('TextListItem', {
 * **stripTags**: remove html tags in string (boolean, default false),
 * **collectionDelimiter**: set delimiter to be used when collection elements are joined (string, default ', ')
 * **ifEmpty**: text to display when element value is empty (string, default '')
+* **prependCaption**: optional boolean to hint if caption is to be prepended to element content mapping. Can be usefull on small screens.
 
 ```js
 list.addItem('TextListItem', {
@@ -203,7 +205,7 @@ Array of objects with following keys:
 * **action**: callback to run when action is clicked. Receives current item model as argument. Accepts 'editItem' and 'deleteItem' strings for predefined actions.
 * **url**: string or function generating string for use cases when action has link.
 * **confirm**: brings confirm dialog up for action if set to true. Accept string for with custom confirm question.
-* **showIf**: optional callback to decide if action is to be shown for this list item. Receives current item model as argument.
+* **showIf**: optional callback to decide if action is to be shown for this list item. Receives current item model as argument
 
 ```js
 list.addItem('ContextMenu', {
