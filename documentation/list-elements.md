@@ -215,11 +215,9 @@ list.addItem('ContextMenu', {
         {caption: 'Delete', action: 'deleteItem', confirm: 'Are you sure you want to delete item?'},
         {
             caption: 'Publish',
-            action: model => {
-                model.saveOnly({attributes: {published: true}}).always(() => {
-                    list.refreshItems();
-                });
-            },
+            action: model => model.saveAttribute('published', true).then(
+                () => list.refreshItems()
+            ),
             showIf: model => model.get('published') === false
         },
     ]

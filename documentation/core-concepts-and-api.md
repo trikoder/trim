@@ -59,6 +59,15 @@ Property which defines which strategy is used for persisting main and related re
 createRelatedStrategy: 'relatedFirst'
 ````
 
+### includeApiData
+Specify api resource includes for resource listing (index) and editing (edit)
+```js
+includeApiData: {
+    index: ['category'],
+    edit: ['category', 'author']
+}
+````
+
 ### setupList
 Controller method where we define how resource is browsed, filtered and sorted in list view.
 
