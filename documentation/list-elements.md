@@ -50,7 +50,7 @@ list.addItem('TextListItem', {
 * **stripTags**: remove html tags in string (boolean, default false),
 * **collectionDelimiter**: set delimiter to be used when collection elements are joined (string, default ', ')
 * **ifEmpty**: text to display when element value is empty (string, default '')
-* **prependCaption**: optional boolean to hint if caption is to be prepended to element content mapping. Can be usefull on small screens.
+* **prependCaption**: optional boolean to hint if caption is to be prepended to element content mapping. Usefull for small screens.
 
 ```js
 list.addItem('TextListItem', {

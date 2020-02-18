@@ -57,16 +57,6 @@ edit.addField('MultipleSelectFormElement', {
 ```
 "resourceName" in relation can be ommited if value is same as one defined in field name option.
 
-```js
-edit.addField('TextFormElement', {
-    name: 'title',
-    label: 'Article title',
-    readOnly: true,
-    attributes: {input: {placeholder: 'Please enter title'}},
-    layoutReference: 'mainTab.mainRegion.group1'
-});
-```
-
 ## Text input
 Text input element is used for handling textual data presented as HTML form input element.
 [Code reference](https://github.com/trikoder/trim/tree/master/src/js/formElements/text.vue).
@@ -303,7 +293,7 @@ edit.addField('MultipleSelectFormElement', {
 
 ## Nested select
 Nested select element is used for selecting data in hierarchical structure.
-[Code reference](https://github.com/trikoder/trim/tree/master/src/js/formElements/nestedSelect.vue).
+[Code reference](https://github.com/trikoder/trim/tree/master/src/js/formElements/nestedSelect/index.vue).
 
 ```js
 edit.addField('NestedSelectFormElement', {

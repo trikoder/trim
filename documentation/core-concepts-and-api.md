@@ -30,13 +30,11 @@ export default {
 
 A list of controller properties and methods is examined bellow:
 
-
 ### resourceName
 Controller property where we name the resource handled (tag, article, page...)
 ```js
 resourceName: 'tag'
 ```
-
 
 ### resourceCaption
 Controller property where we define resource caption mapping, default value is null. It is currently used only in mass actions component as a value for 'mapSelectedCaptionsTo' (if it is null, then it fallbacks to 'id') so it's recommended to always set resource caption value.
@@ -44,15 +42,22 @@ Controller property where we define resource caption mapping, default value is n
 resourceCaption: 'title'
 ```
 
-
 ### createRequiresDraft
 Property where we define if draft resource is needed when resource is created.
 When createRequiresDraft is set to true controller will save empty resource object before creating interface is displayed.
-Saved draft resource will recieve id and be able to support related objects. False is default value.
+Saved draft resource will receive id and be able to support related objects. False is default value.
 ```js
 createRequiresDraft: false
 ```
 
+### createRelatedStrategy
+Property which defines which strategy is used for persisting main and related resources:
+- relatedFirst: related resources are saved before main resource (default behavior)
+- relatedLast: related resources are saved after main resource is persisted
+
+```js
+createRelatedStrategy: 'relatedFirst'
+````
 
 ### setupList
 Controller method where we define how resource is browsed, filtered and sorted in list view.
@@ -206,6 +211,31 @@ list.addSort([
 ]);
 ```
 
+### filterAlwaysBy
+Method for setting persistent api filters.
+
+```js
+list.filterAlwaysBy('deleted', 'no');
+// or
+list.filterAlwaysBy({deleted: 'no'});
+```
+
+### filterInitiallyBy
+Method for setting initial api and UI filters.
+
+```js
+list.filterInitiallyBy('published', 'yes');
+// or
+list.filterInitiallyBy({published: 'yes'});
+```
+
+### refreshItems
+Call to refresh current list context content
+
+```js
+list.refreshItems();
+```
+
 ### setTemplate
 Method for choosing which template is used for resource listing ('table' and 'cards' are currently supported).
 
@@ -228,7 +258,6 @@ list.addMassAction([
 ## Resource edit
 Resource edit is component responsible for handling how resource is created or updated.
 
-
 ### addField
 Method for defining what form elements are mapped to resource attributes and relations when resource is edited or created.
 Examine [form elements](/form-elements.html) chapter to find out how each form element is configured.
@@ -240,9 +269,56 @@ edit.addField('TextFormElement', {
 });
 ```
 
+### showField
+Show edit form field:
+```js
+edit.showField('title');
+```
+
+### hideField
+Show edit form field:
+```js
+edit.hideField('title');
+```
+
+### toggleField
+Toggle edit form field (use second boolean argument to show or hide field)
+```js
+edit.toggleField('title', true);
+```
+
+### updateField
+Update edit field value and options / props
+```js
+edit.updateField('title', {
+    value: 'Foo'
+});
+```
+
+### updateAllFields
+Update all edit fields options
+```js
+edit.updateAllFields({
+    editable: false
+});
+```
+
+### observe
+Observe and respond to form field value changes:
+```js
+edit.observe('formData.title', value => {
+    console.log('Title changed: ' + value);
+})
+```
+
+### allowSave
+Allow or disallow resource saving:
+```js
+edit.allowSave(false);
+```
+
 ### configureLayout
 Method for configuring edit and create layout. Supports tabs, regions and groups (all items are auto generated from layout reference).
-
 ```js
 // assign form element to layout region (main and side regions are supported) position with layoutReference
 edit.addField(TextFormElement, {
@@ -272,6 +348,12 @@ editHandler.addField(TextFormElement, {
     name: 'title',
     layoutReference: 'mainTab.mainRegion'
 });
+```
+
+### selectTab
+Select edit layout tab:
+```js
+edit.selectTab('main');
 ```
 
 ## Services
