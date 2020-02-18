@@ -9,7 +9,7 @@
   <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/trim/apple-touch-icon-152x152.png">
   <link rel="icon" sizes="196x196" href="/trim/favicon-196x196.png">
     
-    <link rel="preload" href="/trim/assets/css/0.styles.1d328df2.css" as="style"><link rel="preload" href="/trim/assets/js/app.416485b7.js" as="script"><link rel="preload" href="/trim/assets/js/9.9686edae.js" as="script"><link rel="prefetch" href="/trim/assets/js/10.10e05945.js"><link rel="prefetch" href="/trim/assets/js/11.71f9fd3e.js"><link rel="prefetch" href="/trim/assets/js/12.b3a223bc.js"><link rel="prefetch" href="/trim/assets/js/13.a0d9875e.js"><link rel="prefetch" href="/trim/assets/js/2.70a9b895.js"><link rel="prefetch" href="/trim/assets/js/3.3393ffd7.js"><link rel="prefetch" href="/trim/assets/js/4.e689e509.js"><link rel="prefetch" href="/trim/assets/js/5.824f2916.js"><link rel="prefetch" href="/trim/assets/js/6.563fb410.js"><link rel="prefetch" href="/trim/assets/js/7.60813f67.js"><link rel="prefetch" href="/trim/assets/js/8.8f4f6eff.js">
+    <link rel="preload" href="/trim/assets/css/0.styles.1d328df2.css" as="style"><link rel="preload" href="/trim/assets/js/app.1468c7d7.js" as="script"><link rel="preload" href="/trim/assets/js/9.a2c0923f.js" as="script"><link rel="prefetch" href="/trim/assets/js/10.10e05945.js"><link rel="prefetch" href="/trim/assets/js/11.71f9fd3e.js"><link rel="prefetch" href="/trim/assets/js/12.09d2db11.js"><link rel="prefetch" href="/trim/assets/js/13.a0d9875e.js"><link rel="prefetch" href="/trim/assets/js/2.70a9b895.js"><link rel="prefetch" href="/trim/assets/js/3.3393ffd7.js"><link rel="prefetch" href="/trim/assets/js/4.e689e509.js"><link rel="prefetch" href="/trim/assets/js/5.824f2916.js"><link rel="prefetch" href="/trim/assets/js/6.563fb410.js"><link rel="prefetch" href="/trim/assets/js/7.60813f67.js"><link rel="prefetch" href="/trim/assets/js/8.8f4f6eff.js">
     <link rel="stylesheet" href="/trim/assets/css/0.styles.1d328df2.css">
   </head>
   <body>
@@ -44,6 +44,10 @@ Resource controller is a container component which calls service components for 
 When createRequiresDraft is set to true controller will save empty resource object before creating interface is displayed.
 Saved draft resource will receive id and be able to support related objects. False is default value.</p> <div class="language-js extra-class"><pre class="language-js"><code>createRequiresDraft<span class="token punctuation">:</span> <span class="token boolean">false</span>
 </code></pre></div><h3 id="createrelatedstrategy"><a href="#createrelatedstrategy" aria-hidden="true" class="header-anchor">#</a> createRelatedStrategy</h3> <p>Property which defines which strategy is used for persisting main and related resources:</p> <ul><li>relatedFirst: related resources are saved before main resource (default behavior)</li> <li>relatedLast: related resources are saved after main resource is persisted</li></ul> <div class="language-js extra-class"><pre class="language-js"><code>createRelatedStrategy<span class="token punctuation">:</span> <span class="token string">'relatedFirst'</span>
+</code></pre></div><h3 id="includeapidata"><a href="#includeapidata" aria-hidden="true" class="header-anchor">#</a> includeApiData</h3> <p>Specify api resource includes for resource listing (index) and editing (edit)</p> <div class="language-js extra-class"><pre class="language-js"><code>includeApiData<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    index<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'category'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    edit<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'category'</span><span class="token punctuation">,</span> <span class="token string">'author'</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
 </code></pre></div><h3 id="setuplist"><a href="#setuplist" aria-hidden="true" class="header-anchor">#</a> setupList</h3> <p>Controller method where we define how resource is browsed, filtered and sorted in list view.</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token function-variable function">setupList</span><span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>list<span class="token punctuation">,</span> query<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
     <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">addCreateControl</span><span class="token punctuation">(</span><span class="token string">'Create new tag'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -390,6 +394,6 @@ app<span class="token punctuation">.</span><span class="token function">useAuth<
         </a>
         →
       </span></p></div> </div> <!----></div></div>
-    <script src="/trim/assets/js/app.416485b7.js" defer></script><script src="/trim/assets/js/9.9686edae.js" defer></script>
+    <script src="/trim/assets/js/app.1468c7d7.js" defer></script><script src="/trim/assets/js/9.a2c0923f.js" defer></script>
   </body>
 </html>
