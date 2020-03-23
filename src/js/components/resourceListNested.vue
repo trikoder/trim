@@ -20,6 +20,12 @@ export default {
         collapseNode: {type: Function, required: true}
     },
 
+    data() {
+        return {
+            useTreeTemplate: isEmptyObject(this.query)
+        };
+    },
+
     computed: {
 
         sortComparator() {
@@ -87,7 +93,7 @@ export default {
 
             const expandedIds = this.expandedResourceIds;
             const expandable = !this.isLeaf(model);
-            const id = model.get('id');
+            const id = model.getId();
             const expanded = expandedIds.indexOf(id) >= 0;
             const spacers = expandable ? level - 1 : level;
 
@@ -154,7 +160,7 @@ export default {
 
         getAdditionalTemplateParams() {
 
-            return this.queryIsEmpty ? {
+            return this.useTreeTemplate ? {
                 treeItems: this.treeItems,
                 expandNode: this.expandNode,
                 collapseNode: this.collapseNode
@@ -164,7 +170,7 @@ export default {
 
         getListTemplateType() {
 
-            if (this.queryIsEmpty) {
+            if (this.useTreeTemplate) {
                 return TreeComponent;
             } else {
                 return this.template === 'table'
@@ -185,6 +191,14 @@ export default {
             }
 
             return apiParams;
+
+        },
+
+        runQuery() {
+
+            return ResourceList.methods.runQuery.call(this).then(() => {
+                this.useTreeTemplate = this.queryIsEmpty;
+            });
 
         }
 
