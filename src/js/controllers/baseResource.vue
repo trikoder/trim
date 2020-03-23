@@ -77,6 +77,7 @@ const BaseResourceController = Vue.extend({
 
     data: () => ({
         resourceName: null,
+        resourceAlias: null,
         resourceCaption: undefined,
         cssClass: undefined,
         includeApiData: {},
@@ -106,6 +107,14 @@ const BaseResourceController = Vue.extend({
 
     methods: {
 
+        getRouteName(action) {
+            return [
+                'resource',
+                this.resourceAlias || this.resourceName,
+                action
+            ].join('.');
+        },
+
         getModelType() {
 
             const includeApiData = this.includeApiData.edit;
@@ -117,9 +126,7 @@ const BaseResourceController = Vue.extend({
                     return this.constructor.url({
                         type: this.getType(),
                         id: this.get('id'),
-                        query: {
-                            include: includeApiData
-                        }
+                        query: {include: includeApiData}
                     });
                 };
 
@@ -174,7 +181,10 @@ const BaseResourceController = Vue.extend({
         setNavSelected(key) {
 
             if (!this.isExternal) {
-                this.$store.commit('setNavSelected', key || this.resourceName);
+                this.$store.commit(
+                    'setNavSelected',
+                    key || this.resourceAlias || this.resourceName
+                );
             }
 
         },
@@ -265,7 +275,8 @@ const BaseResourceController = Vue.extend({
 
         setBreadcrumbs(lastBreadCrumb) {
 
-            const storeBreadcrumbs = this.$store.state.breadcrumbs[this.resourceName] || [];
+            const navItem = this.resourceAlias || this.resourceName;
+            const storeBreadcrumbs = this.$store.state.breadcrumbs[navItem] || [];
 
             this.breadcrumbs = storeBreadcrumbs.map(item => {
 
@@ -409,7 +420,7 @@ const BaseResourceController = Vue.extend({
         getTabUrl(tab) {
 
             return this.$router.url({
-                name: `resource.${this.resourceName}.${this.currentContext === 'edit' ? 'edit' : 'create'}`,
+                name: this.getRouteName(this.currentContext === 'edit' ? 'edit' : 'create'),
                 params: this.currentContext === 'edit' ? {id: this.editResourceId} : undefined,
                 query: assign({}, this.currentQuery, {[this.getTabQueryKey()]: tab})
             });
@@ -419,7 +430,7 @@ const BaseResourceController = Vue.extend({
         getIndexUrl(queryParams) {
 
             return this.$router.url({
-                name: `resource.${this.resourceName}.index`,
+                name: this.getRouteName('index'),
                 query: queryParams
             });
 
@@ -428,7 +439,7 @@ const BaseResourceController = Vue.extend({
         getCreateUrl(queryParams) {
 
             return this.$router.url({
-                name: `resource.${this.resourceName}.create`,
+                name: this.getRouteName('create'),
                 query: queryParams
             });
 
@@ -437,7 +448,7 @@ const BaseResourceController = Vue.extend({
         getEditUrl(routeParams, queryParams) {
 
             return this.$router.url({
-                name: `resource.${this.resourceName}.edit`,
+                name: this.getRouteName('edit'),
                 params: routeParams,
                 query: queryParams
             });
@@ -531,6 +542,7 @@ const BaseResourceController = Vue.extend({
 
 BaseResourceController.getDataKeys = () => ([
     'resourceName',
+    'resourceAlias',
     'resourceCaption',
     'cssClass',
     'includeApiData',
