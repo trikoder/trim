@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.74.0
+* Addition: resourceAlias property to enable mutiple controllers for one resource
+* Addition: add api includes for base resource edit controllers
+* Change: faster nested resource list rendering
+
 ## 0.73.0
 * Change: disable character encoding in html form element
 * Change: fix nested selected form element typo
