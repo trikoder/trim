@@ -9,7 +9,7 @@
   <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/trim/apple-touch-icon-152x152.png">
   <link rel="icon" sizes="196x196" href="/trim/favicon-196x196.png">
     
-    <link rel="preload" href="/trim/assets/css/0.styles.1d328df2.css" as="style"><link rel="preload" href="/trim/assets/js/app.00d020ba.js" as="script"><link rel="preload" href="/trim/assets/js/9.a2c0923f.js" as="script"><link rel="prefetch" href="/trim/assets/js/10.10e05945.js"><link rel="prefetch" href="/trim/assets/js/11.71f9fd3e.js"><link rel="prefetch" href="/trim/assets/js/12.09d2db11.js"><link rel="prefetch" href="/trim/assets/js/13.a0d9875e.js"><link rel="prefetch" href="/trim/assets/js/2.70a9b895.js"><link rel="prefetch" href="/trim/assets/js/3.3393ffd7.js"><link rel="prefetch" href="/trim/assets/js/4.e689e509.js"><link rel="prefetch" href="/trim/assets/js/5.824f2916.js"><link rel="prefetch" href="/trim/assets/js/6.563fb410.js"><link rel="prefetch" href="/trim/assets/js/7.60813f67.js"><link rel="prefetch" href="/trim/assets/js/8.98552230.js">
+    <link rel="preload" href="/trim/assets/css/0.styles.1d328df2.css" as="style"><link rel="preload" href="/trim/assets/js/app.b684da30.js" as="script"><link rel="preload" href="/trim/assets/js/9.c86c8915.js" as="script"><link rel="prefetch" href="/trim/assets/js/10.10e05945.js"><link rel="prefetch" href="/trim/assets/js/11.71f9fd3e.js"><link rel="prefetch" href="/trim/assets/js/12.09d2db11.js"><link rel="prefetch" href="/trim/assets/js/13.a0d9875e.js"><link rel="prefetch" href="/trim/assets/js/2.70a9b895.js"><link rel="prefetch" href="/trim/assets/js/3.3393ffd7.js"><link rel="prefetch" href="/trim/assets/js/4.e689e509.js"><link rel="prefetch" href="/trim/assets/js/5.824f2916.js"><link rel="prefetch" href="/trim/assets/js/6.563fb410.js"><link rel="prefetch" href="/trim/assets/js/7.60813f67.js"><link rel="prefetch" href="/trim/assets/js/8.e2e15e17.js">
     <link rel="stylesheet" href="/trim/assets/css/0.styles.1d328df2.css">
   </head>
   <body>
@@ -40,6 +40,8 @@ Resource controller is a container component which calls service components for 
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre></div><p>A list of controller properties and methods is examined bellow:</p> <h3 id="resourcename"><a href="#resourcename" aria-hidden="true" class="header-anchor">#</a> resourceName</h3> <p>Controller property where we name the resource handled (tag, article, page...)</p> <div class="language-js extra-class"><pre class="language-js"><code>resourceName<span class="token punctuation">:</span> <span class="token string">'tag'</span>
 </code></pre></div><h3 id="resourcecaption"><a href="#resourcecaption" aria-hidden="true" class="header-anchor">#</a> resourceCaption</h3> <p>Controller property where we define resource caption mapping, default value is null. It is currently used only in mass actions component as a value for 'mapSelectedCaptionsTo' (if it is null, then it fallbacks to 'id') so it's recommended to always set resource caption value.</p> <div class="language-js extra-class"><pre class="language-js"><code>resourceCaption<span class="token punctuation">:</span> <span class="token string">'title'</span>
+</code></pre></div><h3 id="resourcealias"><a href="#resourcealias" aria-hidden="true" class="header-anchor">#</a> resourceÅlias</h3> <p>When 2 or more different UI controllers that connect to same resource (resourceName) are needed this property is used to separate them logically.
+Resource alias will be used to construct different controller routes and to bind correct selected main navigation item.</p> <div class="language-js extra-class"><pre class="language-js"><code>resourceCaption<span class="token punctuation">:</span> <span class="token string">'userTag'</span>
 </code></pre></div><h3 id="createrequiresdraft"><a href="#createrequiresdraft" aria-hidden="true" class="header-anchor">#</a> createRequiresDraft</h3> <p>Property where we define if draft resource is needed when resource is created.
 When createRequiresDraft is set to true controller will save empty resource object before creating interface is displayed.
 Saved draft resource will receive id and be able to support related objects. False is default value.</p> <div class="language-js extra-class"><pre class="language-js"><code>createRequiresDraft<span class="token punctuation">:</span> <span class="token boolean">false</span>
@@ -394,6 +396,6 @@ app<span class="token punctuation">.</span><span class="token function">useAuth<
         </a>
         →
       </span></p></div> </div> <!----></div></div>
-    <script src="/trim/assets/js/app.00d020ba.js" defer></script><script src="/trim/assets/js/9.a2c0923f.js" defer></script>
+    <script src="/trim/assets/js/app.b684da30.js" defer></script><script src="/trim/assets/js/9.c86c8915.js" defer></script>
   </body>
 </html>

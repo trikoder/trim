@@ -42,6 +42,13 @@ Controller property where we define resource caption mapping, default value is n
 resourceCaption: 'title'
 ```
 
+### resourceÅlias
+When 2 or more different UI controllers that connect to same resource (resourceName) are needed this property is used to separate them logically.
+Resource alias will be used to construct different controller routes and to bind correct selected main navigation item.
+```js
+resourceCaption: 'userTag'
+```
+
 ### createRequiresDraft
 Property where we define if draft resource is needed when resource is created.
 When createRequiresDraft is set to true controller will save empty resource object before creating interface is displayed.
