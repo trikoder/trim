@@ -86,7 +86,10 @@ export default {
         mapLevelTo: {type: [String, Function]},
         mapPositionTo: {type: [Function, String], default: () => 0},
         selectableLevel: {type: [String, Array, Function], default: 'leaf'},
-        resourceQuery: {type: Object},
+        getCollectionType: {type: Function, default: () => Collection},
+        getModelType: {type: Function, default: () => Model},
+        modelQuery: {type: Object},
+        collectionQuery: {type: Object},
         select: {type: String, default: 'one'},
         selectText: {type: String, default: () => translate('formElements.nestedSelect.selectText')},
         searchPlaceholder: {type: String, default: () => translate('formElements.nestedSelect.searchPlaceholder')}
@@ -359,6 +362,7 @@ export default {
         syncRelatedModels() {
 
             const modelIds = this.value.split(',').filter(id => id.length);
+            const Model = this.getModelType();
 
             if (modelIds.length === 0) {
                 this.relatedModels = undefined;
@@ -392,7 +396,8 @@ export default {
 
             return Promise.all(modelIds.map(id => Model.getFromApi({
                 type: this.resourceName,
-                id: id
+                id: id,
+                query: this.modelQuery
             }))).then(models => {
                 this.loading = false;
                 this.relatedModels = models;
@@ -414,13 +419,15 @@ export default {
 
         getResourceCollection() {
 
+            const Collection = this.getCollectionType();
+
             if (!this.resourceCollectionPromise) {
 
                 this.loading = true;
 
                 this.resourceCollectionPromise = Collection.getFromApi({
                     type: this.resourceName,
-                    query: this.resourceQuery
+                    query: this.collectionQuery
                 }).then(collection => {
                     this.loading = false;
                     this.resourceCollection = collection;
