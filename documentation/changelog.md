@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.75.0
+* Addition: allow customization of nested select form element collection and model types
+* Change: nested select form element "resourceQuery" prop renamed to "collectionQuery"
+
 ## 0.74.0
 * Addition: resourceAlias property to enable mutiple controllers for one resource
 * Addition: add api includes for base resource edit controllers
