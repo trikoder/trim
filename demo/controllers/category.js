@@ -111,6 +111,9 @@ export default {
             mapPositionTo: 'position',
             selectableLevel: 'all',
             relation: {type: 'hasOne', resourceName: 'category'},
+            hint: method === 'edit'
+                ? 'Existing category parent cannot be updated'
+                : '',
             layoutReference: 'sideRegion'
         });
 

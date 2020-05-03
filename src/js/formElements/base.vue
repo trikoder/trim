@@ -10,6 +10,7 @@ export default {
         resourceModel: Object,
         relation: Object,
         errorMessage: String,
+        hint: String,
         readOnly: {type: Boolean, default: false},
         disabled: {type: Boolean, default: false},
         editable: {type: Boolean, default: true},
@@ -35,6 +36,10 @@ export default {
 
         labelAttributes() {
             return this.normalizeAttributes(this.attributes.label);
+        },
+
+        hintAttributes() {
+            return this.normalizeAttributes(this.attributes.hint);
         },
 
         inputWrapperAttributes() {
@@ -70,7 +75,9 @@ export default {
                 'wrapperAttributes',
                 'labelAttributes',
                 'inputWrapperAttributes',
+                'hintAttributes',
                 'label',
+                'hint',
                 'errorMessage',
                 'visible'
             ].reduce((obj, key) => {

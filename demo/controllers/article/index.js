@@ -232,6 +232,7 @@ export default {
                     transitions: null
                 }],
                 addOnCreate: false,
+                hint: 'Updates are saved on status change',
                 layoutReference: 'mainTab.sideRegion.group4'
             }],
             ['StateSelectFormElement', {

@@ -10,6 +10,11 @@
             <slot></slot>
         </div>
         <slot v-else></slot>
+        <div
+            v-if="hint"
+            v-bind="hintAttributes"
+            v-html="hint"
+        ></div>
         <p v-if="errorMessage" :class="errorMessageClass" >
             {{ errorMessage }}
         </p>
@@ -23,7 +28,9 @@ export default {
         wrapperAttributes: Object,
         labelAttributes: Object,
         inputWrapperAttributes: Object,
+        hintAttributes: Object,
         label: String,
+        hint: String,
         elementId: String,
         errorMessage: String,
         errorMessageClass: {type: String, default: 'errorMessage errorMessageType1'},
@@ -48,6 +55,15 @@ export default {
         @include fontSans;
         font-size: 1.3em; padding: em(5,13) 0;
         color: $colorGrayDark2;
+
+    }
+
+    .hintType1 {
+
+        @include fontSans;
+        font-size: 1.2em; line-height: 1.4;
+        display: inline-block; margin-top: em(10,12);
+        color: lighten($colorGrayDark2, 15%);
 
     }
 

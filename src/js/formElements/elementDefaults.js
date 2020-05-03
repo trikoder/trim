@@ -82,14 +82,16 @@ export default {
                 attributes: {
                     input: {class: 'inputType2'},
                     label: {class: 'labelType2 mod1'},
-                    wrapper: {class: 'inputBlockType1'}
+                    wrapper: {class: 'inputBlockType1'},
+                    hint: {class: 'hintType1'}
                 }
             },
             number: {
                 attributes: {
                     input: {class: 'inputType2'},
                     label: {class: 'labelType2 mod1'},
-                    wrapper: {class: 'inputBlockType1'}
+                    wrapper: {class: 'inputBlockType1'},
+                    hint: {class: 'hintType1'}
                 }
             },
             textarea: {
@@ -103,62 +105,71 @@ export default {
                         spellcheck: 'false'
                     },
                     label: {class: 'labelType2 mod1'},
-                    wrapper: {class: 'inputBlockType1'}
+                    wrapper: {class: 'inputBlockType1'},
+                    hint: {class: 'hintType1'}
                 }
             },
             html: {
                 attributes: {
                     input: {class: 'htmlInputType1'},
                     label: {class: 'labelType2 mod1'},
-                    wrapper: {class: 'inputBlockType1'}
+                    wrapper: {class: 'inputBlockType1'},
+                    hint: {class: 'hintType1'}
                 }
             },
             htmlComponents: {
                 attributes: {
                     input: {class: 'htmlInputType1'},
                     label: {class: 'labelType2 mod1'},
-                    wrapper: {class: 'inputBlockType1 htmlComponentsType1'}
+                    wrapper: {class: 'inputBlockType1 htmlComponentsType1'},
+                    hint: {class: 'hintType1'}
                 }
             },
             date: {
                 attributes: {
                     input: {class: 'inputType2'},
                     label: {class: 'labelType2 mod1'},
-                    wrapper: {class: 'inputBlockType1'}
+                    wrapper: {class: 'inputBlockType1'},
+                    hint: {class: 'hintType1'}
                 }
             },
             dateTime: {
                 attributes: {
                     input: {class: 'inputType2'},
                     label: {class: 'labelType2 mod1'},
-                    wrapper: {class: 'inputBlockType1'}
+                    wrapper: {class: 'inputBlockType1'},
+                    hint: {class: 'hintType1'}
                 }
             },
             checkbox: {
                 attributes: {
                     input: {class: 'checkboxType1'},
                     label: {class: 'checkboxLabelType1'},
-                    wrapper: {class: 'inputBlockType1'}
+                    wrapper: {class: 'inputBlockType1'},
+                    hint: {class: 'hintType1'}
                 }
             },
             select: {
                 attributes: {
                     label: {class: 'labelType2 mod1'},
                     inputWrapper: {class: 'selectType2 fullWidth'},
-                    wrapper: {class: 'inputBlockType1'}
+                    wrapper: {class: 'inputBlockType1'},
+                    hint: {class: 'hintType1'}
                 }
             },
             multipleSelect: {
                 attributes: {
                     label: {class: 'labelType2 mod1'},
                     inputWrapper: {},
-                    wrapper: {class: 'inputBlockType1'}
+                    wrapper: {class: 'inputBlockType1'},
+                    hint: {class: 'hintType1'}
                 }
             },
             externalAdmin: {
                 attributes: {
                     label: {class: 'labelType2'},
-                    wrapper: {class: 'inputBlockType1'}
+                    wrapper: {class: 'inputBlockType1'},
+                    hint: {class: 'hintType1'}
                 }
             },
             includedAdmin: {
@@ -166,48 +177,55 @@ export default {
                 attributes: {
                     label: {class: 'labelType2'},
                     wrapper: {class: 'includedAdminBlockType1'},
-                    inputWrapper: {class: 'includedAdminElement'}
+                    inputWrapper: {class: 'includedAdminElement'},
+                    hint: {class: 'hintType1'}
                 }
             },
             map: {
                 attributes: {
                     label: {class: 'labelType2'},
                     wrapper: {class: 'inputBlockType1'},
-                    inputWrapper: {class: 'mapElementType1'}
+                    inputWrapper: {class: 'mapElementType1'},
+                    hint: {class: 'hintType1'}
                 }
             },
             fileAttachment: {
                 attributes: {
                     label: {class: 'labelType2'},
                     wrapper: {class: 'inputBlockType1'},
-                    inputWrapper: {class: 'fileAttachment'}
+                    inputWrapper: {class: 'fileAttachment'},
+                    hint: {class: 'hintType1'}
                 }
             },
             mediaPreview: {
                 attributes: {
                     label: {class: 'labelType2'},
                     wrapper: {class: 'inputBlockType1'},
-                    inputWrapper: {class: 'mediaPreviewType1'}
+                    inputWrapper: {class: 'mediaPreviewType1'},
+                    hint: {class: 'hintType1'}
                 }
             },
             media: {
                 attributes: {
                     label: {class: 'labelType2'},
                     wrapper: {class: 'inputBlockType1'},
-                    inputWrapper: {class: 'mediaInputType1'}
+                    inputWrapper: {class: 'mediaInputType1'},
+                    hint: {class: 'hintType1'}
                 }
             },
             nestedSelect: {
                 attributes: {
                     label: {class: 'labelType2'},
-                    wrapper: {class: 'inputBlockType1'}
+                    wrapper: {class: 'inputBlockType1'},
+                    hint: {class: 'hintType1'}
                 }
             },
             code: {
                 attributes: {
                     label: {class: 'labelType2'},
                     wrapper: {class: 'inputBlockType1'},
-                    inputWrapper: {class: 'codeInputType1'}
+                    inputWrapper: {class: 'codeInputType1'},
+                    hint: {class: 'hintType1'}
                 }
             },
             color: {
@@ -215,13 +233,15 @@ export default {
                     input: {class: 'inputType2'},
                     label: {class: 'labelType2 mod1'},
                     wrapper: {class: 'inputBlockType1'},
-                    inputWrapper: {class: 'colorInputType1'}
+                    inputWrapper: {class: 'colorInputType1'},
+                    hint: {class: 'hintType1'}
                 }
             },
             other: {
                 attributes: {
                     label: {class: 'labelType2'},
-                    wrapper: {class: 'inputBlockType1'}
+                    wrapper: {class: 'inputBlockType1'},
+                    hint: {class: 'hintType1'}
                 }
             }
         },
@@ -230,14 +250,16 @@ export default {
                 attributes: {
                     input: {class: 'inputType1 fullWidth'},
                     label: {class: 'labelType2'},
-                    wrapper: {class: 'inputBlockType1'}
+                    wrapper: {class: 'inputBlockType1'},
+                    hint: {class: 'hintType1'}
                 }
             },
             number: {
                 attributes: {
                     input: {class: 'inputType1 fullWidth'},
                     label: {class: 'labelType2'},
-                    wrapper: {class: 'inputBlockType1'}
+                    wrapper: {class: 'inputBlockType1'},
+                    hint: {class: 'hintType1'}
                 }
             },
             textarea: {
@@ -251,75 +273,86 @@ export default {
                         spellcheck: 'false'
                     },
                     label: {class: 'labelType2'},
-                    wrapper: {class: 'inputBlockType1'}
+                    wrapper: {class: 'inputBlockType1'},
+                    hint: {class: 'hintType1'}
                 }
             },
             date: {
                 attributes: {
                     input: {class: 'inputType1 fullWidth'},
                     label: {class: 'labelType2'},
-                    wrapper: {class: 'inputBlockType1'}
+                    wrapper: {class: 'inputBlockType1'},
+                    hint: {class: 'hintType1'}
                 }
             },
             dateTime: {
                 attributes: {
                     input: {class: 'inputType1 fullWidth'},
                     label: {class: 'labelType2'},
-                    wrapper: {class: 'inputBlockType1'}
+                    wrapper: {class: 'inputBlockType1'},
+                    hint: {class: 'hintType1'}
                 }
             },
             checkbox: {
                 attributes: {
                     input: {class: 'checkboxType1'},
                     label: {class: 'checkboxLabelType1'},
-                    wrapper: {class: 'inputBlockType1 sideRegionCheckboxBlock'}
+                    wrapper: {class: 'inputBlockType1 sideRegionCheckboxBlock'},
+                    hint: {class: 'hintType1'}
                 }
             },
             select: {
                 attributes: {
                     label: {class: 'labelType2'},
                     inputWrapper: {class: 'selectType1 fullWidth'},
-                    wrapper: {class: 'inputBlockType1'}
+                    wrapper: {class: 'inputBlockType1'},
+                    hint: {class: 'hintType1'}
                 }
             },
             multipleSelect: {
                 attributes: {
                     label: {class: 'labelType2'},
                     input: {class: 'withOutline'},
-                    wrapper: {class: 'inputBlockType1'}
+                    wrapper: {class: 'inputBlockType1'},
+                    hint: {class: 'hintType1'}
                 }
             },
             stateSelect: {
                 attributes: {
                     label: {class: 'labelType2'},
                     inputWrapper: {class: 'fullWidth'},
-                    wrapper: {class: 'inputBlockType1'}
+                    wrapper: {class: 'inputBlockType1'},
+                    hint: {class: 'hintType1'}
                 }
             },
             externalAdmin: {
                 attributes: {
                     label: {class: 'labelType2'},
-                    wrapper: {class: 'inputBlockType1'}
+                    wrapper: {class: 'inputBlockType1'},
+                    hint: {class: 'hintType1'}
                 }
             },
             mediaPreview: {
                 attributes: {
                     label: {class: 'labelType2'},
                     wrapper: {class: 'inputBlockType1'},
-                    inputWrapper: {class: 'mediaPreviewType1'}
+                    inputWrapper: {class: 'mediaPreviewType1'},
+                    hint: {class: 'hintType1'}
                 }
             },
             media: {
                 attributes: {
                     label: {class: 'labelType2'},
                     wrapper: {class: 'inputBlockType1'},
-                    inputWrapper: {class: 'mediaInputType1'}
+                    inputWrapper: {class: 'mediaInputType1'},
+                    hint: {class: 'hintType1'}
                 }
             },
             nestedSelect: {
                 attributes: {
                     label: {class: 'labelType2'},
-                    wrapper: {class: 'inputBlockType1'}
+                    wrapper: {class: 'inputBlockType1'},
+                    hint: {class: 'hintType1'}
                 }
             },
             color: {
@@ -327,13 +360,15 @@ export default {
                     input: {class: 'inputType1 fullWidth'},
                     label: {class: 'labelType2'},
                     wrapper: {class: 'inputBlockType1'},
-                    inputWrapper: {class: 'colorInputType1'}
+                    inputWrapper: {class: 'colorInputType1'},
+                    hint: {class: 'hintType1'}
                 }
             },
             other: {
                 attributes: {
                     label: {class: 'labelType2'},
-                    wrapper: {class: 'inputBlockType1'}
+                    wrapper: {class: 'inputBlockType1'},
+                    hint: {class: 'hintType1'}
                 }
             }
         }

@@ -20,6 +20,7 @@ All form elements accept following set of options:
 
 * **name**: key used to map form element value to resource model attribute or relation.
 * **label**: form element label content.
+* **hint**: form element hint content.
 * **relation**: sets form element value as relation mapping.
 * **attributes**: Adds html attributes to following elements (defined as object keys) 'input', 'inputWrapper', 'label', 'wrapper' and 'errorMessage'
 * **layoutReference**: Pointer to layout area
