@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.77.0
+* Addition: add new date / time picker form element props (12 hour clock, custom start period, week starts on sunday, custom year range)
+* Change: update package dependencies
+
 ## 0.76.0
 * Addition: hint text on all form elements
 * Change: update package dependencies
