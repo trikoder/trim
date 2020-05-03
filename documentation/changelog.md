@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.76.0
+* Addition: hint text on all form elements
+* Change: update package dependencies
+
 ## 0.75.0
 * Addition: allow customization of nested select form element collection and model types
 * Change: nested select form element "resourceQuery" prop renamed to "collectionQuery"
