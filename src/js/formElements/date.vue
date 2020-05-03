@@ -13,6 +13,10 @@
             :pickTime="pickTime"
             :pickMinutes="pickMinutes"
             :pickSeconds="pickSeconds"
+            :selectableYearRange="selectableYearRange"
+            :startPeriod="startPeriod"
+            :use12HourClock="use12HourClock"
+            :startWeekOnSunday="startWeekOnSunday"
             :prevMonthCaption="prevMonthCaption"
             :nextMonthCaption="nextMonthCaption"
             :setTimeCaption="setTimeCaption"
@@ -48,6 +52,10 @@ export default {
         pickSeconds: {type: Boolean, default: true},
         parseDate: {type: Function},
         formatDate: {type: Function},
+        selectableYearRange: [Number, Object, Function],
+        startPeriod: Object,
+        use12HourClock: Boolean,
+        startWeekOnSunday: Boolean,
         nextMonthCaption: {type: String, default: () => translate('calendar.nextMonthCaption')},
         prevMonthCaption: {type: String, default: () => translate('calendar.prevMonthCaption')},
         setTimeCaption: {type: String, default: () => translate('calendar.setTimeCaption')}
