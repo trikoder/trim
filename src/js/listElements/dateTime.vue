@@ -21,7 +21,8 @@ export default {
     props: {
         limitCharacters: {type: [Boolean, Number], default: false},
         ifEmpty: {type: [String, Function], default: ''},
-        format: {type: String, default: 'DD.MM.YYYY HH:mm'}
+        format: {type: String}, // to be deprecated
+        displayFormat: {type: String, default: 'DD.MM.YYYY HH:mm'}
     },
 
     data: () => ({
@@ -41,7 +42,7 @@ export default {
         getModelValue() {
 
             const value = base.methods.getModelValue.call(this);
-            return value ? formatDate(value, this.format) : value;
+            return value ? formatDate(value, this.format || this.displayFormat) : value;
 
         }
 

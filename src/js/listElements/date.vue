@@ -19,7 +19,8 @@ export default {
     mixins: [base, dateTime],
 
     props: {
-        format: {type: String, default: 'DD.MM.YYYY'}
+        format: {type: String}, // to be deprecated
+        displayFormat: {type: String, default: 'DD.MM.YYYY'}
     },
 
     data: () => ({
