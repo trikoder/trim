@@ -33,7 +33,7 @@
     "fecha": "^3.0.3",
     "fuse.js": "^3.4.4",
     "google-maps": "^3.3.0",
-    "json-api-resource": "^0.7.0",
+    "json-api-resource": "^0.8.0",
     "normalize.css": "^8.0.0",
     "pelinkovac": "^1.0.0",
     "simple-lightbox": "^2.0.1",

@@ -1,8 +1,11 @@
 # Changelog
 
+## 0.78.1
+* Change: update package dependencies
+
 ## 0.78.0
 * Addition: add api to request sparse fieldsets on resource edit and index actions
-* Change: refactored relationship includes api
+* Change: refactored relationship includes api (deprecated "includeApiData" in favor of "includedRelationships")
 * Change: consolidate media components files mapping api
 * Change: update router duplicated navigation error handling
 * Change: error messages styling
