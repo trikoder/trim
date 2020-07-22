@@ -16,11 +16,11 @@ app
         //     offsetKey: 'offset',
         //     limitKey: 'limit'
         // }
-        // validationErrorField: 'title',
         // resourceToApiMap: {
         //     article: 'article'
         //     user: 'user'
         // }
+        validationErrorField: 'detail',
         itemsPerPage: process.env.NODE_ENV !== 'production' ? 15 : 10,
         usesPushState: process.env.NODE_ENV !== 'production',
         googleMapsApiKey: 'AIzaSyBVqg9EqOqARXVIaKRSC7pJpVeHKDRoU2I',

@@ -1,21 +1,83 @@
-import FakeServer from 'fake-json-api-server';
-import fakeServerConfig from './fakeServerConfig';
+import BrowserServer from 'json-api-shop/servers/browser';
+import MemoryAdapter from 'json-api-shop/adapters/memory';
+import resources from './resources';
 
-var server = new FakeServer(fakeServerConfig);
+const isProduction = process.env.NODE_ENV === 'production';
+const isDevelopment = process.env.NODE_ENV !== 'production';
+const currentDataVersion = process.env.PACKAGE_VERSION;
 
-// mock media api endpoint
-server.pretender.post(process.env.BASE_API_URL + 'media/upload', () => {
-    return [200, {
-        'content-type': 'application/javascript',
-        Location: 'media/1'
-    }, ''];
+const LocalStorageAdapter = MemoryAdapter.extend({
+
+    seed() {
+
+        try {
+            const rawStoredDataset = localStorage.getItem('trimDataset');
+            const storedDataset = JSON.parse(rawStoredDataset);
+
+            if (storedDataset.version !== currentDataVersion) {
+                throw new Error('Dataset version mismatch');
+            } else {
+                this.dataset = storedDataset.dataset;
+            }
+
+        } catch (error) {
+            this.resetData();
+        }
+
+    },
+
+    resetData() {
+
+        MemoryAdapter.prototype.seed.call(this);
+        this.persistToStorage();
+
+    },
+
+    persistToStorage() {
+
+        try {
+            localStorage.setItem('trimDataset', JSON.stringify({
+                version: currentDataVersion,
+                dataset: this.dataset
+            }));
+        } catch (error) {
+            if (isDevelopment) {
+                console.log(error);
+            }
+        }
+        return Promise.resolve();
+
+    }
+
+});
+const Server = BrowserServer.extend({
+
+    resetData() {
+
+        this.database.resetData();
+        return this;
+
+    },
+
+    setupRoutes(app) {
+
+        BrowserServer.prototype.setupRoutes.call(this, app);
+
+        app.post('/media/upload', (request, response) => {
+            response.set('Content-Type', 'application/javascript');
+            response.set('Access-Control-Expose-Headers', 'Location');
+            response.set('Location', process.env.BASE_API_URL + 'media/1');
+            response.send('');
+        });
+
+        return this;
+    }
+
 });
 
-if (process.env.NODE_ENV !== 'production') {
-    // eslint-disable-next-line no-console
-    server.on('request', request => console.log(decodeURIComponent(request.url), request.requestBody));
-    // eslint-disable-next-line no-console
-    server.on('response', response => console.log(response));
-}
-
-export default server;
+export default new Server({
+    baseUrl: process.env.BASE_API_URL,
+    databaseAdapter: LocalStorageAdapter,
+    resources: resources,
+    logResponse: isDevelopment
+}).start()

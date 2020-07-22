@@ -10,7 +10,7 @@ export default {
     cssClass: 'articleResourceController',
 
     includeApiData: {
-        edit: ['author']
+        edit: ['author', 'media', 'tags']
     },
 
     setupList({list}) {
@@ -268,7 +268,7 @@ export default {
                 layoutReference: 'seoTab'
             }],
             ['TextareaFormElement', {
-                name: 'metaDiscription',
+                name: 'metaDescription',
                 label: 'Article meta description',
                 layoutReference: 'seoTab'
             }],
