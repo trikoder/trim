@@ -43,8 +43,8 @@ export default {
 
     resourceName: 'tag',
 
-    includeApiData: {
-        index: ['media', 'author', 'author.media'],
+    includedRelationships: {
+        index: ['media', 'author'],
         edit: ['media', 'author', 'author.media']
     },
 

@@ -66,12 +66,24 @@ Property which defines which strategy is used for persisting main and related re
 createRelatedStrategy: 'relatedFirst'
 ````
 
-### includeApiData
-Specify api resource includes for resource listing (index) and editing (edit)
+### includedRelationships
+Specify relationships to include in api payload for resource listing (index) and editing (edit)
+Previously named "includeApiData" in versions up to v0.77, now deprecated.
 ```js
-includeApiData: {
+includedRelationships: {
     index: ['category'],
     edit: ['category', 'author']
+}
+````
+
+### includedFields (sparse fieldsets)
+Specify fields to include in api payload for resource listing (index) and editing (edit)
+```js
+includedFields: {
+    index: {
+        article: ['title', 'intro', 'author', 'tags'],
+        user: ['email']
+    }
 }
 ````
 
