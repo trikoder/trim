@@ -55,8 +55,8 @@ export default {
         value: {},
         acceptedFiles: {type: String},
         maxFileSize: {type: Number},
-        mapThumbnailTo: {type: String},
-        mapCurrentFileUrlTo: {type: String},
+        mapThumbnailTo: {type: [String, Function]},
+        mapCurrentFileUrlTo: {type: [String, Function]},
         addFileCaption: {type: String, default: () => translate('formElements.fileAttachment.addFileCaption')},
         changeFileCaption: {type: String, default: () => translate('formElements.fileAttachment.changeFileCaption')},
         downloadAction: {type: Function}
@@ -75,7 +75,7 @@ export default {
             if (this.clientThumbnail) {
                 return this.clientThumbnail;
             } else if (!this.selectedFile && this.mapThumbnailTo) {
-                return this.resourceModel.get(this.mapThumbnailTo);
+                return this.getModelMapping(this.mapThumbnailTo);
             } else {
                 return undefined;
             }
@@ -87,7 +87,7 @@ export default {
             if (this.selectedFile) {
                 return undefined;
             } else if (this.mapCurrentFileUrlTo) {
-                return this.resourceModel.get(this.mapCurrentFileUrlTo);
+                return this.getModelMapping(this.mapCurrentFileUrlTo);
             } else {
                 return undefined;
             }
@@ -140,6 +140,15 @@ export default {
                 e.preventDefault();
                 this.downloadAction(this.fileUrl);
             }
+
+        },
+
+        getModelMapping(mapper) {
+
+            return typeof mapper === 'function'
+                ? mapper(this.resourceModel)
+                : this.resourceModel.get(mapper)
+            ;
 
         },
 

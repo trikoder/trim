@@ -62,8 +62,8 @@ export default {
         value: {type: String, default: ''},
         acceptedFiles: {type: String},
         maxFileSize: {type: Number},
-        mapImageTo: {type: String, default: 'thumbnailUrl'},
-        mapLargeImageTo: {type: String, default: 'originalUrl'},
+        mapImageTo: {type: [String, Function], default: 'thumbnailUrl'},
+        mapLargeImageTo: {type: [String, Function], default: 'originalUrl'},
         mediaControllerQuery: {type: Object},
         enableUpload: {type: Boolean, default: true},
         uploadUrl: String,
@@ -93,9 +93,16 @@ export default {
         thumbImageUrl() {
 
             return this.mediaModel
-                ? this.mediaModel.get(this.mapImageTo)
-                : undefined
-            ;
+                ? this.getModelMapping(this.mapImageTo)
+                : undefined;
+
+        },
+
+        largeImageUrl() {
+
+            return this.mediaModel
+                ? this.getModelMapping(this.mapLargeImageTo)
+                : undefined;
 
         },
 
@@ -275,7 +282,7 @@ export default {
             }
 
             this.lightbox = SimpleLightbox.open({
-                items: [this.mediaModel.get(this.mapLargeImageTo)],
+                items: [this.largeImageUrl || this.thumbImageUrl],
                 beforeDestroy: () => { delete this.lightbox; }
             });
 
@@ -311,6 +318,15 @@ export default {
 
             this.$emit('input', '');
             return this;
+
+        },
+
+        getModelMapping(mapper) {
+
+            return typeof mapper === 'function'
+                ? mapper(this.mediaModel)
+                : this.mediaModel.get(mapper)
+            ;
 
         }
 

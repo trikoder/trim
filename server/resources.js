@@ -370,8 +370,8 @@ module.exports = {
                 description: 'Aenean gravida, orci in sagittis tincidunt, dolor quam pellentesque dolor, nec viverra neque nunc id mi.',
                 published: true,
                 position: 1,
-                imageThumbnailUrl: 'http://pipsum.com/400x300.jpg?v=1',
-                imageOriginalUrl: 'http://pipsum.com/1200x900.jpg?v=1'
+                imageThumbnailUrl: 'http://picsum.photos/400/300?v=1',
+                imageOriginalUrl: 'http://picsum.photos/1200/900?v=1'
             },
             relationships: {
                 parentCategory: {data: null},
@@ -385,8 +385,8 @@ module.exports = {
                 description: 'Aenean gravida, orci in sagittis tincidunt, dolor quam pellentesque dolor, nec viverra neque nunc id mi.',
                 published: true,
                 position: 2,
-                imageThumbnailUrl: 'http://pipsum.com/400x300.jpg?v=2',
-                imageOriginalUrl: 'http://pipsum.com/1200x900.jpg?v=2'
+                imageThumbnailUrl: 'http://picsum.photos/400/300?v=2',
+                imageOriginalUrl: 'http://picsum.photos/1200/900?v=2'
             },
             relationships: {
                 parentCategory: {data: null},
@@ -403,8 +403,8 @@ module.exports = {
                 description: 'Aenean gravida, orci in sagittis tincidunt, dolor quam pellentesque dolor, nec viverra neque nunc id mi.',
                 published: true,
                 position: 3,
-                imageThumbnailUrl: 'http://pipsum.com/400x300.jpg?v=3',
-                imageOriginalUrl: 'http://pipsum.com/1200x900.jpg?v=3'
+                imageThumbnailUrl: 'http://picsum.photos/400/300?v=3',
+                imageOriginalUrl: 'http://picsum.photos/1200/900?v=3'
             },
             relationships: {
                 parentCategory: {data: null},
@@ -420,8 +420,8 @@ module.exports = {
                 description: 'Aenean gravida, orci in sagittis tincidunt, dolor quam pellentesque dolor, nec viverra neque nunc id mi.',
                 published: true,
                 position: 1,
-                imageThumbnailUrl: 'http://pipsum.com/400x300.jpg?v=4',
-                imageOriginalUrl: 'http://pipsum.com/1200x900.jpg?v=4'
+                imageThumbnailUrl: 'http://picsum.photos/400/300?v=4',
+                imageOriginalUrl: 'http://picsum.photos/1200/900?v=4'
             },
             relationships: {
                 parentCategory: {data: {id: '2', type: 'category'}},
@@ -435,8 +435,8 @@ module.exports = {
                 description: 'Aenean gravida, orci in sagittis tincidunt, dolor quam pellentesque dolor, nec viverra neque nunc id mi.',
                 published: true,
                 position: 2,
-                imageThumbnailUrl: 'http://pipsum.com/400x300.jpg?v=5',
-                imageOriginalUrl: 'http://pipsum.com/1200x900.jpg?v=5'
+                imageThumbnailUrl: 'http://picsum.photos/400/300?v=5',
+                imageOriginalUrl: 'http://picsum.photos/1200/900?v=5'
             },
             relationships: {
                 parentCategory: {data: {id: '2', type: 'category'}},
@@ -452,8 +452,8 @@ module.exports = {
                 description: 'Aenean gravida, orci in sagittis tincidunt, dolor quam pellentesque dolor, nec viverra neque nunc id mi.',
                 published: true,
                 position: 1,
-                imageThumbnailUrl: 'http://pipsum.com/400x300.jpg?v=6',
-                imageOriginalUrl: 'http://pipsum.com/1200x900.jpg?v=6'
+                imageThumbnailUrl: 'http://picsum.photos/400/300?v=6',
+                imageOriginalUrl: 'http://picsum.photos/1200/900?v=6'
             },
             relationships: {
                 parentCategory: {data: {id: '3', type: 'category'}},
@@ -467,8 +467,8 @@ module.exports = {
                 description: 'Aenean gravida, orci in sagittis tincidunt, dolor quam pellentesque dolor, nec viverra neque nunc id mi.',
                 published: true,
                 position: 1,
-                imageThumbnailUrl: 'http://pipsum.com/400x300.jpg?v=7',
-                imageOriginalUrl: 'http://pipsum.com/1200x900.jpg?v=7'
+                imageThumbnailUrl: 'http://picsum.photos/400/300?v=7',
+                imageOriginalUrl: 'http://picsum.photos/1200/900?v=7'
             },
             relationships: {
                 parentCategory: {data: {id: '5', type: 'category'}},

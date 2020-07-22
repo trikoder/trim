@@ -2,7 +2,7 @@
     <element-wrapper v-bind="elementWrapperProps">
         <template v-if="mediaModel">
             <div class="imageContainer">
-                <img :src="mediaModel.get(mapImageTo)" />
+                <img :src="imageUrl" />
                 <button type="button" @click="zoomImage" class="zoomImage previewBtn nBtn icr iconMaximize"></button>
             </div>
             <p><span @click="zoomImage" class="zoomImage">Zoom image</span></p>
@@ -28,8 +28,8 @@ export default {
     props: {
         value: {type: String, default: ''},
         readOnly: {type: Boolean, default: true},
-        mapImageTo: {type: String, default: 'thumbnailUrl'},
-        mapLargeImageTo: {type: String, default: 'originalUrl'},
+        mapImageTo: {type: [String, Function], default: 'thumbnailUrl'},
+        mapLargeImageTo: {type: [String, Function], default: 'originalUrl'},
         mapMediaTypeTo: {type: String, default: 'mediaType'},
         mediaRelation: String
     },
@@ -54,6 +54,22 @@ export default {
                 : undefined
             ;
 
+        },
+
+        imageUrl() {
+
+            return this.mediaModel
+                ? this.getModelMapping(this.mapImageTo)
+                : undefined;
+
+        },
+
+        largeImageUrl() {
+
+            return this.mediaModel
+                ? this.getModelMapping(this.mapImageTo)
+                : undefined;
+
         }
 
     },
@@ -75,9 +91,18 @@ export default {
             }
 
             this.lightbox = SimpleLightbox.open({
-                items: [this.mediaModel.get(this.mapLargeImageTo)],
+                items: [this.largeImageUrl || this.imageUrl],
                 beforeDestroy: () => { delete this.lightbox; }
             });
+
+        },
+
+        getModelMapping(mapper) {
+
+            return typeof mapper === 'function'
+                ? mapper(this.mediaModel)
+                : this.mediaModel.get(mapper)
+            ;
 
         }
 

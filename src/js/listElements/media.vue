@@ -42,9 +42,9 @@ export default {
 
     props: {
         mediaType: {type: [String, Function], default: 'image'},
-        mapImageTo: String,
-        mapLargeImageTo: String,
-        mapFileUrlTo: String,
+        mapImageTo: {type: [String, Function]},
+        mapLargeImageTo: {type: [String, Function]},
+        mapFileUrlTo: {type: [String, Function]},
         imageMediaTypes: {type: Array, default: () => ['image']},
         fileMediaTypes: {type: Array, default: () => ['file']}
     },
