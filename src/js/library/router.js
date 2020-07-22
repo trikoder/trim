@@ -60,9 +60,15 @@ assign(Router.prototype, {
 
         const pushValue = this.push(location);
 
+        // not all vue router implentations throw error
         if (pushValue && pushValue.catch) {
             pushValue.catch(error => {
-                if (error.name !== 'NavigationDuplicated') {
+                if (
+                    error.name === 'NavigationDuplicated' ||
+                    error.message.indexOf('Avoided redundant navigation') === 0
+                ) {
+                    // not considered error in trim app
+                } else {
                     return Promise.reject(error);
                 }
             });
