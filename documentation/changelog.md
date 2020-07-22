@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.78.0
+* Addition: add api to request sparse fieldsets on resource edit and index actions
+* Change: refactored relationship includes api
+* Change: consolidate media components files mapping api
+* Change: update router duplicated navigation error handling
+* Change: error messages styling
+* Change: update package dependencies
+* Change: replaced demo server implementation
+
 ## 0.77.0
 * Addition: add new date / time picker form element props (12 hour clock, custom start period, week starts on sunday, custom year range)
 * Change: update package dependencies
