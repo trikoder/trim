@@ -113,7 +113,7 @@ export default {
         query: {type: Object, required: true},
         configure: {type: Function, required: true},
         getEmptyListMessage: {type: Function, required: true},
-        apiInclude: {type: [Array, String]}
+        includedRelationships: {type: [Array, String]}
     },
 
     data() {
@@ -258,8 +258,8 @@ export default {
 
             const loader = Loader.on();
 
-            if (this.apiInclude) {
-                this.addApiInclude(this.apiInclude);
+            if (this.includedRelationships) {
+                this.includeRelationsips(this.includedRelationships);
             }
 
             return Promise.resolve(this.configure(this))
@@ -307,10 +307,10 @@ export default {
 
         },
 
-        addApiInclude(includes) {
+        includeRelationsips(includes) {
 
             ensureArray(includes).forEach(
-                include => include && this.definitions.apiIncludes.push(include)
+                include => include && this.definitions.includedRelationships.push(include)
             );
             return this;
 
@@ -464,7 +464,7 @@ export default {
                 filters: [],
                 persistentFilters: {},
                 initialFilters: {},
-                apiIncludes: [],
+                includedRelationships: [],
                 massActions: []
             };
         },
@@ -482,7 +482,7 @@ export default {
                 filter: {},
                 sort: definitions.sorts.length ? definitions.sorts[0].field : undefined,
                 page: Pagination.getApiParams(this.resourceName),
-                include: definitions.apiIncludes
+                include: definitions.includedRelationships
             };
 
             const allowedFilters = definitions.filters.map(
@@ -560,7 +560,7 @@ export default {
                     massActions: this.definitions.massActions.map(definition => {
                         return this.decorateMassActionDefinition(assignDeep({}, definition));
                     }),
-                    apiIncludes: this.definitions.apiIncludes.slice(0)
+                    includedRelationships: this.definitions.includedRelationships.slice(0)
                 };
 
             });

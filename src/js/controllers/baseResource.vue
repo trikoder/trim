@@ -17,7 +17,7 @@
             :getIndexUrl="getIndexUrl"
             :openEdit="openEdit"
             :resourceCaption="resourceCaption"
-            :apiInclude="includeApiData.index"
+            :includedRelationships="includedRelationships.index"
             :selectsResource="selectsResource"
             :getEmptyListMessage="getEmptyListMessage"
             v-bind="getAdditionalListProps()"
@@ -80,7 +80,7 @@ const BaseResourceController = Vue.extend({
         resourceAlias: null,
         resourceCaption: undefined,
         cssClass: undefined,
-        includeApiData: {},
+        includedRelationships: {},
         createRequiresDraft: false,
         createRelatedStrategy: 'relatedFirst',
         currentContext: null,
@@ -117,16 +117,16 @@ const BaseResourceController = Vue.extend({
 
         getModelType() {
 
-            const includeApiData = this.includeApiData.edit;
+            const includedRelationships = this.includedRelationships.edit;
             const extendParams = {type: this.resourceName};
 
-            if (includeApiData) {
+            if (includedRelationships) {
 
                 extendParams.url = function() {
                     return this.constructor.url({
                         type: this.getType(),
                         id: this.get('id'),
-                        query: {include: includeApiData}
+                        query: {include: includedRelationships}
                     });
                 };
 
@@ -545,7 +545,7 @@ BaseResourceController.getDataKeys = () => ([
     'resourceAlias',
     'resourceCaption',
     'cssClass',
-    'includeApiData',
+    'includedRelationships',
     'createRequiresDraft',
     'createRelatedStrategy',
     'resourceCreatedMessage',

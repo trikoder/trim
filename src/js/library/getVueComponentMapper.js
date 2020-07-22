@@ -8,6 +8,10 @@ const vueOptions = [
     'beforeDestroy', 'destroyed', 'errorCaptured'
 ];
 
+const deprecatedDataOptions = {
+    includeApiData: 'includedRelationships'
+};
+
 export default function(params) {
 
     return function(blueprint) {
@@ -18,15 +22,15 @@ export default function(params) {
         const methods = {};
 
         each(blueprint, (value, key) => {
-
-            if (vueOptions.indexOf(key) >= 0) {
+            if (deprecatedDataOptions[key]) {
+                data[deprecatedDataOptions[key]] = value;
+            } else if (vueOptions.indexOf(key) >= 0) {
                 vueObject[key] = value;
             } else if (params.dataKeys.indexOf(key) >= 0) {
                 data[key] = value;
             } else if (typeof value === 'function') {
                 methods[key] = value;
             }
-
         });
 
         return Parent.extend(assignDeep(vueObject, {

@@ -76,6 +76,7 @@ export default {
 
     .errorMessageType1 {
 
+        @include fontSans;
         display: inline-block; font-size: 1.3em; color: $colorError;
 
     }

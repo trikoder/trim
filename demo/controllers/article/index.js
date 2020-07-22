@@ -9,7 +9,12 @@ export default {
     resourceCaption: 'title',
     cssClass: 'articleResourceController',
 
-    includeApiData: {
+    // includeApiData: { // deprecated in favor of "includedRelationships"
+    //     index: ['author', 'tags'],
+    //     edit: ['author', 'media', 'tags']
+    // },
+    includedRelationships: {
+        index: ['author', 'tags'],
         edit: ['author', 'media', 'tags']
     },
 

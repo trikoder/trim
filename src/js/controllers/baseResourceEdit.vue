@@ -53,7 +53,7 @@ const BaseResourceEditController = Vue.extend({
         resourceModel: undefined,
         cssClass: undefined,
         navigationKey: undefined,
-        includeApiData: undefined,
+        includedRelationships: undefined,
         resourceCreatedMessage: translate('baseResourceController.entityCreatedMessage'),
         resourceSavedMessage: translate('baseResourceController.entitySavedMessage'),
         breadcrumbs: [],
@@ -89,16 +89,16 @@ const BaseResourceEditController = Vue.extend({
 
         getModelType() {
 
-            const includeApiData = this.includeApiData;
+            const includedRelationships = this.includedRelationships;
             const extendParams = {};
 
-            if (includeApiData) {
+            if (includedRelationships) {
 
                 extendParams.url = function() {
                     return this.constructor.url({
                         type: this.getType(),
                         id: this.get('id'),
-                        query: {include: includeApiData}
+                        query: {include: includedRelationships}
                     });
                 };
 
@@ -296,7 +296,7 @@ const BaseResourceEditController = Vue.extend({
 BaseResourceEditController.getDataKeys = () => ([
     'navigationKey',
     'cssClass',
-    'includeApiData',
+    'includedRelationships',
     'resourceSavedMessage',
     'resourceCreatedMessage'
 ]);
