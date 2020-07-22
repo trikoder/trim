@@ -17,6 +17,11 @@ export default {
         index: ['author', 'tags'],
         edit: ['author', 'media', 'tags']
     },
+    includedFields: {
+        index: {
+            article: ['title', 'publishDate', 'published', 'intro', 'author', 'tags']
+        }
+    },
 
     setupList({list}) {
 

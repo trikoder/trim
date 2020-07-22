@@ -18,6 +18,7 @@
             :openEdit="openEdit"
             :resourceCaption="resourceCaption"
             :includedRelationships="includedRelationships.index"
+            :includedFields="includedFields.index"
             :getEmptyListMessage="getEmptyListMessage"
             @queryChange="openIndex"
             @beforeConfigure="processIndexEvent('beforeConfigure', $event)"

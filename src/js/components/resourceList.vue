@@ -113,7 +113,8 @@ export default {
         query: {type: Object, required: true},
         configure: {type: Function, required: true},
         getEmptyListMessage: {type: Function, required: true},
-        includedRelationships: {type: [Array, String]}
+        includedRelationships: {type: [Array, String]},
+        includedFields: {type: Object}
     },
 
     data() {
@@ -262,6 +263,10 @@ export default {
                 this.includeRelationsips(this.includedRelationships);
             }
 
+            if (this.includedFields) {
+                this.includeFields(this.includedFields);
+            }
+
             return Promise.resolve(this.configure(this))
                 .then(() => this.runQuery())
                 .then(() => this.$emit('afterConfigure', this))
@@ -312,6 +317,13 @@ export default {
             ensureArray(includes).forEach(
                 include => include && this.definitions.includedRelationships.push(include)
             );
+            return this;
+
+        },
+
+        includeFields(fields) {
+
+            assignDeep(this.definitions.includedFields, fields);
             return this;
 
         },
@@ -465,6 +477,7 @@ export default {
                 persistentFilters: {},
                 initialFilters: {},
                 includedRelationships: [],
+                includedFields: {},
                 massActions: []
             };
         },
@@ -482,7 +495,8 @@ export default {
                 filter: {},
                 sort: definitions.sorts.length ? definitions.sorts[0].field : undefined,
                 page: Pagination.getApiParams(this.resourceName),
-                include: definitions.includedRelationships
+                include: definitions.includedRelationships,
+                fields: definitions.includedFields
             };
 
             const allowedFilters = definitions.filters.map(
@@ -560,7 +574,8 @@ export default {
                     massActions: this.definitions.massActions.map(definition => {
                         return this.decorateMassActionDefinition(assignDeep({}, definition));
                     }),
-                    includedRelationships: this.definitions.includedRelationships.slice(0)
+                    includedRelationships: this.definitions.includedRelationships.slice(0),
+                    includedFields: assignDeep({}, this.definitions.includedFields)
                 };
 
             });
