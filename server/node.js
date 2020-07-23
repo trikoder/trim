@@ -6,8 +6,6 @@ const Server = ExpressServer.extend({
 
     setupRoutes(app) {
 
-        ExpressServer.prototype.setupRoutes.call(this, app);
-
         app.post('/media/upload', (request, response) => {
             response.set('Content-Type', 'application/javascript');
             response.set('Access-Control-Expose-Headers', 'Location');
@@ -15,7 +13,7 @@ const Server = ExpressServer.extend({
             response.send('');
         });
 
-        return this;
+        return ExpressServer.prototype.setupRoutes.call(this, app);;
 
     }
 

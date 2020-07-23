@@ -61,16 +61,15 @@ const Server = BrowserServer.extend({
 
     setupRoutes(app) {
 
-        BrowserServer.prototype.setupRoutes.call(this, app);
-
-        app.post('/media/upload', (request, response) => {
+        app.post(process.env.BASE_API_URL + 'media/upload', (request, response) => {
             response.set('Content-Type', 'application/javascript');
             response.set('Access-Control-Expose-Headers', 'Location');
             response.set('Location', process.env.BASE_API_URL + 'media/1');
             response.send('');
         });
 
-        return this;
+        return BrowserServer.prototype.setupRoutes.call(this, app);
+
     }
 
 });

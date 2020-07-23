@@ -18,7 +18,7 @@
     "build": "npm run build:docs && npm run build:demo",
     "build:demo": "NODE_ENV=production CLIENT_API_ENABLED=true BASE_URL=/trim/demo/ BASE_API_URL=/trim/demo/api/ webpack --progress",
     "build:docs": "vuepress build documentation",
-    "api:server": "API_PORT=8083 node ./server/node.js",
+    "api:server": "BASE_API_URL=http://localhost:8083/  API_PORT=8083 node ./server/node.js",
     "preview:pages": "node ./server/previewPages.js",
     "test": "BABEL_ENV=test karma start --single-run --browsers ChromeHeadless",
     "watch:test": "BABEL_ENV=test karma start --browsers ChromeHeadless"

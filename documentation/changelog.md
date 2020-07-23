@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.79.0
+* Addition: mutiple files can be selected for upload on media controller
+
 ## 0.78.1
 * Change: update package dependencies
 

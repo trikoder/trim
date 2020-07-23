@@ -18,6 +18,7 @@ export default {
         paramName: {type: String, default: 'binary'},
         mediaType: {type: String, default: 'image'},
         removePreviewOnUpload: {type: Boolean, default: true},
+        selectMultiple: {type: Boolean, default: true},
         headers: Object,
         maxFiles: Number
     },
@@ -54,9 +55,16 @@ export default {
                 )
             });
 
+            if (this.selectMultiple) {
+                dropzone.hiddenFileInput.multiple = true;
+            }
+
             dropzone.on('sending', (file, xhr, formData) => {
 
                 this.$emit('sending', {file, xhr, formData});
+                if (this.selectMultiple) {
+                    dropzone.hiddenFileInput.multiple = true;
+                }
 
             }).on('success', (file, response) => {
 
