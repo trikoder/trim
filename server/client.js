@@ -64,7 +64,7 @@ const Server = BrowserServer.extend({
         app.post(process.env.BASE_API_URL + 'media/upload', (request, response) => {
             response.set('Content-Type', 'application/javascript');
             response.set('Access-Control-Expose-Headers', 'Location');
-            response.set('Location', process.env.BASE_API_URL + 'media/1');
+            response.set('Location', 'https://trikoder.github.io' +  process.env.BASE_API_URL + 'media/1');
             response.send('');
         });
 
