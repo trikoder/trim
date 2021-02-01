@@ -83,6 +83,8 @@ import TableComponent from './resourceListTable';
 import CardsComponent from './resourceListCards';
 import MassActions from './massActions';
 import Message from './message';
+import translate from '../library/translate';
+import bootData from '../library/bootData';
 import Loader from '../library/loader';
 import loadDefinitionType from '../library/loadDefinitionType';
 import formElementDefaults from '../formElements/elementDefaults';
@@ -393,6 +395,14 @@ export default {
             }
 
             const refreshItems = () => this.refreshItems();
+            const handleError = (error) => {
+                const errors = error.response.data.errors;
+                const errorField = bootData('validationErrorField', 'title');
+                this.showMessage({
+                    type: 'error sticky',
+                    text: errors ? errors.map(error => error[errorField]).join('<br />') : translate('validation.serverError')
+                });
+            };
 
             definition.options.items.forEach(item => {
 
@@ -408,7 +418,7 @@ export default {
                     item.action = (model, contextMenu) => {
 
                         contextMenu.close();
-                        model.destroy().then(refreshItems).catch(refreshItems);
+                        model.destroy().then(refreshItems).catch(handleError);
 
                     };
 
@@ -420,7 +430,7 @@ export default {
 
                         model.save({
                             attributes: result(item.updateAttributes, [model])
-                        }).then(refreshItems).catch(refreshItems);
+                        }).then(refreshItems).catch(handleError);
 
                     };
 
