@@ -1,6 +1,6 @@
 <script>
 import ComponentControls from './componentControls';
-import {confirm} from 'trim/components/dialogModal';
+import {confirm} from '../../components/dialogModal';
 
 export default {
 
