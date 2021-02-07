@@ -239,6 +239,13 @@ list.addSort([
 ]);
 ```
 
+### addColumnVisibilityToggle
+Method for adding column visibility toggle feature on table resource list:
+
+```js
+list.addColumnVisibilityToggle();
+```
+
 ### filterAlwaysBy
 Method for setting persistent api filters.
 

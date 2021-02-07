@@ -17,6 +17,11 @@
                 @deselectModel="deselectModel"
                 @message="showMessage"
             ></mass-actions>
+            <column-visibility-toggle
+                v-if="showColumnVisibilityToggle"
+                :listItemsDefinitions="resolvedDefinitions.listItems"
+                @toggleColumnVisibility="toggleColumnVisibility"
+            ></column-visibility-toggle>
             <pagination
                 v-if="showPagination"
                 :getUrlForPage="getUrlForPage"
@@ -77,6 +82,7 @@
 
 <script>
 import Filters from './resourceFilters';
+import ColumnVisibilityToggle from './resourceListColumnVisibilityToggle';
 import Sort from './resourceSort';
 import Pagination from './resourcePagination';
 import TableComponent from './resourceListTable';
@@ -87,6 +93,7 @@ import Loader from '../library/loader';
 import loadDefinitionType from '../library/loadDefinitionType';
 import formElementDefaults from '../formElements/elementDefaults';
 import screenSize from '../mixins/screenSize';
+import userPreferences from '../library/userPreferences';
 import {
     assign,
     assignDeep,
@@ -94,12 +101,13 @@ import {
     result,
     ensureArray,
     checkUniqueFieldNames,
-    getComponentOption
+    getComponentOption,
+    find
 } from '../library/toolkit';
 
 export default {
 
-    components: {Filters, Sort, Pagination, MassActions, Message},
+    components: {Filters, ColumnVisibilityToggle, Sort, Pagination, MassActions, Message},
 
     mixins: [screenSize],
 
@@ -226,6 +234,12 @@ export default {
 
             return this.resolvedDefinitions && this.resolvedDefinitions.sorts.length > 1;
 
+        },
+
+        showColumnVisibilityToggle() {
+
+            return this.resolvedDefinitions && this.resolvedDefinitions.columnVisibilityToggle;
+
         }
 
     },
@@ -307,6 +321,14 @@ export default {
                 );
 
             });
+
+            return this;
+
+        },
+
+        addColumnVisibilityToggle() {
+
+            this.definitions.columnVisibilityToggle = true;
 
             return this;
 
@@ -428,6 +450,12 @@ export default {
 
             });
 
+            if (this.definitions.columnVisibilityToggle) {
+
+                definition.options.visible = true;
+
+            }
+
         },
 
         decorateListItemDefinition(definition) {
@@ -438,6 +466,13 @@ export default {
                 this.decorateLinkDefinition(definition);
             } else if (type === 'contextMenu') {
                 this.decorateContextMenuDefinition(definition);
+            }
+
+            if (this.definitions.columnVisibilityToggle) {
+
+                const columnVisibility = userPreferences.get(`${this.resourceName}-column-visibility-${definition.options.caption}`, null);
+                definition.options.visible = columnVisibility === null ? true : columnVisibility;
+
             }
 
             return definition;
@@ -471,6 +506,7 @@ export default {
 
         getInitialDefinitions() {
             return {
+                columnVisibilityToggle: false,
                 listItems: [],
                 sorts: [],
                 filters: [],
@@ -486,6 +522,20 @@ export default {
 
             this.definitions = this.getInitialDefinitions();
             return this;
+
+        },
+
+        toggleColumnVisibility(state, definitionOptions) {
+
+            const definition = find(
+                this.resolvedDefinitions.listItems,
+                item => item.options.caption === definitionOptions.caption
+            );
+
+            definition.options.visible = state;
+
+            userPreferences.set(`${this.resourceName}-column-visibility-${definitionOptions.caption}`, state);
+            this.resolvedDefinitions = Object.assign({}, this.resolvedDefinitions);
 
         },
 
@@ -564,6 +614,7 @@ export default {
             ]).then(([listDefinitions, filterDefinitions]) => {
 
                 return {
+                    columnVisibilityToggle: this.definitions.columnVisibilityToggle,
                     listItems: listDefinitions.filter(filterConditionals),
                     filters: filterDefinitions.filter(filterConditionals),
                     persistentFilters: assign({}, this.definitions.persistentFilters),

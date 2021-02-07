@@ -18,6 +18,7 @@
                 v-for="(definition, index) in definitions.listItems"
                 :key="index"
                 :class="definition.Type.elementType + 'CellHeading'"
+                v-if="canShowColumn(definition)"
             >
                 {{ definition.options.caption }}
             </th>
@@ -41,6 +42,7 @@
                     v-for="(definition, index) in definitions.listItems"
                     :key="index"
                     :class="getCellClass(definition)"
+                    v-if="canShowColumn(definition)"
                 >
                     <component
                         :is="definition.Type"
@@ -69,6 +71,12 @@ export default {
     },
 
     methods: {
+
+        canShowColumn(definition) {
+
+            return this.definitions.columnVisibilityToggle ? definition.options.visible : true;
+
+        },
 
         getCellClass(definition) {
 
