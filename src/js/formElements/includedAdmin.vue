@@ -357,7 +357,8 @@ export default {
 
         setMainRelationReference(id) {
 
-            const fieldName = this.resourceModel.getType();
+            const reverseRelationName = this.relation && this.relation.reverseRelationName;
+            const fieldName = reverseRelationName || this.resourceModel.getType();
 
             this.getRowInstances().forEach(row => {
 
