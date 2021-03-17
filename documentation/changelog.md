@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.79.2
+* Addition: add reverse relation name on included admin
+
 ## 0.79.1
 * Change: fix component import path in html components form element
 
