@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.79.3
+* Addition: customization of pagination items per page settings
+
 ## 0.79.2
 * Addition: add reverse relation name on included admin
 
