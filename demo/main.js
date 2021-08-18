@@ -14,7 +14,9 @@ app
         // apiPagination: {
         //     strategy: 'offsetBased',
         //     offsetKey: 'offset',
-        //     limitKey: 'limit'
+        //     limitKey: 'limit',
+        //     limitOptions: [50, 100, 200, 300, 500],
+        //     itemsPerPage: 100
         // }
         // resourceToApiMap: {
         //     article: 'article'

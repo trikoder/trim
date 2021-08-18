@@ -101,7 +101,7 @@ const Pagination = {
         getUrlForPage: {type: Function, required: true},
         totalItems: {type: Number, required: true},
         limit: {type: Number, required: true},
-        limitOptions: {type: Array, default: () => [10, 15, 30, 60]},
+        limitOptions: {type: Array, default: () => bootData('apiPagination.limitOptions', [10, 15, 30, 60])},
         showLimitOptions: {type: Boolean, default: false}
     },
 
