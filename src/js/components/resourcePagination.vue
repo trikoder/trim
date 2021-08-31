@@ -425,7 +425,7 @@ export default Pagination;
 
         .totalItems { display: block; }
 
-        &.withLimitOptions {
+        .withLimitOptions {
 
             @include clearfix;
 

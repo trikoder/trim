@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.79.4
+* Change: update style codebase to support dart sass implementation
+
 ## 0.79.3
 * Addition: customization of pagination items per page settings
 
