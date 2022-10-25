@@ -181,6 +181,10 @@ export default {
 
         }
 
+        &.sticky {
+            position: sticky; z-index: 1; top: em(50,14); left: 0; right: 0;
+        }
+
         @include mediaMinWidth($breakpointMedium) {
 
             &.withAction {
