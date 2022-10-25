@@ -155,9 +155,9 @@ const Component = Vue.extend({
         activeTab() {
 
             const firstTabKey = this.tabItems[0] && this.tabItems[0].key;
-            const tabExists = tabKey => this.tabItems.filter(
+            const tabExists = tabKey => Boolean(this.tabItems.find(
                 tab => tab.key === tabKey
-            ).length > 0;
+            ));
 
             if (!this.resolvedDefinitions) {
                 return this.selectedTab;

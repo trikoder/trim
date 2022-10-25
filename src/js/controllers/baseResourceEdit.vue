@@ -77,6 +77,17 @@ const BaseResourceEditController = Vue.extend({
 
     },
 
+    mounted() {
+        if (!this.isExternal) {
+            this.$watch('$route', (newRoute, prevRoute) => {
+                const newTab = newRoute.query[this.getTabQueryKey()];
+                if (this.$refs.editHandler) {
+                    this.$refs.editHandler.selectedTab = newTab;
+                }
+            });
+        }
+    },
+
     methods: {
 
         bootstrapModel() {
@@ -258,7 +269,11 @@ const BaseResourceEditController = Vue.extend({
         processTabSelect(selectedTab) {
 
             if (!this.isExternal) {
-                this.$router.navigateTo(this.getTabUrl(selectedTab));
+                this.$router.navigateTo(
+                    assign(this.getTabRoute(selectedTab), {
+                        useHistoryReplace: true
+                    })
+                );
             }
 
         },
@@ -270,14 +285,16 @@ const BaseResourceEditController = Vue.extend({
         },
 
         getTabUrl(tab) {
+            return this.$router.url(
+                this.getTabRoute(tab)
+            );
+        },
 
-            if (!this.isExternal) {
-                return this.$router.url({
-                    name: this.$route.name,
-                    query: assign({}, this.currentQuery, {[this.getTabQueryKey()]: tab})
-                });
-            }
-
+        getTabRoute(tab) {
+            return {
+                name: this.$route.name,
+                query: assign({}, this.currentQuery, {[this.getTabQueryKey()]: tab})
+            };
         },
 
         handleSystemError(errorObj) {
