@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.79.5
+* Change: update detail view tabs bindings to route changes
+* Addition: router api for adding routes, expose replacing history as navigation option
+
 ## 0.79.4
 * Change: update style codebase to support dart sass implementation
 

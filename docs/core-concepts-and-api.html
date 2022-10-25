@@ -9,7 +9,7 @@
   <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/trim/apple-touch-icon-152x152.png">
   <link rel="icon" sizes="196x196" href="/trim/favicon-196x196.png">
     
-    <link rel="preload" href="/trim/assets/css/0.styles.917df551.css" as="style"><link rel="preload" href="/trim/assets/js/app.1214483d.js" as="script"><link rel="preload" href="/trim/assets/js/9.175b9d48.js" as="script"><link rel="prefetch" href="/trim/assets/js/10.546be52c.js"><link rel="prefetch" href="/trim/assets/js/11.ad2ca7c7.js"><link rel="prefetch" href="/trim/assets/js/12.7fbd7688.js"><link rel="prefetch" href="/trim/assets/js/13.776b319d.js"><link rel="prefetch" href="/trim/assets/js/2.7ef2c498.js"><link rel="prefetch" href="/trim/assets/js/3.43b1f629.js"><link rel="prefetch" href="/trim/assets/js/4.53488e9e.js"><link rel="prefetch" href="/trim/assets/js/5.82044db3.js"><link rel="prefetch" href="/trim/assets/js/6.a7621772.js"><link rel="prefetch" href="/trim/assets/js/7.ebef427c.js"><link rel="prefetch" href="/trim/assets/js/8.6683e21e.js">
+    <link rel="preload" href="/trim/assets/css/0.styles.917df551.css" as="style"><link rel="preload" href="/trim/assets/js/app.38de6cc4.js" as="script"><link rel="preload" href="/trim/assets/js/9.61195568.js" as="script"><link rel="prefetch" href="/trim/assets/js/10.546be52c.js"><link rel="prefetch" href="/trim/assets/js/11.ad2ca7c7.js"><link rel="prefetch" href="/trim/assets/js/12.7fbd7688.js"><link rel="prefetch" href="/trim/assets/js/13.776b319d.js"><link rel="prefetch" href="/trim/assets/js/2.7ef2c498.js"><link rel="prefetch" href="/trim/assets/js/3.43b1f629.js"><link rel="prefetch" href="/trim/assets/js/4.53488e9e.js"><link rel="prefetch" href="/trim/assets/js/5.82044db3.js"><link rel="prefetch" href="/trim/assets/js/6.a7621772.js"><link rel="prefetch" href="/trim/assets/js/7.ebef427c.js"><link rel="prefetch" href="/trim/assets/js/8.4c96b194.js">
     <link rel="stylesheet" href="/trim/assets/css/0.styles.917df551.css">
   </head>
   <body>
@@ -203,7 +203,7 @@ Your application routes typically look something like this:</p> <div class="lang
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre></div><h3 id="router-controller"><a href="#router-controller" class="header-anchor">#</a> Router.controller</h3> <p>Method for defining routes with controller components.</p> <div class="language-js extra-class"><pre class="language-js"><code>router<span class="token punctuation">.</span><span class="token function">controller</span><span class="token punctuation">(</span>path<span class="token punctuation">,</span> routeName<span class="token punctuation">,</span> controllerString<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment">// ... is somewhat equivalent to...</span>
-<span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">addRoutes</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">{</span>
+<span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">addRoute</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
     path<span class="token operator">:</span> <span class="token string">'/'</span> <span class="token operator">+</span> path<span class="token punctuation">,</span>
     name<span class="token operator">:</span> routeName<span class="token punctuation">,</span>
     component<span class="token operator">:</span> AdminDefault<span class="token punctuation">,</span>
@@ -211,7 +211,7 @@ Your application routes typically look something like this:</p> <div class="lang
         <span class="token comment">// set controller from service registry as child component of Default Admin component</span>
         <span class="token comment">// if method is defined it will be called after component is created</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre></div><h3 id="router-resource"><a href="#router-resource" class="header-anchor">#</a> Router.resource</h3> <p>Router resource method is a shortcut for defining 3 most used routes for resource:</p> <div class="language-js extra-class"><pre class="language-js"><code>router<span class="token punctuation">.</span><span class="token function">resource</span><span class="token punctuation">(</span><span class="token string">'tag'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment">// ... is equivalent to...</span>
 router<span class="token punctuation">.</span><span class="token function">controller</span><span class="token punctuation">(</span><span class="token string">'tag/create'</span><span class="token punctuation">,</span> <span class="token string">'resource.tag.create'</span><span class="token punctuation">,</span> <span class="token string">'Tag@create'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -403,6 +403,6 @@ app<span class="token punctuation">.</span><span class="token function">useAuth<
         </a>
         →
       </span></p></div> </div> <!----></div></div>
-    <script src="/trim/assets/js/app.1214483d.js" defer></script><script src="/trim/assets/js/9.175b9d48.js" defer></script>
+    <script src="/trim/assets/js/app.38de6cc4.js" defer></script><script src="/trim/assets/js/9.61195568.js" defer></script>
   </body>
 </html>
