@@ -9,11 +9,17 @@ let routerInstance;
 
 Vue.use(Router);
 
+if (!Router.prototype.addRoute) {
+    Router.prototype.addRoute = function(config) {
+        return this.addRoutes([config]);
+    };
+}
+
 assign(Router.prototype, {
 
     controller(path, name, params) {
 
-        this.addRoutes([{
+        this.addRoute({
             path: '/' + path,
             name: name,
             component: AdminDefault,
@@ -36,7 +42,7 @@ assign(Router.prototype, {
                 };
 
             }
-        }]);
+        });
 
         return this;
 
@@ -51,18 +57,21 @@ assign(Router.prototype, {
 
     },
 
-    navigateTo(location) {
+    navigateTo(params) {
 
-        if (typeof location === 'string') {
+        let navigateCall;
+
+        if (typeof params === 'string') {
             const baseUrlRE = new RegExp('^' + bootData('baseUrl') + '(#/)?');
-            location = location.replace(baseUrlRE, '/');
+            navigateCall = this.push(params.replace(baseUrlRE, '/'));
+        } else {
+            const method = params.useHistoryReplace ? 'replace' : 'push';
+            navigateCall = this[method](params);
         }
 
-        const pushValue = this.push(location);
-
         // not all vue router implentations throw error
-        if (pushValue && pushValue.catch) {
-            pushValue.catch(error => {
+        if (navigateCall && navigateCall.catch) {
+            navigateCall.catch(error => {
                 if (
                     error.name === 'NavigationDuplicated' ||
                     error.message.indexOf('Avoided redundant navigation') === 0
@@ -73,9 +82,7 @@ assign(Router.prototype, {
                 }
             });
         }
-
-        return pushValue;
-
+        return navigateCall;
     },
 
     resource(name) {

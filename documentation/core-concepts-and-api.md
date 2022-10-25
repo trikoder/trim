@@ -432,7 +432,7 @@ Method for defining routes with controller components.
 ```js
 router.controller(path, routeName, controllerString);
 // ... is somewhat equivalent to...
-this.addRoutes([{
+this.addRoute({
     path: '/' + path,
     name: routeName,
     component: AdminDefault,
@@ -440,7 +440,7 @@ this.addRoutes([{
         // set controller from service registry as child component of Default Admin component
         // if method is defined it will be called after component is created
     }
-}]);
+});
 ```
 
 ### Router.resource
