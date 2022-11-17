@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.79.6
+* Change: update package dependencies
+* Change: refactor styles to support new sass version
+
 ## 0.79.5
 * Change: update detail view tabs bindings to route changes
 * Addition: router api for adding routes, expose replacing history as navigation option
