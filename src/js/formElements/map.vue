@@ -200,7 +200,7 @@ export default {
 
     .mapElementType1 {
 
-        position: relative; padding: 0.5em; padding-bottom: percentage(1/2);
+        position: relative; padding: 0.5em; padding-bottom: percentage(divide(1,2));
         background-color: #fff; border: 1px solid $colorGrayLight2; border-radius: 0.3em;
 
         > .container {

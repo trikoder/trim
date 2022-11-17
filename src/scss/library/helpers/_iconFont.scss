@@ -1,0 +1,79 @@
+// Icon font helpers
+
+@mixin iconElement($paddingLeft: 40) {
+
+    display: inline-block; position: relative; padding-left: $paddingLeft*1px;
+
+}
+
+@mixin iconElementGraphic($width: 40, $height: 40) {
+
+    position: absolute; left: 0; top: 50%;
+    margin:0; width: $width*1px; height: $height*1px; line-height: $height*1px; margin-top: ($height*0.5)*-1px;
+    text-align: center; text-indent: 0;
+
+}
+
+@mixin iconFont($fontName) {
+
+    font-family: $fontName;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+}
+
+@mixin defineIconFont($fontName, $basePath, $version: 'v1', $iconMap: false, $sizeIconGraphic: 40, $classPrefix: 'icon') {
+
+    @font-face {
+        font-family: $fontName;
+        src: url('#{$basePath}.eot?#{$version}');
+        src: url('#{$basePath}.eot?#{$version}#iefix') format('embedded-opentype'),
+            url('#{$basePath}.woff?#{$version}') format('woff'),
+            url('#{$basePath}.ttf?#{$version}') format('truetype'),
+            url('#{$basePath}.svg?#{$version}#{$basePath}') format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @if $iconMap {
+        @include generateIconsCss($fontName, $iconMap, $sizeIconGraphic, $classPrefix);
+    }
+
+}
+
+@mixin generateIconsCss($fontName, $iconMap, $sizeIconGraphic, $classPrefix) {
+
+    [class^="#{$classPrefix}"],
+    [class*=" #{$classPrefix}"] {
+        @include iconElement($sizeIconGraphic);
+    }
+
+    [class^="#{$classPrefix}"]:before,
+    [class*=" #{$classPrefix}"]:before {
+        @include iconFont($fontName);
+        @include iconElementGraphic($sizeIconGraphic, $sizeIconGraphic);
+    }
+
+    @each $iconName, $iconContent in $iconMap {
+        .#{$classPrefix}#{to-upper-case(str-slice($iconName, 1, 1)) + str-slice($iconName, 2)}:before {
+            content: $iconContent;
+        }
+    }
+
+}
+
+@mixin iconReplacement($width: 40, $height: 40) {
+
+    padding: 0; display: inline-block; width: $width*1px; height: $height*1px;
+    text-indent: -9999em; overflow: hidden;
+
+    &:before {
+        right: 0; width: auto; text-indent: 0;
+    }
+
+}

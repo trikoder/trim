@@ -1,0 +1,8 @@
+// Hover and focus shortcut
+
+@mixin hover {
+    &:hover,
+    &:focus {
+        @content;
+    }
+}

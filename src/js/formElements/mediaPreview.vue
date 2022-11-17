@@ -121,7 +121,7 @@ export default {
         > .imageContainer {
 
             $size: 110;
-            $ratio: 3/4;
+            $ratio: divide(3,4);
 
             display: inline-block; vertical-align: middle; width: em($size, 10); height: em($size * $ratio, 10); margin-right: 1.5em; position: relative;
             background-color: #f5f5f5; border-radius: 0.3em; text-align: center; line-height: em($size * $ratio, 10);

@@ -57,7 +57,7 @@ export default {
 
             > li {
 
-                display: flex; flex-wrap: wrap; width: percentage(1/5);
+                display: flex; flex-wrap: wrap; width: percentage(divide(1,5));
                 box-sizing: border-box; padding: 1em; margin: 0;
 
             }

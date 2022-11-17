@@ -285,7 +285,7 @@ export default {
 
             > .toggleSelectedItems {
 
-                font-size: 1.3em; line-height: (18/13); padding: em(5,13) em(25,13) em(5,13) em(10,13); color: $colorGrayDark3; display: block;
+                font-size: 1.3em; line-height: divide(18,13); padding: em(5,13) em(25,13) em(5,13) em(10,13); color: $colorGrayDark3; display: block;
 
                 &:before {
 
@@ -331,7 +331,7 @@ export default {
 
         .removeItem {
 
-            font-size: 1.3em; width: 100%; line-height: (18/13);
+            font-size: 1.3em; width: 100%; line-height: divide(18,13);
             display: block; overflow: hidden; padding: em(7,13) em(10,13) em(7,13) em(25,13);
             color: #000; text-align: left;
 

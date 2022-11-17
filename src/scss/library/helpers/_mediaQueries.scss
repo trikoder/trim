@@ -1,0 +1,25 @@
+// Media query helpers
+
+@mixin mediaMinWidth($breakpoint) {
+
+    @media screen and (min-width: em($breakpoint + 1)) {
+        @content
+    }
+
+}
+
+@mixin mediaMaxWidth($breakpoint) {
+
+    @media screen and (max-width: em($breakpoint)) {
+        @content
+    }
+
+}
+
+@mixin mediaMinToMaxWidth($breakpoint1, $breakpoint2) {
+
+    @media screen and (min-width: em($breakpoint1 + 1)) and (max-width: em($breakpoint2)) {
+        @content
+    }
+
+}

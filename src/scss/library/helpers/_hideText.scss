@@ -1,0 +1,5 @@
+// Hide text
+
+@mixin hideText {
+	display: inline-block; text-indent: -9999em; overflow: hidden;
+}

@@ -1,0 +1,7 @@
+// (un)truncate text helper
+
+@mixin untruncate {
+
+    max-width: none; overflow: visible; text-overflow: clip; white-space: normal;
+
+}

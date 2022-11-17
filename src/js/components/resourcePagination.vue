@@ -297,7 +297,7 @@ export default Pagination;
 
         > p, > .limitOption {
 
-            font-size: em(13,10); display: inline-block; line-height: (30/13); vertical-align: middle;
+            font-size: em(13,10); display: inline-block; line-height: divide(30,13); vertical-align: middle;
             color: $colorGrayDark2; letter-spacing: 0.03em;
 
         }

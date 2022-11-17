@@ -613,7 +613,7 @@ export default Vue.extend({
                 @include fontSans;
                 transition: color 0.25s, background 0.35s;
 
-                font-size: em(14,10); line-height: (20/14); display: block; width: 100%; box-sizing: border-box;
+                font-size: em(14,10); line-height: divide(20,14); display: block; width: 100%; box-sizing: border-box;
                 position: relative; padding: em(15,14) em(50,14) em(15,14) em(15,14);
                 color: rgba(#fff, 0.6); text-align: left;
 
@@ -694,7 +694,7 @@ export default Vue.extend({
                 @include ellipsis;
                 @include fontSansCondensedBold;
 
-                font-size: em(12,10); display: block; width: 100%; line-height: (50/12); padding: 0 em(55,12) 0 em(15,12);
+                font-size: em(12,10); display: block; width: 100%; line-height: divide(50,12); padding: 0 em(55,12) 0 em(15,12);
                 position: relative; z-index: 10; text-align: left;
                 color: rgba(#fff, 0.8); text-transform: uppercase; border-top: 1px solid rgba(#fff, 0.2);
 

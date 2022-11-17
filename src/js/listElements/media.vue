@@ -163,7 +163,7 @@ export default {
 
     .mediaListItemType1 {
 
-        display: block; padding-bottom: percentage(3/4); position: relative;
+        display: block; padding-bottom: percentage(divide(3,4)); position: relative;
         text-align: center; background-color: #f5f5f5; background-repeat: no-repeat; background-position: center center;
 
         &.image {

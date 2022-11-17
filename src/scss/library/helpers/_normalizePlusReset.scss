@@ -1,0 +1,41 @@
+// Normalize & Reset
+
+@mixin normalizePlusReset {
+
+    a {
+        text-decoration: none; cursor: pointer; color: inherit;
+    }
+
+    a:focus,
+    a::-moz-focus-inner {
+        outline: none;
+    }
+
+    ol, ul, li, h1, h2, h3, h4, p, a, td, dl, dt, dd, fieldset {
+        margin: 0; padding: 0; list-style: none; border: 0; font-size: 1em;
+    }
+
+    table {
+        border-collapse: collapse; border-spacing: 0;
+    }
+
+    img {
+        vertical-align:bottom;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+        font-family: inherit; font-size: 100%; margin: 0; outline: none; box-sizing: border-box; border-radius: 0;
+    }
+
+    textarea {
+        overflow: auto; vertical-align: top; resize:vertical;
+    }
+
+    label, button {
+        cursor: pointer;
+    }
+
+}

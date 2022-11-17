@@ -252,7 +252,7 @@ export default {
     .mediaContainer {
 
         $size: 70;
-        $ratio: 3/4;
+        $ratio: divide(3,4);
 
         width: em($size, 10); height: em($size * $ratio, 10); line-height: em($size * $ratio, 10);
         display: inline-block; vertical-align: middle; margin-right: 1.5em; position: relative;
@@ -269,7 +269,7 @@ export default {
         @include mediaMinWidth($breakpointMedium) {
 
             $size: 120;
-            $ratio: 3/4;
+            $ratio: divide(3,4);
 
             width: em($size, 10); height: em($size * $ratio, 10); line-height: em($size * $ratio, 10);
 

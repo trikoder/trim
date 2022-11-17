@@ -562,7 +562,7 @@ export default {
 
                 > .item {
 
-                    font-size: 1.6em; line-height: (16/14); display: inline-block;
+                    font-size: 1.6em; line-height: divide(16,14); display: inline-block;
                     color: $colorGrayDark1;
 
                     > .removeBtn {
@@ -601,7 +601,7 @@ export default {
 
                 > .item {
 
-                    display: inline-block; font-size: 1.2em; line-height: (15/12); position: relative;
+                    display: inline-block; font-size: 1.2em; line-height: divide(15,12); position: relative;
                     padding: em(2,12) em(6,12) em(2,12) em(18,12); margin: em(5,12) em(5,12) 0 0; vertical-align: middle;
                     border-radius: em(3,12); border: 1px solid darken(#9c9c9c, 5%);
                     cursor: auto; color: #fff; letter-spacing: 0.02em;
@@ -623,7 +623,7 @@ export default {
 
         .openBtn {
 
-            font-size: 1.6em; line-height: (32/14); text-align: left;
+            font-size: 1.6em; line-height: divide(32,14); text-align: left;
             padding: 0 em(30,16) 0 em(10,16); display: block; width: 100%;
 
             &:before {

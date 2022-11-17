@@ -1,3 +1,18 @@
+@use 'sass:math';
+
 @function asset($string) {
-  @return $assetBasePath + $string;
+    @return $assetBasePath + $string;
 }
+
+@function em($pxval, $base: 16) {
+    @return divide($pxval, $base) * 1em;
+}
+
+@function rem($pxval) {
+    @return divide($pxval, 10) * 1rem;
+}
+
+@function divide($val1, $val2) {
+    @return math.div($val1, $val2);
+}
+
