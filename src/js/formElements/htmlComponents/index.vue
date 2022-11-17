@@ -32,10 +32,10 @@
 
 <script>
 
-import base from '../base';
-import ElementWrapper from '../elementWrapper';
-import {elementIndex} from '../../library/toolkit';
-import HtmlEditor from './html';
+import base from '../base.vue';
+import ElementWrapper from '../elementWrapper.vue';
+import {elementIndex} from '../../library/toolkit.js';
+import HtmlEditor from './html.vue';
 
 let instanceCounter = 0;
 const clientId = () => (Date.now() + (++instanceCounter)).toString();

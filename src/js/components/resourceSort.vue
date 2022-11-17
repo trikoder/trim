@@ -17,8 +17,8 @@
 
 <script>
 
-import translate from '../library/translate';
-import {find} from '../library/toolkit';
+import translate from '../library/translate.js';
+import {find} from '../library/toolkit.js';
 
 export default {
 

@@ -6,8 +6,8 @@
 
 <script>
 import Dropzone from 'dropzone';
-import {assign, pickTo} from '../library/toolkit';
-import api from '../library/api';
+import {assign, pickTo} from '../library/toolkit.js';
+import api from '../library/api.js';
 
 export default {
 

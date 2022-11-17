@@ -9,8 +9,8 @@
 
 <script>
 
-import base from './base';
-import dateTime from './dateTime';
+import base from './base.js';
+import dateTime from './dateTime.vue';
 
 export default {
 

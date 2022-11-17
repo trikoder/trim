@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import {capitalize} from '../../library/toolkit';
+import {capitalize} from '../../library/toolkit.js';
 
 export default {
 

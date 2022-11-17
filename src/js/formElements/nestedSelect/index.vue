@@ -61,11 +61,11 @@
 </template>
 
 <script>
-import base from '../base';
-import translate from '../../library/translate';
-import ElementWrapper from '../elementWrapper';
-import TreeNode from './treeNode';
-import {Model, Collection} from '../../library/resource';
+import base from '../base.vue';
+import translate from '../../library/translate.js';
+import ElementWrapper from '../elementWrapper.vue';
+import TreeNode from './treeNode.vue';
+import {Model, Collection} from '../../library/resource.js';
 import vueDismiss from 'vue-dismiss';
 
 export default {

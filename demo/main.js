@@ -1,8 +1,8 @@
 import app from 'trim/app';
 import translations from 'trim/lang/english';
-import routes from './routes';
-import services from './services';
-import DummyComponent from './dummy';
+import routes from './routes.js';
+import services from './services.js';
+import DummyComponent from './dummy.vue';
 // import auth from './auth';
 import 'apiServer';
 

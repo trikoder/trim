@@ -1,5 +1,5 @@
-import bootData from '../library/bootData';
-import app from '../app';
+import bootData from '../library/bootData.js';
+import app from '../app.js';
 
 export function load() {
 

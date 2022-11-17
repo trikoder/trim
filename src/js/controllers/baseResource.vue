@@ -54,17 +54,17 @@
 <script>
 
 import Vue from 'vue';
-import {assign} from '../library/toolkit';
-import translate from '../library/translate';
-import {confirm} from '../components/dialogModal';
-import ResourceControls from '../components/resourceControls';
-import ResourceHeader from '../components/resourceHeader';
-import ResourceList from '../components/resourceList';
+import {assign} from '../library/toolkit.js';
+import translate from '../library/translate.js';
+import {confirm} from '../components/dialogModal.vue';
+import ResourceControls from '../components/resourceControls.vue';
+import ResourceHeader from '../components/resourceHeader.vue';
+import ResourceList from '../components/resourceList.vue';
 import ResourceEdit from '../components/resourceEdit';
-import {Model, Collection} from '../library/resource';
-import getVueComponentMapper from '../library/getVueComponentMapper';
-import headerBorderListener from '../mixins/headerBorderListener';
-import screenSize from '../mixins/screenSize';
+import {Model, Collection} from '../library/resource.js';
+import getVueComponentMapper from '../library/getVueComponentMapper.js';
+import headerBorderListener from '../mixins/headerBorderListener.js';
+import screenSize from '../mixins/screenSize.js';
 
 const BaseResourceController = Vue.extend({
 

@@ -1,7 +1,7 @@
 <script>
-import BaseResourceController from './baseResource';
-import NestedResourceList from '../components/resourceListNested';
-import getVueComponentMapper from '../library/getVueComponentMapper';
+import BaseResourceController from './baseResource.vue';
+import NestedResourceList from '../components/resourceListNested.vue';
+import getVueComponentMapper from '../library/getVueComponentMapper.js';
 
 const BaseNestedController = BaseResourceController.extend({
 

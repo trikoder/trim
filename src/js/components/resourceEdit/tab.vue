@@ -34,8 +34,8 @@
 
 <script>
 
-import Region from './region';
-import Group from './group';
+import Region from './region.vue';
+import Group from './group.vue';
 
 export default {
 

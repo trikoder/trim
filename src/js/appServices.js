@@ -1,20 +1,20 @@
-import MainNavigation from './components/mainNavigation';
-import BaseResourceController from './controllers/baseResource';
+import MainNavigation from './components/mainNavigation.vue';
+import BaseResourceController from './controllers/baseResource.vue';
 
-import TextListItem from './listElements/text';
-import LinkListItem from './listElements/link';
-import DateListItem from './listElements/date';
-import DateTimeListItem from './listElements/dateTime';
-import BlipListItem from './listElements/blip';
-import ButtonListItem from './listElements/button';
-import ContextMenuListItem from './listElements/contextMenu';
+import TextListItem from './listElements/text.vue';
+import LinkListItem from './listElements/link.vue';
+import DateListItem from './listElements/date.vue';
+import DateTimeListItem from './listElements/dateTime.vue';
+import BlipListItem from './listElements/blip.vue';
+import ButtonListItem from './listElements/button.vue';
+import ContextMenuListItem from './listElements/contextMenu.vue';
 
-import TextFormElement from './formElements/text';
-import TextareaFormElement from './formElements/textarea';
-import CheckboxFormElement from './formElements/checkbox';
-import SelectFormElement from './formElements/select';
-import ExternalAdminFormElement from './formElements/externalAdmin';
-import IncludedAdminFormElement from './formElements/includedAdmin';
+import TextFormElement from './formElements/text.vue';
+import TextareaFormElement from './formElements/textarea.vue';
+import CheckboxFormElement from './formElements/checkbox.vue';
+import SelectFormElement from './formElements/select.vue';
+import ExternalAdminFormElement from './formElements/externalAdmin.vue';
+import IncludedAdminFormElement from './formElements/includedAdmin.vue';
 
 export default {
 

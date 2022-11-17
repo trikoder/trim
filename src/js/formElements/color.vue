@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import base from './base';
-import TextFormElement from './text';
+import base from './base.vue';
+import TextFormElement from './text.vue';
 
 export default {
 

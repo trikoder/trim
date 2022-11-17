@@ -76,17 +76,17 @@
 </template>
 
 <script>
-import Filters from './resourceFilters';
-import Sort from './resourceSort';
-import Pagination from './resourcePagination';
-import TableComponent from './resourceListTable';
-import CardsComponent from './resourceListCards';
-import MassActions from './massActions';
-import Message from './message';
-import Loader from '../library/loader';
-import loadDefinitionType from '../library/loadDefinitionType';
-import formElementDefaults from '../formElements/elementDefaults';
-import screenSize from '../mixins/screenSize';
+import Filters from './resourceFilters.vue';
+import Sort from './resourceSort.vue';
+import Pagination from './resourcePagination.vue';
+import TableComponent from './resourceListTable.vue';
+import CardsComponent from './resourceListCards.vue';
+import MassActions from './massActions.vue';
+import Message from './message.vue';
+import Loader from '../library/loader.js';
+import loadDefinitionType from '../library/loadDefinitionType.js';
+import formElementDefaults from '../formElements/elementDefaults.js';
+import screenSize from '../mixins/screenSize.js';
 import {
     assign,
     assignDeep,
@@ -95,7 +95,7 @@ import {
     ensureArray,
     checkUniqueFieldNames,
     getComponentOption
-} from '../library/toolkit';
+} from '../library/toolkit.js';
 
 export default {
 

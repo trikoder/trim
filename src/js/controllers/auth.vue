@@ -18,8 +18,8 @@
 
 <script>
 
-import translate from '../library/translate';
-import bootData from '../library/bootData';
+import translate from '../library/translate.js';
+import bootData from '../library/bootData.js';
 
 export default {
 

@@ -1,7 +1,7 @@
-import ImageInContent from './imageInContent';
-import QuoteInContent from './quoteInContent';
-import GalleryInContent from './galleryInContent';
-import TableInContent from './tableInContent';
+import ImageInContent from './imageInContent.vue';
+import QuoteInContent from './quoteInContent.vue';
+import GalleryInContent from './galleryInContent.vue';
+import TableInContent from './tableInContent.vue';
 
 export default {
 

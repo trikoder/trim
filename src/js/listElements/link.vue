@@ -11,8 +11,8 @@
 
 <script>
 
-import base from './base';
-import {result} from '../library/toolkit';
+import base from './base.js';
+import {result} from '../library/toolkit.js';
 
 export default {
 

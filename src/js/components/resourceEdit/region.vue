@@ -27,7 +27,7 @@
 
 <script>
 
-import Group from './group';
+import Group from './group.vue';
 
 export default {
 

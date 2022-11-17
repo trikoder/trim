@@ -23,9 +23,9 @@
 <script>
 
 import Vue from 'vue';
-import translate from '../library/translate';
-import {assign, isPlainObject} from '../library/toolkit';
-import app from '../app';
+import translate from '../library/translate.js';
+import {assign, isPlainObject} from '../library/toolkit.js';
+import app from '../app.js';
 
 const Component = Vue.extend({
 

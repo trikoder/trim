@@ -1,4 +1,4 @@
-import {each} from './toolkit';
+import {each} from './toolkit.js';
 
 const registry = {};
 

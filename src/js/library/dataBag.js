@@ -1,4 +1,4 @@
-import {assign} from './toolkit';
+import {assign} from './toolkit.js';
 
 function DataBag(data) {
     this.store = assign({}, data);

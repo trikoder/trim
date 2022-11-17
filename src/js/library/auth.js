@@ -1,5 +1,5 @@
-import serviceContainer from './serviceContainer';
-import {assign} from './toolkit';
+import serviceContainer from './serviceContainer.js';
+import {assign} from './toolkit.js';
 
 export default {
 

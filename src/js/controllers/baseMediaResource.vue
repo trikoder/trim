@@ -71,17 +71,17 @@
 </template>
 
 <script>
-import BaseResourceController from './baseResource';
-import {assign, capitalize, find} from '../library/toolkit';
+import BaseResourceController from './baseResource.vue';
+import {assign, capitalize, find} from '../library/toolkit.js';
 import {pascal as pascalcase, space as spacecase} from 'to-case';
-import translate from '../library/translate';
-import bootData from '../library/bootData';
-import {Model} from '../library/resource';
-import getVueComponentMapper from '../library/getVueComponentMapper';
-import FileUpload from '../components/fileUpload';
-import IncludedAdmin from '../formElements/includedAdmin';
-import Message from '../components/message';
-import headerBorderListener from '../mixins/headerBorderListener';
+import translate from '../library/translate.js';
+import bootData from '../library/bootData.js';
+import {Model} from '../library/resource.js';
+import getVueComponentMapper from '../library/getVueComponentMapper.js';
+import FileUpload from '../components/fileUpload.vue';
+import IncludedAdmin from '../formElements/includedAdmin.vue';
+import Message from '../components/message.vue';
+import headerBorderListener from '../mixins/headerBorderListener.js';
 
 const BaseMediaController = BaseResourceController.extend({
 

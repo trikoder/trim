@@ -23,8 +23,8 @@
 <script>
 
 import Vue from 'vue';
-import app from '../app';
-import {Popup} from './popup';
+import app from '../app.js';
+import {Popup} from './popup.vue';
 
 const Component = Vue.extend({
 

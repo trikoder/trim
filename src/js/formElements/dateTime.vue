@@ -1,7 +1,7 @@
 <script>
-import formatDate from '../library/formatDate';
+import formatDate from '../library/formatDate.js';
 import fecha from 'fecha';
-import DateFormElement from './date';
+import DateFormElement from './date.vue';
 
 export default {
 

@@ -86,11 +86,11 @@
 
 <script>
 
-import userPreferences from '../library/userPreferences';
-import translate from '../library/translate';
-import {range} from '../library/toolkit';
-import bootData from '../library/bootData';
-import screenSize from '../mixins/screenSize';
+import userPreferences from '../library/userPreferences.js';
+import translate from '../library/translate.js';
+import {range} from '../library/toolkit.js';
+import bootData from '../library/bootData.js';
+import screenSize from '../mixins/screenSize.js';
 
 const Pagination = {
 

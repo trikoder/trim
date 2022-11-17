@@ -1,6 +1,6 @@
 <script>
-import ComponentControls from './componentControls';
-import {confirm} from '../../components/dialogModal';
+import ComponentControls from './componentControls.vue';
+import {confirm} from '../../components/dialogModal.vue';
 
 export default {
 

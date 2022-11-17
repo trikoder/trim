@@ -29,8 +29,8 @@
 
 <script>
 
-import base from './base';
-import {assign} from '../library/toolkit';
+import base from './base.js';
+import {assign} from '../library/toolkit.js';
 import SimpleLightbox from 'simple-lightbox';
 import 'simple-lightbox/dist/simpleLightbox.min.css';
 

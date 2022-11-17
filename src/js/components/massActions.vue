@@ -55,11 +55,11 @@
 </template>
 
 <script>
-import {find, result, assign} from '../library/toolkit';
+import {find, result, assign} from '../library/toolkit.js';
 import vueDismiss from 'vue-dismiss';
-import translate from '../library/translate';
-import {confirm} from '../components/dialogModal';
-import Loader from '../library/loader';
+import translate from '../library/translate.js';
+import {confirm} from '../components/dialogModal.vue';
+import Loader from '../library/loader.js';
 
 export default {
 

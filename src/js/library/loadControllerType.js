@@ -1,5 +1,5 @@
-import serviceContainer from './serviceContainer';
-import Loader from './loader';
+import serviceContainer from './serviceContainer.js';
+import Loader from './loader.js';
 
 const controllerPromiseMap = {};
 

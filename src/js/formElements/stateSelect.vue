@@ -24,11 +24,11 @@
 </template>
 
 <script>
-import base from './base';
-import {find} from '../library/toolkit';
-import translate from '../library/translate';
-import ElementWrapper from './elementWrapper';
-import {Model} from '../library/resource';
+import base from './base.vue';
+import {find} from '../library/toolkit.js';
+import translate from '../library/translate.js';
+import ElementWrapper from './elementWrapper.vue';
+import {Model} from '../library/resource.js';
 
 export default {
 

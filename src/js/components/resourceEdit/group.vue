@@ -14,7 +14,7 @@
 
 <script>
 
-import {reduce} from '../../library/toolkit';
+import {reduce} from '../../library/toolkit.js';
 
 export default {
 

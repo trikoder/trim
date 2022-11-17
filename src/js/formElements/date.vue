@@ -29,9 +29,9 @@
 
 <script>
 
-import base from './base';
-import translate from '../library/translate';
-import ElementWrapper from './elementWrapper';
+import base from './base.vue';
+import translate from '../library/translate.js';
+import ElementWrapper from './elementWrapper.vue';
 import DatePick from 'vue-date-pick';
 
 export default {

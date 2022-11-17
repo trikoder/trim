@@ -10,7 +10,7 @@
 
 <script>
 
-import base from './base';
+import base from './base.js';
 import {pascal as pascalCase} from 'to-case';
 
 export default {

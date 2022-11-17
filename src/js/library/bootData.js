@@ -1,5 +1,5 @@
-import DataBag from './dataBag';
-import {assign} from './toolkit';
+import DataBag from './dataBag.js';
+import {assign} from './toolkit.js';
 
 var store = new DataBag();
 

@@ -17,9 +17,9 @@
 
 <script>
 
-import serviceContainer from '../library/serviceContainer';
-import loadControllerType from '../library/loadControllerType';
-import Loader from '../components/loader';
+import serviceContainer from '../library/serviceContainer.js';
+import loadControllerType from '../library/loadControllerType.js';
+import Loader from '../components/loader.vue';
 
 export default {
 

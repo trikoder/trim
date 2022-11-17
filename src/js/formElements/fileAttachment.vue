@@ -35,11 +35,11 @@
 </template>
 
 <script>
-import base from './base';
-import translate from '../library/translate';
-import ElementWrapper from './elementWrapper';
+import base from './base.vue';
+import translate from '../library/translate.js';
+import ElementWrapper from './elementWrapper.vue';
 import Dropzone from 'dropzone';
-import {confirm} from '../components/dialogModal';
+import {confirm} from '../components/dialogModal.vue';
 import SimpleLightbox from 'simple-lightbox';
 import 'simple-lightbox/dist/simpleLightbox.min.css';
 

@@ -1,5 +1,5 @@
 <script>
-import {clientId, each, assign} from '../library/toolkit';
+import {clientId, each, assign} from '../library/toolkit.js';
 
 export default {
 

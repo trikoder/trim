@@ -37,16 +37,16 @@
 </template>
 
 <script>
-import base from './base';
-import ElementWrapper from './elementWrapper';
-import {assign, pickTo} from '../library/toolkit';
-import {Model} from '../library/resource';
-import translate from '../library/translate';
-import ExternalAdmin from './externalAdmin';
+import base from './base.vue';
+import ElementWrapper from './elementWrapper.vue';
+import {assign, pickTo} from '../library/toolkit.js';
+import {Model} from '../library/resource.js';
+import translate from '../library/translate.js';
+import ExternalAdmin from './externalAdmin.vue';
 import Dropzone from 'dropzone';
-import bootData from '../library/bootData';
-import api from '../library/api';
-import {confirm} from '../components/dialogModal';
+import bootData from '../library/bootData.js';
+import api from '../library/api.js';
+import {confirm} from '../components/dialogModal.vue';
 import SimpleLightbox from 'simple-lightbox';
 import 'simple-lightbox/dist/simpleLightbox.min.css';
 

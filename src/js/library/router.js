@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import AdminDefault from '../layouts/adminDefault';
-import {assign} from './toolkit';
-import bootData from './bootData';
+import AdminDefault from '../layouts/adminDefault.vue';
+import {assign} from './toolkit.js';
+import bootData from './bootData.js';
 import {slug as slugcase, pascal as pascalcase} from 'to-case';
 
 let routerInstance;

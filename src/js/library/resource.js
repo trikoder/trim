@@ -1,8 +1,8 @@
 import {Model, Collection} from 'json-api-resource';
-import httpMixin from 'json-api-resource/lib/httpMixin';
-import bootData from './bootData';
-import {publish} from './eventBus';
-import api from './api';
+import httpMixin from 'json-api-resource/lib/httpMixin.js';
+import bootData from './bootData.js';
+import {publish} from './eventBus.js';
+import api from './api.js';
 
 httpMixin({
     Model,

@@ -38,10 +38,10 @@
 </template>
 
 <script>
-import base from './base';
-import ElementWrapper from './elementWrapper';
-import {find, elementMatches, elementIndex} from '../library/toolkit';
-import {Model} from '../library/resource';
+import base from './base.vue';
+import ElementWrapper from './elementWrapper.vue';
+import {find, elementMatches, elementIndex} from '../library/toolkit.js';
+import {Model} from '../library/resource.js';
 import ResourceEdit from '../components/resourceEdit';
 
 export default {

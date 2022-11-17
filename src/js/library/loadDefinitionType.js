@@ -1,4 +1,4 @@
-import serviceContainer from './serviceContainer';
+import serviceContainer from './serviceContainer.js';
 
 export default function(definition) {
     return typeof definition.Type === 'string'

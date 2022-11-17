@@ -1,9 +1,9 @@
 <script>
-import ResourceList from './resourceList';
-import TableComponent from './resourceListTable';
-import CardsComponent from './resourceListCards';
-import TreeComponent from './resourceListTree';
-import {isEmptyObject} from '../library/toolkit';
+import ResourceList from './resourceList.vue';
+import TableComponent from './resourceListTable.vue';
+import CardsComponent from './resourceListCards.vue';
+import TreeComponent from './resourceListTree.vue';
+import {isEmptyObject} from '../library/toolkit.js';
 
 export default {
 

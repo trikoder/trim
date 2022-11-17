@@ -75,17 +75,17 @@
 <script>
 
 import Vue from 'vue';
-import loadDefinitionType from '../../library/loadDefinitionType';
-import bootData from '../../library/bootData';
-import formElementDefaults from '../../formElements/elementDefaults';
-import screenSize from '../../mixins/screenSize';
-import Loader from '../../library/loader';
-import translate from '../../library/translate';
+import loadDefinitionType from '../../library/loadDefinitionType.js';
+import bootData from '../../library/bootData.js';
+import formElementDefaults from '../../formElements/elementDefaults.js';
+import screenSize from '../../mixins/screenSize.js';
+import Loader from '../../library/loader.js';
+import translate from '../../library/translate.js';
 import {space as spaceCase} from 'to-case';
-import Message from '../message';
-import Tab from './tab';
-import Region from './region';
-import Group from './group';
+import Message from '../message.vue';
+import Tab from './tab.vue';
+import Region from './region.vue';
+import Group from './group.vue';
 import {
     ensureArray,
     assign,
@@ -98,7 +98,7 @@ import {
     checkUniqueFieldNames,
     getComponentOption,
     getComponentInitialValue
-} from '../../library/toolkit';
+} from '../../library/toolkit.js';
 
 const Component = Vue.extend({
 

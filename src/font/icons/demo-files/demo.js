@@ -2,18 +2,18 @@ if (!('boxShadow' in document.body.style)) {
     document.body.setAttribute('class', 'noBoxShadow');
 }
 
-document.body.addEventListener("click", function(e) {
+document.body.addEventListener('click', function(e) {
     var target = e.target;
-    if (target.tagName === "INPUT" &&
+    if (target.tagName === 'INPUT' &&
         target.getAttribute('class').indexOf('liga') === -1) {
         target.select();
     }
 });
 
 (function() {
-    var fontSize = document.getElementById('fontSize'),
-        testDrive = document.getElementById('testDrive'),
-        testText = document.getElementById('testText');
+    var fontSize = document.getElementById('fontSize');
+    var testDrive = document.getElementById('testDrive');
+    var testText = document.getElementById('testText');
     function updateTest() {
         testDrive.innerHTML = testText.value || String.fromCharCode(160);
         if (window.icomoonLiga) {

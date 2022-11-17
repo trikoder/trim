@@ -6,9 +6,9 @@
 </template>
 
 <script>
-import base from './base';
-import ElementWrapper from './elementWrapper';
-import {assign} from '../library/toolkit';
+import base from './base.vue';
+import ElementWrapper from './elementWrapper.vue';
+import {assign} from '../library/toolkit.js';
 import CodeMirror from 'codemirror';
 import 'codemirror/mode/htmlmixed/htmlmixed.js';
 import 'codemirror/lib/codemirror.css';

@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import translate from '../library/translate';
+import translate from '../library/translate.js';
 
 export default {
 

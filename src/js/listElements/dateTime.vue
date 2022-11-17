@@ -9,8 +9,8 @@
 
 <script>
 
-import formatDate from '../library/formatDate';
-import base from './base';
+import formatDate from '../library/formatDate.js';
+import base from './base.js';
 
 export default {
 

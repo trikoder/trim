@@ -1,4 +1,4 @@
-import {Model} from 'trim/library/resource';
+import {Model} from 'trim/library/resource.js';
 
 export default {
 

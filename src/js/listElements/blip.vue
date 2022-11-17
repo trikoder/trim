@@ -9,8 +9,8 @@
 
 <script>
 
-import base from './base';
-import {find} from '../library/toolkit';
+import base from './base.js';
+import {find} from '../library/toolkit.js';
 
 export default {
 

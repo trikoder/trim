@@ -1,4 +1,4 @@
-import {each, assignDeep} from '../library/toolkit';
+import {each, assignDeep} from '../library/toolkit.js';
 
 const vueOptions = [
     'props', 'computed', 'watch',

@@ -6,11 +6,11 @@
 </template>
 
 <script>
-import base from './base';
-import ElementWrapper from './elementWrapper';
-import {assign, elementFromString} from '../library/toolkit';
-import {loadApi} from '../library/googleMaps';
-import translate from '../library/translate';
+import base from './base.vue';
+import ElementWrapper from './elementWrapper.vue';
+import {assign, elementFromString} from '../library/toolkit.js';
+import {loadApi} from '../library/googleMaps.js';
+import translate from '../library/translate.js';
 
 export default {
 

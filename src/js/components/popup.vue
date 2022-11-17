@@ -22,8 +22,8 @@
 <script>
 
 import Vue from 'vue';
-import translate from '../library/translate';
-import app from '../app';
+import translate from '../library/translate.js';
+import app from '../app.js';
 
 const PopupComponent = Vue.extend({
 

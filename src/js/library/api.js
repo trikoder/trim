@@ -1,5 +1,5 @@
 import axios from 'axios';
-import bootData from './bootData';
+import bootData from './bootData.js';
 
 const api = axios.create();
 

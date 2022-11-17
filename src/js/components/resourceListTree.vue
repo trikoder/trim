@@ -74,7 +74,7 @@
 </template>
 
 <script>
-import screenSize from '../mixins/screenSize';
+import screenSize from '../mixins/screenSize.js';
 
 export default {
 

@@ -9,10 +9,10 @@
 
 <script>
 
-import {load as loadCkEditor} from '../../library/ckeditor';
-import translate from '../../library/translate';
-import {result} from '../../library/toolkit';
-import '../html';
+import {load as loadCkEditor} from '../../library/ckeditor.js';
+import translate from '../../library/translate.js';
+import {result} from '../../library/toolkit.js';
+import '../html.vue';
 
 const comboName = 'ComponentSelector';
 

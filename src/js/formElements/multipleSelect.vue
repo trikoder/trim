@@ -25,11 +25,11 @@
 </template>
 
 <script>
-import base from './base';
-import {assign} from '../library/toolkit';
-import translate from '../library/translate';
-import {Collection} from '../library/resource';
-import ElementWrapper from './elementWrapper';
+import base from './base.vue';
+import {assign} from '../library/toolkit.js';
+import translate from '../library/translate.js';
+import {Collection} from '../library/resource.js';
+import ElementWrapper from './elementWrapper.vue';
 import Multiselect from 'vue-multiselect';
 
 export default {

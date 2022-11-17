@@ -46,16 +46,16 @@
 </template>
 
 <script>
-import base from './base';
+import base from './base.vue';
 import Vue from 'vue';
-import {assign, ensureArray} from '../library/toolkit';
-import translate from '../library/translate';
-import ElementWrapper from './elementWrapper';
-import {Model} from '../library/resource';
-import loadControllerType from '../library/loadControllerType';
+import {assign, ensureArray} from '../library/toolkit.js';
+import translate from '../library/translate.js';
+import ElementWrapper from './elementWrapper.vue';
+import {Model} from '../library/resource.js';
+import loadControllerType from '../library/loadControllerType.js';
 import {pascal as pascalcase} from 'to-case';
-import {Popup} from '../components/popup';
-import app from '../app';
+import {Popup} from '../components/popup.vue';
+import app from '../app.js';
 
 const Component = Vue.extend({
 

@@ -38,8 +38,8 @@
 </template>
 
 <script>
-import translate from '../library/translate';
-import {assign, each, getComponentInitialValue} from '../library/toolkit';
+import translate from '../library/translate.js';
+import {assign, each, getComponentInitialValue} from '../library/toolkit.js';
 
 export default {
 

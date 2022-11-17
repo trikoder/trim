@@ -12,10 +12,10 @@
 
 <script>
 
-import base from './base';
-import ElementWrapper from './elementWrapper';
-import {load as loadCkEditor} from '../library/ckeditor';
-import {assignDeep} from '../library/toolkit';
+import base from './base.vue';
+import ElementWrapper from './elementWrapper.vue';
+import {load as loadCkEditor} from '../library/ckeditor.js';
+import {assignDeep} from '../library/toolkit.js';
 
 export default {
 

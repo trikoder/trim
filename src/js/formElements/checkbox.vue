@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import base from './base';
-import ElementWrapper from './elementWrapper';
+import base from './base.vue';
+import ElementWrapper from './elementWrapper.vue';
 
 export default {
 

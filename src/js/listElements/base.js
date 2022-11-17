@@ -1,4 +1,4 @@
-import {stripTags, escapeHtml, limitCharacters, limitWords, result} from '../library/toolkit';
+import {stripTags, escapeHtml, limitCharacters, limitWords, result} from '../library/toolkit.js';
 
 export default {
 

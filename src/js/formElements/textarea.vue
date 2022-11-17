@@ -10,9 +10,9 @@
 </template>
 
 <script>
-import base from './base';
-import ElementWrapper from './elementWrapper';
-import {omit} from '../library/toolkit';
+import base from './base.vue';
+import ElementWrapper from './elementWrapper.vue';
+import {omit} from '../library/toolkit.js';
 
 export default {
 

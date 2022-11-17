@@ -55,10 +55,10 @@
 
 <script>
 
-import translate from '../library/translate';
-import {assign} from '../library/toolkit';
+import translate from '../library/translate.js';
+import {assign} from '../library/toolkit.js';
 import vueDismiss from 'vue-dismiss';
-import screenSize from '../mixins/screenSize';
+import screenSize from '../mixins/screenSize.js';
 
 export default {
 

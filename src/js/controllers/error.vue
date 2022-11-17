@@ -10,8 +10,8 @@
 
 <script>
 
-import ResourceHeader from '../components/resourceHeader';
-import translate from '../library/translate';
+import ResourceHeader from '../components/resourceHeader.vue';
+import translate from '../library/translate.js';
 
 export default {
 

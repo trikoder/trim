@@ -1,4 +1,4 @@
-import MainNavigation from './mainNavigation';
+import MainNavigation from './mainNavigation.js';
 
 export default {
     MainNavigation: () => MainNavigation,

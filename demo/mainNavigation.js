@@ -1,6 +1,6 @@
 // import auth from './auth';
 import server from 'apiServer';
-import DummyComponent from './dummy';
+import DummyComponent from './dummy.vue';
 
 export default {
 

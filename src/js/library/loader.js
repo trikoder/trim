@@ -1,4 +1,4 @@
-import {assign} from './toolkit';
+import {assign} from './toolkit.js';
 
 let actions = null;
 let timeouts = [];

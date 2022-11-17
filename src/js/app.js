@@ -1,16 +1,16 @@
 import Vue from 'vue';
-import AppView from './components/appView';
-import AdminDefaultLayout from './layouts/adminDefault';
-import {create as createRouter} from './library/router';
-import {ensureArray} from './library/toolkit';
-import translate from './library/translate';
-import bootData from './library/bootData';
-import browserFeatures from './library/browserFeatures';
-import serviceContainer from './library/serviceContainer';
-import Loader from './library/loader';
-import viewport from './library/viewport';
-import appServices from './appServices';
-import store from './store';
+import AppView from './components/appView.vue';
+import AdminDefaultLayout from './layouts/adminDefault.vue';
+import {create as createRouter} from './library/router.js';
+import {ensureArray} from './library/toolkit.js';
+import translate from './library/translate.js';
+import bootData from './library/bootData.js';
+import browserFeatures from './library/browserFeatures.js';
+import serviceContainer from './library/serviceContainer.js';
+import Loader from './library/loader.js';
+import viewport from './library/viewport.js';
+import appServices from './appServices.js';
+import store from './store.js';
 
 Vue.config.productionTip = false;
 
