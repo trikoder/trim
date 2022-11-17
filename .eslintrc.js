@@ -22,6 +22,7 @@ module.exports = {
   ],
   // add your custom rules here
   rules: {
+    "node/file-extension-in-import": ["error", "always" ],
     // allow async-await
     'generator-star-spacing': 'off',
     // allow debugger during development

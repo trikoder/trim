@@ -20,8 +20,7 @@
     "build:docs": "vuepress build documentation",
     "api:server": "BASE_API_URL=http://localhost:8083/  API_PORT=8083 node ./server/node.js",
     "preview:pages": "node ./server/previewPages.js",
-    "test": "BABEL_ENV=test karma start --single-run --browsers ChromeHeadless",
-    "watch:test": "BABEL_ENV=test karma start --browsers ChromeHeadless"
+    "lint": "eslint 'src/**/*.{js,vue}' 'demo/**/*.{js,vue}' --fix"
   },
   "dependencies": {
     "axios": "^0.19.0",
@@ -52,12 +51,10 @@
     "@babel/core": "^7.4.5",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.4.5",
-    "@vue/test-utils": "^1.0.0-beta.29",
     "autoprefixer": "^9.5.1",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.6",
     "babel-plugin-istanbul": "^5.1.4",
-    "chai": "^4.2.0",
     "css-loader": "^3.0.0",
     "eslint": "^5.16.0",
     "eslint-config-standard": "^14.0.1",
@@ -71,14 +68,6 @@
     "file-loader": "^4.0.0",
     "html-webpack-plugin": "^3.2.0",
     "json-api-shop": "^0.7.2",
-    "karma": "^4.1.0",
-    "karma-chrome-launcher": "^2.2.0",
-    "karma-coverage": "^1.1.2",
-    "karma-mocha": "^1.3.0",
-    "karma-sourcemap-loader": "^0.3.7",
-    "karma-spec-reporter": "0.0.32",
-    "karma-webpack": "^3.0.5",
-    "mocha": "^6.1.4",
     "mout": "^1.2.2",
     "node-sass": "^4.12.0",
     "postcss-import": "^12.0.0",
@@ -98,9 +87,6 @@
     "npm": ">= 3.0.0"
   },
   "browserslist": [
-    "last 8 versions",
-    "Chrome >= 30",
-    "Firefox >= 30",
-    "Explorer >= 9"
+    "last 4 versions"
   ]
 }
