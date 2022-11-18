@@ -42,7 +42,7 @@ import base from './base.vue';
 import ElementWrapper from './elementWrapper.vue';
 import {find, elementMatches, elementIndex} from '../library/toolkit.js';
 import {Model} from '../library/resource.js';
-import ResourceEdit from '../components/resourceEdit';
+import ResourceEdit from '../components/resourceEdit/index.vue';
 
 export default {
 

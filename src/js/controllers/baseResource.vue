@@ -60,7 +60,7 @@ import {confirm} from '../components/dialogModal.vue';
 import ResourceControls from '../components/resourceControls.vue';
 import ResourceHeader from '../components/resourceHeader.vue';
 import ResourceList from '../components/resourceList.vue';
-import ResourceEdit from '../components/resourceEdit';
+import ResourceEdit from '../components/resourceEdit/index.vue';
 import {Model, Collection} from '../library/resource.js';
 import getVueComponentMapper from '../library/getVueComponentMapper.js';
 import headerBorderListener from '../mixins/headerBorderListener.js';

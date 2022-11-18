@@ -35,7 +35,7 @@ import {confirm} from '../components/dialogModal.vue';
 import translate from '../library/translate.js';
 import ResourceControls from '../components/resourceControls.vue';
 import ResourceHeader from '../components/resourceHeader.vue';
-import ResourceEdit from '../components/resourceEdit';
+import ResourceEdit from '../components/resourceEdit/index.vue';
 import {Model} from '../library/resource.js';
 import getVueComponentMapper from '../library/getVueComponentMapper.js';
 import headerBorderListener from '../mixins/headerBorderListener.js';
