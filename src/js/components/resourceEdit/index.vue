@@ -2,6 +2,10 @@
     <component
         :is="tag"
         :autocomplete="this.tag === 'form' ? 'off' : undefined"
+        :class="{withTabs: resolvedDefinitions
+            ? resolvedDefinitions.layout.hasTabs
+            : false
+        }"
         @submit="handleSubmit"
     >
         <message

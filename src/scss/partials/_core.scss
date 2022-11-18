@@ -51,6 +51,28 @@ body {
 
 }
 
+html {
+    /* Works on Firefox */
+    scrollbar-width: none;
+    scrollbar-color: transparent;
+
+    /* Works on Chrome, Edge, and Safari */
+    &::-webkit-scrollbar {
+        width: 0; height: 0;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #000;
+        border-radius: 10px;
+        border: 3px solid transparent;
+        background-clip: content-box;
+    }
+}
+
 //--------------------------------------------------------------
 // Helper classes
 //--------------------------------------------------------------

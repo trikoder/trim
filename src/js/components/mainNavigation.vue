@@ -9,7 +9,7 @@
                 {{ getProjectCaption() }}
             </button>
             <div class="scrollWrapper">
-                <div class="scroller" v-bar>
+                <div class="scroller">
                     <ul class="menu">
                         <li
                             v-for="item in navigationItems"
@@ -112,10 +112,7 @@ import {pickTo} from '../library/toolkit.js';
 import vueDismiss from 'vue-dismiss';
 import serviceContainer from '../library/serviceContainer.js';
 import GlobalEvents from 'vue-global-events';
-import Vuebar from 'vuebar';
 import {pascal as pascalCase} from 'to-case';
-
-Vue.use(Vuebar);
 
 export default Vue.extend({
 
@@ -772,35 +769,6 @@ export default Vue.extend({
 
         }
 
-    }
-
-</style>
-
-<style lang="scss">
-
-    .vb > .vb-dragger {
-
-        transition: opacity 0.2s;
-        z-index: 5; width: 10px; right: 0; box-sizing: border-box; padding: 0.2em;
-        opacity: 0;
-    }
-
-    .vb:hover > .vb-dragger {
-        opacity: 1;
-    }
-
-    .vb > .vb-dragger > .vb-dragger-styler {
-        -webkit-backface-visibility: hidden;
-        backface-visibility: hidden;
-        -webkit-transform: rotate3d(0,0,0,0);
-        transform: rotate3d(0,0,0,0);
-        background-color: rgba(#fff, 0.15);
-        border-radius: 20px;
-        height: 100%;
-    }
-
-    ::-webkit-scrollbar {
-        width: 0; height: 0;
     }
 
 </style>

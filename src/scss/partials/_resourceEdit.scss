@@ -9,6 +9,13 @@
 
         min-height: calc(100vh - 5em);
 
+        &.withTabs {
+            min-height: calc(100vh - 8.8em);
+
+            .editLayoutRegions {
+                min-height: calc(100vh - 8.8em);
+            }
+        }
     }
 
     > .layoutContainer {
