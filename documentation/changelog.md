@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.79.8
+* Change: Update import file paths
+* Change: Update dependencies and scrollbar styles
+
 ## 0.79.7
 * Change: update internal services import paths
 
