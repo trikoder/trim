@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.79.7
+* Change: update internal services import paths
+
 ## 0.79.6
 * Change: update package dependencies
 * Change: refactor styles to support new sass version

@@ -112,7 +112,7 @@ Open up your services file (src/services.js) and add new tag resource controller
 Use dynamic import to load controller code and its dependencies only when controller is actually rendered.
 ```js
 ...
-TagController: () => import('./controllers/tag'),
+TagController: () => import('./controllers/tag.js'),
 ...
 ```
 Done! Read up on [services](/core-concepts-and-api.html#services) if you want to learn more.

@@ -2,12 +2,12 @@ import MainNavigation from './mainNavigation.js';
 
 export default {
     MainNavigation: () => MainNavigation,
-    PageController: () => import('./controllers/page'),
-    ArticleController: () => import('./controllers/article'),
-    TagController: () => import('./controllers/tag'),
-    UserController: () => import('./controllers/user'),
-    CategoryController: () => import('./controllers/category'),
-    MediaController: () => import('./controllers/media'),
-    SnippetController: () => import('./controllers/snippet'),
-    MySettingsController: () => import('./controllers/mySettings')
+    PageController: () => import('./controllers/page.js'),
+    ArticleController: () => import('./controllers/article/index.js'),
+    TagController: () => import('./controllers/tag.js'),
+    UserController: () => import('./controllers/user.js'),
+    CategoryController: () => import('./controllers/category.js'),
+    MediaController: () => import('./controllers/media.js'),
+    SnippetController: () => import('./controllers/snippet.js'),
+    MySettingsController: () => import('./controllers/mySettings.js')
 };

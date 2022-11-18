@@ -395,9 +395,9 @@ A typical service container with navigation and few registered controllers looks
 
 ```js
 export default {
-    MainNavigation: () => import('./controllers/mainNavigation'),
-    PageController: () => import('./controllers/page'),
-    TagController: () => import('./controllers/tag')
+    MainNavigation: () => import('./controllers/mainNavigation.js'),
+    PageController: () => import('./controllers/page.js'),
+    TagController: () => import('./controllers/tag.js')
 };
 ```
 If you need to access service container manually somewhere in your code:

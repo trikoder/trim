@@ -21,15 +21,15 @@ export default {
     // Common components
     MainNavigation: () => MainNavigation,
     BaseMainNavigation: () => MainNavigation,
-    AppSearch: () => import('./components/appSearch'),
+    AppSearch: () => import('./components/appSearch.vue'),
 
     // Controllers
     BaseResourceController: () => BaseResourceController,
-    BaseResourceEditController: () => import('./controllers/baseResourceEdit'),
-    BaseMediaResourceController: () => import('./controllers/baseMediaResource'),
-    BaseNestedResourceController: () => import('./controllers/baseNestedResource'),
-    ErrorController: () => import('./controllers/error'),
-    AuthController: () => import('./controllers/auth'),
+    BaseResourceEditController: () => import('./controllers/baseResourceEdit.vue'),
+    BaseMediaResourceController: () => import('./controllers/baseMediaResource.vue'),
+    BaseNestedResourceController: () => import('./controllers/baseNestedResource.vue'),
+    ErrorController: () => import('./controllers/error.vue'),
+    AuthController: () => import('./controllers/auth.vue'),
 
     // List items
     TextListItem: () => TextListItem,
@@ -38,30 +38,30 @@ export default {
     DateTimeListItem: () => DateTimeListItem,
     BlipListItem: () => BlipListItem,
     ButtonListItem: () => ButtonListItem,
-    MediaListItem: () => import('./listElements/media'),
+    MediaListItem: () => import('./listElements/media.vue'),
     ContextMenuListItem: () => ContextMenuListItem,
 
     // Form elements
     TextFormElement: () => TextFormElement,
-    NumberFormElement: () => import('./formElements/number'),
+    NumberFormElement: () => import('./formElements/number.vue'),
     TextareaFormElement: () => TextareaFormElement,
     CheckboxFormElement: () => CheckboxFormElement,
     SelectFormElement: () => SelectFormElement,
     ExternalAdminFormElement: () => ExternalAdminFormElement,
     IncludedAdminFormElement: () => IncludedAdminFormElement,
-    StateSelectFormElement: () => import('./formElements/stateSelect'),
-    DateFormElement: () => import('./formElements/date'),
-    DateTimeFormElement: () => import('./formElements/dateTime'),
-    HiddenFormElement: () => import('./formElements/hidden'),
-    HtmlFormElement: () => import('./formElements/html'),
-    HtmlComponentsFormElement: () => import('./formElements/htmlComponents'),
-    MapFormElement: () => import('./formElements/map'),
-    MultipleSelectFormElement: () => import('./formElements/multipleSelect'),
-    FileAttachmentFormElement: () => import('./formElements/fileAttachment'),
-    MediaPreviewFormElement: () => import('./formElements/mediaPreview'),
-    MediaFormElement: () => import('./formElements/media'),
-    NestedSelectFormElement: () => import('./formElements/nestedSelect'),
-    CodeFormElement: () => import('./formElements/code'),
-    ColorFormElement: () => import('./formElements/color')
+    StateSelectFormElement: () => import('./formElements/stateSelect.vue'),
+    DateFormElement: () => import('./formElements/date.vue'),
+    DateTimeFormElement: () => import('./formElements/dateTime.vue'),
+    HiddenFormElement: () => import('./formElements/hidden.vue'),
+    HtmlFormElement: () => import('./formElements/html.vue'),
+    HtmlComponentsFormElement: () => import('./formElements/htmlComponents/index.vue'),
+    MapFormElement: () => import('./formElements/map.vue'),
+    MultipleSelectFormElement: () => import('./formElements/multipleSelect.vue'),
+    FileAttachmentFormElement: () => import('./formElements/fileAttachment.vue'),
+    MediaPreviewFormElement: () => import('./formElements/mediaPreview.vue'),
+    MediaFormElement: () => import('./formElements/media.vue'),
+    NestedSelectFormElement: () => import('./formElements/nestedSelect/index.vue'),
+    CodeFormElement: () => import('./formElements/code.vue'),
+    ColorFormElement: () => import('./formElements/color.vue')
 
 };
