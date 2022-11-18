@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.79.9
+* Change: Update vue dependencies (to 2.7)
+
 ## 0.79.8
 * Change: Update import file paths
 * Change: Update dependencies and scrollbar styles
