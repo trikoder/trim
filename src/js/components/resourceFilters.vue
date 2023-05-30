@@ -8,7 +8,7 @@
         <div class="inner" ref="container">
             <component
                 v-for="definition in definitions"
-                :is="definition.Type"
+                :is="toComponent(definition.Type)"
                 v-bind="definition.options"
                 v-model="filters[definition.options.name]"
                 :key="definition.options.name"

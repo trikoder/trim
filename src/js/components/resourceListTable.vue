@@ -43,7 +43,7 @@
                     :class="getCellClass(definition)"
                 >
                     <component
-                        :is="definition.Type"
+                        :is="toComponent(definition.Type)"
                         :resourceModel="model"
                         v-bind="definition.options"
                     ></component>
