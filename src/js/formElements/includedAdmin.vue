@@ -77,7 +77,8 @@ export default {
         },
         models: {
             handler: 'syncRows',
-            immediate: true
+            immediate: true,
+            deep: true
         }
     },
 
