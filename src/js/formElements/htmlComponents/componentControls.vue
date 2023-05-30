@@ -1,9 +1,9 @@
 <template>
     <div class="componentControls">
-        <template v-for="(control, index) in controls">
+        <template v-for="(control, index) in controls" :key="index">
             <button
                 type="button" class="buttonControl nBtn icr" :class="getIconClass(control)"
-                :key="index" :title="control.caption"
+                :title="control.caption"
                 :data-sort-handle="control.isSortHandle ? 'true' : null"
                 @click="runControlAction(control)"
             >{{ control.caption }}</button>

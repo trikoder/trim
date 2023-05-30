@@ -29,7 +29,7 @@ export default {
 
     },
 
-    beforeDestroy() {
+    beforeUnmount() {
 
         this.dropzone && this.dropzone.destroy();
 

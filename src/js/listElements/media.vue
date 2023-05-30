@@ -113,7 +113,7 @@ export default {
 
     },
 
-    beforeDestroy() {
+    beforeUnmount() {
 
         if (this.lightbox) {
             this.lightbox.destroy();
@@ -148,7 +148,7 @@ export default {
 
             this.lightbox = SimpleLightbox.open({
                 items: [this.largeImageUrl],
-                beforeDestroy: () => { delete this.lightbox; }
+                beforeUnmount: () => { delete this.lightbox; }
             });
 
         }

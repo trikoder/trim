@@ -8,7 +8,7 @@ export default {
 
     },
 
-    beforeDestroy() {
+    beforeUnmount() {
 
         this.removeHeaderScrollListener();
 

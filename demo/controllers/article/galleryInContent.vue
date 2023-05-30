@@ -94,7 +94,7 @@ export default {
 
     },
 
-    beforeDestroy() {
+    beforeUnmount() {
 
         if (this.drake) {
             this.drake.destroy();
