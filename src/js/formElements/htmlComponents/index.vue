@@ -18,7 +18,7 @@
                     v-else
                     v-bind="componentConfig"
                     :context="context"
-                    :is="getComponent(componentConfig)"
+                    :is="toComponent(getComponent(componentConfig))"
                     :key="componentConfig.clientId"
                     ref="componentInstances"
                     class="htmlCustomComponent"

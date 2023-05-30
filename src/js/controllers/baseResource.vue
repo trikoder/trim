@@ -1,7 +1,7 @@
 <template>
     <div class="resourceController" :class="cssClass">
         <component
-            :is="getResourceHeaderType()"
+            :is="toComponent(getResourceHeaderType())"
             :breadcrumbs="breadcrumbs"
             :hasBottomBorder="headerHasBorder"
         >
@@ -9,7 +9,7 @@
         </component>
         <component
             v-if="currentContext === 'index'"
-            :is="getResourceListType()"
+            :is="toComponent(getResourceListType())"
             :query="indexQuery"
             :configure="getIndexConfigurator()"
             :Collection="getCollectionType()"
@@ -30,7 +30,7 @@
         ></component>
         <component class="resourceEdit resourceEditType1"
             v-if="currentContext === 'create' || currentContext === 'edit'"
-            :is="getResourceEditType()"
+            :is="toComponent(getResourceEditType())"
             :ModelType="getModelType()"
             :configure="getEditConfigurator()"
             :resourceId="editResourceId"

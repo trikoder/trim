@@ -1,15 +1,15 @@
 <template>
     <div class="resourceController" :class="cssClass">
         <component
-            :is="getResourceHeaderType()"
+            :is="toComponent(getResourceHeaderType())"
             :breadcrumbs="breadcrumbs"
             :hasBottomBorder="headerHasBorder"
         >
-            <component :is="getResourceControlsType()" :controls="resourceControls"></component>
+            <component :is="toComponent(getResourceControlsType())" :controls="resourceControls"></component>
         </component>
         <component class="resourceEdit resourceEditType1"
             v-if="resourceModel"
-            :is="getResourceEditType()"
+            :is="toComponent(getResourceEditType())"
             :ModelType="getModelType()"
             :configure="getEditConfigurator()"
             :model="resourceModel"

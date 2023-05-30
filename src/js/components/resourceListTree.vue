@@ -63,7 +63,7 @@
                         ></button>
                     </template>
                     <component
-                        :is="definition.Type"
+                        :is="toComponent(definition.Type)"
                         :resourceModel="item.model"
                         v-bind="definition.options"
                     ></component>
