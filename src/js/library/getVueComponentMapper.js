@@ -37,7 +37,8 @@ export default function(params) {
             data() {
                 return assignDeep({}, data);
             },
-            methods
+            methods,
+            render: Parent.render
         }));
 
     };
