@@ -130,7 +130,7 @@ const Component = Vue.extend({
 
     },
 
-    beforeDestroy() {
+    beforeUnmount() {
 
         this.popup && this.popup.close();
 

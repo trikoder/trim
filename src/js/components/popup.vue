@@ -73,7 +73,7 @@ const PopupComponent = Vue.extend({
 
     },
 
-    destroyed() {
+    unmounted() {
 
         this.$store.commit('removePopup');
 
