@@ -1,6 +1,7 @@
 {
   "name": "@trikoder/trim",
-  "version": "0.79.10",
+  "version": "0.79.9",
+  "type": "module",
   "description": "UI framework for building headless content management systems that connect to json:api powered backend.",
   "homepage": "https://trikoder.github.io/trim/",
   "repository": {
@@ -20,9 +21,11 @@
     "build:docs": "vuepress build documentation",
     "api:server": "BASE_API_URL=http://localhost:8083/  API_PORT=8083 node ./server/node.js",
     "preview:pages": "node ./server/previewPages.js",
-    "lint": "eslint 'src/**/*.{js,vue}' 'demo/**/*.{js,vue}' --fix"
+    "lint": "eslint '{src,demo,server,documentation}/**/*.{js,vue}' '{webpack.config,.babelrc,.eslintrc,karma.conf}.{js,cjs}' --fix",
+    "prepare": "husky install"
   },
   "dependencies": {
+    "@vue/compat": "^3.3.4",
     "axios": "^1.1.3",
     "ckeditor": "^4.11.4",
     "codemirror": "^5.65.9",
@@ -33,58 +36,66 @@
     "fuse.js": "^3.4.4",
     "google-maps": "^3.3.0",
     "json-api-resource": "^0.8.0",
+    "mitt": "^3.0.0",
     "normalize.css": "^8.0.0",
     "simple-lightbox": "^2.0.1",
     "to-case": "^2.0.0",
     "translate-js": "^1.2.0",
-    "vue": "^2.7.14",
+    "vue": "^3.3.4",
     "vue-date-pick": "^1.5.1",
-    "vue-dismiss": "^1.2.1",
-    "vue-global-events": "^1.1.2",
-    "vue-multiselect": "^2.1.6",
-    "vue-router": "^3.1.2",
-    "vuex": "^3.6.2"
+    "vue-dismiss": "^1.2.2",
+    "vue-global-events": "^2.1.1",
+    "vue-multiselect": "^3.0.0-beta.2",
+    "vue-router": "^4.2.2",
+    "vuex": "^4.1.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.5",
+    "@babel/core": "^7.22.1",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-    "@babel/preset-env": "^7.4.5",
-    "autoprefixer": "^9.5.1",
+    "@babel/preset-env": "^7.22.4",
     "babel-eslint": "^10.0.1",
-    "babel-loader": "^8.0.6",
+    "babel-loader": "^9.1.2",
     "babel-plugin-istanbul": "^5.1.4",
-    "css-loader": "^3.0.0",
-    "eslint": "^5.16.0",
-    "eslint-config-standard": "^14.0.1",
-    "eslint-loader": "^2.1.2",
-    "eslint-plugin-import": "^2.17.2",
-    "eslint-plugin-node": "^9.0.1",
-    "eslint-plugin-promise": "^4.1.1",
-    "eslint-plugin-standard": "^4.0.0",
-    "eslint-plugin-vue": "^5.2.2",
+    "css-loader": "^6.8.1",
+    "eslint": "^8.41.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-standard": "^5.0.0",
+    "eslint-plugin-vue": "^9.14.1",
     "express": "^4.17.0",
-    "file-loader": "^4.0.0",
-    "html-webpack-plugin": "^3.2.0",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.1",
+    "husky": "^8.0.3",
     "json-api-shop": "^0.7.2",
-    "mout": "^1.2.2",
-    "postcss-import": "^12.0.0",
-    "postcss-loader": "^3.0.0",
-    "sass": "^1.56.1",
-    "sass-loader": "^7.1.0",
-    "sass-resources-loader": "^2.0.0",
-    "url-loader": "^2.0.0",
-    "vue-loader": "^15.10.0",
+    "lint-staged": "^13.2.2",
+    "mout": "^1.2.4",
+    "patch-package": "^7.0.0",
+    "postcss-loader": "^7.3.2",
+    "postcss-preset-env": "^8.4.1",
+    "sass": "^1.62.1",
+    "sass-loader": "^13.3.1",
+    "url-loader": "^4.1.1",
+    "vue-loader": "^17.1.2",
     "vue-server-renderer": "^2.7.14",
-    "vuepress": "^0.14.11",
-    "webpack": "^4.32.0",
-    "webpack-cli": "^3.3.2",
-    "webpack-dev-server": "^3.4.1"
+    "vue-style-loader": "^4.1.3",
+    "vuepress": "^2.0.0-beta.62",
+    "webpack": "^5.84.1",
+    "webpack-cli": "^5.1.1",
+    "webpack-dev-server": "^4.15.0"
   },
   "engines": {
-    "node": ">= 6.0.0",
-    "npm": ">= 3.0.0"
+    "node": ">= 16.0.0",
+    "npm": ">= 8.0.0"
   },
   "browserslist": [
     "last 4 versions"
-  ]
+  ],
+  "lint-staged": {
+    "*.{js,vue}": [
+      "eslint --fix"
+    ]
+  }
 }

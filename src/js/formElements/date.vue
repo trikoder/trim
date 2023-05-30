@@ -32,7 +32,7 @@
 import base from './base.vue';
 import translate from '../library/translate.js';
 import ElementWrapper from './elementWrapper.vue';
-import DatePick from 'vue-date-pick';
+import DatePick from 'vue-date-pick/src/vueDatePick.vue';
 
 export default {
 

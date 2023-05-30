@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     dest: 'docs',
     title: 'Trikoder Trim',
     description: 'Responsive UI framework for building content management systems with simple authoring api. Designed to run as a browser application connected to json:api powered backend.',

@@ -1,16 +1,16 @@
-const webpackConfig = require('./webpack.config.js');
+import webpackConfig from './webpack.config.js';
 
 delete webpackConfig.entry;
 delete webpackConfig.output;
 
-module.exports = function(config) {
+export default function(config) {
 
     config.set({
 
         frameworks: ['mocha'],
 
         files: [
-          'spec/**/*.spec.js'
+            'spec/**/*.spec.js'
         ],
 
         preprocessors: {

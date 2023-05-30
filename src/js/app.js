@@ -1,4 +1,4 @@
-import Vue from 'vue';
+import {createApp, h} from 'vue';
 import AppView from './components/appView.vue';
 import AdminDefaultLayout from './layouts/adminDefault.vue';
 import {create as createRouter} from './library/router.js';
@@ -11,8 +11,6 @@ import Loader from './library/loader.js';
 import viewport from './library/viewport.js';
 import appServices from './appServices.js';
 import store from './store.js';
-
-Vue.config.productionTip = false;
 
 Loader.setActions({
     onActivate: () => store.commit('loading', true),
@@ -50,13 +48,12 @@ const api = {
             router.controller('*', 'error', 'Error@pageNotFound');
 
             /* eslint-disable no-new */
-            this.rootView = new Vue({
-                el: '#app',
-                router,
-                store,
-                components: {AppView},
-                render: h => h(AppView)
-            });
+            this.rootView = createApp(AppView);
+
+            this.rootView.use(router);
+            this.rootView.use(store);
+
+            this.rootView.mount('#app');
 
         });
 
