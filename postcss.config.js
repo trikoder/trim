@@ -1,6 +1,5 @@
-module.exports = {
+export default {
     plugins: {
-        'autoprefixer': {},
-        'postcss-import': {}
+        'postcss-preset-env': {}
     }
 };
