@@ -423,7 +423,7 @@ export default Vue.extend({
 
         getAdditionalComponent(key) {
 
-            return this.additionalComponents && this.additionalComponents[key];
+            return 'additionalComponents' in this && this.additionalComponents[key];
 
         },
 
