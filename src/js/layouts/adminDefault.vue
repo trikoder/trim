@@ -17,6 +17,7 @@
 
 <script>
 
+import {defineAsyncComponent} from 'vue';
 import serviceContainer from '../library/serviceContainer.js';
 import loadControllerType from '../library/loadControllerType.js';
 import Loader from '../components/loader.vue';
@@ -24,7 +25,7 @@ import Loader from '../components/loader.vue';
 export default {
 
     components: {
-        MainNavigation: () => serviceContainer.get('MainNavigation').then(MainNavigation => {
+        MainNavigation: defineAsyncComponent(() => serviceContainer.get('MainNavigation').then(MainNavigation => {
 
             return MainNavigation.getNavigationItems
                 ? serviceContainer.get('BaseMainNavigation').then(
@@ -33,7 +34,7 @@ export default {
                 : MainNavigation
             ;
 
-        }),
+        })),
         Loader
     },
 
