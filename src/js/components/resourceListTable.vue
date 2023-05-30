@@ -45,7 +45,7 @@
                     v-if="!definition.isColumnHidden"
                 >
                     <component
-                        :is="definition.Type"
+                        :is="toComponent(definition.Type)"
                         :resourceModel="model"
                         v-bind="definition.options"
                     ></component>

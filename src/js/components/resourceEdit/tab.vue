@@ -21,7 +21,7 @@
             <component
                 v-if="key === 'fields'"
                 v-for="field in config"
-                :is="field.Type"
+                :is="toComponent(field.Type)"
                 v-bind="field.options"
                 v-model="formData[field.options.name]"
                 :visible="isFieldVisible(field)"

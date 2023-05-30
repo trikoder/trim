@@ -1,4 +1,4 @@
-import {createApp, h} from 'vue';
+import {createApp, toRaw} from 'vue';
 import AppView from './components/appView.vue';
 import AdminDefaultLayout from './layouts/adminDefault.vue';
 import {create as createRouter} from './library/router.js';
@@ -49,6 +49,10 @@ const api = {
 
             /* eslint-disable no-new */
             this.rootView = createApp(AppView);
+
+            this.rootView.config.globalProperties.toComponent = function (component) {
+                return toRaw(component);
+            }
 
             this.rootView.use(router);
             this.rootView.use(store);

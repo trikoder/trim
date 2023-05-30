@@ -1,15 +1,15 @@
 <template>
     <div class="resourceController" :class="cssClass">
         <component
-            :is="getResourceHeaderType()"
+            :is="toComponent(getResourceHeaderType())"
             :breadcrumbs="breadcrumbs"
             :hasBottomBorder="headerHasBorder"
         >
-            <component :is="getResourceControlsType()" :controls="currentResourceControls"></component>
+            <component :is="toComponent(getResourceControlsType())" :controls="currentResourceControls"></component>
         </component>
         <component
             v-if="currentContext === 'index'"
-            :is="getResourceListType()"
+            :is="toComponent(getResourceListType())"
             :query="indexQuery"
             :configure="getIndexConfigurator()"
             :Collection="getCollectionType()"
@@ -27,7 +27,7 @@
         ></component>
         <component class="resourceEdit resourceEditType1"
             v-else-if="isStandardEditContext"
-            :is="getResourceEditType()"
+            :is="toComponent(getResourceEditType())"
             :ModelType="getModelType()"
             :configure="getEditConfigurator()"
             :resourceId="editResourceId"

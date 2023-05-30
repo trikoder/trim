@@ -45,7 +45,7 @@
         }">
             <component
                 v-if="modelsPresent"
-                :is="getListTemplateType()"
+                :is="toComponent(getListTemplateType())"
                 :modelCollection="modelCollection"
                 :definitions="resolvedDefinitions"
                 :allModelsAreSelected="allModelsAreSelected"
