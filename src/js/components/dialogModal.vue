@@ -22,12 +22,12 @@
 
 <script>
 
-import Vue from 'vue';
 import translate from '../library/translate.js';
 import {assign, isPlainObject} from '../library/toolkit.js';
 import app from '../app.js';
+import addModal from '../library/addModal.js';
 
-const Component = Vue.extend({
+const Component = {
 
     props: {
         message: {type: String, default: () => translate('prompt.defaultMessage')},
@@ -42,6 +42,10 @@ const Component = Vue.extend({
     mounted() {
 
         this.$refs.acceptBtn.focus();
+
+        this.$watch('$route', () => {
+            this.remove();
+        });
 
     },
 
@@ -61,25 +65,15 @@ const Component = Vue.extend({
 
         },
 
-        open() {
-
-            this.$mount();
-            document.body.appendChild(this.$el);
-            return this;
-
-        },
-
         remove() {
 
-            document.body.removeChild(this.$el);
-            this.$destroy();
-            return this;
+            this.$emit('closeModal');
 
         }
 
     }
 
-});
+};
 
 export default Component;
 
@@ -95,10 +89,11 @@ export function confirm(message, onAccept, config) {
         params = assign({}, config, {message, onAccept});
     }
 
-    return new Component({
-        propsData: params,
-        parent: params.parent || app.rootView
-    }).open();
+    return addModal({
+        props: () => params,
+        component: () => Component,
+        parent: () => params.parent || app.rootView
+    });
 
 }
 

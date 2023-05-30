@@ -487,31 +487,19 @@ export default Vue.extend({
 
         setupAppSearch() {
 
-            if (!this.setupAppSearchPromise) {
-
-                this.setupAppSearchPromise = serviceContainer.get(
-                    'AppSearch'
-                ).then(AppSearch => {
-
-                    return new AppSearch({
-                        propsData: {
-                            getSearchItems: query => this.getSearchItems(query)
-                        },
-                        parent: this
-                    });
-
-                });
-            }
-
-            return this.setupAppSearchPromise;
+            serviceContainer.get(
+                'AppSearch'
+            ).then(AppSearch => {
+                return AppSearch.open({
+                    getSearchItems: query => this.getSearchItems(query)
+                }, this);
+            });
 
         },
 
         showSearch() {
 
-            this.setupAppSearch().then(
-                appSearch => appSearch.open()
-            );
+            this.setupAppSearch();
 
             return this;
 
