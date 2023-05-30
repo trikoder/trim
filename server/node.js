@@ -1,6 +1,6 @@
-const ExpressServer = require('json-api-shop/servers/express');
-const MemoryAdapter = require('json-api-shop/adapters/memory');
-const resources = require('./resources');
+import ExpressServer from 'json-api-shop/servers/express.js';
+import MemoryAdapter from 'json-api-shop/adapters/memory.js';
+import resources from './resources.js';
 
 const Server = ExpressServer.extend({
 
@@ -19,7 +19,7 @@ const Server = ExpressServer.extend({
 
 });
 
-module.exports = new Server({
+export default new Server({
     port: process.env.API_PORT,
     databaseAdapter: MemoryAdapter,
     resources: resources

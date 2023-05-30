@@ -111,7 +111,7 @@ import Vue from 'vue';
 import {pickTo} from '../library/toolkit.js';
 import vueDismiss from 'vue-dismiss';
 import serviceContainer from '../library/serviceContainer.js';
-import GlobalEvents from 'vue-global-events';
+import {GlobalEvents} from 'vue-global-events';
 import {pascal as pascalCase} from 'to-case';
 
 export default Vue.extend({

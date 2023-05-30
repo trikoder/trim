@@ -1,11 +1,11 @@
-const path = require('path');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
+import {promises as fs} from 'fs';
+import webpack from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import {VueLoaderPlugin} from 'vue-loader';
 const isProduction = process.env.NODE_ENV === 'production';
-const currentVersion = require('./package.json').version;
+const currentVersion = JSON.parse(await fs.readFile(new URL('./package.json', import.meta.url), 'utf8')).version;
 
-module.exports = {
+export default {
 
     mode: isProduction ? 'production' : 'development',
 
@@ -13,8 +13,8 @@ module.exports = {
 
     output: {
         path: isProduction
-            ? path.resolve(__dirname, 'docs/demo') + '/'
-            : path.resolve(__dirname, 'dist') + '/'
+            ? new URL('docs/demo', import.meta.url).pathname + '/'
+            : new URL('dist', import.meta.url).pathname + '/'
         ,
         filename: 'js/demo.[hash].js',
         publicPath: isProduction ? '/trim/demo/' : '/'
@@ -36,14 +36,13 @@ module.exports = {
                     'vue-style-loader',
                     'css-loader',
                     'postcss-loader',
-                    'sass-loader',
                     {
-                        loader: 'sass-resources-loader',
+                        loader: 'sass-loader',
                         options: {
-                            resources: [
-                                './demo/scss/_variables.scss',
-                                './src/scss/library/_all.scss'
-                            ]
+                            additionalData: `
+                                @import 'demo/scss/variables';
+                                @import 'src/scss/library/all';
+                            `,
                         }
                     }
                 ],
@@ -53,36 +52,22 @@ module.exports = {
                 loader: 'vue-loader'
             },
             {
-                test: /\.(js|vue)$/,
-                loader: 'eslint-loader',
-                enforce: 'pre',
-                include: [
-                    path.join(__dirname, 'src'),
-                    path.join(__dirname, 'demo'),
-                    path.join(__dirname, 'spec')
-                ],
-            },
-            {
                 test: /\.js$/,
                 loader: 'babel-loader',
                 include: [
-                    path.join(__dirname, 'src'),
-                    path.join(__dirname, 'src/demo')
+                    new URL('src', import.meta.url).pathname,
+                    new URL('src/demo', import.meta.url).pathname
                 ]
             },
             {
                 test: /\.(png|jpg|gif|svg)$/,
-                loader: 'file-loader',
-                options: {
-                    name: 'images/[name].[ext]?[hash]'
-                }
+                type: 'asset/resource'
             },
             {
                 test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-                loader: 'url-loader',
-                options: {
-                    limit: 10000,
-                    name: 'fonts/[name].[hash:7].[ext]'
+                type: 'asset/resource',
+                generator: {
+                    filename: 'fonts/[name].[hash:7].[ext]'
                 }
             }
         ]
@@ -91,12 +76,12 @@ module.exports = {
     resolve: {
 
         alias: {
-            'vue$': 'vue/dist/vue.esm.js',
-            'trim': path.join(__dirname, 'src/js'),
-            'apiServer': path.join(__dirname,  process.env.CLIENT_API_ENABLED
+            vue: '@vue/compat/dist/vue.esm-bundler.js',
+            'trim': new URL('src/js', import.meta.url).pathname,
+            'apiServer': new URL(process.env.CLIENT_API_ENABLED
                 ? 'server/client.js'
                 : 'server/nodePlaceholder.js'
-            )
+            , import.meta.url).pathname
         },
 
         extensions: ['*', '.js', '.vue', '.json']
@@ -104,9 +89,7 @@ module.exports = {
     },
 
     devServer: {
-        historyApiFallback: true,
-        noInfo: false,
-        overlay: true
+        historyApiFallback: true
     },
 
     performance: {
@@ -123,7 +106,9 @@ module.exports = {
                 BASE_API_URL: JSON.stringify(process.env.BASE_API_URL),
                 NODE_ENV: JSON.stringify(isProduction ? 'production' : 'development'),
                 PACKAGE_VERSION: JSON.stringify(currentVersion)
-            }
+            },
+            '__VUE_OPTIONS_API__': JSON.stringify(true),
+            '__VUE_PROD_DEVTOOLS__': JSON.stringify(false),
         }),
 
         new HtmlWebpackPlugin({

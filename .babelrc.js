@@ -1,9 +1,6 @@
-module.exports = {
+export default {
   "presets": [
-    ["@babel/preset-env", {"modules": false}],
-  ],
-  "plugins": [
-    "@babel/plugin-syntax-dynamic-import"
+    "@babel/preset-env"
   ],
   "env": {
     "test": {

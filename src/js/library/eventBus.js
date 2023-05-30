@@ -1,15 +1,17 @@
-import Vue from 'vue';
+import mitt from 'mitt';
 
-const eventBus = new Vue();
+const emitter = mitt();
 
-export function publish(eventName, data) {
-    eventBus.$emit(eventName, data);
+function publish(eventName, data) {
+    emitter.emit(eventName, data);
 }
 
-export function subscribe(eventName, listener) {
-    eventBus.$on(eventName, listener);
+function subscribe(eventName, callback) {
+    emitter.on(eventName, callback);
 }
 
-export function unsubscribe(eventName, listener) {
-    eventBus.$off(eventName, listener);
+function unsubscribe(eventName, callback) {
+    emitter.off(eventName, callback);
 }
+
+export {publish, subscribe, unsubscribe};

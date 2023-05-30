@@ -1,8 +1,8 @@
-const contains = require('mout/string/contains');
-const get = require('mout/object/get');
-const range = require('mout/array/range');
-const randBool = require('mout/random/randBool');
-const randInt = require('mout/random/randInt');
+import contains from 'mout/string/contains.js';
+import get from 'mout/object/get.js';
+import range from 'mout/array/range.js';
+import randBool from 'mout/random/randBool.js';
+import randInt from 'mout/random/randInt.js';
 const randId = (start, end) => randInt(start, end).toString();
 const attributeIncludes = (resource, attribute, text) => {
     return contains(
@@ -11,7 +11,7 @@ const attributeIncludes = (resource, attribute, text) => {
     );
 }
 
-module.exports = {
+export default {
     article: {
         fieldsSchema: ({action}) => ({
             attributes: {

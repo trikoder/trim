@@ -3,8 +3,8 @@
         <multiselect
             v-if="optionElements.length"
             v-bind="inputAttributes"
-            :value="selectedOptionElements"
-            @input="processInputEvent"
+            :model-value="selectedOptionElements"
+            @update:model-value="processInputEvent"
             :options="optionElements"
             :multiple="true"
             :close-on-select="false"
@@ -150,7 +150,7 @@ export default {
 </script>
 
 <style>
-    @import url('vue-multiselect/dist/vue-multiselect.min.css');
+    @import url('vue-multiselect/dist/vue-multiselect.css');
 </style>
 
 <style lang="scss" scoped>

@@ -1,5 +1,4 @@
-import Vue from 'vue';
-import Router from 'vue-router';
+import {createRouter, createWebHistory, createWebHashHistory} from 'vue-router';
 import AdminDefault from '../layouts/adminDefault.vue';
 import {assign} from './toolkit.js';
 import bootData from './bootData.js';
@@ -7,21 +6,13 @@ import {slug as slugcase, pascal as pascalcase} from 'to-case';
 
 let routerInstance;
 
-Vue.use(Router);
-
-if (!Router.prototype.addRoute) {
-    Router.prototype.addRoute = function(config) {
-        return this.addRoutes([config]);
-    };
-}
-
-assign(Router.prototype, {
+const routerParams = {
 
     controller(path, name, params) {
 
         this.addRoute({
             path: '/' + path,
-            name: name,
+            name,
             component: AdminDefault,
             meta: {requiresAuth: true},
             props: route => {
@@ -35,7 +26,7 @@ assign(Router.prototype, {
                 return {
                     controller: {
                         name: controllerName,
-                        method: method,
+                        method,
                         params: route.params,
                         query: route.query
                     }
@@ -96,14 +87,16 @@ assign(Router.prototype, {
             hasIndexRoute: true,
             hasCreateRoute: true,
             hasEditRoute: true
-        }, typeof name === 'string' ? {
-            name: name,
-            urlFragment: slugcase(name),
-            controller: pascalcase(name)
-        } : assign({
-            urlFragment: slugcase(name.name),
-            controller: pascalcase(name.name)
-        }, name));
+        }, typeof name === 'string'
+            ? {
+                name,
+                urlFragment: slugcase(name),
+                controller: pascalcase(name)
+            }
+            : assign({
+                urlFragment: slugcase(name.name),
+                controller: pascalcase(name.name)
+            }, name));
 
         if (params.hasIndexRoute) {
             this.controller(
@@ -150,7 +143,7 @@ assign(Router.prototype, {
 
     }
 
-});
+};
 
 export function getInstance() {
 
@@ -160,10 +153,19 @@ export function getInstance() {
 
 export function create() {
 
-    routerInstance = new Router({
-        mode: bootData('usesPushState', true) ? 'history' : 'hash',
-        base: bootData('baseUrl', '/')
+    routerInstance = createRouter({
+        history: bootData('usesPushState', true) ? createWebHistory() : createWebHashHistory(),
+        base: bootData('baseUrl', '/'),
+        routes: []
     });
+
+    if (!routerInstance.addRoute) {
+        routerInstance.addRoute = function(config) {
+            return this.addRoutes([config]);
+        };
+    }
+
+    routerInstance = assign(routerInstance, routerParams);
 
     return routerInstance;
 
