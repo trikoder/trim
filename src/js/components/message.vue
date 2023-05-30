@@ -51,7 +51,7 @@ export default {
 
     },
 
-    beforeDestroy() {
+    beforeUnmount() {
 
         this.closeTimeout && clearTimeout(this.closeTimeout);
 

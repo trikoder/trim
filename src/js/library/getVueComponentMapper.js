@@ -5,7 +5,7 @@ const vueOptions = [
     'template', 'render', 'renderError',
     'beforeCreate', 'created', 'beforeMount', 'mounted',
     'beforeUpdate', 'updated', 'activated', 'deactivated',
-    'beforeDestroy', 'destroyed', 'errorCaptured'
+    'beforeUnmount', 'unmounted', 'errorCaptured'
 ];
 
 const deprecatedDataOptions = {

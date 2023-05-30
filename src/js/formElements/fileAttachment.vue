@@ -122,7 +122,7 @@ export default {
 
     },
 
-    beforeDestroy() {
+    beforeUnmount() {
 
         if (this.lightbox) {
             this.lightbox.destroy();
@@ -223,7 +223,7 @@ export default {
 
             this.lightbox = SimpleLightbox.open({
                 items: [this.clientThumbnail || this.fileUrl],
-                beforeDestroy: () => { delete this.lightbox; }
+                beforeUnmount: () => { delete this.lightbox; }
             });
 
         },

@@ -155,7 +155,7 @@ export default Vue.extend({
 
     },
 
-    destroyed() {
+    unmounted() {
 
         this.removeStoreData();
 

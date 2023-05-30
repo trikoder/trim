@@ -80,7 +80,7 @@ export default {
 
     },
 
-    beforeDestroy() {
+    beforeUnmount() {
 
         if (this.resizeListener) {
             window.removeEventListener('resize', this.resizeListener);
