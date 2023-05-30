@@ -7,8 +7,12 @@ export default {
         caption: {type: String, required: true},
         prependCaption: {type: Boolean, default: false},
         mapTo: {type: [String, Function], required: true},
+        stripTags: {type: Boolean, default: false},
+        escapeHtml: {type: Boolean, default: false},
+        limitCharacters: {type: [Boolean, Number], default: false},
+        limitWords: {type: [Boolean, Number], default: false},
         attributes: {type: Object, default: () => ({})},
-        cellClass: {type: String}
+        cellClass: {type: String},
     },
 
     computed: {
@@ -21,7 +25,12 @@ export default {
 
         classAttribute() {
 
-            return this.attributes.class || this.defaultClass;
+            let defaultClass = '';
+            if ('defaultClass' in this) {
+                defaultClass = this.defaultClass;
+            }
+
+            return this.attributes.class || defaultClass;
 
         }
 
