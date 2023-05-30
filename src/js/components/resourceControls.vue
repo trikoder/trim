@@ -76,10 +76,13 @@ export default {
 
     watch: {
 
-        controls() {
+        controls: {
+            handler() {
 
-            this.parsedControls = this.parseControls();
+                this.parsedControls = this.parseControls();
 
+            },
+            deep: true
         }
 
     },

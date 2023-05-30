@@ -94,7 +94,7 @@ export default {
                 });
             }
 
-        }, {immediate: true});
+        }, {immediate: true, deep: true});
 
         if (this.value.length === 0) {
 
