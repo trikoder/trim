@@ -29,7 +29,9 @@ export default {
 
             return MainNavigation.getNavigationItems
                 ? serviceContainer.get('BaseMainNavigation').then(
-                    BaseMainNavigation => BaseMainNavigation.extend({methods: MainNavigation})
+                    BaseMainNavigation => {
+                        return BaseMainNavigation.extend({methods: MainNavigation, render: BaseMainNavigation.render})
+                    }
                 )
                 : MainNavigation
             ;
