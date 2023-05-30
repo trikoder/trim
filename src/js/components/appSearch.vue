@@ -36,10 +36,10 @@
 
 <script>
 
-import Vue from 'vue';
+import addModal from '../library/addModal.js';
 import vueDismiss from 'vue-dismiss';
 
-export default Vue.extend({
+const Component = {
 
     mixins: [vueDismiss],
 
@@ -71,6 +71,14 @@ export default Vue.extend({
 
         }
 
+    },
+
+    mounted() {
+        this.open();
+
+        this.$watch('$route', () => {
+            this.close();
+        });
     },
 
     methods: {
@@ -149,8 +157,6 @@ export default Vue.extend({
         open() {
 
             if (!this.isOpened) {
-                this.$mount();
-                document.body.appendChild(this.$el);
                 this.isOpened = true;
                 this.$refs.input.focus();
             }
@@ -164,9 +170,10 @@ export default Vue.extend({
             if (this.isOpened) {
                 this.query = '';
                 this.selectedItemIndex = 0;
-                document.body.removeChild(this.$el);
                 this.isOpened = false;
             }
+
+            this.$emit('closeModal');
 
             return this;
 
@@ -174,7 +181,17 @@ export default Vue.extend({
 
     }
 
-});
+};
+
+Component.open = function(props, parent) {
+    return addModal({
+        props: () => props,
+        component: () => Component,
+        parent: () => parent
+    });
+};
+
+export default Component;
 
 </script>
 

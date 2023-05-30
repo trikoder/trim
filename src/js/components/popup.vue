@@ -21,11 +21,11 @@
 
 <script>
 
-import Vue from 'vue';
 import translate from '../library/translate.js';
+import addModal from '../library/addModal.js';
 import app from '../app.js';
 
-const PopupComponent = Vue.extend({
+const PopupComponent = {
 
     props: {
         component: {type: [Object, Function]},
@@ -71,6 +71,10 @@ const PopupComponent = Vue.extend({
             });
         }
 
+        this.$watch('$route', () => {
+            this.close();
+        });
+
     },
 
     unmounted() {
@@ -84,35 +88,24 @@ const PopupComponent = Vue.extend({
     },
 
     methods: {
-
         close() {
 
-            document.body.removeChild(this.$el);
-            this.$destroy();
-            return this;
-
-        },
-
-        open() {
-
-            this.$mount();
-            document.body.appendChild(this.$el);
-            return this;
+            this.$emit('closeModal');
 
         }
-
     }
 
-});
+};
 
 export default PopupComponent;
 
 export function Popup(config) {
 
-    return new PopupComponent({
-        propsData: config,
-        parent: config.parent || app.rootView
-    }).open();
+    return addModal({
+        props: () => config,
+        component: () => PopupComponent,
+        parent: () => config.parent || app.rootView
+    });
 
 };
 
