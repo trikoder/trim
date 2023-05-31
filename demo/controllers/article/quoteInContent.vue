@@ -57,7 +57,7 @@ export default {
     margin: 2em 0; padding-right: 6em;
     clear: both;
 
-    ::v-deep .inputType2 {
+    :deep() .inputType2 {
         font-size: em(24,10); padding: 0;
         border: 0;
     }

@@ -288,11 +288,11 @@ export default {
 .templateSelect {
     float: right;
 
-    ::v-deep .selectType2 {
+    :deep() .selectType2 {
         border: 0;
     }
 
-    ::v-deep .buttonControl {
+    :deep() .buttonControl {
         font-size: 0.75em; padding-right: em(25,12);
         color: $colorGrayDark3;
     }
