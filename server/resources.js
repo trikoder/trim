@@ -180,7 +180,8 @@ export default {
     user: {
         fieldsSchema: ({action}) => ({
             attributes: {
-                email: {type: String, email: true, required: true}
+                email: {type: String, email: true, required: true},
+                password: {type: String}
             },
             relationships: {
                 contactData: {hasMany: 'userContactEntry', default: []}
@@ -197,7 +198,8 @@ export default {
                     type: 'user',
                     id: String(index),
                     attributes: {
-                        email: 'test.user' + index + '@gmail.com'
+                        email: 'test.user' + index + '@gmail.com',
+                        password: ''
                     },
                     relationships: {
                         contactData: {
