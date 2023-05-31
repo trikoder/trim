@@ -11,7 +11,7 @@ const routerParams = {
     controller(path, name, params) {
 
         this.addRoute({
-            path: '/' + path,
+            path: ('/' + path).replace('//', '/'),
             name,
             component: AdminDefault,
             meta: {requiresAuth: true},
@@ -153,9 +153,12 @@ export function getInstance() {
 
 export function create() {
 
+    const base = bootData('baseUrl', '/');
+
     routerInstance = createRouter({
-        history: bootData('usesPushState', true) ? createWebHistory() : createWebHashHistory(),
-        base: bootData('baseUrl', '/'),
+        history: bootData('usesPushState', true)
+            ? createWebHistory(base)
+            : createWebHashHistory(base),
         routes: []
     });
 
