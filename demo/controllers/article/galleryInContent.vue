@@ -5,7 +5,7 @@
                 class: 'inputType2 fontBold',
                 style: {fontSize: '20px', border: 0},
                 placeholder: 'Gallery title',
-                spellcheck: 'false'
+                spellcheck: false
             }}"
             @input="updateComponent({title: $event})"
         ></textarea-form-element>
@@ -23,7 +23,7 @@
                         class: 'inputType2',
                         style: {border: 0},
                         placeholder: 'Enter caption',
-                        spellcheck: 'false'
+                        spellcheck: false
                     }}"
                     @input="updateItemCaption(item, $event)"
                 ></textarea-form-element>
