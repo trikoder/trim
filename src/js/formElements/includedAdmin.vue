@@ -53,7 +53,7 @@ export default {
     mixins: [base],
 
     props: {
-        value: {type: String, default: ''},
+        modelValue: {type: String, default: ''},
         ModelType: {type: Function},
         setupEdit: {type: Function, required: true},
         updatePosition: {type: [Boolean, String], default: false},
@@ -71,7 +71,7 @@ export default {
     },
 
     watch: {
-        value: {
+        modelValue: {
             handler: 'syncModels',
             immediate: true
         },
@@ -262,7 +262,7 @@ export default {
 
         modelsToValue() {
 
-            this.$emit('input',
+            this.$emit('update:modelValue',
                 this.models
                     .map(model => model.get('id'))
                     .filter(id => typeof id !== 'undefined')
@@ -381,7 +381,7 @@ export default {
 
         syncModels() {
 
-            const modelIds = this.value.split(',').filter(item => item.length);
+            const modelIds = this.modelValue.split(',').filter(item => item.length);
 
             let newModelIds = modelIds.filter(
                 id => this.models.filter(model => model.get('id') === id).length === 0

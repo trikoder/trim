@@ -1,9 +1,9 @@
 <template>
     <element-wrapper v-bind="elementWrapperProps">
-        <pre v-bind="mirrorAttributes"><span ref="mirror">{{ value }}</span><br></pre>
+        <pre v-bind="mirrorAttributes"><span ref="mirror">{{ modelValue }}</span><br></pre>
         <textarea
             v-bind="inputAttributes"
-            :value="value"
+            :value="modelValue"
             @input="processInputEvent"
         ></textarea>
     </element-wrapper>
@@ -23,7 +23,7 @@ export default {
     mixins: [base],
 
     props: {
-        value: {type: String, default: ''}
+        modelValue: {type: String, default: ''}
     },
 
     computed: {
@@ -47,7 +47,7 @@ export default {
         processInputEvent(e) {
 
             this.$refs.mirror.textContent = e.target.value;
-            this.$emit('input', e.target.value);
+            this.$emit('update:modelValue', e.target.value);
 
         }
 

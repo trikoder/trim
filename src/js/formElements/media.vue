@@ -59,7 +59,7 @@ export default {
     mixins: [base],
 
     props: {
-        value: {type: String, default: ''},
+        modelValue: {type: String, default: ''},
         acceptedFiles: {type: String},
         maxFileSize: {type: Number},
         mapImageTo: {type: [String, Function], default: 'thumbnailUrl'},
@@ -116,7 +116,7 @@ export default {
 
     watch: {
 
-        value: 'syncMediaModel'
+        modelValue: 'syncMediaModel'
 
     },
 
@@ -151,12 +151,12 @@ export default {
 
         syncMediaModel() {
 
-            if (!this.value) {
+            if (!this.modelValue) {
                 this.mediaModel = undefined;
                 return Promise.resolve();
             }
 
-            if (this.mediaModel && this.mediaModel.get('id') === this.value) {
+            if (this.mediaModel && this.mediaModel.get('id') === this.modelValue) {
                 return Promise.resolve(this.mediaModel);
             }
 
@@ -164,7 +164,7 @@ export default {
 
                 const mediaModel = this.resourceModel.get(this.name);
 
-                if (mediaModel && mediaModel.get('id') === this.value) {
+                if (mediaModel && mediaModel.get('id') === this.modelValue) {
 
                     this.mediaModel = mediaModel;
                     return Promise.resolve(mediaModel);
@@ -175,7 +175,7 @@ export default {
 
             return Model.getFromApi({
                 type: (this.relation && this.relation.resourceName) || this.name,
-                id: this.value
+                id: this.modelValue
             }).then(model => {
                 this.mediaModel = model;
                 return model;
@@ -257,7 +257,7 @@ export default {
             } else {
 
                 this.mediaModel = model;
-                this.$emit('input', model.get('id'));
+                this.$emit('update:modelValue', model.get('id'));
 
             }
 
@@ -268,7 +268,7 @@ export default {
             controller.$once('resourceSaved', ({resourceModel}) => {
 
                 this.mediaModel = resourceModel;
-                this.$emit('input', resourceModel.get('id'));
+                this.$emit('update:modelValue', resourceModel.get('id'));
                 externalAdmin.$destroy();
 
             });
@@ -304,7 +304,7 @@ export default {
             const admin = ExternalAdmin.select(this.mediaController, model => {
 
                 this.mediaModel = model;
-                this.$emit('input', model.get('id'));
+                this.$emit('update:modelValue', model.get('id'));
 
             }, {
                 controllerMethodParams: [{}, this.mediaControllerQuery || {}],
@@ -316,7 +316,7 @@ export default {
 
         unsetValue() {
 
-            this.$emit('input', '');
+            this.$emit('update:modelValue', '');
             return this;
 
         },

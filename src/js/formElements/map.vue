@@ -21,7 +21,7 @@ export default {
     mixins: [base],
 
     props: {
-        value: {type: String, default: ''},
+        modelValue: {type: String, default: ''},
         zoom: {type: Number, default: 12},
         delimiter: {type: String, default: ','},
         initialLat: {type: Number, default: 45.79815157817745},
@@ -38,7 +38,7 @@ export default {
 
     watch: {
 
-        value(newValue) {
+        modelValue(newValue) {
 
             if (this.shouldDisplayMap) {
                 newValue
@@ -84,8 +84,8 @@ export default {
 
             this.bootstrapMapPromise = loadApi().then(google => {
 
-                const centerLatLng = this.value
-                    ? this.parseLatLng(this.value)
+                const centerLatLng = this.modelValue
+                    ? this.parseLatLng(this.modelValue)
                     : {lat: this.initialLat, lng: this.initialLng}
                 ;
 
@@ -95,7 +95,7 @@ export default {
                     disableDefaultUI: true
                 }, this.mapOptions));
 
-                if (this.value) {
+                if (this.modelValue) {
                     this.setMarker(centerLatLng);
                 }
 
@@ -104,7 +104,7 @@ export default {
                 }
 
                 google.maps.event.addListener(map, 'click', e => {
-                    this.$emit('input', [e.latLng.lat(), e.latLng.lng()].join(this.delimiter));
+                    this.$emit('update:modelValue', [e.latLng.lat(), e.latLng.lng()].join(this.delimiter));
                 });
 
                 return {map, google};
@@ -138,7 +138,7 @@ export default {
             google.maps.event.addListener(searchBox, 'places_changed', () => {
 
                 const location = searchBox.getPlaces()[0].geometry.location;
-                this.$emit('input', [location.lat(), location.lng()].join(this.delimiter));
+                this.$emit('update:modelValue', [location.lat(), location.lng()].join(this.delimiter));
 
             });
 
@@ -157,7 +157,7 @@ export default {
                     });
 
                     google.maps.event.addListener(this.marker, 'dragend', e => {
-                        this.$emit('input', [e.latLng.lat(), e.latLng.lng()].join(this.delimiter));
+                        this.$emit('update:modelValue', [e.latLng.lat(), e.latLng.lng()].join(this.delimiter));
                     });
 
                     const control = elementFromString(`
@@ -166,7 +166,7 @@ export default {
                         </button>
                     `);
 
-                    control.addEventListener('click', () => this.$emit('input', ''));
+                    control.addEventListener('click', () => this.$emit('update:modelValue', ''));
 
                     map.controls[google.maps.ControlPosition.TOP_RIGHT].push(control);
 

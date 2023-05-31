@@ -14,7 +14,7 @@
                 @click="isInteractive && toggleDropdown()"
                 class="openBtn nBtn"
                 :class="{iconMoreHorizontal: isInteractive}"
-            >{{ value ? '' : selectText }}</button>
+            >{{ modelValue ? '' : selectText }}</button>
         </div>
         <div class="dropdown" v-if="dropdownActive && isInteractive && !loading">
             <div class="search iconSearch">
@@ -77,7 +77,7 @@ export default {
     mixins: [base, vueDismiss],
 
     props: {
-        value: {type: String, default: ''},
+        modelValue: {type: String, default: ''},
         mapCaptionTo: {type: [String, Function], default: 'title'},
         mapSearchCaptionTo: {type: [String, Function]},
         mapParentTo: {type: [String, Function], default: 'parent'},
@@ -173,7 +173,7 @@ export default {
     },
 
     watch: {
-        value: 'syncRelatedModels',
+        modelValue: 'syncRelatedModels',
         searchQuery: 'runSearch'
     },
 
@@ -242,7 +242,7 @@ export default {
                 this.relatedModels = [model];
             }
 
-            this.$emit('input', this.relatedModels.map(
+            this.$emit('update:modelValue', this.relatedModels.map(
                 relatedModel => relatedModel.get('id')
             ).join(','));
 
@@ -262,7 +262,7 @@ export default {
 
             }
 
-            this.$emit('input', this.relatedModels
+            this.$emit('update:modelValue', this.relatedModels
                 ? this.relatedModels.map(relatedModel => relatedModel.get('id')).join(',')
                 : ''
             );
@@ -361,7 +361,7 @@ export default {
 
         syncRelatedModels() {
 
-            const modelIds = this.value.split(',').filter(id => id.length);
+            const modelIds = this.modelValue.split(',').filter(id => id.length);
             const Model = this.getModelType();
 
             if (modelIds.length === 0) {

@@ -39,7 +39,7 @@ export default {
     mixins: [base],
 
     props: {
-        value: [String, Boolean, Number],
+        modelValue: [String, Boolean, Number],
         updateEntityOnChange: {type: Boolean, default: false},
         updateControlCaption: {type: String, default: () => translate('formElements.stateSelect.updateControlCaption')},
         nextStatePlaceholderCaption: {type: String, default: () => translate('formElements.stateSelect.nextStatePlaceholderCaption')},
@@ -48,7 +48,7 @@ export default {
 
     data() {
         return {
-            currentState: this.getStateFromValue(this.value)
+            currentState: this.getStateFromValue(this.modelValue)
         };
     },
 
@@ -101,7 +101,7 @@ export default {
 
             if (this.updateEntityOnChange) {
 
-                const option = find(this.selectableOptions, option => option.value === this.value);
+                const option = find(this.selectableOptions, option => option.value === this.modelValue);
 
                 if (option) {
                     return option.value;
@@ -110,7 +110,7 @@ export default {
                 }
 
             } else {
-                return this.value;
+                return this.modelValue;
             }
 
         },
@@ -153,7 +153,7 @@ export default {
                 value = value === 'true';
             }
 
-            this.$emit('input', value);
+            this.$emit('update:modelValue', value);
 
         },
 
@@ -195,7 +195,7 @@ export default {
                     const stateValue = model.get(this.name);
 
                     this.resourceModel.setAttribute(this.name, stateValue);
-                    this.$emit('input', stateValue);
+                    this.$emit('update:modelValue', stateValue);
                     this.currentState = this.getStateFromValue(stateValue);
 
                 });

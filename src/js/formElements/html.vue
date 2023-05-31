@@ -5,7 +5,7 @@
             v-once
             :contenteditable="isInteractive"
             v-bind="inputAttributes"
-            v-html="value"
+            v-html="modelValue"
         ></div>
     </element-wrapper>
 </template>
@@ -26,19 +26,19 @@ export default {
     mixins: [base],
 
     props: {
-        value: {type: String, default: ''},
+        modelValue: {type: String, default: ''},
         editorConfig: {type: Object}
     },
 
     data() {
         return {
-            editorValue: this.value
+            editorValue: this.modelValue
         };
     },
 
     watch: {
 
-        value(newValue) {
+        modelValue(newValue) {
 
             if (newValue !== this.editorValue && this.editor) {
                 this.editorValue = newValue;
@@ -98,7 +98,7 @@ export default {
                     const value = editor.getData();
 
                     this.editorValue = value;
-                    this.$emit('input', value);
+                    this.$emit('update:modelValue', value);
 
                 });
 

@@ -1,8 +1,8 @@
 <template>
-    <text-form-element v-bind="$props" @input="$emit('input', $event)">
+    <text-form-element v-bind="$props" @input="$emit('update:modelValue', $event)">
         <template v-slot:inputWrapperEnd>
             <div class="colorPreview" :style="{
-                backgroundColor: value,
+                backgroundColor: modelValue,
                 opacity: isValidColor ? 1 : 0
             }"></div>
           </template>
@@ -22,7 +22,7 @@ export default {
     mixins: [base],
 
     props: {
-        value: {type: String, default: ''}
+        modelValue: {type: String, default: ''}
     },
 
     computed: {
@@ -30,7 +30,7 @@ export default {
         isValidColor() {
 
             const testEl = document.createElement('div');
-            testEl.style.color = this.value;
+            testEl.style.color = this.modelValue;
             return Boolean(testEl.style.color);
 
         }

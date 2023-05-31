@@ -67,7 +67,7 @@ const Component = {
 
     props: {
         isRenderPlaceholder: {type: Boolean, default: false},
-        value: {type: String, default: ''},
+        modelValue: {type: String, default: ''},
         mapCaptionTo: {type: [String, Function], default: 'name'},
         select: {type: String, default: 'one'},
         showEditControl: {type: Boolean, default: false},
@@ -122,7 +122,7 @@ const Component = {
     },
 
     watch: {
-        value: 'syncRelatedModels'
+        modelValue: 'syncRelatedModels'
     },
 
     mounted() {
@@ -239,7 +239,7 @@ const Component = {
 
             this.relatedModels = ensureArray(selection);
 
-            this.$emit('input', this.relatedModels.map(model => model.get('id')).join(','));
+            this.$emit('update:modelValue', this.relatedModels.map(model => model.get('id')).join(','));
 
             this.popup && this.popup.close();
 
@@ -259,7 +259,7 @@ const Component = {
 
             }
 
-            this.$emit('input', this.relatedModels
+            this.$emit('update:modelValue', this.relatedModels
                 ? this.relatedModels.map(relatedModel => relatedModel.get('id')).join(',')
                 : ''
             );
@@ -279,7 +279,7 @@ const Component = {
 
         syncRelatedModels() {
 
-            const modelIds = this.value.split(',').filter(id => id.length);
+            const modelIds = this.modelValue.split(',').filter(id => id.length);
 
             if (modelIds.length === 0) {
                 this.relatedModels = undefined;
