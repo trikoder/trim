@@ -848,12 +848,12 @@ export default {
 
                         if (
                             instance.saveEmptyValue === false &&
-                            (instance.value === '' || instance.value === null)
+                            (instance.modelValue === '' || instance.modelValue === null)
                         ) {
                             // skip saving empty attribute
                         } else {
                             data.attributes = data.attributes || {};
-                            data.attributes[instance.name] = instance.value;
+                            data.attributes[instance.name] = instance.modelValue;
                         }
 
                     }
@@ -874,17 +874,17 @@ export default {
 
             if (fieldInstance.relation.type === 'hasMany') {
 
-                return fieldInstance.value.split(',').filter(item => item).map(value => ({
+                return fieldInstance.modelValue.split(',').filter(item => item).map(value => ({
                     type: resourceType,
                     id: value
                 }));
 
             } else {
 
-                return fieldInstance.value !== ''
+                return fieldInstance.modelValue !== ''
                     ? {
                         type: resourceType,
-                        id: fieldInstance.value
+                        id: fieldInstance.modelValue
                     }
                     : null;
 

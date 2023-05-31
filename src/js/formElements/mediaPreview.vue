@@ -26,7 +26,7 @@ export default {
     mixins: [base],
 
     props: {
-        value: {type: String, default: ''},
+        modelValue: {type: String, default: ''},
         readOnly: {type: Boolean, default: true},
         mapImageTo: {type: [String, Function], default: 'thumbnailUrl'},
         mapLargeImageTo: {type: [String, Function], default: 'originalUrl'},

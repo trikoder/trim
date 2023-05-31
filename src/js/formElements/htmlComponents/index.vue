@@ -1,7 +1,7 @@
 <template>
     <element-wrapper :renderInputWrapper="false" v-bind="elementWrapperProps">
         <div v-bind="inputWrapperAttributes" ref="inputWrapper">
-            <template v-for="componentConfig in value">
+            <template v-for="componentConfig in modelValue">
                 <html-editor
                     v-if="componentConfig.type === 'html'"
                     v-bind="componentConfig"
@@ -49,7 +49,7 @@ export default {
     mixins: [base],
 
     props: {
-        value: {
+        modelValue: {
             type: Array,
             default: () => ([{
                 clientId: clientId(),
@@ -85,7 +85,7 @@ export default {
 
     mounted() {
 
-        const unWatch = this.$watch('value', components => {
+        const unWatch = this.$watch('modelValue', components => {
 
             if (components.length > 1) {
                 this.$nextTick(() => {
@@ -96,9 +96,9 @@ export default {
 
         }, {immediate: true, deep: true});
 
-        if (this.value.length === 0) {
+        if (this.modelValue.length === 0) {
 
-            this.$emit('input', [{
+            this.$emit('update:modelValue', [{
                 clientId: clientId(),
                 type: 'html',
                 content: ''
@@ -128,7 +128,7 @@ export default {
 
         updateComponent(updatedConfig) {
 
-            this.$emit('input', this.value.map(config => {
+            this.$emit('update:modelValue', this.modelValue.map(config => {
 
                 return config.clientId === updatedConfig.clientId
                     ? Object.assign({}, config, updatedConfig)
@@ -141,8 +141,8 @@ export default {
 
         insertComponent(event) {
 
-            this.$emit('input', this.normalize(
-                this.prepInsert(this.value, event)
+            this.$emit('update:modelValue', this.normalize(
+                this.prepInsert(this.modelValue, event)
             ));
 
         },
@@ -192,8 +192,8 @@ export default {
 
         deleteComponent(clientId) {
 
-            this.$emit('input', this.normalize(
-                this.value.filter(config => config.clientId !== clientId)
+            this.$emit('update:modelValue', this.normalize(
+                this.modelValue.filter(config => config.clientId !== clientId)
             ));
 
         },
@@ -265,7 +265,7 @@ export default {
 
                 this.drake.on('drop', (el, target, source, sibling) => {
 
-                    let components = this.value;
+                    let components = this.modelValue;
 
                     if (target.getAttribute('contenteditable')) { // droped inside html editor
 
@@ -315,7 +315,7 @@ export default {
 
                     }
 
-                    this.$emit('input', this.normalize(components));
+                    this.$emit('update:modelValue', this.normalize(components));
 
                 });
 

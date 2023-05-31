@@ -99,7 +99,7 @@ export default {
 
         processInputEvent(e) {
 
-            this.$emit('input', e.target.value);
+            this.$emit('update:modelValue', e.target.value);
 
         },
 

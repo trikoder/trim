@@ -35,7 +35,7 @@ export default {
     mixins: [base],
 
     props: {
-        value: {type: [String, Boolean, Number], default: ''},
+        modelValue: {type: [String, Boolean, Number], default: ''},
         selectOptions: {type: [Array, Object], required: true},
         buttonTextPrefix: {type: String, default: ''}
     },
@@ -62,7 +62,7 @@ export default {
 
         stringValue() {
 
-            return this.value.toString();
+            return this.modelValue.toString();
 
         },
 
@@ -90,7 +90,7 @@ export default {
             this.optionElements = optionElements;
 
             if (!this.getSelectedOption()) {
-                this.$emit('input', this.optionElements[0].value);
+                this.$emit('update:modelValue', this.optionElements[0].value);
             }
 
         });
@@ -104,7 +104,7 @@ export default {
             const stringValue = e.target.value;
             const optionValue = find(this.optionElements, option => option.stringValue === stringValue).value;
 
-            this.$emit('input', optionValue);
+            this.$emit('update:modelValue', optionValue);
 
         },
 
@@ -119,7 +119,7 @@ export default {
 
         getSelectedOption() {
 
-            const currentValue = this.value;
+            const currentValue = this.modelValue;
 
             return this.optionElements
                 ? find(this.optionElements, o => o.value === currentValue)
