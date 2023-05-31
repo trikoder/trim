@@ -71,7 +71,7 @@ export default {
         min-height: 20em; padding: 3.5em 1em 1em; position: relative; width: 100%; box-sizing: border-box;
         background-color: #fff;
 
-        ::v-deep {
+        :deep() {
 
             > .mediaListItemType1 {
 
