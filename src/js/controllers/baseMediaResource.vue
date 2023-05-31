@@ -83,14 +83,24 @@ import IncludedAdmin from '../formElements/includedAdmin.vue';
 import Message from '../components/message.vue';
 import headerBorderListener from '../mixins/headerBorderListener.js';
 
-const BaseMediaController = BaseResourceController.extend({
+const BaseMediaController = {
+    ...BaseResourceController,
 
-    components: {FileUpload, IncludedAdmin, Message},
+    components: {
+        ...BaseResourceController.components,
+        FileUpload,
+        IncludedAdmin,
+        Message
+    },
 
-    mixins: [headerBorderListener],
+    mixins: [
+        ...BaseResourceController.mixins,
+        headerBorderListener
+    ],
 
     data() {
         return {
+            ...BaseResourceController.data?.bind(this)(),
             mapMediaTypeTo: 'mediaType',
             uploadParameter: 'binary',
             uploadHeaders: undefined,
@@ -121,6 +131,7 @@ const BaseMediaController = BaseResourceController.extend({
     },
 
     computed: {
+        ...BaseResourceController.computed,
 
         isStandardEditContext() {
 
@@ -154,6 +165,7 @@ const BaseMediaController = BaseResourceController.extend({
     },
 
     watch: {
+        ...BaseResourceController.watch,
         currentContext() {
 
             this.uploadedIdentifiers = '';
@@ -164,12 +176,16 @@ const BaseMediaController = BaseResourceController.extend({
 
     created() {
 
+        BaseResourceController.created?.bind(this)();
+
         this.resolveMediaTypes();
         this.setupMediaTypeMethods();
 
     },
 
     methods: {
+
+        ...BaseResourceController.methods,
 
         resolveMediaTypes() {
 
@@ -321,7 +337,7 @@ const BaseMediaController = BaseResourceController.extend({
 
     }
 
-});
+};
 
 BaseMediaController.getDataKeys = () => ([
     'mapMediaTypeTo',

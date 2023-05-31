@@ -3,9 +3,11 @@ import BaseResourceController from './baseResource.vue';
 import NestedResourceList from '../components/resourceListNested.vue';
 import getVueComponentMapper from '../library/getVueComponentMapper.js';
 
-const BaseNestedController = BaseResourceController.extend({
+const BaseNestedController = {
+    ...BaseResourceController,
 
     data: () => ({
+        ...BaseResourceController.data?.bind(this)(),
         mapParentTo: 'parent',
         mapChildrenTo: 'children',
         mapLevelTo: undefined,
@@ -15,6 +17,7 @@ const BaseNestedController = BaseResourceController.extend({
     }),
 
     methods: {
+        ...BaseResourceController.methods,
 
         getResourceListType() {
 
@@ -53,7 +56,7 @@ const BaseNestedController = BaseResourceController.extend({
 
     }
 
-});
+};
 
 BaseNestedController.getDataKeys = () => ([
     'mapParentTo',
