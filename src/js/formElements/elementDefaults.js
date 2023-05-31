@@ -102,7 +102,7 @@ export default {
                         autocomplete: 'off',
                         autocorrect: 'off',
                         autocapitalize: 'off',
-                        spellcheck: 'false'
+                        spellcheck: false
                     },
                     label: {class: 'labelType2 mod1'},
                     wrapper: {class: 'inputBlockType1'},
@@ -270,7 +270,7 @@ export default {
                         autocomplete: 'off',
                         autocorrect: 'off',
                         autocapitalize: 'off',
-                        spellcheck: 'false'
+                        spellcheck: false
                     },
                     label: {class: 'labelType2'},
                     wrapper: {class: 'inputBlockType1'},
