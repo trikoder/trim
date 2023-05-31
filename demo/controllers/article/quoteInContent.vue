@@ -4,7 +4,7 @@
                 :value="text" :attributes="{input: {
                     class: 'inputType2',
                     placeholder: 'Enter qoute text',
-                    spellcheck: 'false'
+                    spellcheck: false
                 }}"
                 @input="updateComponent({text: $event})"
             ></textarea-form-element>
