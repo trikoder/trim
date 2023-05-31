@@ -1,12 +1,12 @@
 <template>
        <div class="quoteComponent">
             <textarea-form-element
-                :value="text" :attributes="{input: {
+                :modelValue="text" :attributes="{input: {
                     class: 'inputType2',
                     placeholder: 'Enter qoute text',
                     spellcheck: false
                 }}"
-                @input="updateComponent({text: $event})"
+                @update:modelValue="updateComponent({text: $event})"
             ></textarea-form-element>
             <input
                 class="author" type="text" placeholder="Enter qoute author"

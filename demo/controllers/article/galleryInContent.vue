@@ -1,13 +1,13 @@
 <template>
    <div class="galleryComponent">
         <textarea-form-element
-            :value="title" :attributes="{input: {
+            :modelValue="title" :attributes="{input: {
                 class: 'inputType2 fontBold',
                 style: {fontSize: '20px', border: 0},
                 placeholder: 'Gallery title',
                 spellcheck: false
             }}"
-            @input="updateComponent({title: $event})"
+            @update:modelValue="updateComponent({title: $event})"
         ></textarea-form-element>
         <ul class="galleryItems" ref="galleryItems">
             <li
@@ -19,13 +19,13 @@
                     :src="'http://picsum.photos/200/150?random=' + item.mediaId"
                 >
                 <textarea-form-element class="galleryCaption"
-                    :value="item.caption" :attributes="{input: {
+                    :modelValue="item.caption" :attributes="{input: {
                         class: 'inputType2',
                         style: {border: 0},
                         placeholder: 'Enter caption',
                         spellcheck: false
                     }}"
-                    @input="updateItemCaption(item, $event)"
+                    @update:modelValue="updateItemCaption(item, $event)"
                 ></textarea-form-element>
                 <div class="itemControls">
                     <button
@@ -44,7 +44,7 @@
                 Add new items
             </button>
             <select-form-element
-                :value="template" class="templateSelect"
+                :modelValue="template" class="templateSelect"
                 :selectOptions="[
                     {caption: 'Default template', value: 'default'},
                     {caption: 'Fullscreen template', value: 'fullscreen'}
@@ -52,7 +52,7 @@
                 :attributes="{
                     inputWrapper: {class: 'selectType2 fullWidth'}
                 }"
-                @input="updateComponent({template: $event})"
+                @update:modelValue="updateComponent({template: $event})"
             ></select-form-element>
         </div>
         <component-controls

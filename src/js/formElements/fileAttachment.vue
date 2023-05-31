@@ -52,7 +52,7 @@ export default {
     mixins: [base],
 
     props: {
-        value: {},
+        modelValue: {},
         acceptedFiles: {type: String},
         maxFileSize: {type: Number},
         mapThumbnailTo: {type: [String, Function]},

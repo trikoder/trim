@@ -2,7 +2,7 @@
     <input
         type="hidden"
         v-bind="inputAttributes"
-        :value="value"
+        :value="modelValue"
     >
 </template>
 
@@ -16,7 +16,7 @@ export default {
     mixins: [base],
 
     props: {
-        value: {default: ''}
+        modelValue: {default: ''}
     }
 
 };

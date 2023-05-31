@@ -22,19 +22,19 @@ export default {
     mixins: [base],
 
     props: {
-        value: {type: String, default: ''},
+        modelValue: {type: String, default: ''},
         editorConfig: {type: Object}
     },
 
     data() {
         return {
-            editorValue: this.value
+            editorValue: this.modelValue
         };
     },
 
     watch: {
 
-        value(newValue) {
+        modelValue(newValue) {
 
             if (newValue !== this.editorValue && this.editor) {
                 this.editorValue = newValue;
@@ -76,7 +76,7 @@ export default {
                 lineNumbers: true
             }, this.editorConfig, {
                 readOnly: !this.isInteractive,
-                value: this.value
+                value: this.modelValue
             });
 
             const editor = this.editor = CodeMirror(
@@ -88,7 +88,7 @@ export default {
                 const newValue = editor.getValue();
 
                 this.editorValue = newValue;
-                this.$emit('input', newValue);
+                this.$emit('update:modelValue', newValue);
 
             });
 

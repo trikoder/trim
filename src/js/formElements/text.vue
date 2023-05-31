@@ -3,7 +3,7 @@
         <input
             v-bind="inputAttributes"
             :type="inputAttributes.type || 'text'"
-            :value="value"
+            :value="modelValue"
             @input="processInputEvent"
         >
         <slot name="inputWrapperEnd"></slot>
@@ -23,7 +23,7 @@ export default {
     mixins: [base],
 
     props: {
-        value: {type: String, default: ''}
+        modelValue: {type: String, default: ''}
     }
 
 };

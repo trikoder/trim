@@ -1,12 +1,12 @@
 <template>
    <div class="tableComponent">
         <textarea-form-element
-            :value="title" :attributes="{input: {
+            :modelValue="title" :attributes="{input: {
                 class: 'inputType2 fontBold',
                 style: {fontSize: '20px', border: 0},
                 placeholder: 'Table title'
             }}"
-            @input="updateComponent({title: $event})"
+            @update:modelValue="updateComponent({title: $event})"
         ></textarea-form-element>
         <component-controls
             :controls="defaultControls"
@@ -19,8 +19,8 @@
                         >
                             <div class="headCellWrapper">
                                 <textarea-form-element
-                                    :value="headingText" :attributes="getInputAttributes('heading')"
-                                    @input="updateCell(0, cellIndex, $event)"
+                                    :modelValue="headingText" :attributes="getInputAttributes('heading')"
+                                    @update:modelValue="updateCell(0, cellIndex, $event)"
                                 ></textarea-form-element>
                                 <div class="dropdown" :class="{
                                     active: activeDropdown === 'column' + cellIndex
@@ -48,8 +48,8 @@
                         <tr v-if="rowIndex !== 0" :key="rowIndex">
                             <td v-for="(cell, cellIndex) in row" :key="cellIndex">
                                 <textarea-form-element
-                                    :value="cell" :attributes="getInputAttributes('cell')"
-                                    @input="updateCell(rowIndex, cellIndex, $event)"
+                                    :modelValue="cell" :attributes="getInputAttributes('cell')"
+                                    @update:modelValue="updateCell(rowIndex, cellIndex, $event)"
                                 ></textarea-form-element>
                             </td>
                             <td class="dropdownCell">

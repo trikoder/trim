@@ -41,7 +41,7 @@ export default {
     mixins: [base],
 
     props: {
-        value: {type: [Array, String]},
+        modelValue: {type: [Array, String]},
         valueType: {
             default: () => String,
             validator: function(Type) {
@@ -78,7 +78,7 @@ export default {
 
         selectedOptionElements() {
 
-            const values = this.valueType === String ? this.value.split(',') : this.value;
+            const values = this.valueType === String ? this.modelValue.split(',') : this.modelValue;
             const itemIds = values.filter(id => id);
 
             return this.optionElements.length
@@ -105,7 +105,7 @@ export default {
 
             const values = selectedOptions.map(option => option.value);
 
-            this.$emit('input', this.valueType === String ? values.join(',') : values);
+            this.$emit('update:modelValue', this.valueType === String ? values.join(',') : values);
 
         },
 

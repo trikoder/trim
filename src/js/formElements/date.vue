@@ -20,7 +20,7 @@
             :prevMonthCaption="prevMonthCaption"
             :nextMonthCaption="nextMonthCaption"
             :setTimeCaption="setTimeCaption"
-            :value="value"
+            :value="modelValue"
             :editable="isInteractive"
             @input="processInputEvent"
         ></date-pick>
@@ -43,7 +43,7 @@ export default {
     mixins: [base],
 
     props: {
-        value: {type: String, default: ''},
+        modelValue: {type: String, default: ''},
         format: {type: String, default: 'YYYY-MM-DD'},
         displayFormat: {type: String, default: 'DD.MM.YYYY'},
         isDateDisabled: {type: Function},
@@ -96,7 +96,7 @@ export default {
 
         processInputEvent(value) {
 
-            this.$emit('input', value);
+            this.$emit('update:modelValue', value);
 
         }
 

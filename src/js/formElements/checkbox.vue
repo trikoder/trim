@@ -3,7 +3,7 @@
         <input
             type="checkbox"
             v-bind="inputAttributes"
-            :checked="value === valueMap.checked"
+            :checked="modelValue === valueMap.checked"
             :disabled="!isInteractive"
             @input="processInputEvent"
         >
@@ -24,7 +24,7 @@ export default {
     mixins: [base],
 
     props: {
-        value: {type: [String, Boolean], default: false},
+        modelValue: {type: [String, Boolean], default: false},
         valueMap: {type: Object, default: () => ({checked: true, unchecked: false})}
     },
 
@@ -43,7 +43,7 @@ export default {
     methods: {
 
         processInputEvent(e) {
-            this.$emit('input', this.valueMap[e.target.checked ? 'checked' : 'unchecked']);
+            this.$emit('update:modelValue', this.valueMap[e.target.checked ? 'checked' : 'unchecked']);
         }
 
     }

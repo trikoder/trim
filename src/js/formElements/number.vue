@@ -3,7 +3,7 @@
         <input
             v-bind="inputAttributes"
             :type="inputAttributes.type || 'number'"
-            :value="value"
+            :value="modelValue"
             @input="processInputEvent"
         >
     </element-wrapper>
@@ -22,7 +22,7 @@ export default {
     mixins: [base],
 
     props: {
-        value: {
+        modelValue: {
             validator: value => typeof value === 'number' || value === null,
             default: null
         }
@@ -34,7 +34,7 @@ export default {
 
             const inputValue = parseFloat(e.target.value);
 
-            this.$emit('input', typeof inputValue === 'number' && !isNaN(inputValue)
+            this.$emit('update:modelValue', typeof inputValue === 'number' && !isNaN(inputValue)
                 ? inputValue
                 : null
             );
