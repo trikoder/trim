@@ -1,8 +1,7 @@
-import BrowserServer from 'json-api-shop/servers/browser';
-import MemoryAdapter from 'json-api-shop/adapters/memory';
-import resources from './resources';
+import BrowserServer from 'json-api-shop/servers/browser.js';
+import MemoryAdapter from 'json-api-shop/adapters/memory.js';
+import resources from './resources.js';
 
-const isProduction = process.env.NODE_ENV === 'production';
 const isDevelopment = process.env.NODE_ENV !== 'production';
 const currentDataVersion = process.env.PACKAGE_VERSION;
 
@@ -64,7 +63,7 @@ const Server = BrowserServer.extend({
         app.post(process.env.BASE_API_URL + 'media/upload', (request, response) => {
             response.set('Content-Type', 'application/javascript');
             response.set('Access-Control-Expose-Headers', 'Location');
-            response.set('Location', 'https://trikoder.github.io' +  process.env.BASE_API_URL + 'media/1');
+            response.set('Location', 'https://trikoder.github.io' + process.env.BASE_API_URL + 'media/1');
             response.send('');
         });
 
@@ -77,6 +76,6 @@ const Server = BrowserServer.extend({
 export default new Server({
     baseUrl: process.env.BASE_API_URL,
     databaseAdapter: LocalStorageAdapter,
-    resources: resources,
+    resources,
     logResponse: isDevelopment
-}).start()
+}).start();

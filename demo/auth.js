@@ -1,5 +1,5 @@
-import api from 'trim/library/api';
-import auth from 'trim/library/auth';
+import api from 'trim/library/api.js';
+import auth from 'trim/library/auth.js';
 
 export default auth.extend({
 

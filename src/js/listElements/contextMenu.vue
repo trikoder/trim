@@ -129,11 +129,13 @@ export default {
 
             item.action && event.preventDefault();
 
-            item.confirm ? confirm({
-                message: typeof item.confirm === 'string' ? item.confirm : undefined,
-                onAccept: executeAction,
-                parent: this
-            }) : executeAction();
+            item.confirm
+                ? confirm({
+                    message: typeof item.confirm === 'string' ? item.confirm : undefined,
+                    onAccept: executeAction,
+                    parent: this
+                })
+                : executeAction();
 
         }
 

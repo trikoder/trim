@@ -8,7 +8,7 @@ function checkBreakpoints() {
         : document.documentElement.offsetWidth
     ;
 
-    for (var key in config.ranges) {
+    for (const key in config.ranges) {
 
         const range = config.ranges[key];
         const from = range[0];

@@ -62,11 +62,11 @@
 </template>
 
 <script>
-import TextareaFormElement from 'trim/formElements/textarea';
-import SelectFormElement from 'trim/formElements/select';
-import baseComponent from 'trim/formElements/htmlComponents/baseComponent';
-import ExternalAdmin from 'trim/formElements/externalAdmin';
-import {elementIndex} from 'trim/library/toolkit';
+import TextareaFormElement from 'trim/formElements/textarea.vue';
+import SelectFormElement from 'trim/formElements/select.vue';
+import baseComponent from 'trim/formElements/htmlComponents/baseComponent.vue';
+import ExternalAdmin from 'trim/formElements/externalAdmin.vue';
+import {elementIndex} from 'trim/library/toolkit.js';
 
 export default {
 
@@ -162,6 +162,7 @@ export default {
 
                 this.drake.on('drop', () => {
 
+                    /* eslint-disable vue/no-mutating-props */
                     this.updateComponent({
                         items: this.items.sort((item1, item2) => {
 

@@ -40,7 +40,7 @@ export default {
         },
         closeModal(id) {
             this.modals = this.modals.filter(item => item.id !== id);
-        },
+        }
     }
 };
 

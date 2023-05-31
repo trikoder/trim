@@ -396,7 +396,7 @@ export default {
 
             return Promise.all(modelIds.map(id => Model.getFromApi({
                 type: this.resourceName,
-                id: id,
+                id,
                 query: this.modelQuery
             }))).then(models => {
                 this.loading = false;

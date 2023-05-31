@@ -101,7 +101,7 @@
         </div>
         <global-events
             :filter="(event, handler, eventName) => { return ['INPUT', 'TEXTAREA'].indexOf(event.target.tagName) < 0; }"
-            @keyup.shift.76.exact="showSearch"
+            @keyup.shift.l.exact="showSearch"
         />
     </nav>
 </template>
@@ -439,9 +439,11 @@ export default Vue.extend({
                 this.userNavigationItems
             ).reduce((acc, item) => {
 
-                item.subItems ? item.subItems.forEach(subItem => {
-                    acc.push(Object.assign({}, subItem, {parentCaption: item.caption}));
-                }) : acc.push(Object.assign({}, item));
+                item.subItems
+                    ? item.subItems.forEach(subItem => {
+                        acc.push(Object.assign({}, subItem, {parentCaption: item.caption}));
+                    })
+                    : acc.push(Object.assign({}, item));
 
                 return acc;
 

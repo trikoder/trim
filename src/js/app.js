@@ -50,9 +50,9 @@ const api = {
             /* eslint-disable no-new */
             this.rootView = createApp(AppView);
 
-            this.rootView.config.globalProperties.toComponent = function (component) {
+            this.rootView.config.globalProperties.toComponent = function(component) {
                 return toRaw(component);
-            }
+            };
 
             this.rootView.use(router);
             this.rootView.use(store);

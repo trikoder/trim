@@ -10,7 +10,7 @@
                 :key="row.id"
                 :class="{withControls: row.controls.length > 0}"
             >
-                <template slot="bottomControls" v-if="row.controls.length">
+                <template v-slot:bottomControls v-if="row.controls.length">
                     <div class="itemControls">
                         <button type="button" class="control nBtn icr"
                             v-for="(control, index) in row.controls"
@@ -118,7 +118,7 @@ export default {
                     this.rows.push({
                         position,
                         id: model.cid,
-                        model: model,
+                        model,
                         configure: params => this.getConfigurator(params),
                         controls: this.prepareRowControls(model)
                     });

@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import baseComponent from 'trim/formElements/htmlComponents/baseComponent';
-import ExternalAdmin from 'trim/formElements/externalAdmin';
+import baseComponent from 'trim/formElements/htmlComponents/baseComponent.vue';
+import ExternalAdmin from 'trim/formElements/externalAdmin.vue';
 
 export default {
 
@@ -35,13 +35,15 @@ export default {
             return [{
                 icon: 'move',
                 isSortHandle: true
-            }, this.alignment === 'central' ? {
-                icon: 'arrowLeft',
-                action: () => this.updateComponent({alignment: 'left'})
-            } : {
-                icon: 'arrowRight',
-                action: () => this.updateComponent({alignment: 'central'})
-            }, {
+            }, this.alignment === 'central'
+                ? {
+                    icon: 'arrowLeft',
+                    action: () => this.updateComponent({alignment: 'left'})
+                }
+                : {
+                    icon: 'arrowRight',
+                    action: () => this.updateComponent({alignment: 'central'})
+                }, {
                 icon: 'trash',
                 action: () => this.confirmRemove(() => this.removeComponent())
             }];

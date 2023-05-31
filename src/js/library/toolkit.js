@@ -58,7 +58,7 @@ export function assign(target) {
         const obj = arguments[i];
 
         if (obj) {
-            for (var key in obj) {
+            for (const key in obj) {
                 hasOwnProperty(obj, key) && (target[key] = obj[key]);
             }
         }
@@ -71,15 +71,15 @@ export function assign(target) {
 
 export function assignDeep(out) {
 
-    for (var i = 1; i < arguments.length; i++) {
+    for (let i = 1; i < arguments.length; i++) {
 
-        var obj = arguments[i];
+        const obj = arguments[i];
 
         if (!obj || !isPlainObject(obj)) {
             continue;
         }
 
-        for (var key in obj) {
+        for (const key in obj) {
             if (hasOwnProperty(obj, key)) {
                 if (Array.isArray(obj[key])) {
 
@@ -122,7 +122,7 @@ export function each(collection, callback) {
 
     } else {
 
-        for (var key in collection) {
+        for (const key in collection) {
             if (hasOwnProperty(collection, key)) {
                 if (callback(collection[key], key) === false) { break; }
             }
@@ -177,8 +177,8 @@ export function isPlainObject(value) {
 }
 
 export function isEmptyObject(obj) {
-
-    for (var name in obj) { return false; }
+    // eslint-disable-next-line no-unreachable-loop
+    for (const name in obj) { return false; }
     return true;
 
 }
@@ -196,7 +196,7 @@ export function range(start, stop) {
     const results = [];
     const iterations = stop - start;
 
-    for (var i = 0; i <= iterations; i++) {
+    for (let i = 0; i <= iterations; i++) {
         results.push(start + i);
     }
 
