@@ -53,7 +53,6 @@
 
 <script>
 
-import Vue from 'vue';
 import {assign} from '../library/toolkit.js';
 import translate from '../library/translate.js';
 import {confirm} from '../components/dialogModal.vue';
@@ -66,7 +65,7 @@ import getVueComponentMapper from '../library/getVueComponentMapper.js';
 import headerBorderListener from '../mixins/headerBorderListener.js';
 import screenSize from '../mixins/screenSize.js';
 
-const BaseResourceController = Vue.extend({
+const BaseResourceController = {
 
     mixins: [headerBorderListener, screenSize],
 
@@ -567,7 +566,7 @@ const BaseResourceController = Vue.extend({
 
     }
 
-});
+};
 
 BaseResourceController.getDataKeys = () => ([
     'resourceName',

@@ -1,5 +1,5 @@
 <template>
-    <element-wrapper v-bind="elementWrapperProps">
+    <element-wrapper v-if="!isRenderPlaceholder" v-bind="elementWrapperProps">
         <template v-if="selectsOne">
             <span class="item" :class="{iconMoreHorizontal: isInteractive}" @click="isInteractive && open({onSelect})">
                 {{ relatedModels ? getModelCaption(relatedModels[0]) : placeholderText }}
@@ -47,7 +47,6 @@
 
 <script>
 import base from './base.vue';
-import Vue from 'vue';
 import {assign, ensureArray} from '../library/toolkit.js';
 import translate from '../library/translate.js';
 import ElementWrapper from './elementWrapper.vue';
@@ -55,9 +54,10 @@ import {Model} from '../library/resource.js';
 import loadControllerType from '../library/loadControllerType.js';
 import {pascal as pascalcase} from 'to-case';
 import {Popup} from '../components/popup.vue';
+import addModal from '../library/addModal.js';
 import app from '../app.js';
 
-const Component = Vue.extend({
+const Component = {
 
     elementType: 'externalAdmin',
 
@@ -66,6 +66,7 @@ const Component = Vue.extend({
     mixins: [base],
 
     props: {
+        isRenderPlaceholder: {type: Boolean, default: false},
         value: {type: String, default: ''},
         mapCaptionTo: {type: [String, Function], default: 'name'},
         select: {type: String, default: 'one'},
@@ -122,6 +123,14 @@ const Component = Vue.extend({
 
     watch: {
         value: 'syncRelatedModels'
+    },
+
+    mounted() {
+
+        if (this.isRenderPlaceholder) {
+            this.open();
+        }
+
     },
 
     created() {
@@ -188,7 +197,12 @@ const Component = Vue.extend({
                     }
 
                 },
-                afterDestroy: () => { delete this.popup; },
+                afterDestroy: () => {
+                    if (this.isRenderPlaceholder) {
+                        this.$emit('closeModal');
+                    }
+                    delete this.popup;
+                },
                 parent: this
             });
 
@@ -326,7 +340,7 @@ const Component = Vue.extend({
 
     }
 
-});
+};
 
 assign(Component, {
 
@@ -351,10 +365,11 @@ assign(Component, {
 
     open: function(params = {}) {
 
-        return new Component({
-            propsData: assign({controllerMethod: null, onSelect: null}, params),
-            parent: params.parent || app.rootView
-        }).open();
+        return addModal({
+            props: () => assign({controllerMethod: null, onSelect: null, isRenderPlaceholder: true}, params),
+            component: () => Component,
+            parent: () => params.parent || app.rootView
+        });
 
     }
 

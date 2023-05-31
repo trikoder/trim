@@ -33,13 +33,16 @@ export default function(params) {
             }
         });
 
-        return Parent.extend(assignDeep(vueObject, {
+        return {
+            ...Parent,
             data() {
-                return assignDeep({}, data);
+                return assignDeep({}, Parent.data?.bind(this)(), data);
             },
-            methods,
-            render: Parent.render
-        }));
+            methods: {
+                ...Parent.methods,
+                ...methods
+            }
+        };
 
     };
 

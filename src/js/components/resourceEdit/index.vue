@@ -78,7 +78,6 @@
 
 <script>
 
-import Vue from 'vue';
 import loadDefinitionType from '../../library/loadDefinitionType.js';
 import bootData from '../../library/bootData.js';
 import formElementDefaults from '../../formElements/elementDefaults.js';
@@ -104,7 +103,7 @@ import {
     getComponentInitialValue
 } from '../../library/toolkit.js';
 
-const Component = Vue.extend({
+export default {
 
     components: {Tab, Region, Group, Message},
 
@@ -1062,8 +1061,6 @@ const Component = Vue.extend({
 
     }
 
-});
-
-export default Component;
+};
 
 </script>
