@@ -10,9 +10,11 @@ function getOne(serviceName, options) {
 
     const service = Promise.resolve(registry[serviceName]());
 
-    return options && options.fullExport ? service : service.then(
-        importedModule => importedModule.__esModule ? importedModule.default : importedModule
-    );
+    return options && options.fullExport
+        ? service
+        : service.then(
+            importedModule => importedModule.__esModule ? importedModule.default : importedModule
+        );
 
 }
 

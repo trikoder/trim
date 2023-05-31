@@ -1,4 +1,4 @@
-import app from 'trim/app';
+import app from 'trim/app.js';
 import translations from 'trim/lang/english.js';
 import routes from './routes.js';
 import services from './services.js';

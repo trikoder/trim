@@ -13,7 +13,7 @@ const Server = ExpressServer.extend({
             response.send('');
         });
 
-        return ExpressServer.prototype.setupRoutes.call(this, app);;
+        return ExpressServer.prototype.setupRoutes.call(this, app); ;
 
     }
 
@@ -22,5 +22,5 @@ const Server = ExpressServer.extend({
 export default new Server({
     port: process.env.API_PORT,
     databaseAdapter: MemoryAdapter,
-    resources: resources
+    resources
 }).start();

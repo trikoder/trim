@@ -8,10 +8,10 @@ assign(DataBag.prototype, {
 
     get(key, defaultValue) {
 
-        var pieces = key.split('.');
-        var haystack = this.store;
+        const pieces = key.split('.');
+        let haystack = this.store;
 
-        for (var i in pieces) {
+        for (const i in pieces) {
 
             haystack = haystack[pieces[i]];
 

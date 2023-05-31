@@ -1,4 +1,5 @@
 <template>
+    <!-- eslint-disable vue/no-mutating-props -->
     <div class="editLayoutGroup" :class="[{collapsed}, layout.class]">
         <component
             v-for="field in layout.fields"

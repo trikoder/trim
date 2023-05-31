@@ -93,13 +93,15 @@ export default {
 
             return this.controls.map((control, index) => {
 
-                return control.isDropdown ? assign({
-                    className: 'accented icr iconAlignLeft',
-                    caption: translate('resourceControls.dropdownToggle')
-                }, control, {
-                    active: false,
-                    accentedAdjecent: this.controls[index - 1].className.indexOf('accented') >= 0
-                }) : assign({}, control);
+                return control.isDropdown
+                    ? assign({
+                        className: 'accented icr iconAlignLeft',
+                        caption: translate('resourceControls.dropdownToggle')
+                    }, control, {
+                        active: false,
+                        accentedAdjecent: this.controls[index - 1].className.indexOf('accented') >= 0
+                    })
+                    : assign({}, control);
 
             }).filter(control => {
 

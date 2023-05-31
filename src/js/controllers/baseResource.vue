@@ -391,13 +391,15 @@ const BaseResourceController = Vue.extend({
 
         processConfigureEvent(name, editHandler) {
 
-            const eventMap = this.currentContext === 'create' ? {
-                beforeConfigure: 'beforeCreateSetup',
-                afterConfigure: 'afterCreateSetup'
-            } : {
-                beforeConfigure: 'beforeEditSetup',
-                afterConfigure: 'afterEditSetup'
-            };
+            const eventMap = this.currentContext === 'create'
+                ? {
+                    beforeConfigure: 'beforeCreateSetup',
+                    afterConfigure: 'afterCreateSetup'
+                }
+                : {
+                    beforeConfigure: 'beforeEditSetup',
+                    afterConfigure: 'afterEditSetup'
+                };
 
             this.$emit(eventMap[name], {controller: this, editHandler});
 

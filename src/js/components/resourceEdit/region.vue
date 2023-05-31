@@ -1,4 +1,5 @@
 <template>
+    <!-- eslint-disable vue/no-mutating-props -->
     <div class="region">
         <div class="regionInner">
             <template v-for="(config, key) in layout">

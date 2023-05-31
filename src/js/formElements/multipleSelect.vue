@@ -81,9 +81,11 @@ export default {
             const values = this.valueType === String ? this.value.split(',') : this.value;
             const itemIds = values.filter(id => id);
 
-            return this.optionElements.length ? this.optionElements.filter(
-                option => itemIds.indexOf(option.value) >= 0
-            ) : [];
+            return this.optionElements.length
+                ? this.optionElements.filter(
+                    option => itemIds.indexOf(option.value) >= 0
+                )
+                : [];
 
         }
 

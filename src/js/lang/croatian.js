@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     project: {
         title: 'Trikoder CMS',
         urlSufix: ' - Trikoder CMS'

@@ -8,16 +8,18 @@ export default {
 
     get(key, defaultValue) {
 
-        var data = preferenceData[key];
+        const data = preferenceData[key];
         return typeof data !== 'undefined' ? data : defaultValue;
 
     },
 
     set(key, value) {
 
-        each(arguments.length === 1 ? key : {
-            [key]: value
-        }, (paramValue, paramKey) => {
+        each(arguments.length === 1
+            ? key
+            : {
+                [key]: value
+            }, (paramValue, paramKey) => {
             preferenceData[paramKey] = paramValue;
         });
 

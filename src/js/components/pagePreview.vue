@@ -52,6 +52,7 @@ const Component = Vue.extend({
                 } else if (typeof size === 'string') {
                     return {caption: size, size};
                 }
+                return size;
 
             }));
 

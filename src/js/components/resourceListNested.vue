@@ -160,11 +160,13 @@ export default {
 
         getAdditionalTemplateParams() {
 
-            return this.useTreeTemplate ? {
-                treeItems: this.treeItems,
-                expandNode: this.expandNode,
-                collapseNode: this.collapseNode
-            } : {};
+            return this.useTreeTemplate
+                ? {
+                    treeItems: this.treeItems,
+                    expandNode: this.expandNode,
+                    collapseNode: this.collapseNode
+                }
+                : {};
 
         },
 
