@@ -3,7 +3,7 @@
         <main-navigation @storeUpdated="$emit('storeReady')"></main-navigation>
         <component
             v-if="currentControllerType"
-            :is="currentControllerType"
+            :is="toComponent(currentControllerType)"
             v-bind="controllerProps"
             ref="currentController"
         />
@@ -30,7 +30,13 @@ export default {
             return MainNavigation.getNavigationItems
                 ? serviceContainer.get('BaseMainNavigation').then(
                     BaseMainNavigation => {
-                        return BaseMainNavigation.extend({methods: MainNavigation, render: BaseMainNavigation.render});
+                        return {
+                            ...BaseMainNavigation,
+                            methods: {
+                                ...BaseMainNavigation.methods,
+                                ...MainNavigation
+                            }
+                        };
                     }
                 )
                 : MainNavigation

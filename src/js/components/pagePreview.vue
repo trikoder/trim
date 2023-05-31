@@ -22,11 +22,10 @@
 
 <script>
 
-import Vue from 'vue';
 import app from '../app.js';
 import {Popup} from './popup.vue';
 
-const Component = Vue.extend({
+const Component = {
 
     props: {
         className: {type: String, default: 'pagePreviewType1'},
@@ -70,7 +69,7 @@ const Component = Vue.extend({
 
     }
 
-});
+};
 
 export default Component;
 

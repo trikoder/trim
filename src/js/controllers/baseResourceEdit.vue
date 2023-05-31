@@ -29,7 +29,6 @@
 
 <script>
 
-import Vue from 'vue';
 import {assign} from '../library/toolkit.js';
 import {confirm} from '../components/dialogModal.vue';
 import translate from '../library/translate.js';
@@ -41,7 +40,7 @@ import getVueComponentMapper from '../library/getVueComponentMapper.js';
 import headerBorderListener from '../mixins/headerBorderListener.js';
 import screenSize from '../mixins/screenSize.js';
 
-const BaseResourceEditController = Vue.extend({
+const BaseResourceEditController = {
 
     mixins: [headerBorderListener, screenSize],
 
@@ -318,7 +317,7 @@ const BaseResourceEditController = Vue.extend({
 
     }
 
-});
+};
 
 BaseResourceEditController.getDataKeys = () => ([
     'navigationKey',
