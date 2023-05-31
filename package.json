@@ -22,7 +22,8 @@
     "api:server": "BASE_API_URL=http://localhost:8083/  API_PORT=8083 node ./server/node.js",
     "preview:pages": "node ./server/previewPages.js",
     "lint": "eslint '{src,demo,server,documentation}/**/*.{js,vue}' '{webpack.config,.babelrc,.eslintrc,karma.conf}.{js,cjs}' --fix",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "install": "patch-package"
   },
   "dependencies": {
     "@vue/compat": "^3.3.4",
