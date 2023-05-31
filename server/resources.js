@@ -9,7 +9,7 @@ const attributeIncludes = (resource, attribute, text) => {
         resource.attributes[attribute].toLowerCase(),
         text.toLowerCase()
     );
-}
+};
 
 export default {
     article: {
@@ -68,7 +68,7 @@ export default {
             }
         },
         sorts: {
-            'id': {
+            id: {
                 field: 'id',
                 order: 'ascending'
             },
@@ -102,11 +102,13 @@ export default {
                         author: {data: {id: randId(1, 5), type: 'user'}},
                         media: {data: {id: randId(1, 50), type: 'media'}},
                         tags: {
-                            data: index % 10 === 0 ? [] : [
-                                {id: randId(1, 5), type: 'tag'},
-                                {id: randId(6, 10), type: 'tag'},
-                                {id: randId(1, 10), type: 'tag'}
-                            ]
+                            data: index % 10 === 0
+                                ? []
+                                : [
+                                    {id: randId(1, 5), type: 'tag'},
+                                    {id: randId(6, 10), type: 'tag'},
+                                    {id: randId(1, 10), type: 'tag'}
+                                ]
                         }
                     }
                 };
@@ -199,10 +201,12 @@ export default {
                     },
                     relationships: {
                         contactData: {
-                            data: index === 1 ? [
-                                {id: '1', type: 'userContactEntry'},
-                                {id: '2', type: 'userContactEntry'}
-                            ] : []
+                            data: index === 1
+                                ? [
+                                    {id: '1', type: 'userContactEntry'},
+                                    {id: '2', type: 'userContactEntry'}
+                                ]
+                                : []
                         }
                     }
                 };
@@ -297,8 +301,8 @@ export default {
                         author: {data: {id: randId(1, 5), type: 'user'}},
                         tags: {
                             data: [
-                                {id: randId(1, 5), 'type': 'tag'},
-                                {id: randId(6, 10), 'type': 'tag'}
+                                {id: randId(1, 5), type: 'tag'},
+                                {id: randId(6, 10), type: 'tag'}
                             ]
                         }
                     }
@@ -311,7 +315,7 @@ export default {
             attributes: {
                 title: {type: String, required: action === 'create', minLength: 1},
                 code: {type: String, required: action === 'create', minLength: 1},
-                content: {type: String, default: ''},
+                content: {type: String, default: ''}
             }
         }),
         filters: {
@@ -353,7 +357,7 @@ export default {
                 return attributeIncludes(resource, 'title', filterValue);
             },
             parentCategory(parentCategory, filterValue) {
-                return get(resource, 'relationships.parentCategory.id') === filterValue;
+                return get(parentCategory, 'relationships.parentCategory.id') === filterValue;
             }
         },
         validate({data, validator}) {
@@ -390,10 +394,12 @@ export default {
             },
             relationships: {
                 parentCategory: {data: null},
-                childCategories: {data: [
-                    {id: '4', type: 'category'},
-                    {id: '5', type: 'category'}
-                ]}
+                childCategories: {
+                    data: [
+                        {id: '4', type: 'category'},
+                        {id: '5', type: 'category'}
+                    ]
+                }
             }
         }, {
             type: 'category',
@@ -408,9 +414,11 @@ export default {
             },
             relationships: {
                 parentCategory: {data: null},
-                childCategories: {data: [
-                    {id: '6', type: 'category'}
-                ]}
+                childCategories: {
+                    data: [
+                        {id: '6', type: 'category'}
+                    ]
+                }
             }
         }, {
             type: 'category',
@@ -440,9 +448,11 @@ export default {
             },
             relationships: {
                 parentCategory: {data: {id: '2', type: 'category'}},
-                childCategories: {data: [
-                    {id: '7', type: 'category'}
-                ]}
+                childCategories: {
+                    data: [
+                        {id: '7', type: 'category'}
+                    ]
+                }
             }
         }, {
             type: 'category',

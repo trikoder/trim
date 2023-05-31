@@ -1,4 +1,5 @@
 <template>
+    <!-- eslint-disable vue/no-mutating-props -->
     <div class="tabPanelType1 tabPanel" :class="{editLayoutRegions: layout.hasRegions, selected}">
         <template v-for="(config, key) in layout">
             <region

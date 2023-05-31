@@ -12,7 +12,7 @@ export default {
         limitCharacters: {type: [Boolean, Number], default: false},
         limitWords: {type: [Boolean, Number], default: false},
         attributes: {type: Object, default: () => ({})},
-        cellClass: {type: String},
+        cellClass: {type: String}
     },
 
     computed: {

@@ -882,10 +882,12 @@ const Component = Vue.extend({
 
             } else {
 
-                return fieldInstance.value !== '' ? {
-                    type: resourceType,
-                    id: fieldInstance.value
-                } : null;
+                return fieldInstance.value !== ''
+                    ? {
+                        type: resourceType,
+                        id: fieldInstance.value
+                    }
+                    : null;
 
             }
 
@@ -998,7 +1000,7 @@ const Component = Vue.extend({
         getFieldInstances() {
 
             return this.whenDefinitionsResolved()
-                .then(this.$nextTick())
+                .then(() => this.$nextTick())
                 .then(() => this.resolvedDefinitions.fields.reduce((registry, field) => {
 
                     const layoutReference = field.options.layoutReference;

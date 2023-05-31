@@ -154,7 +154,7 @@ export default {
 
         setupFileInput() {
 
-            var dropzone = this.dropzone = new Dropzone(this.$refs.inputWrapper, {
+            const dropzone = this.dropzone = new Dropzone(this.$refs.inputWrapper, {
                 url: '/dummy-upload-url',
                 acceptedFiles: this.acceptedFiles,
                 maxFilesize: this.maxFileSize,

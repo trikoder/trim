@@ -402,7 +402,7 @@ export default {
 ```
 If you need to access service container manually somewhere in your code:
 ```js
-import serviceContainer from 'trim/library/serviceContainer';
+import serviceContainer from 'trim/library/serviceContainer.js';
 
 serviceContainer.register('myService', () => {foo: 'bar'});
 
@@ -569,10 +569,10 @@ It is used to connect services and routes, load translations, inject boot (confi
 
 ### Code example
 ```js
-import app from 'trim/app';
-import translations from 'trim/lang/english';
-import routes from './routes';
-import services from './services';
+import app from 'trim/app.js';
+import translations from 'trim/lang/english.js';
+import routes from './routes.js';
+import services from './services.js';
 
 import './scss/main.scss';
 
@@ -699,7 +699,7 @@ app.setBootData({
 ### Access boot data outside of main entry point.
 Boot data can later be retrieved like so:
 ```js
-import bootData from 'trim/library/bootData';
+import bootData from 'trim/library/bootData.js';
 bootData('baseUrl'); // outputs boot data baseUrl value
 ```
 
@@ -710,8 +710,8 @@ Examine [base auth api](https://github.com/trikoder/trim/tree/master/src/js/libr
 Simple driver implementation is shown bellow:
 
 ```js
-import api from 'trim/library/api';
-import auth from 'trim/library/auth';
+import api from 'trim/library/api.js';
+import auth from 'trim/library/auth.js';
 
 export default auth.extend({
 
@@ -756,7 +756,7 @@ Inform application that you want to use auth driver you implemented:
 
 ```js
 // app.js
-import auth from './auth';
+import auth from './auth.js';
 ...
 app.useAuth(auth);
 ```

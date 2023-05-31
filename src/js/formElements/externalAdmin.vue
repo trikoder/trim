@@ -305,7 +305,7 @@ const Component = Vue.extend({
 
             return Promise.all(modelIds.map(id => Model.getFromApi({
                 type: this.resourceName,
-                id: id
+                id
             }))).then(models => {
                 this.loading = false;
                 this.relatedModels = models;

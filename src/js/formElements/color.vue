@@ -1,6 +1,6 @@
 <template>
     <text-form-element v-bind="$props" @input="$emit('input', $event)">
-        <template slot="inputWrapperEnd">
+        <template v-slot:inputWrapperEnd>
             <div class="colorPreview" :style="{
                 backgroundColor: value,
                 opacity: isValidColor ? 1 : 0

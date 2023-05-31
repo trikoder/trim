@@ -173,11 +173,13 @@ export default {
 
             if (this.selectedModels.length) {
 
-                definition.confirm ? confirm({
-                    message: typeof definition.confirm === 'string' ? definition.confirm : undefined,
-                    onAccept: executeAction,
-                    parent: this
-                }) : executeAction();
+                definition.confirm
+                    ? confirm({
+                        message: typeof definition.confirm === 'string' ? definition.confirm : undefined,
+                        onAccept: executeAction,
+                        parent: this
+                    })
+                    : executeAction();
 
             }
 

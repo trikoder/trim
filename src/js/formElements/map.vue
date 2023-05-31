@@ -151,7 +151,7 @@ export default {
                 if (!this.marker) {
 
                     this.marker = new google.maps.Marker({
-                        map: map,
+                        map,
                         draggable: true,
                         position: latLng
                     });

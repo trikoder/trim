@@ -44,7 +44,7 @@ export default {
 
         confirmRemove(callback, message) {
             confirm({
-                message: message,
+                message,
                 onAccept: callback,
                 parent: this
             });
