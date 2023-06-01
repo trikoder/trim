@@ -66,7 +66,7 @@ import translate from '../../library/translate.js';
 import ElementWrapper from '../elementWrapper.vue';
 import TreeNode from './treeNode.vue';
 import {Model, Collection} from '../../library/resource.js';
-import vueDismiss from 'vue-dismiss';
+import vueDismiss from '../../dependencies/vue-dismiss/index.js';
 
 export default {
 

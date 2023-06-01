@@ -37,7 +37,7 @@
 <script>
 
 import addModal from '../library/addModal.js';
-import vueDismiss from 'vue-dismiss';
+import vueDismiss from '../dependencies/vue-dismiss/index.js';
 
 const Component = {
 

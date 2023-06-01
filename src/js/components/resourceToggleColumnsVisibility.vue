@@ -33,7 +33,7 @@
 
 <script>
 
-import vueDismiss from 'vue-dismiss';
+import vueDismiss from '../dependencies/vue-dismiss/index.js';
 import {pascal as pascalcase} from 'to-case';
 import translate from '../library/translate.js';
 import userPreferences from '../library/userPreferences.js';

@@ -108,7 +108,7 @@
 
 <script>
 import {pickTo} from '../library/toolkit.js';
-import vueDismiss from 'vue-dismiss';
+import vueDismiss from '../dependencies/vue-dismiss/index.js';
 import serviceContainer from '../library/serviceContainer.js';
 import {GlobalEvents} from 'vue-global-events';
 import {pascal as pascalCase} from 'to-case';
