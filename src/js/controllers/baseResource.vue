@@ -64,10 +64,11 @@ import {Model, Collection} from '../library/resource.js';
 import getVueComponentMapper from '../library/getVueComponentMapper.js';
 import headerBorderListener from '../mixins/headerBorderListener.js';
 import screenSize from '../mixins/screenSize.js';
+import emitter from '../mixins/emitter.js';
 
 const BaseResourceController = {
 
-    mixins: [headerBorderListener, screenSize],
+    mixins: [emitter, headerBorderListener, screenSize],
 
     props: {
         isExternal: {type: Boolean, default: false},
@@ -357,7 +358,7 @@ const BaseResourceController = {
                 afterConfigure: 'afterIndexSetup'
             };
 
-            this.$emit(eventMap[name], {controller: this, list});
+            this.$emitter.emit(eventMap[name], {controller: this, list});
 
         },
 
@@ -400,7 +401,7 @@ const BaseResourceController = {
                     afterConfigure: 'afterEditSetup'
                 };
 
-            this.$emit(eventMap[name], {controller: this, editHandler});
+            this.$emitter.emit(eventMap[name], {controller: this, editHandler});
 
         },
 
@@ -412,7 +413,7 @@ const BaseResourceController = {
                 this.$refs.editHandler.$el.scrollTop = 0;
             }
 
-            this.$emit('resourceSaved', data);
+            this.$emitter.emit('resourceSaved', data);
             this.afterResourceSave(data);
 
         },
@@ -490,7 +491,7 @@ const BaseResourceController = {
                 window.scrollTo(0, 0);
 
                 return new Promise(resolve => {
-                    this.$once('afterIndexSetup', () => resolve());
+                    this.$emitter.once('afterIndexSetup', () => resolve());
                     this.$router.navigateTo(this.getIndexUrl(queryParams));
                 });
 
@@ -510,7 +511,7 @@ const BaseResourceController = {
             if (!this.isExternal) {
 
                 return new Promise(resolve => {
-                    this.$once('afterCreateSetup', () => resolve());
+                    this.$emitter.once('afterCreateSetup', () => resolve());
                     this.$router.navigateTo(this.getCreateUrl(queryParams));
                 });
 
@@ -529,7 +530,7 @@ const BaseResourceController = {
             if (!this.isExternal) {
 
                 return new Promise(resolve => {
-                    this.$once('afterEditSetup', () => resolve());
+                    this.$emitter.once('afterEditSetup', () => resolve());
                     this.$router.navigateTo(this.getEditUrl(routeParams, queryParams));
                 });
 

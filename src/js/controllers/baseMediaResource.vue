@@ -81,7 +81,6 @@ import getVueComponentMapper from '../library/getVueComponentMapper.js';
 import FileUpload from '../components/fileUpload.vue';
 import IncludedAdmin from '../formElements/includedAdmin.vue';
 import Message from '../components/message.vue';
-import headerBorderListener from '../mixins/headerBorderListener.js';
 
 const BaseMediaController = {
     ...BaseResourceController,
@@ -94,8 +93,7 @@ const BaseMediaController = {
     },
 
     mixins: [
-        ...BaseResourceController.mixins,
-        headerBorderListener
+        ...BaseResourceController.mixins
     ],
 
     data() {
@@ -222,7 +220,7 @@ const BaseMediaController = {
                     this.resetContext(createMethod, queryParams);
                     this.setPageTitle(typeConfig.createPageTitle);
 
-                    this.$emit('afterCreateSetup', {controller: this});
+                    this.$emitter.emit('afterCreateSetup', {controller: this});
 
                 };
 
@@ -231,7 +229,7 @@ const BaseMediaController = {
                     if (!this.isExternal) {
 
                         return new Promise(resolve => {
-                            this.$once('afterCreateSetup', () => resolve());
+                            this.$emitter.once('afterCreateSetup', () => resolve());
                             this.$router.navigateTo(this[getCreateUrlMethod](queryParams));
                         });
 

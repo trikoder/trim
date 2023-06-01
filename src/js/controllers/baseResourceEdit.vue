@@ -39,10 +39,11 @@ import {Model} from '../library/resource.js';
 import getVueComponentMapper from '../library/getVueComponentMapper.js';
 import headerBorderListener from '../mixins/headerBorderListener.js';
 import screenSize from '../mixins/screenSize.js';
+import emitter from '../mixins/emitter.js';
 
 const BaseResourceEditController = {
 
-    mixins: [headerBorderListener, screenSize],
+    mixins: [emitter, headerBorderListener, screenSize],
 
     props: {
         isExternal: {type: Boolean, default: false}
@@ -242,7 +243,7 @@ const BaseResourceEditController = {
                 afterConfigure: 'afterEditSetup'
             };
 
-            this.$emit(eventMap[name], {controller: this, editHandler});
+            this.$emitter.emit(eventMap[name], {controller: this, editHandler});
 
         },
 
@@ -254,7 +255,7 @@ const BaseResourceEditController = {
                 this.$refs.editHandler.$el.scrollTop = 0;
             }
 
-            this.$emit('resourceSaved', data);
+            this.$emitter.emit('resourceSaved', data);
 
         },
 
