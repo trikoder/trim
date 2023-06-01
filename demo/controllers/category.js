@@ -102,7 +102,7 @@ export default {
 
         edit.addField('NestedSelectFormElement', {
             readOnly: method === 'edit',
-            value: query.parentCategoryId,
+            modelValue: '4',
             name: 'parentCategory',
             label: 'Parent category',
             mapCaptionTo: 'title',
