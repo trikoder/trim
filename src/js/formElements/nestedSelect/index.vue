@@ -480,9 +480,9 @@ export default {
                     .then(() => this.setupSearchEngine())
                     .then(searchEngine => {
 
-                        this.searchResults = searchEngine.search(this.searchQuery).map((item, index) => {
-                            item.selected = index === 0;
-                            return item;
+                        this.searchResults = searchEngine.search(this.searchQuery).map((result, index) => {
+                            result.item.selected = index === 0;
+                            return result.item;
                         });
 
                     });
