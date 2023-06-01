@@ -75,7 +75,6 @@ export default {
     resolve: {
 
         alias: {
-            vue: '@vue/compat',
             trim: new URL('src/js', import.meta.url).pathname,
             apiServer: new URL(process.env.CLIENT_API_ENABLED
                 ? 'server/client.js'
