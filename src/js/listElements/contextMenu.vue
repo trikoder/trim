@@ -36,7 +36,7 @@
 
 <script>
 
-import vueDismiss from 'vue-dismiss';
+import vueDismiss from '../dependencies/vue-dismiss/index.js';
 import translate from '../library/translate.js';
 import {assign, result} from '../library/toolkit.js';
 import {confirm} from '../components/dialogModal.vue';
