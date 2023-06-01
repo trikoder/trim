@@ -315,9 +315,8 @@ export function getComponentOption(Component, optionName) {
 }
 
 export function getComponentInitialValue(Component, options = {}) {
-
-    if (typeof options.value !== 'undefined') {
-        return options.value;
+    if (typeof options.modelValue !== 'undefined') {
+        return options.modelValue;
     } else {
 
         const props = getComponentOption(Component, 'props');
@@ -325,7 +324,7 @@ export function getComponentInitialValue(Component, options = {}) {
 
         return valueProvider
             ? valueProvider(options)
-            : result(props && props.value && props.value.default)
+            : result(props && props.modelValue && props.modelValue.default)
         ;
     }
 
