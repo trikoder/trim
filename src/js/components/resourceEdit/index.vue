@@ -102,12 +102,13 @@ import {
     getComponentOption,
     getComponentInitialValue
 } from '../../library/toolkit.js';
+import emitter from '../../mixins/emitter.js';
 
 export default {
 
     components: {Tab, Region, Group, Message},
 
-    mixins: [screenSize],
+    mixins: [screenSize, emitter],
 
     props: {
         tag: {type: String, default: 'form'},
@@ -283,7 +284,7 @@ export default {
 
             this.definitions.observers.forEach(unWatch => unWatch());
             this.definitions.listeners.forEach(item => {
-                this.$off(item.eventName, item.callback);
+                this.$emitter.off(item.eventName, item.callback);
             });
             this.definitionsResolved = false;
             this.definitions = this.getInitialDefinitions();
@@ -575,7 +576,7 @@ export default {
                 this.resolvedDefinitions = definitions;
                 this.formData = this.mapModelToFormData();
                 this.definitionsResolved = true;
-                this.$emit('definitionsResolved');
+                this.$emitter.emit('definitionsResolved');
 
             });
 
@@ -684,7 +685,7 @@ export default {
 
                 this.definitionsResolved
                     ? resolve(this.resolvedDefinitions)
-                    : this.$once('definitionsResolved', () => resolve(this.resolvedDefinitions));
+                    : this.$emitter.once('definitionsResolved', () => resolve(this.resolvedDefinitions));
                 ;
 
             });
@@ -693,7 +694,7 @@ export default {
 
         listen(eventName, callback) {
 
-            this.$on(eventName, callback);
+            this.$emitter.on(eventName, callback);
             this.definitions.listeners.push({eventName, callback});
 
             return this;
@@ -702,7 +703,7 @@ export default {
 
         listenOnce(eventName, callback) {
 
-            this.$once(eventName, callback);
+            this.$emitter.once(eventName, callback);
             this.definitions.listeners.push({eventName, callback});
 
             return this;

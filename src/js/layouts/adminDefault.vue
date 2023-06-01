@@ -1,6 +1,6 @@
 <template>
     <div class="appContainer" :class="popupClasses">
-        <main-navigation @storeUpdated="$emit('storeReady')"></main-navigation>
+        <main-navigation @storeUpdated="$emitter.emit('storeReady')"></main-navigation>
         <component
             v-if="currentControllerType"
             :is="toComponent(currentControllerType)"
@@ -21,8 +21,11 @@ import {defineAsyncComponent} from 'vue';
 import serviceContainer from '../library/serviceContainer.js';
 import loadControllerType from '../library/loadControllerType.js';
 import Loader from '../components/loader.vue';
+import emitter from '../mixins/emitter.js';
 
 export default {
+
+    mixins: [emitter],
 
     components: {
         MainNavigation: defineAsyncComponent(() => serviceContainer.get('MainNavigation').then(MainNavigation => {
@@ -83,7 +86,7 @@ export default {
     created() {
 
         this.whenStoreReady = new Promise(resolve => {
-            this.$once('storeReady', resolve);
+            this.$emitter.once('storeReady', resolve);
         });
 
         this.runController();

@@ -182,7 +182,7 @@ const Component = {
                 onComponentCreate: controller => {
 
                     if (this.onSelect) {
-                        controller.$on('beforeIndexSetup', params => this.injectSelectionHandler(params));
+                        controller.$emitter.on('beforeIndexSetup', params => this.injectSelectionHandler(params));
                     }
 
                 },
