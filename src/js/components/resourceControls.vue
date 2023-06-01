@@ -57,7 +57,7 @@
 
 import translate from '../library/translate.js';
 import {assign} from '../library/toolkit.js';
-import vueDismiss from 'vue-dismiss';
+import vueDismiss from '../dependencies/vue-dismiss/index.js';
 import screenSize from '../mixins/screenSize.js';
 
 export default {

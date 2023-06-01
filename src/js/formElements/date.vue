@@ -20,9 +20,9 @@
             :prevMonthCaption="prevMonthCaption"
             :nextMonthCaption="nextMonthCaption"
             :setTimeCaption="setTimeCaption"
-            :value="modelValue"
+            :modelValue="modelValue"
             :editable="isInteractive"
-            @input="processInputEvent"
+            @update:modelValue="processInputEvent"
         ></date-pick>
     </element-wrapper>
 </template>
@@ -32,7 +32,7 @@
 import base from './base.vue';
 import translate from '../library/translate.js';
 import ElementWrapper from './elementWrapper.vue';
-import DatePick from 'vue-date-pick/src/vueDatePick.vue';
+import DatePick from '../dependencies/vue-date-pick/index.vue';
 
 export default {
 

@@ -1,5 +1,6 @@
 /* eslint-disable import/no-commonjs */
 module.exports = {
+    ignorePatterns: ['docs/'],
     root: true,
     env: {
         browser: true,
