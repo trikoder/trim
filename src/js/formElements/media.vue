@@ -265,7 +265,7 @@ export default {
 
         assignOnSave(controller, externalAdmin) {
 
-            controller.$once('resourceSaved', ({resourceModel}) => {
+            controller.$emitter.once('resourceSaved', ({resourceModel}) => {
 
                 this.mediaModel = resourceModel;
                 this.$emit('update:modelValue', resourceModel.get('id'));

@@ -19,9 +19,11 @@ export default {
         setupHeaderBorderListener() {
 
             ['afterIndexSetup', 'afterEditSetup', 'afterCreateSetup'].forEach(event => {
-                this.$on(event, () => {
-                    this.$nextTick(() => this.addHeaderScrollListener());
-                });
+                if ('$emitter' in this) {
+                    this.$emitter.on(event, () => {
+                        this.$nextTick(() => this.addHeaderScrollListener());
+                    });
+                }
             });
 
         },
