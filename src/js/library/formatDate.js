@@ -1,11 +1,11 @@
-import fecha from 'fecha';
+import {format as formatDate} from 'fecha';
 
 export default function(dateInput, format) {
 
     try {
 
         return dateInput
-            ? fecha.format(dateInput instanceof Date ? dateInput : new Date(dateInput), format)
+            ? formatDate(dateInput instanceof Date ? dateInput : new Date(dateInput), format)
             : ''
         ;
 
