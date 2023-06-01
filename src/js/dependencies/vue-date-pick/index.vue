@@ -891,6 +891,6 @@ function boundNumber(value, min, max) {
 
 <style lang="scss">
 
-    @import 'vue-date-pick/src/vueDatePick.scss';
+    @import './index.scss';
 
 </style>
