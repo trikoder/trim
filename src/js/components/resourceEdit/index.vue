@@ -619,7 +619,7 @@ export default {
             return this.getResolvedFieldDefinition(fieldName).then(definition => {
 
                 each(data, (value, key) => {
-                    if (key === 'value') {
+                    if (key === 'modelValue') {
                         this.formData[fieldName] = value;
                     } else {
                         definition.options = assign({}, definition.options, {[key]: value});
@@ -637,7 +637,7 @@ export default {
                 resolvedDefinitions.fields.forEach(definition => {
 
                     each(data, (value, key) => {
-                        if (key === 'value') {
+                        if (key === 'modelValue') {
                             this.formData[definition.name] = value;
                         } else {
                             definition.options = assign({}, definition.options, {[key]: value});
