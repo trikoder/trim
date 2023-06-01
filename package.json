@@ -33,7 +33,7 @@
     "dragula": "^3.7.3",
     "dropzone": "^5.9.3",
     "escape-html": "^1.0.3",
-    "fecha": "^3.0.3",
+    "fecha": "^4.2.3",
     "fuse.js": "^6.6.2",
     "google-maps": "^4.3.3",
     "json-api-resource": "^0.8.0",

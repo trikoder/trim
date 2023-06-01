@@ -1,6 +1,6 @@
 <script>
 import formatDate from '../library/formatDate.js';
-import fecha from 'fecha';
+import {parse as parseDate} from 'fecha';
 import DateFormElement from './date.vue';
 
 export default {
@@ -20,7 +20,7 @@ export default {
             default: (dateString, dateFormat) => {
                 return dateFormat === 'ISOString'
                     ? new Date(dateString)
-                    : fecha.parse(dateString, dateFormat)
+                    : parseDate(dateString, dateFormat)
                 ;
             }
         },
