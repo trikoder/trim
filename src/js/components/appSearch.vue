@@ -99,7 +99,7 @@ const Component = {
                 Promise.resolve(this.getSearchItems(this.query)).then(results => {
 
                     this.results = results.map(
-                        (result, index) => Object.assign({}, result, {
+                        (result, index) => Object.assign({}, result.item, {
                             selected: this.selectedItemIndex === index
                         })
                     );
