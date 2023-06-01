@@ -1,4 +1,4 @@
-import {createApp, toRaw, configureCompat} from 'vue';
+import {createApp, toRaw} from 'vue';
 import AppView from './components/appView.vue';
 import AdminDefaultLayout from './layouts/adminDefault.vue';
 import {create as createRouter} from './library/router.js';
@@ -30,10 +30,6 @@ let beforeAdminEnter = () => {};
 let auth = false;
 
 serviceContainer.register(appServices);
-
-configureCompat({
-    COMPONENT_V_MODEL: false
-});
 
 const api = {
 
