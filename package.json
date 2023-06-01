@@ -23,7 +23,6 @@
     "preview:pages": "node ./server/previewPages.js",
     "lint": "eslint '{src,demo,server,documentation}/**/*.{js,vue}' '{webpack.config,.babelrc,.eslintrc,karma.conf}.{js,cjs}' --fix",
     "prepare": "husky install",
-    "install": "patch-package",
     "release": "np --no-release-draft"
   },
   "dependencies": {
@@ -75,7 +74,6 @@
     "lint-staged": "^13.2.2",
     "mout": "^1.2.4",
     "np": "^8.0.2",
-    "patch-package": "^7.0.0",
     "postcss-loader": "^7.3.2",
     "postcss-preset-env": "^8.4.1",
     "sass": "^1.62.1",
