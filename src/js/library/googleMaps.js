@@ -9,15 +9,14 @@ export function loadApi() {
         return loadApiPromise;
     }
 
-    loadApiPromise = import('google-maps').then(({default: GoogleMapsLoader}) => {
+    loadApiPromise = import('google-maps').then(({Loader}) => {
 
-        GoogleMapsLoader.KEY = bootData('googleMapsApiKey');
-        GoogleMapsLoader.LIBRARIES = ['places'];
-        GoogleMapsLoader.LANGUAGE = app.getLocale();
-
-        return new Promise(resolve => {
-            GoogleMapsLoader.load(googleLib => resolve(googleLib));
+        const loader = new Loader(bootData('googleMapsApiKey'), {
+            libraries: ['places'],
+            language: app.getLocale()
         });
+
+        return loader.load().then((googleLib) => googleLib);
 
     });
 
