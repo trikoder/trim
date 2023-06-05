@@ -34,11 +34,8 @@ export default {
                 ? serviceContainer.get('BaseMainNavigation').then(
                     BaseMainNavigation => {
                         return {
-                            ...BaseMainNavigation,
-                            methods: {
-                                ...BaseMainNavigation.methods,
-                                ...MainNavigation
-                            }
+                            extends: BaseMainNavigation,
+                            methods: MainNavigation
                         };
                     }
                 )
