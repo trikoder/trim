@@ -1,4 +1,4 @@
-import {each, assignDeep} from '../library/toolkit.js';
+import {each, assignDeep, omit} from '../library/toolkit.js';
 
 const vueOptions = [
     'props', 'computed', 'watch',
@@ -34,14 +34,13 @@ export default function(params) {
         });
 
         return {
-            ...Parent,
+            extends: omit(Parent, 'data'),
+            mixins: [vueObject],
             data() {
-                return assignDeep({}, Parent.data?.bind(this)(), data);
+                const parentData = Parent.data ? Parent.data.call(this) : {};
+                return assignDeep({}, parentData, data);
             },
-            methods: {
-                ...Parent.methods,
-                ...methods
-            }
+            methods
         };
 
     };
