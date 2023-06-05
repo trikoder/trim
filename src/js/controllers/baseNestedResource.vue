@@ -4,10 +4,10 @@ import NestedResourceList from '../components/resourceListNested.vue';
 import getVueComponentMapper from '../library/getVueComponentMapper.js';
 
 const BaseNestedController = {
-    ...BaseResourceController,
+
+    extends: BaseResourceController,
 
     data: () => ({
-        ...BaseResourceController.data?.bind(this)(),
         mapParentTo: 'parent',
         mapChildrenTo: 'children',
         mapLevelTo: undefined,
@@ -17,7 +17,6 @@ const BaseNestedController = {
     }),
 
     methods: {
-        ...BaseResourceController.methods,
 
         getResourceListType() {
 
