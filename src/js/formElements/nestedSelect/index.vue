@@ -84,7 +84,7 @@ export default {
         mapChildrenTo: {type: [String, Function], default: 'children'},
         mapIsLeafTo: {type: [String, Function]},
         mapLevelTo: {type: [String, Function]},
-        mapPositionTo: {type: [Function, String], default: () => 0},
+        mapPositionTo: {type: [Function, String]},
         selectableLevel: {type: [String, Array, Function], default: 'leaf'},
         getCollectionType: {type: Function, default: () => Collection},
         getModelType: {type: Function, default: () => Model},
@@ -125,7 +125,9 @@ export default {
 
         sortComparator() {
 
-            const mapper = this.mapPositionTo;
+            const mapper = typeof this.mapPositionTo !== 'undefined'
+                ? this.mapPositionTo
+                : () => 0;
 
             return typeof mapper === 'function'
                 ? mapper
