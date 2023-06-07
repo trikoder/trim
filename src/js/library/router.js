@@ -141,6 +141,12 @@ const routerParams = {
 
         return this;
 
+    },
+
+    addRoutes(routes) {
+        routes.forEach((route) => {
+            this.addRoute(route);
+        });
     }
 
 };
@@ -161,12 +167,6 @@ export function create() {
             : createWebHashHistory(base),
         routes: []
     });
-
-    if (!routerInstance.addRoute) {
-        routerInstance.addRoute = function(config) {
-            return this.addRoutes([config]);
-        };
-    }
 
     routerInstance = assign(routerInstance, routerParams);
 
