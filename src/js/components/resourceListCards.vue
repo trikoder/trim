@@ -15,7 +15,7 @@
                 <component
                     v-for="(definition, index) in definitions.listItems"
                     :key="index"
-                    :is="toComponent(definition.Type)"
+                    :is="toRawComponentProps(definition.Type)"
                     :resourceModel="model"
                     v-bind="definition.options"
                 ></component>
