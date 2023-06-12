@@ -3,7 +3,7 @@
         <main-navigation @storeUpdated="$emitter.emit('storeReady')"></main-navigation>
         <component
             v-if="currentControllerType"
-            :is="toComponent(currentControllerType)"
+            :is="toRawComponentProps(currentControllerType)"
             v-bind="controllerProps"
             ref="currentController"
         />

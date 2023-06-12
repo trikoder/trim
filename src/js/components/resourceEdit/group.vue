@@ -3,7 +3,7 @@
     <div class="editLayoutGroup" :class="[{collapsed}, layout.class]">
         <component
             v-for="field in layout.fields"
-            :is="toComponent(field.Type)"
+            :is="toRawComponentProps(field.Type)"
             v-bind="field.options"
             v-model="formData[field.options.name]"
             :visible="isFieldVisible(field)"
