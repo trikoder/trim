@@ -1,5 +1,24 @@
+import littleLoader from 'little-loader';
 import bootData from '../library/bootData.js';
 import app from '../app.js';
+
+const ckeditorPath = new URL('../../../node_modules/ckeditor/ckeditor.js', import.meta.url);
+let ckeditorImport = null;
+function importCkEditor() {
+    if (ckeditorImport) {
+        return ckeditorImport;
+    }
+    ckeditorImport = new Promise((resolve, reject) => {
+        littleLoader(ckeditorPath.href, (error) => {
+            if (error) {
+                reject(error);
+            } else {
+                resolve();
+            }
+        });
+    });
+    return ckeditorImport;
+}
 
 export function load() {
 
@@ -8,7 +27,7 @@ export function load() {
         'https://cdn.ckeditor.com/4.11.4/standard-all/'
     );
 
-    return import('ckeditor').then(() => {
+    return importCkEditor().then(() => {
 
         const locale = app.getLocale();
         const ckeditor = window.CKEDITOR;

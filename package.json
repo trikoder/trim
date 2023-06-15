@@ -36,6 +36,7 @@
     "fuse.js": "^6.6.2",
     "google-maps": "^4.3.3",
     "json-api-resource": "^0.8.0",
+    "little-loader": "^0.2.0",
     "mitt": "^3.0.0",
     "normalize.css": "^8.0.0",
     "simple-lightbox": "^2.0.1",
