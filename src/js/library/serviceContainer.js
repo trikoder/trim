@@ -13,9 +13,13 @@ function getOne(serviceName, options) {
     return options && options.fullExport
         ? service
         : service.then(
-            importedModule => importedModule.__esModule ? importedModule.default : importedModule
+            importedModule => isEsModule(importedModule) ? importedModule.default : importedModule
         );
 
+}
+
+function isEsModule(_module) {
+    return _module.__esModule || _module[Symbol.toStringTag] === 'Module';
 }
 
 export default {
