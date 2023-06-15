@@ -283,6 +283,10 @@ export default {
 
             const inputWrapper = this.$refs.inputWrapper;
 
+            if (typeof window.global === 'undefined') {
+                window.global = window;
+            }
+
             import('dragula').then(({default: dragula}) => {
 
                 this.drake = dragula([inputWrapper], {
