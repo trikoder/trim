@@ -4,6 +4,7 @@ coverage/
 npm-debug.log*
 docs
 .temp
+documentation/.vitepress/cache
 
 # Editor directories and files
 .idea

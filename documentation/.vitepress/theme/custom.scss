@@ -1,0 +1,20 @@
+$accentColor: #e03431;
+
+@media screen and (min-width: 720px) {
+
+    .VPNavBar .VPNavBarTitle a {
+
+        display: block; position: relative;
+        line-height: 64px; padding-left: 50px;
+
+    }
+
+    .VPNavBar .VPNavBarTitle a:before {
+
+        position: absolute; content: ''; left: 0; top: 50%; transform: translateY(-50%); width: 40px; height: 40px;
+        background: #e03431 url('../assets/trikoder.svg') no-repeat center; border-radius: 50%;
+        background-size: 27px;
+
+    }
+
+}
