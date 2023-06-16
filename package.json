@@ -15,10 +15,10 @@
   "scripts": {
     "dev": "npm run api:server & npm run dev:server",
     "dev:server": "NODE_ENV=development BASE_URL=/ BASE_API_URL=http://localhost:8083/ vite --mode development",
-    "dev:docs": "NODE_ENV=development vuepress dev documentation",
+    "dev:docs": "NODE_ENV=development vitepress dev documentation",
     "build": "npm run build:docs && npm run build:demo",
     "build:demo": "NODE_ENV=production CLIENT_API_ENABLED=true BASE_URL=/trim/demo/ BASE_API_URL=/trim/demo/api/ vite build --mode production",
-    "build:docs": "vuepress build documentation",
+    "build:docs": "vitepress build documentation",
     "api:server": "BASE_API_URL=http://localhost:8083/  API_PORT=8083 node ./server/node.js",
     "preview:pages": "node ./server/previewPages.js",
     "lint": "eslint '{src,demo,server,documentation}/**/*.{js,vue}' '{vite.config,.babelrc,.eslintrc,karma.conf}.{js,cjs}' --fix",
@@ -72,7 +72,7 @@
     "postcss-preset-env": "^8.4.1",
     "sass": "^1.62.1",
     "vite": "^4.3.9",
-    "vuepress": "^2.0.0-beta.62"
+    "vitepress": "^1.0.0-beta.2"
   },
   "engines": {
     "node": ">= 16.0.0",
