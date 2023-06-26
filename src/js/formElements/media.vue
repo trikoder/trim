@@ -46,7 +46,7 @@ import ExternalAdmin from './externalAdmin.vue';
 import Dropzone from 'dropzone';
 import bootData from '../library/bootData.js';
 import api from '../library/api.js';
-import {confirm} from '../components/dialogModal.vue';
+import {confirm} from '../library/dialog.js';
 import SimpleLightbox from 'simple-lightbox';
 import 'simple-lightbox/dist/simpleLightbox.min.css';
 

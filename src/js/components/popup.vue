@@ -25,7 +25,7 @@ import translate from '../library/translate.js';
 import addModal from '../library/addModal.js';
 import app from '../app.js';
 
-const PopupComponent = {
+const Component = {
 
     props: {
         component: {type: [Object, Function]},
@@ -97,17 +97,15 @@ const PopupComponent = {
 
 };
 
-export default PopupComponent;
-
-export function Popup(config) {
-
+Component.open = function(props) {
     return addModal({
-        props: () => config,
-        component: () => PopupComponent,
-        parent: () => config.parent || app.rootView
+        props: () => props,
+        component: () => Component,
+        parent: () => props.parent || app.rootView
     });
-
 };
+
+export default Component;
 
 </script>
 

@@ -39,7 +39,7 @@ import base from './base.vue';
 import translate from '../library/translate.js';
 import ElementWrapper from './elementWrapper.vue';
 import Dropzone from 'dropzone';
-import {confirm} from '../components/dialogModal.vue';
+import {confirm} from '../library/dialog.js';
 import SimpleLightbox from 'simple-lightbox';
 import 'simple-lightbox/dist/simpleLightbox.min.css';
 

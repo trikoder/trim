@@ -21,10 +21,8 @@
 </template>
 
 <script>
-
-import translate from '../library/translate.js';
-import {assign, isPlainObject} from '../library/toolkit.js';
 import app from '../app.js';
+import translate from '../library/translate.js';
 import addModal from '../library/addModal.js';
 
 const Component = {
@@ -75,27 +73,15 @@ const Component = {
 
 };
 
-export default Component;
-
-export function confirm(message, onAccept, config) {
-
-    let params;
-
-    if (isPlainObject(message)) {
-        params = message;
-    } else if (typeof message === 'function') {
-        params = {onAccept: message};
-    } else {
-        params = assign({}, config, {message, onAccept});
-    }
-
+Component.open = function(props) {
     return addModal({
-        props: () => params,
+        props: () => props,
         component: () => Component,
-        parent: () => params.parent || app.rootView
+        parent: () => props.parent || app.rootView
     });
+};
 
-}
+export default Component;
 
 </script>
 
