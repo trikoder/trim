@@ -53,7 +53,7 @@ import ElementWrapper from './elementWrapper.vue';
 import {Model} from '../library/resource.js';
 import loadControllerType from '../library/loadControllerType.js';
 import {pascal as pascalcase} from 'to-case';
-import {Popup} from '../components/popup.vue';
+import Popup from '../components/popup.vue';
 import addModal from '../library/addModal.js';
 import app from '../app.js';
 
@@ -172,7 +172,7 @@ const Component = {
 
         runController(ControllerType) {
 
-            this.popup = Popup({
+            this.popup = Popup.open({
                 component: ControllerType,
                 props: {
                     indexTitle: this.onSelect ? this.placeholderText : undefined,

@@ -23,7 +23,7 @@
 <script>
 
 import app from '../app.js';
-import {Popup} from './popup.vue';
+import Popup from './popup.vue';
 
 const Component = {
 
@@ -77,7 +77,7 @@ export function PagePreview(config) {
 
     config = typeof config === 'string' ? {url: config} : config;
 
-    return Popup({
+    return Popup.open({
         component: Component,
         props: config,
         dark: true,
