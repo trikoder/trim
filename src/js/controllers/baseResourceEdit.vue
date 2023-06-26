@@ -30,7 +30,7 @@
 <script>
 
 import {assign} from '../library/toolkit.js';
-import {confirm} from '../components/dialogModal.vue';
+import {confirm} from '../library/dialog.js';
 import translate from '../library/translate.js';
 import ResourceControls from '../components/resourceControls.vue';
 import ResourceHeader from '../components/resourceHeader.vue';
