@@ -36,6 +36,9 @@ module.exports = {
     resourceSort: {
         caption: 'Poredak'
     },
+    resourceToggleColumnVisibility: {
+        caption: 'Promijeni vidljivost stupaca'
+    },
     fileUpload: {
         uploadImages: 'Uploadaj slike'
     },

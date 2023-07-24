@@ -18,6 +18,7 @@
                 v-for="(definition, index) in definitions.listItems"
                 :key="index"
                 :class="definition.Type.elementType + 'CellHeading'"
+                v-if="!definition.isColumnHidden"
             >
                 {{ definition.options.caption }}
             </th>
@@ -41,6 +42,7 @@
                     v-for="(definition, index) in definitions.listItems"
                     :key="index"
                     :class="getCellClass(definition)"
+                    v-if="!definition.isColumnHidden"
                 >
                     <component
                         :is="definition.Type"

@@ -36,6 +36,9 @@ module.exports = {
     resourceSort: {
         caption: 'Sort'
     },
+    resourceToggleColumnVisibility: {
+        caption: 'Toggle column visibility'
+    },
     fileUpload: {
         uploadImages: 'Upload images'
     },
