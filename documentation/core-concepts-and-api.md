@@ -689,6 +689,7 @@ app.setBootData({
 ### Other boot data keys
 ```js
 app.setBootData({
+    toggleColumnsVisibility: true, // activate toggle list table columns visibility feature, default is FALSE
     itemsPerPage: 15, // default number of items per page
     googleMapsApiKey: '123123', // api key for google maps
     ckEditorPath: 'https://cdn.ckeditor.com/4.10.0/standard-all/' // ckeditor CDN

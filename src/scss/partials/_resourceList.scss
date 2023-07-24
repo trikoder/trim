@@ -11,7 +11,8 @@
 
         .bottomListControls,
         .topListControls > .sort,
-        .topListControls > .pagination {
+        .topListControls > .pagination,
+        .topListControls > .toggleColumnsVisibility {
 
             display: none;
 
@@ -51,6 +52,8 @@
             > .pagination { display: none; }
 
             > .sort { display: none; }
+
+            > .toggleColumnsVisibility { display: none; }
 
         }
 

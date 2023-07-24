@@ -22,6 +22,7 @@ app
         //     article: 'article'
         //     user: 'user'
         // }
+        toggleColumnsVisibility: true,
         validationErrorField: 'detail',
         itemsPerPage: process.env.NODE_ENV !== 'production' ? 15 : 10,
         usesPushState: process.env.NODE_ENV !== 'production',

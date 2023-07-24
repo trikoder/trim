@@ -17,6 +17,12 @@
                 @deselectModel="deselectModel"
                 @message="showMessage"
             ></mass-actions>
+            <toggle-columns-visibility
+                v-if="showToggleColumnsVisibility"
+                :resourceName="resourceName"
+                :definitions="resolvedDefinitions"
+                @refresh="refreshItems"
+            />
             <pagination
                 v-if="showPagination"
                 :getUrlForPage="getUrlForPage"
@@ -76,6 +82,7 @@
 </template>
 
 <script>
+import {pascal as pascalcase} from 'to-case';
 import Filters from './resourceFilters.vue';
 import Sort from './resourceSort.vue';
 import Pagination from './resourcePagination.vue';
@@ -83,6 +90,9 @@ import TableComponent from './resourceListTable.vue';
 import CardsComponent from './resourceListCards.vue';
 import MassActions from './massActions.vue';
 import Message from './message.vue';
+import ToggleColumnsVisibility from './resourceToggleColumnsVisibility.vue';
+import bootData from '../library/bootData.js';
+import userPreferences from '../library/userPreferences.js';
 import Loader from '../library/loader.js';
 import loadDefinitionType from '../library/loadDefinitionType.js';
 import formElementDefaults from '../formElements/elementDefaults.js';
@@ -99,7 +109,7 @@ import {
 
 export default {
 
-    components: {Filters, Sort, Pagination, MassActions, Message},
+    components: {Filters, Sort, ToggleColumnsVisibility, Pagination, MassActions, Message},
 
     mixins: [screenSize],
 
@@ -225,6 +235,15 @@ export default {
         showSort() {
 
             return this.resolvedDefinitions && this.resolvedDefinitions.sorts.length > 1;
+
+        },
+
+        showToggleColumnsVisibility() {
+
+            return bootData('toggleColumnsVisibility') &&
+                this.resolvedDefinitions &&
+                this.resolvedDefinitions.listItems.length > 0 &&
+                this.template === 'table';
 
         }
 
@@ -438,6 +457,11 @@ export default {
                 this.decorateLinkDefinition(definition);
             } else if (type === 'contextMenu') {
                 this.decorateContextMenuDefinition(definition);
+            }
+
+            if (bootData('toggleColumnsVisibility')) {
+                const storageKey = `columnVisibility.${this.resourceName}${pascalcase(definition.options.caption)}`;
+                definition.isColumnHidden = userPreferences.get(storageKey, false);
             }
 
             return definition;
