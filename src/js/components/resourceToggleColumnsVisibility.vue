@@ -5,9 +5,8 @@
     >
 
         <button
-            class="toggleButton nBtn icr iconLayers"
+            class="toggleButton nBtn iconSettings"
             type="button"
-            :title="toggleButtonCaption"
             @click="toggleDropdown"
         >{{ toggleButtonCaption }}</button>
 
@@ -76,7 +75,12 @@ export default {
         },
 
         toggleColumn(key, state) {
-            userPreferences.set(`columnVisibility.${this.resourceName}${pascalcase(key)}`, state);
+            const preferenceKey = `columnVisibility.${this.resourceName}${pascalcase(key)}`;
+            if (state) {
+                userPreferences.set(preferenceKey, true);
+            } else {
+                userPreferences.unset(preferenceKey);
+            }
             this.$emit('refresh');
         }
 
@@ -91,13 +95,19 @@ export default {
     .toggleColumnsVisibility {
 
         position: relative; float: right;
-        margin: 0.9em 0 0 1.3em;
+        margin-top: 1.3em;
 
     }
 
     .toggleButton {
 
-        font-size: 1.6em;
+        font-size: 1.4em; padding: em(8,14) em(17,14);
+        color: $colorGrayDark3; float: right;
+
+        &:before {
+            left: auto; right: em(-17, 14);
+            color: $colorGrayDark2;
+        }
 
     }
 
@@ -105,7 +115,7 @@ export default {
 
         animation: slideDownFadeIn 0.2s;
 
-        position: absolute; z-index: 20; padding: 0.5em; right: 0; min-width: 10em;
+        position: absolute; z-index: 20; padding: 0.5em; top: 3.6em; right: 0; min-width: 10em;
         background: #fff; border: 1px solid $colorGrayLight2; border-radius: 0.4em;
         box-shadow: 0 0.1em 0.3em rgba(#000, 0.06);
 
