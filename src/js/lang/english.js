@@ -37,7 +37,7 @@ module.exports = {
         caption: 'Sort'
     },
     resourceToggleColumnVisibility: {
-        caption: 'Toggle column visibility'
+        caption: 'Columns'
     },
     fileUpload: {
         uploadImages: 'Upload images'

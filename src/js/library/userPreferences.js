@@ -25,6 +25,15 @@ export default {
 
         return this;
 
+    },
+
+    unset(key) {
+
+        delete preferenceData[key];
+        localStorage.setItem(storageKey, JSON.stringify(preferenceData));
+
+        return this;
+
     }
 
 };
