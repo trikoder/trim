@@ -5,7 +5,7 @@
     >
 
         <button
-            class="toggleButton nBtn iconSettings"
+            class="toggleButton nBtn iconSidebar"
             type="button"
             @click="toggleDropdown"
         >{{ toggleButtonCaption }}</button>
