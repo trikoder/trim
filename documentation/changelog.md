@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.79.10
+* Addition: resource list column visibility toggle selector
+
 ## 0.79.9
 * Change: Update vue dependencies (to 2.7)
 
