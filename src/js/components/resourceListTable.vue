@@ -14,14 +14,14 @@
                 >
                 <label class="icr iconCheck" :for="'mac-' + modelCollection.cid"></label>
             </th>
-            <th
-                v-for="(definition, index) in definitions.listItems"
-                :key="index"
-                :class="definition.Type.elementType + 'CellHeading'"
-                v-if="!definition.isColumnHidden"
-            >
-                {{ definition.options.caption }}
-            </th>
+            <template v-for="(definition, index) in definitions.listItems" :key="index">
+                <th
+                    :class="definition.Type.elementType + 'CellHeading'"
+                    v-if="!definition.isColumnHidden"
+                >
+                    {{ definition.options.caption }}
+                </th>
+            </template>
         </thead>
         <tbody>
             <tr v-for="model in modelCollection.models" :key="model.cid">
@@ -38,18 +38,18 @@
                     >
                     <label class="icr iconCheck" :for="'mac-' + model.cid"></label>
                 </td>
-                <td
-                    v-for="(definition, index) in definitions.listItems"
-                    :key="index"
-                    :class="getCellClass(definition)"
-                    v-if="!definition.isColumnHidden"
-                >
-                    <component
-                        :is="toRawComponentProps(definition.Type)"
-                        :resourceModel="model"
-                        v-bind="definition.options"
-                    ></component>
-                </td>
+                <template v-for="(definition, index) in definitions.listItems" :key="index">
+                    <td
+                        :class="getCellClass(definition)"
+                        v-if="!definition.isColumnHidden"
+                    >
+                        <component
+                            :is="toRawComponentProps(definition.Type)"
+                            :resourceModel="model"
+                            v-bind="definition.options"
+                        ></component>
+                    </td>
+                </template>
             </tr>
         </tbody>
     </table>
