@@ -245,6 +245,7 @@ export default {
             this.saveAllowed = true;
 
             this.$emit('beforeConfigure', this);
+            this.$emitter.emit('beforeConfigure', this);
 
             const method = this.resourceModel
                 ? (this.resourceModel.isNew() ? 'create' : 'edit')
@@ -266,7 +267,10 @@ export default {
                     resourceModel: this.resourceModel
                 })))
                 .then(() => this.setupUI())
-                .then(() => this.$emit('afterConfigure', this))
+                .then(() => {
+                    this.$emit('afterConfigure', this);
+                    this.$emitter.emit('afterConfigure', this);
+                })
                 .then(() => loader.off())
                 .catch(error => { loader.off(); return Promise.reject(error); })
             ;
