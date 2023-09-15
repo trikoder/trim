@@ -3,6 +3,7 @@
         <router-view/>
         <Component
             v-for="modal in modals" :key="modal.id"
+            :ref="`modal-${modal.id}`"
             :is="modal.component()"
             v-bind="modal.props()"
             @closeModal="closeModal(modal.id)"
@@ -35,6 +36,7 @@ export default {
             };
             this.modals.push(modal);
             return {
+                ref: () => this.$refs[`modal-${id}`][0],
                 close: () => this.closeModal(id)
             };
         },
