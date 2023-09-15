@@ -97,6 +97,7 @@ import Loader from '../library/loader.js';
 import loadDefinitionType from '../library/loadDefinitionType.js';
 import formElementDefaults from '../formElements/elementDefaults.js';
 import screenSize from '../mixins/screenSize.js';
+import emitter from '../mixins/emitter.js';
 import {
     assign,
     assignDeep,
@@ -111,7 +112,7 @@ export default {
 
     components: {Filters, Sort, ToggleColumnsVisibility, Pagination, MassActions, Message},
 
-    mixins: [screenSize],
+    mixins: [screenSize, emitter],
 
     props: {
         Collection: {type: Function, required: true},
@@ -275,6 +276,7 @@ export default {
         configureList() {
 
             this.$emit('beforeConfigure', this);
+            this.$emitter.emit('beforeConfigure', this);
 
             const loader = Loader.on();
 
@@ -288,7 +290,10 @@ export default {
 
             return Promise.resolve(this.configure(this))
                 .then(() => this.runQuery())
-                .then(() => this.$emit('afterConfigure', this))
+                .then(() => {
+                    this.$emit('afterConfigure', this);
+                    this.$emitter.emit('afterConfigure', this);
+                })
                 .then(() => loader.off())
                 .catch(error => {
                     loader.off();
