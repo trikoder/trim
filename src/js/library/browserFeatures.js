@@ -37,6 +37,10 @@ function prefixedProperty(property) {
 
 browserFeatures.runTests = function() {
 
+    if (typeof window.global === 'undefined') {
+        window.global = window;
+    }
+
     setBrowserFeature('svg', Boolean('createElementNS' in document && document.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect));
 
     setBrowserFeature('csstransforms', Boolean(prefixedProperty('transform')));
