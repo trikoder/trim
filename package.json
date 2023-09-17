@@ -21,7 +21,7 @@
     "build:docs": "vitepress build documentation",
     "api:server": "BASE_API_URL=http://localhost:8083/  API_PORT=8083 node ./server/node.js",
     "preview:pages": "node ./server/previewPages.js",
-    "lint": "eslint '{src,demo,server,documentation}/**/*.{js,vue}' '{vite.config,.babelrc,.eslintrc,karma.conf}.{js,cjs}' --fix",
+    "lint": "eslint '{src,demo,server,documentation}/**/*.{js,vue}' '{vite.config,.babelrc,.eslintrc}.{js,cjs}' --fix",
     "prepare": "husky install",
     "prerelease": "npm run lint && npm run build && git add -A && git commit -m 'Add documentation'",
     "release": "np --no-release-draft"
