@@ -25,5 +25,9 @@ export default {
             {text: 'Base controllers', link: '/base-controllers'},
             {text: 'Changelog', link: '/changelog'}
         ]
+    },
+    appearance: false,
+    markdown: {
+        theme: 'github-dark'
     }
 };

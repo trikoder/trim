@@ -16,7 +16,7 @@ Trikoder Trim is built on following open source stack:
 * [Vue](https://vuejs.org/), [Vue Router](https://router.vuejs.org/) and [Vuex](https://vuex.vuejs.org/) are used for application views, routing and store management.
 * [Axios](https://github.com/axios/axios) is used as http client
 * [JSON api resource](https://dbrekalo.github.io/json-api-resource/) is used for querying and persisting resources
-* [Webpack](https://webpack.js.org/) is used for module bundling and code splitting
+* [Vite](https://vitejs.dev/) or [Webpack](https://webpack.js.org/) is used for module bundling and code splitting
 
 ## Code sneek peek
 Lets assume your application has a simple "tag" resource and backend api for this resource is ready.
