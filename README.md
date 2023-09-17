@@ -14,7 +14,7 @@ Available [here](https://trikoder.github.io/trim/changelog.html).
 ## Credits
 Copyright (C) 2018 Trikoder
 
-Authors: Damir Brekalo, Davor Erić, Alen Pokos, Vedran Križek, Ivan Nikolić.
+Authors: Damir Brekalo, Davor Erić, Ivan Nikolić, Alen Pokos, Vedran Križek.
 
 ## License
 Package is licensed under [MIT License](./LICENSE)

@@ -101,6 +101,11 @@
                     </a>
                 </li>
                 <li>
+                    <a class="person" href="https://github.com/niksy">
+                        <img src="https://s.gravatar.com/avatar/6b8d15ba6278660ea52982293afe6432908d7e7db967ef15be8d35754a6ba570?s=100" alt="Ivan Nikolić">
+                    </a>
+                </li>
+                <li>
                     <a class="person" href="https://github.com/alenpokos">
                         <img src="https://s.gravatar.com/avatar/e3b6f47be05e23b4c29531b382fecfbd?s=100" alt="Davor Erić">
                     </a>
@@ -137,6 +142,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+    @use 'sass:math';
 
     .topBlock {
 
@@ -274,7 +281,7 @@ export default {
 
             li {
 
-                float: left; width: percentage(1/3); margin: 0; box-sizing: border-box;
+                float: left; width: math.percentage(math.div(1,3)); margin: 0; box-sizing: border-box;
                 padding: 0 45px 0 0;
 
             }
@@ -445,10 +452,14 @@ $accentColor: #e03431;
     .VPNavBar:not(.has-sidebar) .VPNavBarTitle a:before {
 
         position: absolute; top: 50%; transform: translateY(-50%);
-        width: 52px; height: 52px;
-        background-size: 35px;
+        width: 44px; height: 44px;
+        background-size: 30px;
         box-shadow: 0 2px 4px #0000001a;
 
+    }
+
+    .VPNavBar:not(.has-sidebar) .content-body {
+        transition: none;
     }
 
     .VPContent.is-home {
