@@ -23,6 +23,7 @@
     "preview:pages": "node ./server/previewPages.js",
     "lint": "eslint '{src,demo,server,documentation}/**/*.{js,vue}' '{vite.config,.babelrc,.eslintrc,karma.conf}.{js,cjs}' --fix",
     "prepare": "husky install",
+    "prerelease": "npm run lint && npm run build && git add -A && git commit -m 'Add documentation'",
     "release": "np --no-release-draft"
   },
   "dependencies": {
