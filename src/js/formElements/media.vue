@@ -269,7 +269,7 @@ export default {
 
                 this.mediaModel = resourceModel;
                 this.$emit('update:modelValue', resourceModel.get('id'));
-                externalAdmin.$destroy();
+                externalAdmin.popup && externalAdmin.popup.close();
 
             });
 
