@@ -71,9 +71,7 @@ const Component = {
 
 };
 
-export default Component;
-
-export function PagePreview(config) {
+Component.open = function(config) {
 
     config = typeof config === 'string' ? {url: config} : config;
 
@@ -85,6 +83,8 @@ export function PagePreview(config) {
     });
 
 };
+
+export default Component;
 
 </script>
 

@@ -1,4 +1,4 @@
-import {PagePreview} from 'trim/components/pagePreview.vue';
+import PagePreview from 'trim/components/pagePreview.vue';
 
 export default {
 
@@ -137,7 +137,7 @@ export default {
         list.addItem('ButtonListItem', {
             caption: 'View',
             useIcon: 'externalLink',
-            action: model => PagePreview('https://trikoder.github.io/trim/'),
+            action: model => PagePreview.open('https://trikoder.github.io/trim/'),
             addIf: this.screenIsLarge
         });
 
