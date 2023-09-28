@@ -350,7 +350,7 @@ assign(Component, {
             controller,
             controllerMethod: 'index',
             onSelect: function(model, externalAdmin) {
-                externalAdmin.$destroy();
+                externalAdmin.popup && externalAdmin.popup.close();
                 callback(model);
             }
         }));
