@@ -76,7 +76,7 @@ const Component = {
         controllerMethod: {type: String, default: 'index'},
         controllerMethodParams: {type: Array, default: () => ([])},
         afterControllerMount: {type: Function},
-        onSelect: {type: Function, default: function(m) { this.handleModelSelection(m); }}
+        onSelect: {default: (props) => !props.onSelect ? null : function(m) { this.handleModelSelection(m); }}
     },
 
     data: () => ({
