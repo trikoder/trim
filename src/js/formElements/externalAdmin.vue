@@ -76,7 +76,7 @@ const Component = {
         controllerMethod: {type: String, default: 'index'},
         controllerMethodParams: {type: Array, default: () => ([])},
         afterControllerMount: {type: Function},
-        onSelect: {default: (props) => !props.onSelect ? null : function(m) { this.handleModelSelection(m); }}
+        onSelect: {type: Function, default: function(m) { this.handleModelSelection(m); }}
     },
 
     data: () => ({
@@ -95,6 +95,12 @@ const Component = {
         controllerName() {
 
             return this.controller || this.resourceName;
+
+        },
+
+        canSelect() {
+
+            return this.onSelect && (this.selectsOne || this.select !== null);
 
         },
 
@@ -175,13 +181,13 @@ const Component = {
             this.popup = Popup.open({
                 component: ControllerType,
                 props: {
-                    indexTitle: this.onSelect ? this.placeholderText : undefined,
+                    indexTitle: this.canSelect ? this.placeholderText : undefined,
                     isExternal: true,
-                    selectsResource: this.onSelect ? (this.selectsOne ? 'one' : 'many') : false
+                    selectsResource: this.canSelect ? (this.selectsOne ? 'one' : 'many') : false
                 },
                 onComponentCreate: controller => {
 
-                    if (this.onSelect) {
+                    if (this.canSelect) {
                         controller.$emitter.on('beforeIndexSetup', params => this.injectSelectionHandler(params));
                     }
 
@@ -346,7 +352,7 @@ assign(Component, {
 
     select: function(controller, callback, params = {}) {
 
-        return this.open(assign(params, {
+        return this.open(assign({select: 'one'}, params, {
             controller,
             controllerMethod: 'index',
             onSelect: function(model, externalAdmin) {
@@ -366,7 +372,7 @@ assign(Component, {
     open: function(params = {}) {
 
         return addModal({
-            props: () => assign({controllerMethod: null, onSelect: null, isRenderPlaceholder: true}, params),
+            props: () => assign({controllerMethod: null, onSelect: null, select: null, isRenderPlaceholder: true}, params),
             component: () => Component,
             parent: () => params.parent || app.rootView
         });
