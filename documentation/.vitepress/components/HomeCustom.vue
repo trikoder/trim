@@ -468,11 +468,20 @@ $accentColor: #e03431;
 
     }
 
-    .VPContent.is-home .VPHome {
+}
 
-        padding-bottom: 0;
+.VPContent.is-home .VPHome {
 
-    }
+    padding-bottom: 0;
+    margin-bottom: 0;
+
+}
+
+.VPContent.is-home .vp-doc.container {
+
+    padding: 0;
+    width: auto;
+    max-width: none;
 
 }
 </style>

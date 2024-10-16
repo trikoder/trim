@@ -9,15 +9,15 @@ $accentColor: #e03431;
     .VPNavBar .VPNavBarTitle a {
 
         display: block; position: relative;
-        line-height: 64px; padding-left: 50px;
+        line-height: 64px; padding-left: 65px;
 
     }
 
     .VPNavBar .VPNavBarTitle a:before {
 
-        position: absolute; content: ''; left: 0; top: 50%; transform: translateY(-50%); width: 40px; height: 40px;
+        position: absolute; content: ''; left: 0; top: 50%; transform: translateY(-50%); width: 44px; height: 44px;
         background: #e03431 url('../assets/trikoder.svg') no-repeat center; border-radius: 50%;
-        background-size: 27px;
+        background-size: 30px;
 
     }
 

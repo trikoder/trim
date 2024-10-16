@@ -18,7 +18,7 @@
     "dev:docs": "NODE_ENV=development vitepress dev documentation",
     "build": "npm run build:docs && npm run build:demo",
     "build:demo": "NODE_ENV=production CLIENT_API_ENABLED=true BASE_URL=/trim/demo/ BASE_API_URL=/trim/demo/api/ vite build --mode production",
-    "build:docs": "vitepress build documentation",
+    "build:docs": "vitepress build documentation --minify",
     "api:server": "BASE_API_URL=http://localhost:8083/  API_PORT=8083 node ./server/node.js",
     "preview:pages": "node ./server/previewPages.js",
     "lint": "eslint '{src,demo,server,documentation}/**/*.{js,vue}' '{vite.config,.babelrc,.eslintrc}.{js,cjs}' --fix",
@@ -73,7 +73,7 @@
     "postcss-preset-env": "^8.4.1",
     "sass": "^1.62.1",
     "vite": "^4.3.9",
-    "vitepress": "^1.0.0-rc.14"
+    "vitepress": "^1.4.1"
   },
   "engines": {
     "node": ">= 16.0.0",

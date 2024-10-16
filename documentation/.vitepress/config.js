@@ -29,5 +29,11 @@ export default {
     appearance: false,
     markdown: {
         theme: 'github-dark'
+    },
+    vite: {
+        define: {
+            // Probably related to https://github.com/vuejs/vitepress/commit/9794877347140c7b4955d735cd8867c260a5089d
+            __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: false
+        }
     }
 };
