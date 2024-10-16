@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.80.0
+* **Breaking**: Switch to Vue 3, ESM module and Vite bundler
+
 ## 0.79.10
 * Addition: resource list column visibility toggle selector
 
