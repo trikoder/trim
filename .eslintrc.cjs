@@ -19,7 +19,7 @@ module.exports = {
         'import/resolver': {
             alias: {
                 map: [
-                    ['trim', './src/js'],
+                    ['trim', './src/'],
                     ['apiServer', './server/client.js']
                 ]
             }

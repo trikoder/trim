@@ -1,5 +1,5 @@
-import app from 'trim/app.js';
-import translations from 'trim/lang/english.js';
+import app from 'trim/js/app.js';
+import translations from 'trim/js/lang/english.js';
 import routes from './routes.js';
 import services from './services.js';
 import DummyComponent from './dummy.vue';

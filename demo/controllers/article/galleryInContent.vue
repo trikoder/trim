@@ -62,11 +62,11 @@
 </template>
 
 <script>
-import TextareaFormElement from 'trim/formElements/textarea.vue';
-import SelectFormElement from 'trim/formElements/select.vue';
-import baseComponent from 'trim/formElements/htmlComponents/baseComponent.vue';
-import ExternalAdmin from 'trim/formElements/externalAdmin.vue';
-import {elementIndex} from 'trim/library/toolkit.js';
+import TextareaFormElement from 'trim/js/formElements/textarea.vue';
+import SelectFormElement from 'trim/js/formElements/select.vue';
+import baseComponent from 'trim/js/formElements/htmlComponents/baseComponent.vue';
+import ExternalAdmin from 'trim/js/formElements/externalAdmin.vue';
+import {elementIndex} from 'trim/js/library/toolkit.js';
 
 export default {
 

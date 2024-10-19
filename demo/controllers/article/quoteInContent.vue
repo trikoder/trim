@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import TextareaFormElement from 'trim/formElements/textarea.vue';
-import baseComponent from 'trim/formElements/htmlComponents/baseComponent.vue';
+import TextareaFormElement from 'trim/js/formElements/textarea.vue';
+import baseComponent from 'trim/js/formElements/htmlComponents/baseComponent.vue';
 
 export default {
 

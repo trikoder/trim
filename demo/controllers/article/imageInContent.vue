@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import baseComponent from 'trim/formElements/htmlComponents/baseComponent.vue';
-import ExternalAdmin from 'trim/formElements/externalAdmin.vue';
+import baseComponent from 'trim/js/formElements/htmlComponents/baseComponent.vue';
+import ExternalAdmin from 'trim/js/formElements/externalAdmin.vue';
 
 export default {
 

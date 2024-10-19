@@ -1,4 +1,4 @@
-import PagePreview from 'trim/components/pagePreview.vue';
+import PagePreview from 'trim/js/components/pagePreview.vue';
 
 export default {
 

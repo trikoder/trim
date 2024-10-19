@@ -17,7 +17,7 @@ export default defineConfig({
     base: isProduction ? '/trim/demo/' : '/',
     resolve: {
         alias: {
-            trim: new URL('src/js', import.meta.url).pathname,
+            trim: new URL('src', import.meta.url).pathname,
             apiServer: new URL(process.env.CLIENT_API_ENABLED
                 ? 'server/client.js'
                 : 'server/nodePlaceholder.js'

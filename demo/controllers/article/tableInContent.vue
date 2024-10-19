@@ -89,9 +89,9 @@
 </template>
 
 <script>
-import TextareaFormElement from 'trim/formElements/textarea.vue';
-import baseComponent from 'trim/formElements/htmlComponents/baseComponent.vue';
-import vueDismiss from 'trim/dependencies/vue-dismiss/index.js';
+import TextareaFormElement from 'trim/js/formElements/textarea.vue';
+import baseComponent from 'trim/js/formElements/htmlComponents/baseComponent.vue';
+import vueDismiss from 'trim/js/dependencies/vue-dismiss/index.js';
 
 export default {
 
