@@ -10,7 +10,7 @@
                 </p>
             </div>
             <div class="iframeCont">
-                <iframe frameborder="0" src="https://trikoder.github.io/trim/demo/index.html"></iframe>
+                <iframe frameborder="0" src="/trim/demo/index.html"></iframe>
                 <div v-if="iframeOverlayEnabled" v-on:click="disableIframeOverlay" class="overlay"></div>
             </div>
         </div>

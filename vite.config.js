@@ -27,6 +27,7 @@ export default defineConfig({
     define: {
         'process.env.BASE_URL': JSON.stringify(process.env.BASE_URL),
         'process.env.BASE_API_URL': JSON.stringify(process.env.BASE_API_URL),
+        'process.env.BASE_ABSOLUTE_URL': JSON.stringify(process.env.CI ? 'https://trikoder.github.io' : 'http://localhost:3000'),
         'process.env.NODE_ENV': JSON.stringify(isProduction ? 'production' : 'development'),
         'process.env.PACKAGE_VERSION': JSON.stringify(currentVersion),
         __VUE_OPTIONS_API__: JSON.stringify(true),

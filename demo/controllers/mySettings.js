@@ -11,7 +11,7 @@ export default {
 
         this.addControl({
             caption: 'Documentation',
-            action: () => window.open('https://trikoder.github.io/trim/', '_blank')
+            action: () => window.open('/trim/', '_blank')
         });
 
         this.addSaveControl();

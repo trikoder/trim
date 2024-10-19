@@ -1,3 +1,5 @@
+const baseAbsoluteUrl = process.env.CI ? 'https://trikoder.github.io' : 'http://localhost:3000';
+
 export default {
     outDir: '../docs',
     title: 'Trikoder Trim',
@@ -11,7 +13,7 @@ export default {
     themeConfig: {
         nav: [
             { text: 'Documentation', link: '/about' },
-            { text: 'Demo', link: 'https://trikoder.github.io/trim/demo/index.html' },
+            { text: 'Demo', link: baseAbsoluteUrl + '/trim/demo/index.html' },
             { text: 'Github', link: 'https://github.com/trikoder/trim' }
         ],
         sidebar: [

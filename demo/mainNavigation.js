@@ -70,7 +70,7 @@ export default {
 
         {
             caption: 'Documentation',
-            url: 'https://trikoder.github.io/trim/',
+            url: process.env.BASE_ABSOLUTE_URL + '/trim/',
             appLink: false
         },
 
