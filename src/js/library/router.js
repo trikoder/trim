@@ -53,7 +53,7 @@ const routerParams = {
         let navigateCall;
 
         if (typeof params === 'string') {
-            const baseUrlRE = new RegExp('^' + bootData('baseUrl') + '(#/)?');
+            const baseUrlRE = new RegExp('^(' + bootData('baseUrl') + ')?(#/)?');
             navigateCall = this.push(params.replace(baseUrlRE, '/'));
         } else {
             const method = params.useHistoryReplace ? 'replace' : 'push';
