@@ -83,6 +83,8 @@ export default {
 
 <style lang="scss" scoped>
 
+    @use '../../scss/library/all' as *;
+
     .login {
 
         min-width: 30em;

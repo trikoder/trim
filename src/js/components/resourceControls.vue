@@ -163,6 +163,8 @@ export default {
 
 <style lang="scss">
 
+    @use '../../scss/library/all' as *;
+
     .resourceControls .dropdownControls {
 
         float: left; position: relative;

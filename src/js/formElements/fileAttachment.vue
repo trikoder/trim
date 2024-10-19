@@ -242,6 +242,8 @@ export default {
 
 <style lang="scss" scoped>
 
+    @use '../../scss/library/all' as *;
+
     .fileAttachment {
 
         display: block; position: relative; padding: 0.5em; padding-right: 4em; overflow: hidden;

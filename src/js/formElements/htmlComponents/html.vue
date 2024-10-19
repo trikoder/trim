@@ -249,6 +249,8 @@ export default {
 </script>
 
 <style lang="scss">
+@use '../../../scss/library/all' as *;
+
 .ck_add_components .cke_combo_text {
     width: auto;
 }

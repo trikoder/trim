@@ -111,6 +111,8 @@ export default Component;
 
 <style lang="scss" scoped>
 
+    @use '../../scss/library/all' as *;
+
     .popupType1 {
 
         position: fixed; left: 0; top: 0; width: 100%; height: 100%; z-index: 1998;

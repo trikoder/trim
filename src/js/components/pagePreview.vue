@@ -90,6 +90,8 @@ export default Component;
 
 <style lang="scss" scoped>
 
+    @use '../../scss/library/all' as *;
+
     .pagePreviewType1 {
 
         > .controls {

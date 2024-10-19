@@ -514,6 +514,8 @@ export default {
 
 <style lang="scss">
 
+    @use '../../scss/library/all' as *;
+
     .mainNavigation {
 
         position: absolute; left: 0; top: 0; bottom: 0; z-index: $zIndexHeader + 10;

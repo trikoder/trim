@@ -106,7 +106,8 @@ export default {
 </script>
 
 <style lang="scss">
-    @import '../dependencies/vue-date-pick/index.scss';
+    @use '../../scss/library/all' as *;
+    @use '../dependencies/vue-date-pick/index.scss' as *;
 
     .vdpComponent {
 

@@ -181,6 +181,8 @@ export default {
 
 <style lang="scss">
 
+    @use '../../scss/library/all' as *;
+
     .selectType1, .selectType2 {
 
         display: inline-block; position: relative;

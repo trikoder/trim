@@ -1,14 +1,14 @@
 //--------------------------------------------------------------
 // Vendor css
 //--------------------------------------------------------------
-@import url('normalize.css');
+@use 'normalize.css';
 
 //--------------------------------------------------------------
 // Main partials and components
 //--------------------------------------------------------------
-@import '../partials/icons';
-@import '../partials/webfonts';
-@import '../partials/core';
-@import '../partials/animations';
-@import '../partials/resourceList';
-@import '../partials/resourceEdit';
+@use '../partials/icons';
+@use '../partials/webfonts';
+@use '../partials/core';
+@use '../partials/animations';
+@use '../partials/resourceList';
+@use '../partials/resourceEdit';

@@ -56,6 +56,8 @@ export default {
 
 <style lang="scss" scoped>
 
+    @use '../../scss/library/all' as *;
+
     .sortType1 {
 
         display: inline-block; opacity: 0.5;

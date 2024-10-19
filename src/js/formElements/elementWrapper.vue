@@ -43,6 +43,8 @@ export default {
 
 <style lang="scss">
 
+    @use '../../scss/library/all' as *;
+
     .labelType1 {
 
         font-size: 1.3em; display: inline-block; padding: 0 em(5,13);

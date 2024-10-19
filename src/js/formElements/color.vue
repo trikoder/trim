@@ -42,6 +42,8 @@ export default {
 
 <style lang="scss">
 
+    @use '../../scss/library/all' as *;
+
     .colorInputType1 {
 
         position: relative;

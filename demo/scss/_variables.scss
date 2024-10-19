@@ -1,4 +1,7 @@
 //--------------------------------------------------------------
 // Variable overrides
 //--------------------------------------------------------------
-$assetBasePath: '../../src/';
+
+@forward 'trim/scss/library/variables' with (
+  $assetBasePath: '../../src/' !default
+);

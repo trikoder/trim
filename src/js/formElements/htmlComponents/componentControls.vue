@@ -37,6 +37,8 @@ export default {
 
 <style lang="scss" scoped>
 
+@use '../../../scss/library/all' as *;
+
 .componentControls {
     position: absolute; right: -1px; top: -1px;
     background: #fff; border-radius: 0.4em;

@@ -197,6 +197,8 @@ export default Component;
 
 <style lang="scss" scoped>
 
+    @use '../../scss/library/all' as *;
+
     .appSearchType1 {
 
         width: 30em; margin: -14em 0 0 -15em; position: fixed; left: 50%; top: 50%;

@@ -442,6 +442,8 @@ export default {
 
 <style lang="scss">
 
+    @use '../../scss/library/all' as *;
+
     @import url('dragula/dist/dragula.css');
 
     .includedAdminElement {

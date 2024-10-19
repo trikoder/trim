@@ -387,6 +387,8 @@ export default Component;
 
 <style lang="scss">
 
+    @use '../../scss/library/all' as *;
+
     .externalAdminElement {
 
         display: inline-block; position: relative;

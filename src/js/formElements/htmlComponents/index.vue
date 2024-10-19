@@ -347,6 +347,8 @@ export default {
 </script>
 
 <style lang="scss">
+@use '../../../scss/library/all' as *;
+
 .htmlComponentsType1 {
     @include clearfix;
 

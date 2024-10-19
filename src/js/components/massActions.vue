@@ -215,6 +215,8 @@ export default {
 
 <style lang="scss" scoped>
 
+    @use '../../scss/library/all' as *;
+
     .massActionsType1 {
 
         > .selectCont {

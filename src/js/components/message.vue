@@ -93,6 +93,8 @@ export default {
 
 <style lang="scss" scoped>
 
+    @use '../../scss/library/all' as *;
+
     .message {
 
         font-size: 1.4em; padding: em(20,14); position: relative;

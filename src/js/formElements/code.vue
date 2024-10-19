@@ -101,6 +101,8 @@ export default {
 
 <style lang="scss">
 
+    @use '../../scss/library/all' as *;
+
     .codeInputType1 {
 
         .CodeMirror {

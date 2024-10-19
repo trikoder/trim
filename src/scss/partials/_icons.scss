@@ -1,2 +1,4 @@
+@use '../library/all' as *;
+
 // @include defineIconFont($iconFontName, asset('font/icons/fonts/CMS'), $iconFontVersion, $icons);
 @include defineIconFont($iconFontName, asset('font/icons/fonts/trim'), $iconFontVersion, $icons);

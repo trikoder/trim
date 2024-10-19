@@ -147,6 +147,8 @@ export default {
 
 <style lang="scss" scoped>
 
+    @use '../../scss/library/all' as *;
+
     .contextMenuType1 {
 
         position: relative; width: 4em;

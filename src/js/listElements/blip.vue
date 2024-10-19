@@ -58,6 +58,8 @@ export default {
 
 <style lang="scss" scoped>
 
+    @use '../../scss/library/all' as *;
+
     .blip {
 
         width: 0.8em; height: 0.8em; text-indent: -9999em; background: #ccc;

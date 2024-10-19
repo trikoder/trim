@@ -283,6 +283,8 @@ export default Pagination;
 
 <style lang="scss" scoped>
 
+    @use '../../scss/library/all' as *;
+
     .pages {
 
         display: block; position: relative; padding: 0 3.6em; overflow: hidden;

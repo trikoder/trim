@@ -54,6 +54,8 @@ export default {
 
 <style lang="scss" scoped>
 
+    @use '../../scss/library/all' as *;
+
     .dateTimeListItemType1 {
 
         @include fontSans;

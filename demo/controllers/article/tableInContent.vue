@@ -214,6 +214,8 @@ export default {
 
 <style lang="scss" scoped>
 
+@use 'trim/scss/library/all' as *;
+
 .tableComponent {
     position: relative;
     border-radius: 5px; box-sizing: border-box;

@@ -52,6 +52,8 @@ export default {
 
 <style lang="scss" scoped>
 
+@use 'trim/scss/library/all' as *;
+
 .quoteComponent {
     min-height: em(100); position: relative;
     margin: 2em 0; padding-right: 6em;

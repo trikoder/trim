@@ -44,6 +44,8 @@ export default {
 
 <style lang="scss" scoped>
 
+    @use '../../scss/library/all' as *;
+
     .textListItemType1 {
 
         @include fontSans;

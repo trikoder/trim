@@ -198,6 +198,8 @@ export default {
 
 <style lang="scss">
 
+    @use '../../scss/library/all' as *;
+
     .mapElementType1 {
 
         position: relative; padding: 0.5em; padding-bottom: percentage(divide(1,2));

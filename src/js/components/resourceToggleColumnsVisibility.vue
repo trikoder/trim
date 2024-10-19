@@ -92,6 +92,8 @@ export default {
 
 <style lang="scss" scoped>
 
+    @use '../../scss/library/all' as *;
+
     .toggleColumnsVisibility {
 
         position: relative; float: right;

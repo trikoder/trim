@@ -1,3 +1,5 @@
+@use '../projectFunctions' as *;
+
 // Media query helpers
 
 @mixin mediaMinWidth($breakpoint) {

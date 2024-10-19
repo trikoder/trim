@@ -33,6 +33,8 @@ export default {
 
 <style lang="scss" scoped>
 
+    @use '../../scss/library/all' as *;
+
     .dateListItemType1 {
 
         @include fontSans;

@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.81.0
+* Switch to Sass modules system
+
 ## 0.80.0
 * **Breaking**: Switch to Vue 3, ESM module and Vite bundler
 

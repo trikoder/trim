@@ -49,6 +49,8 @@ export default {
 
 <style lang="scss" scoped>
 
+    @use '../../scss/library/all' as *;
+
     .errorPageType1 {
 
         display: flex; justify-content: center; flex-direction: column; min-height: 50em; min-height: calc(100vh - 50px); position: relative;

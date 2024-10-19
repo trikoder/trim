@@ -70,6 +70,8 @@ export default {
 
 <style lang="scss" scoped>
 
+    @use '../../scss/library/all' as *;
+
     .linkListItemType1 {
 
         @include fontSansBold;

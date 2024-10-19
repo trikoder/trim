@@ -71,6 +71,8 @@ export default {
 
 <style lang="scss" scoped>
 
+@use 'trim/scss/library/all' as *;
+
 .imageComponent {
     min-height: em(100); position: relative;
     border-radius: 5px; overflow: hidden;

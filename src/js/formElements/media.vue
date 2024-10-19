@@ -337,6 +337,8 @@ export default {
 
 <style lang="scss">
 
+    @use '../../scss/library/all' as *;
+
     .mediaInputType1 {
 
         display: inline-block; position: relative; padding: 0.5em; padding-right: 4em; overflow: hidden;

@@ -113,6 +113,8 @@ export default {
 
 <style lang="scss">
 
+    @use '../../scss/library/all' as *;
+
     .mediaPreviewType1 {
 
         position: relative; padding: 0.5em;

@@ -548,6 +548,8 @@ export default {
 
 <style lang="scss">
 
+    @use '../../../scss/library/all' as *;
+
     .nestedSelectElement {
 
         display: inline-block; position: relative; box-sizing: border-box;

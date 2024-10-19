@@ -88,6 +88,8 @@ export default {
 
 <style lang="scss">
 
+    @use '../../scss/library/all' as *;
+
     .fileUploadType1 {
 
         overflow: hidden;

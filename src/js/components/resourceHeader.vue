@@ -64,6 +64,8 @@ export default {
 
 <style lang="scss">
 
+@use '../../scss/library/all' as *;
+
 .headerType1 {
 
     position: relative;

@@ -32,6 +32,8 @@ export default {
 
 <style lang="scss" scoped>
 
+    @use '../../scss/library/all' as *;
+
     .loader-enter-active, .loader-leave-active {
         transition: opacity 0.2s;
     }

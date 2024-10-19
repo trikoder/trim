@@ -161,6 +161,8 @@ export default {
 
 <style lang="scss" scoped>
 
+    @use '../../scss/library/all' as *;
+
     .mediaListItemType1 {
 
         display: block; padding-bottom: percentage(divide(3,4)); position: relative;

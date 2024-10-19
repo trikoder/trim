@@ -45,6 +45,8 @@ export default {
 
 <style lang="scss" scoped>
 
+    @use '../../scss/library/all' as *;
+
     .cardListType1 {
 
         animation: slideDownFadeIn 0.2s;

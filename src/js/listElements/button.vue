@@ -74,6 +74,8 @@ export default {
 
 <style lang="scss" scoped>
 
+    @use '../../scss/library/all' as *;
+
     .listElementButton {
 
         font-size: 1.2em; display: inline-block; white-space: nowrap;

@@ -891,6 +891,6 @@ function boundNumber(value, min, max) {
 
 <style lang="scss">
 
-    @import './index.scss';
+    @use './index.scss' as *;
 
 </style>

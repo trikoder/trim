@@ -157,6 +157,8 @@ export default {
 
 <style lang="scss" scoped>
 
+    @use '../../scss/library/all' as *;
+
     .loading {
 
         display: inline-block; padding: em(5,13) em(10,13) em(5,13) 0; font-size: 1.3em;
@@ -167,6 +169,8 @@ export default {
 </style>
 
 <style lang="scss">
+
+    @use '../../scss/library/all' as *;
 
     .inputBlockType1, .inlineInputBlockType1 {
 

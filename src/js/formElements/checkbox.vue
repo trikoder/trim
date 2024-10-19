@@ -53,6 +53,8 @@ export default {
 
 <style lang="scss">
 
+    @use '../../scss/library/all' as *;
+
     .checkboxType1 {
 
         position: absolute; left: -999em;
