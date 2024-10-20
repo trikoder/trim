@@ -161,7 +161,7 @@ export default {
                     });
 
                     const control = elementFromString(`
-                        <button type="button" class="removeMarker nBtn iconClose">
+                        <button type="button" class="removeMarker nBtn iconX">
                             ${translate('formElements.map.removeMarkerCaption')}
                         </button>
                     `);

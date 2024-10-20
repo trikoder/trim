@@ -6,7 +6,7 @@
                 <button
                     v-if="isInteractive" type="button"
                     @click="isInteractive && deselectModel(model)"
-                    class="removeBtn iconClose icr nBtn"
+                    class="removeBtn iconX icr nBtn"
                 ></button>
             </div>
             <button

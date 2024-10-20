@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.82.0
+* Use proper close icon reference
+
 ## 0.81.0
 * Switch to Sass modules system
 

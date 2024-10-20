@@ -4,7 +4,7 @@
         <button
             v-if="!closeAfter"
             type="button"
-            class="closeBtn nBtn icr iconClose"
+            class="closeBtn nBtn icr iconX"
             @click="close"
         >
             {{ translations.closeCaption}}

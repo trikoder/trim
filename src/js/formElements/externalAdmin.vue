@@ -7,7 +7,7 @@
             <button
                 v-if="relatedModels && isInteractive"
                 type="button"
-                class="removeBtn nBtn iconClose icr"
+                class="removeBtn nBtn iconX icr"
                 @click="remove(relatedModels[0])"
             ></button>
             <button
