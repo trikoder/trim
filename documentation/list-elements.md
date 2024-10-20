@@ -10,7 +10,7 @@ All list elements are Vue components found in [listElement folder](https://githu
 All list elements accept following set of options:
 
 * **caption**: used to define cell heading content.
-* **mapTo**: used for mapping list item content to resource attribute or relationship data. Can be string of function. When defined as string it will fetch model value under that key. Learn how to use [JSON api resource](https://dbrekalo.github.io/json-api-resource/) api to query and transform data.
+* **mapTo**: used for mapping list item content to resource attribute or relationship data. Can be string of function. When defined as string it will fetch model value under that key. Learn how to use [JSON:API resource](https://dbrekalo.github.io/json-api-resource/) to query and transform data.
 * **attributes**: List of DOM element attributes.
 
 ---
@@ -227,7 +227,7 @@ list.addItem('ContextMenu', {
 
 ## Media
 List element used for presenting media items (image, video, audio, file).
-Best used with "card" resource list template.
+Best used with card resource list template.
 [Code reference](https://github.com/trikoder/trim/tree/master/src/js/listElements/media.vue).
 
 ```js

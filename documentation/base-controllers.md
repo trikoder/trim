@@ -24,7 +24,7 @@ export default {
 ```
 
 Sometimes empty resource is required for meaningful create admin interface.
-In this case draft resource is created on api (with id but no attributes and relation data) and edited in UI immediately.
+In this case draft resource is created on API (with id but no attributes and relation data) and edited in UI immediately.
 
 ```js
 export default {
@@ -98,7 +98,7 @@ Used for hierarchal resources that can be presented in nested tree view form.
 Categories as resources usually have parent and child categories.
 Example [demo controller](https://trikoder.github.io/trim/demo/index.html#category) and [codebase](https://github.com/trikoder/trim/tree/master/demo/controllers/category.js).
 
-Lets examine category api response:
+Let’s examine category API response:
 ```js
 {
     type: 'category',
@@ -161,7 +161,7 @@ Properties mapChildrenTo, mapLevelTo, mapIsLeafTo can be defined as strings or f
 Used for browse, create (upload) and edit media resources sush as images or files.
 Example [demo controller](https://trikoder.github.io/trim/demo/index.html#media) and [codebase](https://github.com/trikoder/trim/tree/master/demo/controllers/media.js).
 
-Lets examine typical media api response:
+Let’s examine typical media API response:
 ```js
 {
     type: 'media',

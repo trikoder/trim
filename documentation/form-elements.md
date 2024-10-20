@@ -166,7 +166,7 @@ edit.addField('HtmlComponentsFormElement', {
 });
 ```
 
-Expects api attribute structure similar to one defined bellow:
+Expects API attribute structure similar to one defined bellow:
 
 ```js
 [{

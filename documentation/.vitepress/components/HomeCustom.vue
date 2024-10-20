@@ -5,7 +5,7 @@
                 <h2 class="title">Modernize your content management system</h2>
                 <p class="text">
                     Trikoder Trim is user interface framework for building headless
-                    content management systems that connect to JSON API powered backend.
+                    content management systems that connect to JSON:API powered backend.
                     Craft responsive single page applications that work on all devices.
                 </p>
             </div>
@@ -17,12 +17,12 @@
         <div class="featuresAccented">
             <ul>
                 <li>
-                    <h3 class="title">Headless and powered by JSON API standard</h3>
+                    <h3 class="title">Headless and powered by JSON:API standard</h3>
                     <p class="text">
                         Client applications built with Trikoder Trim are decoupled from
                         server side technology stack. Develop with any
-                        backend that can process json api datasets
-                        compliant with json:api specification.
+                        backend that can process JSON datasets
+                        compliant with JSON:API specification.
                     </p>
                 </li>
                 <li>
@@ -45,14 +45,14 @@
         </div>
         <h3 class="quote">
             Elevate developer and user experience by decoupling frontend
-            and agreeing on standardized api.
+            and agreeing on standardized API.
         </h3>
         <div class="features">
             <ul>
                 <li>
                    <h3 class="title">Communicate with backend efficiently</h3>
                    <p class="text">
-                        JSON API standard defines how attribute and relation data is structured,
+                        JSON:API standard defines how attribute and relation data is structured,
                         how resources are created and updated. By agreeing on standardized
                         input / output with your backend colleges and following shared conventions
                         you can increase productivity and focus on your application.
@@ -64,7 +64,7 @@
                         Define how resource is browsed, filtered and sorted in list,
                         what form fields are rendered when resource is created or updated.
                         All this is done inside one javascript file via domain specific
-                        language or api that anyone can easily read and write.
+                        language or API that anyone can easily read and write.
                    </p>
                 </li>
                 <li>
@@ -72,7 +72,7 @@
                    <p class="text">
                         Vue.js is doing its magic underneath all Trim controllers and components.
                         To ensure maximum performance and scalability every controller and its resources
-                        are loaded on demand by utilizing webback's code splitting features.
+                        are loaded on demand by utilizing your bundler’s code splitting features.
                         No css framework is used and css is component scoped.
                         Browser only downloads css and js related to currently viewed page.
                    </p>

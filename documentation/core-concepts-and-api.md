@@ -1,4 +1,4 @@
-# Core concepts and api
+# Core concepts and API
 Understanding of how core components work is essential for building applications with Trikoder Trim.
 This chapter provides insight into resource controller, resource list, resource edit, router, navigation, service container and application object.
 
@@ -8,7 +8,7 @@ Here we define how resource is browsed, filtered and sorted in list, what form f
 
 In most use cases controller looks like a simple configuration file.
 This configuration based architecture delegates most of the work to components that are composed out of our sight.
-Resource controller is a container component which calls service components for listing and editing resources who build their own component subtrees - all that is abstracted from user via simple and easy to use api.
+Resource controller is a container component which calls service components for listing and editing resources who build their own component subtrees - all that is abstracted from user via simple and easy to use API.
 
 All resource controllers share same basic skeleton. We define what resource type controller is handling (resourceName) and implement methods for resource listing (setupList) and resource editing (setupEdit):
 
@@ -67,7 +67,7 @@ createRelatedStrategy: 'relatedFirst'
 ````
 
 ### includedRelationships
-Specify relationships to include in api payload for resource listing (index) and editing (edit)
+Specify relationships to include in API payload for resource listing (index) and editing (edit)
 Previously named "includeApiData" in versions up to v0.77, now deprecated.
 ```js
 includedRelationships: {
@@ -77,7 +77,7 @@ includedRelationships: {
 ````
 
 ### includedFields (sparse fieldsets)
-Specify fields to include in api payload for resource listing (index) and editing (edit)
+Specify fields to include in API payload for resource listing (index) and editing (edit)
 ```js
 includedFields: {
     index: {
@@ -240,7 +240,7 @@ list.addSort([
 ```
 
 ### filterAlwaysBy
-Method for setting persistent api filters.
+Method for setting persistent API filters.
 
 ```js
 list.filterAlwaysBy('deleted', 'no');
@@ -249,7 +249,7 @@ list.filterAlwaysBy({deleted: 'no'});
 ```
 
 ### filterInitiallyBy
-Method for setting initial api and UI filters.
+Method for setting initial API and UI filters.
 
 ```js
 list.filterInitiallyBy('published', 'yes');
@@ -389,7 +389,7 @@ Application utilizes simple service container to register and locate components 
 All form and list components are registered and retrieved from service container by default.
 
 Your resource controllers should also be registered as services.
-We encourage you to do so with dynamic import to utilize webpack code splitting and load controller code only when it is requested.
+We encourage you to do so with dynamic import to utilize your bundler’s code splitting and load controller code only when it is requested.
 
 A typical service container with navigation and few registered controllers looks something like this:
 
@@ -609,7 +609,7 @@ app.getLocale() // en by default;
 ```
 
 ### beforeAdminEnter
-Used to set Promise function before creating admin instance.
+Used to set `Promise` function before creating admin instance.
 ```js
 app.beforeAdminEnter(() => { return Promise.resolve(); });
 ```
@@ -619,7 +619,7 @@ Once called application will setup router, services and main view components.
 
 ## Configuration
 Trim based application is configured by setting boot (or config) data in your main entry point.
-Anything can be inserted in boot data storage, only "baseUrl" and "baseApiUrl" are mandatory.
+Anything can be inserted in boot data storage, only `baseUrl` and `baseApiUrl` are mandatory.
 
 ```js
 app.setBootData({
@@ -627,8 +627,8 @@ app.setBootData({
     baseApiUrl: process.env.BASE_API_URL
 })
 ````
-### Use browser history api
-Configure Trim application to use browser history api.
+### Use browser history API
+Configure Trim application to use browser history API.
 ```js
 app.setBootData({
     usesPushState: true
@@ -636,16 +636,16 @@ app.setBootData({
 ````
 
 ### Using patch for resource updates
-Api adapter can be instructed to use 'PATCH' insted of 'PUT' method when updating JSON api resources.
+API adapter can be instructed to use `PATCH` insted of `PUT` method when updating JSON:API resources.
 ```js
 app.setBootData({
     usePatchForUpdate: true
 })
 ````
 
-### Configuring resource url slugs
-JSON api resource url slugs can be customized via 'resourceToApiMap' config property.
-Used this when JSON api resource type is not directly mapped to resource api url.
+### Configuring resource URL slugs
+JSON:API resource URL slugs can be customized via `resourceToApiMap` config property.
+Used this when JSON:API resource type is not directly mapped to resource API URL.
 ```js
 app.setBootData({
     resourceToApiMap: {
@@ -655,9 +655,9 @@ app.setBootData({
 })
 ````
 
-### Api pagination strategies
+### API pagination strategies
 Trim comes with offset (default) and page based pagination strategies included.
-Customize offset based strategy (creates api query like ?page[offset]=0&page[limit]=15):
+Customize offset based strategy (creates API query like `?page[offset]=0&page[limit]=15`):
 ```js
 app.setBootData({
     apiPagination: {
@@ -667,7 +667,7 @@ app.setBootData({
     }
 })
 ````
-Set and customize page based strategy (creates api query like ?page[number]=1&page[size]=15):
+Set and customize page based strategy (creates API query like `?page[number]=1&page[size]=15`):
 ```js
 app.setBootData({
     apiPagination: {
@@ -691,7 +691,7 @@ app.setBootData({
 app.setBootData({
     toggleColumnsVisibility: true, // activate toggle list table columns visibility feature, default is FALSE
     itemsPerPage: 15, // default number of items per page
-    googleMapsApiKey: '123123', // api key for google maps
+    googleMapsApiKey: '123123', // API key for google maps
     ckEditorPath: 'https://cdn.ckeditor.com/4.10.0/standard-all/' // ckeditor CDN
 })
 ````
@@ -706,7 +706,7 @@ bootData('baseUrl'); // outputs boot data baseUrl value
 ## Authentication
 To authenticating users to your app you have to implement simple authentication driver.
 Default view for authenticating with username and password is included in Trim.
-Examine [base auth api](https://github.com/trikoder/trim/tree/master/src/js/library/auth.js) for full implementation details.
+Examine [base auth API](https://github.com/trikoder/trim/tree/master/src/js/library/auth.js) for full implementation details.
 Simple driver implementation is shown bellow:
 
 ```js

@@ -3,7 +3,7 @@ const baseAbsoluteUrl = process.env.CI ? 'https://trikoder.github.io' : 'http://
 export default {
     outDir: '../docs',
     title: 'Trikoder Trim',
-    description: 'Responsive UI framework for building content management systems with simple authoring api. Designed to run as a browser application connected to json:api powered backend.',
+    description: 'Responsive UI framework for building content management systems with simple authoring API. Designed to run as a browser application connected to JSON:API powered backend.',
     base: '/trim/',
     head: [
         ['link', {rel: 'shortcut icon', href: `/favicon.ico`}],
@@ -14,7 +14,7 @@ export default {
         nav: [
             { text: 'Documentation', link: '/about' },
             { text: 'Demo', link: baseAbsoluteUrl + '/trim/demo/index.html' },
-            { text: 'Github', link: 'https://github.com/trikoder/trim' }
+            { text: 'GitHub', link: 'https://github.com/trikoder/trim' }
         ],
         sidebar: [
             {text: 'Home', link: '/'},

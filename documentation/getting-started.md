@@ -1,6 +1,6 @@
 # Getting started
-Before digging into UI code make sure you have a basic understanding of core json api concepts (how relations, attributes, getting, creating and updating resources work). A functional backend api compliant with json api standard is prerequisite for building UI.
-Browse [json:api webpage](http://jsonapi.org/) and [examples](http://jsonapi.org/examples/) to familiarize yourself with standard.
+Before digging into UI code make sure you have a basic understanding of core JSON:API concepts (how relations, attributes, getting, creating and updating resources work). A functional backend API compliant with JSON:API standard is prerequisite for building UI.
+Browse [JSON:API webpage](http://jsonapi.org/) and [examples](http://jsonapi.org/examples/) to familiarize yourself with standard.
 
 Everything explained in this chapter has concrete implementation details in demo application codebase.
 Feel free to [browse demo codebase](https://github.com/trikoder/trim/tree/master/demo) and take what you need.

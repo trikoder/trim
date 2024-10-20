@@ -1,7 +1,7 @@
 # Adding resource
-We will examine typical scenario where new resource is ready on backend api and admin user interface has to be created.
+We will examine typical scenario where new resource is ready on backend API and admin user interface has to be created.
 Steps needed to complete UI for this new resource:
-- examine resource api
+- examine resource API
 - create resource controller
 - add resource route
 - add navigation link
@@ -9,15 +9,15 @@ Steps needed to complete UI for this new resource:
 
 For simple resources this can be completed in less then 5 minutes.
 
-## Examine resource api
-Make sure that resource backend api is ready to handle get, post, and put requests.
+## Examine resource API
+Make sure that resource backend API is ready to handle get, post, and put requests.
 Check that backend properly outputs relation includes, make sure that filtering and validation rules are respected.
 Examine new resource attributes and relations and decide what list and form elements have to be used.
 
 Everything works? Then lets build resource UI controller.
 
 ## Create resource controller
-Lets say new resource in need of UI is "tag" entity.
+Let’s say new resource in need of UI is `tag` entity.
 We will need a component to describe how resource is browsed, filtered and sorted in list, what form fields are rendered when resource is created or updated.
 
 For this purpose we will build a tag resource controller in 'src/controllers/tag.js' file:
