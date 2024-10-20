@@ -5,7 +5,7 @@
         :class="{
             activeDropdown: selectedModelsOpened,
             withSelection: selectedModels.length,
-            singleAction: hasSingleAction
+            withSingleAction: hasSingleAction
         }"
         v-on-dismiss="{
             callback: closeSelectedModels,
@@ -410,7 +410,7 @@ export default {
 
             }
 
-            &.singleAction {
+            &.withSingleAction {
 
                 .selectCont {
                     display: none;

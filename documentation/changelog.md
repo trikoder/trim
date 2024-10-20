@@ -2,6 +2,7 @@
 
 ## 0.82.0
 * Use proper close icon reference
+* Add style presentation as buttton for mass action with only one option
 
 ## 0.81.0
 * Switch to Sass modules system
