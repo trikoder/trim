@@ -1,5 +1,6 @@
 import ExpressServer from 'json-api-shop/servers/express.js';
 import MemoryAdapter from 'json-api-shop/adapters/memory.js';
+import fkill from 'fkill';
 import resources from './resources.js';
 
 const Server = ExpressServer.extend({
@@ -19,8 +20,15 @@ const Server = ExpressServer.extend({
 
 });
 
-export default new Server({
-    port: process.env.API_PORT,
-    databaseAdapter: MemoryAdapter,
-    resources
-}).start();
+;(async() => {
+    try {
+        await fkill(`:${process.env.API_PORT}`);
+    } catch {
+        // Handled
+    }
+    new Server({
+        port: process.env.API_PORT,
+        databaseAdapter: MemoryAdapter,
+        resources
+    }).start();
+})();
