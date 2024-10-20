@@ -4,7 +4,8 @@
         @submit.prevent="runSelectedAction"
         :class="{
             activeDropdown: selectedModelsOpened,
-            withSelection: selectedModels.length
+            withSelection: selectedModels.length,
+            singleAction: hasSingleAction
         }"
         v-on-dismiss="{
             callback: closeSelectedModels,
@@ -92,9 +93,15 @@ export default {
 
         },
 
+        hasSingleAction() {
+
+            return this.actions.length === 1;
+
+        },
+
         submitButtonCaption() {
 
-            return this.currentAction.buttonCaption || this.translations.submitButtonCaption;
+            return this.currentAction.buttonCaption || this.hasSingleAction ? this.currentAction.caption : this.translations.submitButtonCaption;
 
         }
     },
@@ -400,6 +407,20 @@ export default {
             &.withSelection {
 
                 opacity: 1;
+
+            }
+
+            &.singleAction {
+
+                .selectCont {
+                    display: none;
+                }
+
+                > .submitBtn {
+
+                    border-radius: em(4,13);
+
+                }
 
             }
 
