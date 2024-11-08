@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.83.0
+* Allow opening in new tab for common controls
+
 ## 0.82.0
 * Use proper close icon reference
 * Add style presentation as buttton for mass action with only one option

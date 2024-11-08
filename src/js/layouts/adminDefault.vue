@@ -110,7 +110,7 @@ export default {
                         this.currentControllerType = ControllerType;
                     }
 
-                    if (controller.method) {
+                    if (controller.method && this.$refs.currentController[controller.method]) {
 
                         this.$nextTick(() => {
                             this.$refs.currentController[controller.method](

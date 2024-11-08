@@ -2,19 +2,17 @@
     <header class="headerType1" :class={hasBottomBorder}>
         <h1 class="projectCaption">{{ projectCaption }}</h1>
         <h2 v-if="breadcrumbs.length" class="title">
-            <template v-for="(breadcrumb, index) in breadcrumbs">
+            <template v-for="(breadcrumb, index) in breadcrumbs" :key="breadcrumb.caption">
                 <a
                     v-if="breadcrumb.url"
-                    :key="breadcrumb.caption"
                     :href="breadcrumb.url"
                     :class="{iconChevronRight: index + 1 < breadcrumbs.length}"
-                    @click.prevent="clickBreadcrumb(breadcrumb)"
+                    @click="clickBreadcrumb(breadcrumb, $event)"
                 >
                     {{ breadcrumb.caption }}
                 </a>
                 <span
                     v-else
-                    :key="breadcrumb.caption"
                     :class="{iconChevronRight: index + 1 < breadcrumbs.length}"
                 >
                     {{ breadcrumb.caption }}
@@ -26,6 +24,7 @@
 </template>
 
 <script>
+import {isNewTabClick} from '../library/toolkit.js';
 
 export default {
 
@@ -46,11 +45,15 @@ export default {
 
     methods: {
 
-        clickBreadcrumb(breadcrumb) {
+        clickBreadcrumb(breadcrumb, e) {
 
-            if (breadcrumb.action) {
+            if (isNewTabClick(e)) {
+                // do nothing
+            } else if (breadcrumb.action) {
+                e.preventDefault();
                 breadcrumb.action();
             } else if (breadcrumb.url) {
+                e.preventDefault();
                 this.$router.navigateTo(breadcrumb.url);
             }
 

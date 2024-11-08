@@ -28,7 +28,7 @@
                                     :href="item.url"
                                     :class="['item', item.icon ? 'icon' + item.icon : '', {selected: item.selected}]"
                                     :title="item.caption"
-                                    @click.prevent="openItem(item)"
+                                    @click="openItem(item, $event)"
                                 >
                                     {{ item.caption }}
                                     <span v-if="!item.icon" class="initials">{{ item.initials }}</span>
@@ -57,7 +57,7 @@
                                             :href="subItem.url"
                                             :class="['item', {selected: subItem.selected}]"
                                             :title="subItem.caption"
-                                            @click.prevent="openItem(subItem)"
+                                            @click="openItem(subItem, $event)"
                                         >
                                             {{ subItem.caption }}
                                         </a>
@@ -83,7 +83,7 @@
                             class="item"
                             :href="item.url"
                             v-html="item.caption"
-                            @click.prevent="openUserItem(item)"
+                            @click="openUserItem(item, $event)"
                         ></a>
                         <button
                             v-else
@@ -107,7 +107,7 @@
 </template>
 
 <script>
-import {pickTo} from '../library/toolkit.js';
+import {pickTo, isNewTabClick} from '../library/toolkit.js';
 import vueDismiss from '../dependencies/vue-dismiss/index.js';
 import serviceContainer from '../library/serviceContainer.js';
 import {GlobalEvents} from 'vue-global-events';
@@ -234,7 +234,15 @@ export default {
 
         },
 
-        openItem(item) {
+        openItem(item, event) {
+
+            if (isNewTabClick(event)) {
+                return;
+            }
+
+            if (event) {
+                event.preventDefault();
+            }
 
             if (item.action) {
                 item.action(this);
@@ -288,7 +296,15 @@ export default {
 
         },
 
-        openUserItem(item) {
+        openUserItem(item, event) {
+
+            if (isNewTabClick(event)) {
+                return;
+            }
+
+            if (event) {
+                event.preventDefault();
+            }
 
             if (item.action) {
                 item.action(this);

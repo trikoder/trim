@@ -12,7 +12,7 @@
 <script>
 
 import base from './base.js';
-import {result} from '../library/toolkit.js';
+import {result, isNewTabClick} from '../library/toolkit.js';
 
 export default {
 
@@ -52,7 +52,9 @@ export default {
 
         handleClick(e) {
 
-            if (this.action) {
+            if (isNewTabClick(e)) {
+                // do nothing
+            } else if (this.action) {
                 e.preventDefault();
                 this.action(this.resourceModel, e);
             } else if (!this.isExternalLink) {
@@ -65,7 +67,6 @@ export default {
     }
 
 };
-
 </script>
 
 <style lang="scss" scoped>
