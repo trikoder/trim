@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.83.2
+* Improve invalid controller method reference
+
 ## 0.83.1
 * Update invalid controller method reference
 

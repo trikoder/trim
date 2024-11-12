@@ -110,16 +110,15 @@ export default {
                         this.currentControllerType = ControllerType;
                     }
 
-                    if (
-                        this.$refs.currentController &&
-                        this.$refs.currentController[controller.method]
-                    ) {
+                    if (controller.method) {
 
                         this.$nextTick(() => {
-                            this.$refs.currentController[controller.method](
-                                controller.params,
-                                controller.query
-                            );
+                            if (this.$refs.currentController[controller.method]) {
+                                this.$refs.currentController[controller.method](
+                                    controller.params,
+                                    controller.query
+                                );
+                            }
                         });
 
                     }
