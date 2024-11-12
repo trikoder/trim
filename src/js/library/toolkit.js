@@ -329,3 +329,9 @@ export function getComponentInitialValue(Component, options = {}) {
     }
 
 }
+
+export function isNewTabClick(event) {
+    return event
+        ? Boolean(event.ctrlKey || event.metaKey || event.which === 2)
+        : false;
+}

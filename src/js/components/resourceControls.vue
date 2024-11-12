@@ -1,9 +1,8 @@
 <template>
     <nav class="resourceControls" v-if="parsedControls.length">
-        <template v-for="(control, index) in parsedControls">
+        <template v-for="(control, index) in parsedControls" :key="control.caption + index">
             <div
                 v-if="control.isDropdown"
-                :key="control.caption + index"
                 class="dropdownControls"
                 :class="{active: control.active, accentedAdjecent: control.accentedAdjecent}"
                 v-on-dismiss="{callback: () => closeDropdown(control), watch: control.active}"
@@ -31,10 +30,9 @@
             <a
                 v-else-if="control.url"
                 :href="control.url"
-                :key="control.caption + index"
                 :class="control.className"
                 :title="control.caption"
-                @click.prevent="runControlAction(control)"
+                @click="runControlAction(control, $event)"
             >
               <span>{{ control.caption }}</span>
             </a>
@@ -42,10 +40,9 @@
                 v-else
                 class="nBtn"
                 type="button"
-                :key="control.caption + index"
                 :class="control.className"
                 :title="control.caption"
-                @click.prevent="runControlAction(control)"
+                @click="runControlAction(control, $event)"
             >
                 <span>{{ control.caption }}</span>
             </button>
@@ -56,7 +53,7 @@
 <script>
 
 import translate from '../library/translate.js';
-import {assign} from '../library/toolkit.js';
+import {assign, isNewTabClick} from '../library/toolkit.js';
 import vueDismiss from '../dependencies/vue-dismiss/index.js';
 import screenSize from '../mixins/screenSize.js';
 
@@ -119,9 +116,16 @@ export default {
 
         },
 
-        runControlAction(config) {
+        runControlAction(config, event) {
 
-            config.action.call(config.actionContext);
+            if (isNewTabClick(event)) {
+                // do nothing
+            } else {
+                if (event) {
+                    event.preventDefault();
+                }
+                config.action.call(config.actionContext);
+            }
 
         },
 

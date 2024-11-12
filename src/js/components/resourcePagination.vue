@@ -27,7 +27,7 @@
                     v-if="currentPage !== 1"
                     class="iconArrowLeft icon page icr"
                     :href="getUrlForPage(currentPage - 1)"
-                    @click.prevent="selectPage(currentPage - 1)"
+                    @click="selectPage(currentPage - 1, $event)"
                 >
                     {{ currentPage - 1 }}
                 </a>
@@ -38,7 +38,7 @@
                 <a
                     :class="['page', {selected: 1 == currentPage}]"
                     :href="getUrlForPage(1)"
-                    @click.prevent="selectPage(1)"
+                    @click="selectPage(1, $event)"
                 >1</a>
             </li>
 
@@ -51,7 +51,7 @@
                     <a
                         :class="['page', {selected: page == currentPage}]"
                         :href="getUrlForPage(page)"
-                        @click.prevent="selectPage(page)"
+                        @click="selectPage(page, $event)"
                     >{{ page }}</a>
                 </li>
 
@@ -64,7 +64,7 @@
                 <a
                     :class="['page', {selected: totalPages === currentPage}]"
                     :href="getUrlForPage(totalPages)"
-                    @click.prevent="selectPage(totalPages)"
+                    @click="selectPage(totalPages, $event)"
                 >{{ totalPages }}</a>
             </li>
 
@@ -73,7 +73,7 @@
                     v-if="currentPage < totalPages"
                     class="iconArrowRight page icon icr"
                     :href="getUrlForPage(currentPage + 1)"
-                    @click.prevent="selectPage(currentPage + 1)"
+                    @click="selectPage(currentPage + 1, $event)"
                 >{{ currentPage + 1 }}
                 </a>
                 <button v-else class="iconArrowRight disabled icon icr"></button>
@@ -88,7 +88,7 @@
 
 import userPreferences from '../library/userPreferences.js';
 import translate from '../library/translate.js';
-import {range} from '../library/toolkit.js';
+import {range, isNewTabClick} from '../library/toolkit.js';
 import bootData from '../library/bootData.js';
 import screenSize from '../mixins/screenSize.js';
 
@@ -172,9 +172,16 @@ const Pagination = {
 
         },
 
-        selectPage(page) {
+        selectPage(page, event) {
 
-            this.$emit('pageRequest', page);
+            if (isNewTabClick(event)) {
+                // do nothing
+            } else {
+                if (event) {
+                    event.preventDefault();
+                }
+                this.$emit('pageRequest', page);
+            }
 
         }
 
