@@ -3,6 +3,6 @@
 @use 'sass:math';
 
 @mixin pageEmEquivalent($pixels: 10) {
-    html { font-size: percentage(math.div($pixels, 16)); }
+    html { font-size: math.percentage(math.div($pixels, 16)); }
     body { font-size: 1em; }
 }

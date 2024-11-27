@@ -1,5 +1,7 @@
 // Icon font helpers
 
+@use 'sass:string';
+
 @mixin iconElement($paddingLeft: 40) {
 
     display: inline-block; position: relative; padding-left: $paddingLeft*1px;
@@ -60,7 +62,7 @@
     }
 
     @each $iconName, $iconContent in $iconMap {
-        .#{$classPrefix}#{to-upper-case(str-slice($iconName, 1, 1)) + str-slice($iconName, 2)}:before {
+        .#{$classPrefix}#{string.to-upper-case(string.slice($iconName, 1, 1)) + string.slice($iconName, 2)}:before {
             content: $iconContent;
         }
     }

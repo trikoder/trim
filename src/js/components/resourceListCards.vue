@@ -46,6 +46,8 @@ export default {
 <style lang="scss" scoped>
 
     @use '../../scss/library/all' as *;
+    @use 'sass:map';
+    @use 'sass:math';
 
     .cardListType1 {
 
@@ -59,7 +61,7 @@ export default {
 
             > li {
 
-                display: flex; flex-wrap: wrap; width: percentage(divide(1,5));
+                display: flex; flex-wrap: wrap; width: math.percentage(divide(1,5));
                 box-sizing: border-box; padding: 1em; margin: 0;
 
             }
@@ -123,7 +125,7 @@ export default {
 
                 &:before {
 
-                    content: map-get($icons, 'arrowDownCircle');
+                    content: map.get($icons, 'arrowDownCircle');
 
                 }
 

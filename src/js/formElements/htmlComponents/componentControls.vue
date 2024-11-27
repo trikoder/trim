@@ -36,7 +36,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 @use '../../../scss/library/all' as *;
 
 .componentControls {

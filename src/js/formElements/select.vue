@@ -182,6 +182,7 @@ export default {
 <style lang="scss">
 
     @use '../../scss/library/all' as *;
+    @use 'sass:map';
 
     .selectType1, .selectType2 {
 
@@ -201,7 +202,7 @@ export default {
                 @include iconFont($iconFontName);
                 @include iconElementGraphic(30, 30);
 
-                content: map-get($icons, 'chevronDown'); left: auto; right: 0; font-size: 1.2em;
+                content: map.get($icons, 'chevronDown'); left: auto; right: 0; font-size: 1.2em;
                 color: $colorMain1;
 
             }

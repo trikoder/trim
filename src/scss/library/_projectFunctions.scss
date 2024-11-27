@@ -1,5 +1,6 @@
 @use 'variables' as *;
 @use 'sass:math';
+@use 'sass:color';
 
 @function asset($string) {
     @return $assetBasePath + $string;
@@ -17,3 +18,10 @@
     @return math.div($val1, $val2);
 }
 
+@function darken($color, $amount) {
+    @return color.adjust($color, $lightness: -$amount)
+}
+
+@function lighten($color, $amount) {
+    @return color.adjust($color, $lightness: $amount)
+}
