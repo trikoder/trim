@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.83.3
+* Upgrade Node, Vite and Sass dependencies
+
 ## 0.83.2
 * Improve invalid controller method reference
 
