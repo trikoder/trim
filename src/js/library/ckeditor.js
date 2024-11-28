@@ -2,7 +2,7 @@ import littleLoader from 'little-loader';
 import bootData from '../library/bootData.js';
 import app from '../app.js';
 
-const ckeditorPath = new URL('ckeditor/ckeditor.js', import.meta.url);
+const ckeditorPath = new URL('ckeditor4/ckeditor.js', import.meta.url);
 let ckeditorImport = null;
 function importCkEditor() {
     if (ckeditorImport) {

@@ -1,6 +1,9 @@
 # Changelog
 
-## 0.83.3
+## 0.85.0
+* Upgrade ckeditor and Google Maps loader dependencies
+
+## 0.84.0
 * Upgrade Node, Vite and Sass dependencies
 
 ## 0.83.2
