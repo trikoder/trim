@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.86.0
+* Use exact ckeditor4 version
+
 ## 0.85.0
 * Upgrade ckeditor and Google Maps loader dependencies
 
