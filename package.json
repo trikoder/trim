@@ -29,7 +29,7 @@
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.16.8",
     "axios": "^1.1.3",
-    "ckeditor4": "4.22.1",
+    "ckeditor4": "4.25.0",
     "codemirror": "^5.65.9",
     "dragula": "^3.7.3",
     "dropzone": "^5.9.3",
